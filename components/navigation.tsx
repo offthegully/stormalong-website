@@ -55,7 +55,7 @@ export function Navigation() {
             transition={{ duration: 0.2 }}
           >
             <Image
-              src="https://web-assets.same.dev/3813216437/161768803.png"
+              src="/images/stormalong-logo.png"
               alt="Stormalong Cider"
               width={120}
               height={50}

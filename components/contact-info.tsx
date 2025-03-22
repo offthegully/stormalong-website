@@ -22,10 +22,10 @@ export function ContactInfo() {
         <div className="p-6">
           <div className="flex items-center mb-6">
             <Image
-              src="https://web-assets.same.dev/837813956/3232369280.png"
+              src="/images/stormalong-logo.png"
               alt="Stormalong Cider"
-              width={80}
-              height={80}
+              width={70}
+              height={70}
               className="w-auto h-16"
             />
           </div>
