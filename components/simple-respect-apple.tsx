@@ -11,7 +11,7 @@ import { fadeUp } from "@/lib/animation-config";
 
 export function SimpleRespectApple() {
   return (
-    <PatternedSection className="py-16 md:py-24">
+    <PatternedSection className="py-12 md:py-20">
       <div className="stormalong-container">
         <div className="max-w-4xl mx-auto text-white text-center">
           {/* Gold divider line */}
