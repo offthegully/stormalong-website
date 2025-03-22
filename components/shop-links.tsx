@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { MotionStaggerContainer } from "@/components/animations/motion-stagger-container"
-import { MotionStaggerItem } from "@/components/animations/motion-stagger-item"
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { MotionStaggerContainer } from "@/components/animations/motion-stagger-container";
+import { MotionStaggerItem } from "@/components/animations/motion-stagger-item";
 
 export function ShopLinks() {
   return (
@@ -14,9 +14,12 @@ export function ShopLinks() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <MotionStaggerItem>
               {/* Find Our Cider */}
-              <Link href="/locator" className="group relative overflow-hidden rounded-md block">
+              <Link
+                href="/locator"
+                className="group relative overflow-hidden rounded-md block"
+              >
                 <motion.div
-                  className="aspect-w-16 aspect-h-9 relative h-[250px]"
+                  className="aspect-w-16 aspect-h-9 relative h-[300px]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -27,7 +30,7 @@ export function ShopLinks() {
                     className="h-full w-full"
                   >
                     <Image
-                      src="/placeholder.svg?height=250&width=600"
+                      src="/images/find-our-cider.jpg"
                       alt="Find Our Cider"
                       fill
                       className="object-cover"
@@ -52,9 +55,12 @@ export function ShopLinks() {
 
             <MotionStaggerItem>
               {/* Shop Merch */}
-              <Link href="/store2" className="group relative overflow-hidden rounded-md block">
+              <Link
+                href="/store2"
+                className="group relative overflow-hidden rounded-md block"
+              >
                 <motion.div
-                  className="aspect-w-16 aspect-h-9 relative h-[250px]"
+                  className="aspect-w-16 aspect-h-9 relative h-[300px]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -64,7 +70,12 @@ export function ShopLinks() {
                     transition={{ duration: 0.7 }}
                     className="h-full w-full"
                   >
-                    <Image src="/placeholder.svg?height=250&width=600" alt="Shop Merch" fill className="object-cover" />
+                    <Image
+                      src="/images/shop-merch.jpg"
+                      alt="Shop Merch"
+                      fill
+                      className="object-cover"
+                    />
                   </motion.div>
                   <motion.div
                     className="absolute inset-0 bg-black/40 flex items-center justify-center"
@@ -86,6 +97,5 @@ export function ShopLinks() {
         </MotionStaggerContainer>
       </div>
     </section>
-  )
+  );
 }
-

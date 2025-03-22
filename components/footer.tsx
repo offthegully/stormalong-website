@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import { MotionStaggerContainer } from "@/components/animations/motion-stagger-container";
 import { MotionStaggerItem } from "@/components/animations/motion-stagger-item";
@@ -172,6 +172,21 @@ export function Footer() {
                     >
                       <Twitter className="h-6 w-6" />
                       <span className="sr-only">Twitter</span>
+                    </motion.div>
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/company/stormalong-cider"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-brand-gold transition-colors"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Linkedin className="h-6 w-6" />
+                      <span className="sr-only">LinkedIn</span>
                     </motion.div>
                   </Link>
                 </div>
