@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import type { CiderType } from "@/types/cider";
 
 interface RelatedCidersProps {
@@ -30,7 +31,20 @@ export function RelatedCiders({ ciders, currentCiderId }: RelatedCidersProps) {
               className="block text-center"
             >
               <div className="overflow-hidden mb-4 flex justify-center">
-                <div className="transition-transform duration-300 hover:scale-105">
+                <motion.div
+                  animate={{ rotate: 0 }}
+                  whileHover={{
+                    scale: 1.05,
+                    rotate: [0, -4, 4, -3, 3, 0],
+                    transition: {
+                      duration: 0.7,
+                      rotate: {
+                        duration: 0.5,
+                        times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+                      },
+                    },
+                  }}
+                >
                   <Image
                     src={cider.image || "/placeholder.svg"}
                     alt={cider.name}
@@ -38,7 +52,7 @@ export function RelatedCiders({ ciders, currentCiderId }: RelatedCidersProps) {
                     height={400}
                     className="h-auto w-auto max-h-60 object-contain"
                   />
-                </div>
+                </motion.div>
               </div>
               <h3 className="font-oswald text-xl text-brand-navy uppercase mb-1 transition-colors duration-300 hover:text-brand-gold">
                 {cider.name}
