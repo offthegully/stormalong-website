@@ -2,13 +2,15 @@ import { notFound } from "next/navigation";
 import { ciders } from "@/data/ciders";
 import CiderDetailClient from "./cider-detail-client";
 
-export default function CiderDetailPage({
+export default async function CiderDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   // Find the cider by slug
-  const cider = ciders.find((c) => c.slug === params.slug);
+  const cider = ciders.find((c) => c.slug === slug);
 
   // If cider not found, redirect to 404 page
   if (!cider) {
@@ -16,7 +18,7 @@ export default function CiderDetailPage({
   }
 
   // Find current cider index and adjacent ciders for navigation
-  const currentIndex = ciders.findIndex((c) => c.slug === params.slug);
+  const currentIndex = ciders.findIndex((c) => c.slug === slug);
   const prevCider =
     currentIndex > 0 ? ciders[currentIndex - 1] : ciders[ciders.length - 1];
   const nextCider =

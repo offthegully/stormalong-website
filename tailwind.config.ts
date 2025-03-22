@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -60,8 +60,11 @@ const config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-poppins)", "sans-serif"],
         oswald: ["var(--font-oswald)"],
+        "bebas-neue": ["var(--font-bebas-neue)"],
+        cinzel: ["var(--font-cinzel)"],
+        poppins: ["var(--font-poppins)"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -90,7 +93,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
-
+export default config;

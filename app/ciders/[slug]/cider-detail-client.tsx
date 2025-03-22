@@ -106,10 +106,10 @@ export default function CiderDetailClient({
 
             {/* Cider Info */}
             <div className="text-white">
-              <h1 className="text-4xl md:text-5xl font-oswald text-brand-gold uppercase mb-2">
+              <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-brand-gold uppercase mb-2">
                 {cider.name}
               </h1>
-              <p className="text-xl mb-6 text-white uppercase">
+              <p className="text-xl mb-6 font-bebas-neue text-white uppercase">
                 MADE WITH {cider.apples}
               </p>
               <div className="flex items-center gap-3 mb-6">
