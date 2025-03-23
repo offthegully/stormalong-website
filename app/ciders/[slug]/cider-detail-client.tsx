@@ -140,7 +140,7 @@ export default function CiderDetailClient({
 
       {/* Cider Details Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Description Column */}
             <div className="md:col-span-8">
@@ -185,7 +185,7 @@ export default function CiderDetailClient({
 
       {/* Image Gallery Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             <div className="md:col-span-4 space-y-6">
               <Image

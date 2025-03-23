@@ -30,7 +30,7 @@ export default function OurStoryPage() {
 
       {/* Main Content */}
       <div className="py-12 md:py-20 bg-white">
-        <div className="stormalong-container">
+        <div className="stormalong-container px-4 md:px-8 lg:px-12">
           {/* True Cider Section */}
           <section className="mb-20 md:mb-32">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
@@ -88,7 +88,7 @@ export default function OurStoryPage() {
                       alt="Apple Icon"
                       width={400}
                       height={400}
-                      className="relative z-10 w-auto h-auto max-w-[350px]"
+                      className="relative z-10 w-auto h-auto max-w-[280px] sm:max-w-[350px]"
                     />
                   </div>
                 </FadeIn>
@@ -123,7 +123,7 @@ export default function OurStoryPage() {
                       alt="Sherborn, MA"
                       width={400}
                       height={400}
-                      className="relative z-10 w-auto h-auto max-w-[350px]"
+                      className="relative z-10 w-auto h-auto max-w-[280px] sm:max-w-[350px]"
                     />
                   </div>
                 </FadeIn>
@@ -240,7 +240,7 @@ export default function OurStoryPage() {
                       alt="Captain Stormalong"
                       width={400}
                       height={400}
-                      className="relative z-10 w-auto h-auto max-w-[350px]"
+                      className="relative z-10 w-auto h-auto max-w-[280px] sm:max-w-[350px]"
                     />
                   </div>
                 </FadeIn>
