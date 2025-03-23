@@ -84,7 +84,7 @@ export default function OurStoryPage() {
                   <div className="relative transform transition-transform duration-700 hover:scale-105">
                     <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-brand-gold/20 to-brand-navy/10 blur-lg opacity-70"></div>
                     <Image
-                      src="https://web-assets.same.dev/3608601318/1596615800.png"
+                      src="/images/our-story/anchor-apple.png"
                       alt="Apple Icon"
                       width={400}
                       height={400}
@@ -119,7 +119,7 @@ export default function OurStoryPage() {
                   <div className="relative transform transition-transform duration-700 hover:scale-105">
                     <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-brand-navy/10 to-brand-gold/20 blur-lg opacity-70"></div>
                     <Image
-                      src="https://web-assets.same.dev/497887213/4271176014.png"
+                      src="/images/our-story/town-of-sherborn.png"
                       alt="Sherborn, MA"
                       width={400}
                       height={400}
@@ -236,7 +236,7 @@ export default function OurStoryPage() {
                   <div className="relative transform transition-transform duration-700 hover:scale-105">
                     <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-brand-gold/20 to-brand-navy/10 blur-lg opacity-70"></div>
                     <Image
-                      src="https://web-assets.same.dev/2193898589/178206999.png"
+                      src="/images/our-story/captain-stormalong.png"
                       alt="Captain Stormalong"
                       width={400}
                       height={400}

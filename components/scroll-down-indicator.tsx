@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Anchor } from "lucide-react";
+import { Apple } from "lucide-react";
 
 export function ScrollDownIndicator() {
   const scrollToNextSection = () => {
@@ -36,7 +36,7 @@ export function ScrollDownIndicator() {
         }}
         className="relative"
       >
-        <Anchor className="text-amber-400 h-6 w-6" />
+        <Apple className="text-amber-400 h-6 w-6" />
         <div className="absolute -inset-2 border border-amber-400/30 rounded-full animate-pulse" />
       </motion.div>
     </motion.div>

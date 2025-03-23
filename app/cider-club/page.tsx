@@ -4,6 +4,7 @@ import { CiderClubBenefits } from "@/components/cider-club-benefits";
 import { CiderClubFAQ } from "@/components/cider-club-faq";
 import { DecorativeFooter } from "@/components/decorative-footer";
 import { SimplePageHeader } from "@/components/simple-page-header";
+import { PatternedSection } from "@/components/patterned-section";
 
 export default function CiderClubPage() {
   return (
@@ -286,30 +287,25 @@ export default function CiderClubPage() {
           </div>
 
           {/* CTA Section */}
-          <div
-            className="mt-20 text-center relative py-20 overflow-hidden rounded-2xl shadow-xl"
-            style={{
-              backgroundImage:
-                "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5e5847d21af7dfdc603f8b35_pattern.jpg-mMuSNaVuawJbxMb5QEfmONWODnV7Yw.jpeg')",
-              backgroundSize: "150px",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 bg-brand-navy/90 rounded-2xl"></div>
-            <div className="relative z-10 px-4">
-              <h2 className="text-4xl font-oswald uppercase text-white mb-6">
-                Ready to Join?
-              </h2>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                Become a member today and start enjoying exclusive access to our
-                limited small batch ciders, special offers, and more.
-              </p>
-              <Button
-                size="lg"
-                className="bg-brand-gold hover:bg-brand-gold/90 text-brand-navy uppercase font-oswald tracking-wider px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                JOIN OUR RARE APPLE CLUB
-              </Button>
+          <div className="mt-20">
+            <div className="rounded-2xl shadow-xl overflow-hidden">
+              <PatternedSection className="py-20 text-center">
+                <div className="relative z-10 px-4 stormalong-container">
+                  <h2 className="text-4xl font-oswald uppercase text-white mb-6">
+                    Ready to Join?
+                  </h2>
+                  <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
+                    Become a member today and start enjoying exclusive access to
+                    our limited small batch ciders, special offers, and more.
+                  </p>
+                  <Button
+                    size="lg"
+                    className="bg-brand-gold hover:bg-brand-gold/90 text-brand-navy uppercase font-oswald tracking-wider px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    JOIN OUR RARE APPLE CLUB
+                  </Button>
+                </div>
+              </PatternedSection>
             </div>
           </div>
         </div>
