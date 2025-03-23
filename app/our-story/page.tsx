@@ -261,15 +261,15 @@ export default function OurStoryPage() {
                     MA. Join us for tastings, tours, and special events.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button className="bg-brand-gold hover:bg-brand-gold/90 text-brand-navy font-oswald uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-glow">
+                    <Button className="bg-brand-gold hover:bg-brand-gold/90 text-brand-navy font-oswald uppercase tracking-wider transition-all duration-300 hover:scale-105">
                       Plan Your Visit
                     </Button>
-                    <Button
+                    {/* <Button
                       variant="outline"
-                      className="border-white text-white hover:bg-white/20 font-oswald uppercase tracking-wider transition-all duration-300 hover:scale-105"
+                      className="border-white/80 text-white hover:bg-white/10 font-oswald uppercase tracking-wider transition-all duration-300 hover:scale-105"
                     >
                       View Calendar
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
                 <div className="relative h-64 md:h-full">

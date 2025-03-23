@@ -39,7 +39,8 @@ export const metadata: Metadata = {
   description:
     "Stormalong Hard Cider. Explore our variety of craft, orchard based ciders - Legendary Dry, Red Skies at Night, Mass Appeal, Light of the Sun, Grand Banks, Farmstand Unfiltered, Kingston Black, Boston Heirloom and more. Respect the apple.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.jpg",
+    apple: "/apple-icon.jpg",
   },
   generator: "v0.dev",
 };

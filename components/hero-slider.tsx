@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ANIMATION_CONFIG, fadeIn, fadeUp } from "@/lib/animation-config";
-import { ChevronDown } from "lucide-react";
+import { ScrollDownIndicator } from "@/components/scroll-down-indicator";
 
 export function HeroSlider() {
   return (
@@ -84,34 +84,10 @@ export function HeroSlider() {
         </div>
       </div>
 
-      {/* Scroll down indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: ANIMATION_CONFIG.duration.medium,
-          delay: ANIMATION_CONFIG.delay.long + 0.3,
-          ease: ANIMATION_CONFIG.ease.smooth,
-        }}
-      >
-        <span className="text-sm uppercase tracking-widest font-light mb-2 text-white/80">
-          Scroll Down
-        </span>
-        <motion.div
-          animate={{
-            y: [0, 8, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "easeInOut",
-          }}
-        >
-          <ChevronDown className="w-6 h-6 text-brand-gold" />
-        </motion.div>
-      </motion.div>
+      {/* New Scroll down indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <ScrollDownIndicator />
+      </div>
     </div>
   );
 }
