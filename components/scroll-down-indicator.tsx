@@ -17,7 +17,7 @@ export function ScrollDownIndicator() {
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
-        delay: 1.5,
+        delay: 1.0,
       }}
       className="flex flex-col items-center cursor-pointer"
       onClick={scrollToNextSection}

@@ -39,7 +39,7 @@ export default function ContactPage() {
           </div>
 
           {/* Map Section */}
-          <div className="mt-20">
+          {/* <div className="mt-20">
             <div className="rounded-lg overflow-hidden shadow-md">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2956.1023067243026!2d-71.37749492346143!3d42.2368014433028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4819c1e7b6ecd%3A0x5f5e7c8c1c3f0f1b!2s130%20Oak%20St%2C%20Sherborn%2C%20MA%2001770!5e0!3m2!1sen!2sus!4v1710615123456!5m2!1sen!2sus"
@@ -53,7 +53,7 @@ export default function ContactPage() {
                 className="w-full"
               ></iframe>
             </div>
-          </div>
+          </div> */}
 
           {/* FAQ Section */}
           <div className="mt-20">
@@ -66,7 +66,7 @@ export default function ContactPage() {
       </div>
 
       {/* Decorative Footer */}
-      <DecorativeFooter />
+      {/* <DecorativeFooter /> */}
     </div>
   );
 }

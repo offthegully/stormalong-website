@@ -11,21 +11,6 @@ export default function CidersPage() {
   const searchParams = useSearchParams();
   const category = searchParams.get("category") || "all";
 
-  const getCategoryTitle = (category: string) => {
-    switch (category) {
-      case "core":
-        return "Core Collection";
-      case "seasonal":
-        return "Seasonal Releases";
-      case "rare":
-        return "Rare Apple Series";
-      case "barrel-aged":
-        return "Barrel-Aged Ciders";
-      default:
-        return "All Ciders";
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Header */}
@@ -84,18 +69,6 @@ export default function CidersPage() {
       {/* Main Content */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-oswald text-brand-navy mb-4">
-              {getCategoryTitle(category)}
-            </h2>
-            <p className="text-lg text-gray-700">
-              At Stormalong, we craft our ciders using only the highest quality
-              apples, many of which are sourced from local New England orchards.
-              From traditional varieties to rare heirloom apples, each cider
-              tells a unique story of flavor and tradition.
-            </p>
-          </div>
-
           {/* Cider Grid */}
           <CiderGrid ciders={ciders} category={category} />
         </div>
