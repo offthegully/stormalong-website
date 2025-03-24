@@ -53,6 +53,7 @@ function CiderCard({ cider }: { cider: CiderType }) {
       <div className="relative h-80 overflow-hidden bg-brand-navy/5">
         <motion.div
           className="h-full"
+          animate={{ rotate: 0 }}
           whileHover={{
             rotate: [0, -4, 4, -3, 3, 0],
             transition: {
