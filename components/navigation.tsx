@@ -12,7 +12,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { ANIMATION_CONFIG } from "@/lib/animation-config";
 
 export function Navigation() {
@@ -66,7 +71,7 @@ export function Navigation() {
 
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
+          <NavigationMenuList className="space-x-2">
             <NavigationMenuItem>
               <Link href="/our-story" legacyBehavior passHref>
                 <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
@@ -81,12 +86,18 @@ export function Navigation() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="font-oswald uppercase tracking-wider bg-transparent hover:bg-brand-navy/30 hover:text-brand-gold focus:bg-transparent">
-                <motion.span
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
+                <Link
+                  href="/ciders"
+                  className="inline-flex items-center hover:no-underline"
                 >
-                  Ciders
-                </motion.span>
+                  <motion.span
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                    className="pr-1"
+                  >
+                    Ciders
+                  </motion.span>
+                </Link>
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <motion.ul
@@ -109,7 +120,7 @@ export function Navigation() {
                         href="/ciders"
                         whileHover={{
                           scale: 1.02,
-                          backgroundColor: "rgba(15, 42, 71, 0.8)",
+                          backgroundColor: "rgba(212, 175, 55, 0.3)",
                         }}
                         transition={{ duration: 0.2 }}
                       >
@@ -175,7 +186,7 @@ export function Navigation() {
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <motion.ul
-                  className="grid w-[200px] gap-3 p-4 bg-brand-navy"
+                  className="grid w-[200px] gap-3 p-4 bg-brand-navy md:w-[250px]"
                   initial="hidden"
                   animate="visible"
                   exit="exit"
@@ -190,7 +201,7 @@ export function Navigation() {
                   <motion.li variants={menuItemVariants}>
                     <NavigationMenuLink asChild>
                       <motion.a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground"
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground w-full"
                         href="/shop"
                         whileHover={{
                           backgroundColor: "rgba(212, 175, 55, 0.3)",
@@ -206,7 +217,7 @@ export function Navigation() {
                   <motion.li variants={menuItemVariants}>
                     <NavigationMenuLink asChild>
                       <motion.a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground"
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground w-full"
                         href="/store2"
                         whileHover={{
                           backgroundColor: "rgba(212, 175, 55, 0.3)",
@@ -278,10 +289,15 @@ export function Navigation() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="bg-brand-navy text-white border-l border-brand-gold pt-8"
+            className="bg-brand-navy text-white border-l border-brand-gold pt-8 px-6"
+            aria-describedby="navigation-sheet-description"
           >
+            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+            <div id="navigation-sheet-description" className="sr-only">
+              Mobile navigation menu with links to main site sections
+            </div>
             <motion.div
-              className="flex flex-col space-y-6 mt-4"
+              className="flex flex-col space-y-6 mt-6"
               initial="hidden"
               animate="visible"
               variants={{
@@ -332,23 +348,25 @@ export function Navigation() {
                 transition={{ duration: 0.3 }}
                 className="space-y-3 pl-4"
               >
-                <h3 className="uppercase font-oswald tracking-wider text-lg text-brand-gold">
+                <h3 className="uppercase font-oswald tracking-wider text-lg text-brand-gold mb-2">
                   Shop
                 </h3>
-                <Link
-                  href="/shop"
-                  className="block uppercase font-oswald tracking-wider text-base hover:text-brand-gold hover:bg-brand-navy/30 transition-colors px-2 py-1 rounded"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Ciders
-                </Link>
-                <Link
-                  href="/store2"
-                  className="block uppercase font-oswald tracking-wider text-base hover:text-brand-gold hover:bg-brand-navy/30 transition-colors px-2 py-1 rounded"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Merch
-                </Link>
+                <div className="space-y-2">
+                  <Link
+                    href="/shop"
+                    className="block uppercase font-oswald tracking-wider text-base hover:text-brand-gold hover:bg-brand-navy/30 transition-colors px-2 py-1 rounded"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Ciders
+                  </Link>
+                  <Link
+                    href="/store2"
+                    className="block uppercase font-oswald tracking-wider text-base hover:text-brand-gold hover:bg-brand-navy/30 transition-colors px-2 py-1 rounded"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Merch
+                  </Link>
+                </div>
               </motion.div>
               <motion.div
                 variants={{

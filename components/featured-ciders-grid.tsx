@@ -16,7 +16,7 @@ export function FeaturedCarousel() {
     <section className="py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-oswald text-brand-navy uppercase mb-3">
+          <h2 className="text-3xl text-brand-navy uppercase mb-3">
             Featured Ciders
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -27,73 +27,58 @@ export function FeaturedCarousel() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {featuredCiders.map((cider) => (
-            <Card
+            <Link
               key={cider.id}
-              className="border shadow-sm hover:shadow-md transition-shadow h-full"
+              href={`/ciders/${cider.slug}`}
+              className="block h-full"
             >
-              <CardContent className="p-0 flex flex-col h-full">
-                <div className="relative aspect-[2/3] bg-brand-navy/5">
-                  <div className="absolute top-2 right-2 z-10">
-                    <span
-                      className={cn(
-                        "px-2 py-1 rounded-full text-xs font-medium",
-                        cider.availability === "Year-round"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-amber-100 text-amber-800"
-                      )}
-                    >
-                      {cider.availability}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-2 right-2 z-10">
-                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-white/90 text-gray-800">
-                      {cider.abv}% ABV
-                    </span>
-                  </div>
-                  <motion.div
-                    className="h-full w-full"
-                    animate={{ rotate: 0 }}
-                    whileHover={{
-                      scale: 1.05,
-                      rotate: [0, -4, 4, -3, 3, 0],
-                      transition: {
-                        duration: 0.7,
-                        rotate: {
-                          duration: 0.5,
-                          times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+              <Card className="border shadow-sm hover:shadow-md transition-shadow h-full hover:scale-[1.02] transition-transform">
+                <CardContent className="p-0 flex flex-col h-full">
+                  <div className="relative aspect-[2/3] bg-brand-navy/5">
+                    <div className="absolute top-2 right-2 z-10">
+                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-teal-200 text-teal-800">
+                        {cider.availability}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-2 right-2 z-10">
+                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                        {cider.abv}% ABV
+                      </span>
+                    </div>
+                    <motion.div
+                      className="h-full w-full"
+                      animate={{ rotate: 0 }}
+                      whileHover={{
+                        scale: 1.05,
+                        rotate: [0, -4, 4, -3, 3, 0],
+                        transition: {
+                          duration: 0.7,
+                          rotate: {
+                            duration: 0.5,
+                            times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+                          },
                         },
-                      },
-                    }}
-                  >
-                    <Image
-                      src={cider.image || "/placeholder.svg"}
-                      alt={cider.name}
-                      fill
-                      className="object-contain"
-                    />
-                  </motion.div>
-                </div>
-                <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="font-oswald text-xl text-brand-navy uppercase mb-2">
-                    {cider.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
-                    {cider.tagline}
-                  </p>
-                  <Link
-                    href={`/ciders/${cider.slug}`}
-                    className="block w-full mt-auto"
-                  >
-                    <Button
-                      variant="outline"
-                      className="w-full border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-oswald uppercase"
+                      }}
                     >
-                      View Details
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+                      <Image
+                        src={cider.image || "/placeholder.svg"}
+                        alt={cider.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </motion.div>
+                  </div>
+                  <div className="p-4 flex flex-col flex-grow">
+                    <h3 className="font-oswald text-xl text-brand-navy uppercase mb-2">
+                      {cider.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {cider.tagline}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 
