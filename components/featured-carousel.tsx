@@ -22,41 +22,27 @@ export function FeaturedCarousel() {
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
-  // Filter to show only featured ciders (first 6)
   const featuredCiders = ciders.slice(0, 6);
 
   React.useEffect(() => {
-    if (!api) {
-      return;
-    }
-
+    if (!api) return;
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
+    api.on("select", () => setCurrent(api.selectedScrollSnap() + 1));
   }, [api]);
 
   return (
-    <section className="py-16 bg-white">
-      <div className="stormalong-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-12 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-oswald text-brand-navy uppercase mb-4">
+    <section className="py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-oswald text-brand-navy uppercase mb-3">
             Featured Ciders
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Discover our most popular craft ciders, made with 100% fresh-pressed
-            apples and natural ingredients. Each cider tells a unique story of
-            flavor and tradition.
+            apples and natural ingredients.
           </p>
-        </motion.div>
+        </div>
 
         <Carousel
           setApi={setApi}
@@ -66,123 +52,104 @@ export function FeaturedCarousel() {
             loop: true,
           }}
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {featuredCiders.map((cider, index) => (
+          <CarouselContent className="-ml-4">
+            {featuredCiders.map((cider) => (
               <CarouselItem
                 key={cider.id}
-                className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                className="pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-0">
-                      <div className="relative aspect-[2/3] bg-brand-navy/5 overflow-hidden">
-                        <motion.div
-                          className="h-full w-full"
-                          animate={{ rotate: 0 }}
-                          whileHover={{
-                            scale: 1.05,
-                            rotate: [0, -4, 4, -3, 3, 0],
-                            transition: {
-                              duration: 0.7,
-                              rotate: {
-                                duration: 0.5,
-                                times: [0, 0.2, 0.4, 0.6, 0.8, 1],
-                              },
+                <Card className="border shadow-sm hover:shadow-md transition-shadow h-full">
+                  <CardContent className="p-0 flex flex-col h-full">
+                    <div className="relative aspect-[2/3] bg-brand-navy/5">
+                      <div className="absolute top-2 right-2 z-10">
+                        <span
+                          className={cn(
+                            "px-2 py-1 rounded-full text-xs font-medium",
+                            cider.availability === "Year-round"
+                              ? "bg-green-100 text-green-800"
+                              : "bg-amber-100 text-amber-800"
+                          )}
+                        >
+                          {cider.availability}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-2 right-2 z-10">
+                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-white/90 text-gray-800">
+                          {cider.abv}% ABV
+                        </span>
+                      </div>
+                      <motion.div
+                        className="h-full w-full"
+                        animate={{ rotate: 0 }}
+                        whileHover={{
+                          scale: 1.05,
+                          rotate: [0, -4, 4, -3, 3, 0],
+                          transition: {
+                            duration: 0.7,
+                            rotate: {
+                              duration: 0.5,
+                              times: [0, 0.2, 0.4, 0.6, 0.8, 1],
                             },
-                          }}
+                          },
+                        }}
+                      >
+                        <Image
+                          src={cider.image || "/placeholder.svg"}
+                          alt={cider.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </motion.div>
+                    </div>
+                    <div className="p-4 flex flex-col flex-grow">
+                      <h3 className="font-oswald text-xl text-brand-navy uppercase mb-2">
+                        {cider.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                        {cider.tagline}
+                      </p>
+                      <Link
+                        href={`/ciders/${cider.slug}`}
+                        className="block w-full mt-auto"
+                      >
+                        <Button
+                          variant="outline"
+                          className="w-full border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-oswald uppercase"
                         >
-                          <Image
-                            src={cider.image || "/placeholder.svg"}
-                            alt={cider.name}
-                            fill
-                            className="object-contain"
-                          />
-                        </motion.div>
-                      </div>
-                      <div className="p-4">
-                        <h3 className="font-oswald text-xl text-brand-navy uppercase mb-1">
-                          {cider.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-                          {cider.tagline}
-                        </p>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium text-gray-500">
-                            {cider.abv}% ABV
-                          </span>
-                          <span
-                            className={cn(
-                              "px-2 py-0.5 rounded-full text-xs font-medium",
-                              cider.availability === "Year-round"
-                                ? "bg-green-100 text-green-800"
-                                : "bg-amber-100 text-amber-800"
-                            )}
-                          >
-                            {cider.availability}
-                          </span>
-                        </div>
-                        <Link
-                          href={`/ciders/${cider.slug}`}
-                          className="mt-3 block"
-                        >
-                          <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.98 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <Button
-                              variant="outline"
-                              className="w-full border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white font-oswald uppercase"
-                            >
-                              View Details
-                            </Button>
-                          </motion.div>
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                          View Details
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="flex items-center justify-center mt-8 gap-2">
-            <CarouselPrevious className="static transform-none bg-white border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors duration-200" />
-            <div className="flex items-center justify-center gap-1">
+
+          <div className="flex items-center justify-center mt-6 gap-4">
+            <CarouselPrevious className="static transform-none bg-white border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white" />
+            <div className="flex gap-2">
               {Array.from({ length: count }).map((_, i) => (
                 <button
                   key={i}
                   className={cn(
-                    "w-2 h-2 rounded-full transition-all duration-300",
-                    current === i + 1
-                      ? "bg-brand-gold w-3 h-3"
-                      : "bg-gray-300 hover:bg-gray-400"
+                    "w-2 h-2 rounded-full transition-colors",
+                    current === i + 1 ? "bg-brand-gold" : "bg-gray-300"
                   )}
                   onClick={() => api?.scrollTo(i)}
                   aria-label={`Go to slide ${i + 1}`}
                 />
               ))}
             </div>
-            <CarouselNext className="static transform-none bg-white border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors duration-200" />
+            <CarouselNext className="static transform-none bg-white border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white" />
           </div>
         </Carousel>
 
-        <div className="mt-10 text-center">
+        <div className="mt-8 text-center">
           <Link href="/ciders">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
-              className="inline-block"
-            >
-              <Button className="bg-brand-navy hover:bg-brand-navy/90 text-white font-oswald uppercase tracking-wider px-8">
-                View All Ciders
-              </Button>
-            </motion.div>
+            <Button className="bg-brand-navy hover:bg-brand-navy/90 text-white font-oswald uppercase px-8">
+              View All Ciders
+            </Button>
           </Link>
         </div>
       </div>

@@ -8,15 +8,31 @@ import { motion } from "framer-motion";
 import { ANIMATION_CONFIG, fadeIn, fadeUp } from "@/lib/animation-config";
 import { ScrollDownIndicator } from "@/components/scroll-down-indicator";
 
-export function HeroSlider() {
+interface HeroProps {
+  imageSrc: string;
+  title: string;
+  highlightedText: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+export function Hero({
+  imageSrc,
+  title,
+  highlightedText,
+  description,
+  buttonText,
+  buttonLink,
+}: HeroProps) {
   return (
     <div className="relative">
       {/* Hero image and content */}
       <div className="relative h-[calc(100vh-4rem)]">
         {/* Background image */}
         <Image
-          src="/images/landing-page/boston-heirloom-landing.jpg"
-          alt="Boston Heirloom Cider"
+          src={imageSrc}
+          alt="Hero background"
           fill
           priority
           className="object-cover"
@@ -38,8 +54,10 @@ export function HeroSlider() {
                 }}
               >
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-oswald mb-4 sm:mb-5 text-white">
-                  Boston Heirloom
-                  <span className="block text-brand-gold mt-1">is back!</span>
+                  {title}
+                  <span className="block text-brand-gold mt-1">
+                    {highlightedText}
+                  </span>
                 </h1>
               </motion.div>
 
@@ -54,10 +72,7 @@ export function HeroSlider() {
                   ease: ANIMATION_CONFIG.ease.smooth,
                 }}
               >
-                Boston Heirloom is our tribute cider to New England's rich apple
-                history. Crafted with a blend of Roxbury Russet and Baldwin
-                apples, two of the oldest apple varietals in the U.S., this
-                cider embodies a flavor rooted in tradition.
+                {description}
               </motion.p>
 
               {/* Animated Button */}
@@ -70,12 +85,12 @@ export function HeroSlider() {
                   ease: ANIMATION_CONFIG.ease.smooth,
                 }}
               >
-                <Link href="/cider/boston-heirloom">
+                <Link href={buttonLink}>
                   <Button
                     variant="outline"
                     className="bg-transparent text-white border-brand-gold hover:bg-brand-gold hover:text-brand-navy transition-colors font-oswald uppercase tracking-wider"
                   >
-                    LEARN MORE
+                    {buttonText}
                   </Button>
                 </Link>
               </motion.div>
