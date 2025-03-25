@@ -48,7 +48,13 @@ export default function CiderDetailClient({
       } transition-opacity duration-300`}
     >
       {/* Hero Section with Navy Background */}
-      <PatternedSection>
+      <div className="relative min-h-[400px]">
+        <div className="absolute inset-0">
+          <PatternedSection className="h-full w-full" opacity={0.85}>
+            <div />
+          </PatternedSection>
+        </div>
+
         {/* Navigation Links */}
         <button
           onClick={() => handleNavigation(prevCider.slug)}
@@ -93,19 +99,19 @@ export default function CiderDetailClient({
         <div className="container max-w-4xl mx-auto px-4 relative z-10 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Cider Can Image */}
-            <div className="flex justify-center">
+            <div className="flex justify-center relative z-20 order-2 md:order-1 md:-mb-36">
               <Image
                 src={cider.image || "/placeholder.svg"}
                 alt={cider.name}
                 width={400}
                 height={600}
-                className="h-auto max-h-[500px] w-auto drop-shadow-xl"
+                className="h-auto max-h-[300px] md:max-h-[500px] w-auto drop-shadow-xl"
                 priority
               />
             </div>
 
             {/* Cider Info */}
-            <div className="text-white">
+            <div className="text-white relative z-20 order-1 md:order-2">
               <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-brand-gold uppercase mb-2">
                 {cider.name}
               </h1>
@@ -136,33 +142,33 @@ export default function CiderDetailClient({
             </div>
           </div>
         </div>
-      </PatternedSection>
+      </div>
 
       {/* Cider Details Section */}
-      <section className="max-w-6xl mx-auto py-16 bg-white">
+      <section className="max-w-6xl mx-auto py-8 md:py-16 bg-white mt-0 md:mt-12">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
             {/* Description Column */}
             <div className="md:col-span-8">
-              <div className="body blue text-gray-700 mb-8">
+              <div className="body blue text-gray-700 mb-4 md:mb-8">
                 {cider.description}
               </div>
 
-              <div className="mb-8">
+              <div className="mb-4 md:mb-8">
                 <h3 className="text-lg font-oswald text-brand-navy uppercase mb-2">
                   FLAVOR
                 </h3>
                 <div className="body blue text-gray-700">{cider.flavor}</div>
               </div>
 
-              <div className="mb-8">
+              <div className="mb-4 md:mb-8">
                 <h3 className="text-lg font-oswald text-brand-navy uppercase mb-2">
                   APPLES
                 </h3>
                 <div className="body blue text-gray-700">{cider.apples}</div>
               </div>
 
-              <div className="mb-8">
+              <div className="mb-4 md:mb-8">
                 <h3 className="text-lg font-oswald text-brand-navy uppercase mb-2">
                   SWEETNESS SCALE
                 </h3>
@@ -184,9 +190,9 @@ export default function CiderDetailClient({
       </section>
 
       {/* Image Gallery Section */}
-      <section className="max-w-6xl mx-auto py-16 bg-white">
+      <section className="max-w-6xl mx-auto py-8 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             <div className="md:col-span-4 space-y-6">
               <Image
                 src={`/images/ciders/${cider.slug}-lifestyle-1.jpg`}
@@ -203,21 +209,9 @@ export default function CiderDetailClient({
                 className="w-full h-auto rounded-lg object-cover"
               />
             </div>
-            <div className="md:col-span-8">
-              <Image
-                src={`/images/ciders/${cider.slug}-hero.jpg`}
-                alt={`${cider.name} hero image`}
-                width={800}
-                height={600}
-                className="w-full h-auto rounded-lg object-cover"
-              />
-            </div>
           </div>
         </div>
       </section>
-
-      {/* You Might Also Like Section */}
-      <RelatedCiders ciders={allCiders} currentCiderId={cider.id} />
     </main>
   );
 }
