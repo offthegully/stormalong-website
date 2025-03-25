@@ -26,11 +26,6 @@ export const ciders: CiderType[] = [
       "GLINTCAP 2016 – Bronze",
       "GLINTCAP 2015 – Silver",
     ],
-    colors: {
-      primary: "#C41E3A", // Deep red
-      secondary: "#1B365D", // Navy
-      text: "#ffffff", // White
-    },
   },
   {
     id: "mass-appeal",
@@ -52,11 +47,6 @@ export const ciders: CiderType[] = [
       "GLINTCAP 2019 – Silver",
       "GLINTCAP 2017 – Bronze",
     ],
-    colors: {
-      primary: "#4B9CD3", // Light blue
-      secondary: "#FFD700", // Gold
-      text: "#ffffff", // White
-    },
   },
   {
     id: "red-skies-at-night",

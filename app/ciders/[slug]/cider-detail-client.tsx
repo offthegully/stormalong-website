@@ -90,7 +90,7 @@ export default function CiderDetailClient({
           </svg>
         </button>
 
-        <div className="container mx-auto px-4 relative z-10 py-16">
+        <div className="container max-w-4xl mx-auto px-4 relative z-10 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Cider Can Image */}
             <div className="flex justify-center">
@@ -139,7 +139,7 @@ export default function CiderDetailClient({
       </PatternedSection>
 
       {/* Cider Details Section */}
-      <section className="py-16 bg-white">
+      <section className="max-w-6xl mx-auto py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Description Column */}
@@ -184,7 +184,7 @@ export default function CiderDetailClient({
       </section>
 
       {/* Image Gallery Section */}
-      <section className="py-16 bg-white">
+      <section className="max-w-6xl mx-auto py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             <div className="md:col-span-4 space-y-6">

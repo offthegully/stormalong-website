@@ -7,9 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ciders } from "@/data/ciders";
-import { cn } from "@/lib/utils";
 
-export function FeaturedCarousel() {
+export function FeaturedCidersGrid() {
   const featuredCiders = ciders.slice(0, 4);
 
   return (

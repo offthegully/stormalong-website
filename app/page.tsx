@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Hero } from "@/components/hero-image";
 import { SimpleRespectApple } from "@/components/simple-respect-apple";
-import { FeaturedCarousel } from "@/components/featured-ciders-grid";
+import { FeaturedCidersGrid } from "@/components/featured-ciders-grid";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import { CiderClub } from "@/components/cider-club";
 import { ShopLinks } from "@/components/shop-links";
@@ -28,7 +28,7 @@ export default function Home() {
         buttonLink="https://www.startengine.com/offering/stormalong-cider"
       />
       <SimpleRespectApple />
-      <FeaturedCarousel />
+      <FeaturedCidersGrid />
       {/* <TestimonialCarousel /> */}
       <CiderClub />
       <ShopLinks />
