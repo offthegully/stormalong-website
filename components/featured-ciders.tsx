@@ -76,6 +76,7 @@ export function FeaturedCiders() {
                         width={200}
                         height={400}
                         className="h-auto w-auto max-h-60 object-contain"
+                        priority
                       />
                     </motion.div>
                   </motion.div>

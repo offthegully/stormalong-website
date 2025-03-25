@@ -20,7 +20,6 @@ export function DecorativeFooter() {
               alt="Decorative nautical illustration"
               fill
               className="object-contain animate-float"
-              priority
             />
           </div>
         </motion.div>

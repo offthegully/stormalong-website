@@ -20,8 +20,8 @@ export function PageHeader({
           src={backgroundImage || "/placeholder.svg"}
           alt={title}
           fill
-          priority
           className="object-cover"
+          priority
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30">

@@ -34,9 +34,9 @@ export function Hero({
           src={imageSrc}
           alt="Hero background"
           fill
-          priority
           className="object-cover"
           sizes="100vw"
+          priority
         />
 
         {/* Gradient overlay */}

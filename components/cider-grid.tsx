@@ -52,7 +52,7 @@ function CiderCard({ cider }: { cider: CiderType }) {
     >
       <div className="relative h-80 overflow-hidden bg-brand-navy/5">
         <motion.div
-          className="h-full"
+          className="h-full relative"
           animate={{ rotate: 0 }}
           whileHover={{
             rotate: [0, -4, 4, -3, 3, 0],
@@ -69,6 +69,7 @@ function CiderCard({ cider }: { cider: CiderType }) {
             src={cider.image || "/placeholder.svg"}
             alt={cider.name}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-contain"
           />
         </motion.div>

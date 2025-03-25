@@ -27,12 +27,13 @@ export function ShopLinks() {
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.7 }}
-                    className="h-full w-full"
+                    className="h-full w-full relative"
                   >
                     <Image
                       src="/images/find-our-cider.jpg"
                       alt="Find Our Cider"
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
                     />
                   </motion.div>
@@ -68,12 +69,13 @@ export function ShopLinks() {
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.7 }}
-                    className="h-full w-full"
+                    className="h-full w-full relative"
                   >
                     <Image
                       src="/images/shop-merch.jpg"
                       alt="Shop Merch"
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
                     />
                   </motion.div>

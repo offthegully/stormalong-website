@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   NavigationMenu,
@@ -17,11 +18,15 @@ import {
   SheetContent,
   SheetTrigger,
   SheetTitle,
+  SheetDescription,
 } from "@/components/ui/sheet";
 import { ANIMATION_CONFIG } from "@/lib/animation-config";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isShopActive =
+    pathname?.startsWith("/shop") || pathname?.startsWith("/store");
 
   const menuItemVariants = {
     hidden: { opacity: 0, y: -5 },
@@ -65,6 +70,7 @@ export function Navigation() {
               width={120}
               height={50}
               className="h-10 w-auto"
+              priority
             />
           </motion.div>
         </Link>
@@ -74,7 +80,13 @@ export function Navigation() {
           <NavigationMenuList className="space-x-2">
             <NavigationMenuItem>
               <Link href="/our-story" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                <NavigationMenuLink
+                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    pathname === "/our-story"
+                      ? "bg-brand-navy/30 text-brand-gold"
+                      : ""
+                  }`}
+                >
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
@@ -85,7 +97,13 @@ export function Navigation() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="font-oswald uppercase tracking-wider bg-transparent hover:bg-brand-navy/30 hover:text-brand-gold focus:bg-transparent">
+              <NavigationMenuTrigger
+                className={`font-oswald uppercase tracking-wider bg-transparent hover:bg-brand-navy/30 hover:text-brand-gold focus:bg-transparent ${
+                  pathname?.startsWith("/ciders")
+                    ? "bg-brand-navy/30 text-brand-gold"
+                    : ""
+                }`}
+              >
                 <Link
                   href="/ciders"
                   className="inline-flex items-center hover:no-underline"
@@ -176,7 +194,11 @@ export function Navigation() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="font-oswald uppercase tracking-wider bg-transparent hover:bg-brand-navy/30 hover:text-brand-gold focus:bg-transparent">
+              <NavigationMenuTrigger
+                className={`font-oswald uppercase tracking-wider bg-transparent hover:bg-brand-navy/30 hover:text-brand-gold focus:bg-transparent ${
+                  isShopActive ? "bg-brand-navy/30 text-brand-gold" : ""
+                }`}
+              >
                 <motion.span
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -235,7 +257,13 @@ export function Navigation() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/locator" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                <NavigationMenuLink
+                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    pathname === "/locator"
+                      ? "bg-brand-navy/30 text-brand-gold"
+                      : ""
+                  }`}
+                >
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
@@ -247,7 +275,13 @@ export function Navigation() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/cider-club" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                <NavigationMenuLink
+                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    pathname === "/cider-club"
+                      ? "bg-brand-navy/30 text-brand-gold"
+                      : ""
+                  }`}
+                >
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
@@ -259,7 +293,13 @@ export function Navigation() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                <NavigationMenuLink
+                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    pathname === "/contact"
+                      ? "bg-brand-navy/30 text-brand-gold"
+                      : ""
+                  }`}
+                >
                   <motion.span
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
@@ -290,12 +330,11 @@ export function Navigation() {
           <SheetContent
             side="right"
             className="bg-brand-navy text-white border-l border-brand-gold pt-8 px-6"
-            aria-describedby="navigation-sheet-description"
           >
-            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-            <div id="navigation-sheet-description" className="sr-only">
-              Mobile navigation menu with links to main site sections
-            </div>
+            <SheetTitle>Navigation Menu</SheetTitle>
+            <SheetDescription className="text-white/70">
+              Browse our website sections
+            </SheetDescription>
             <motion.div
               className="flex flex-col space-y-6 mt-6"
               initial="hidden"

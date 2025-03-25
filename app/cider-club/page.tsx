@@ -29,6 +29,7 @@ export default function CiderClubPage() {
                   width={500}
                   height={300}
                   className="relative w-full h-auto rounded-lg"
+                  priority
                 />
               </div>
               <div className="relative overflow-hidden rounded-lg">

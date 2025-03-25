@@ -19,7 +19,6 @@ export default function CidersPage() {
           src="/images/landing-page/award-winning-landing.jpg"
           alt="Our Ciders"
           fill
-          priority
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 flex items-center justify-center">

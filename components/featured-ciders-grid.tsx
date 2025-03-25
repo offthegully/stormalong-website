@@ -46,7 +46,7 @@ export function FeaturedCarousel() {
                       </span>
                     </div>
                     <motion.div
-                      className="h-full w-full"
+                      className="h-full w-full relative"
                       animate={{ rotate: 0 }}
                       whileHover={{
                         scale: 1.05,
@@ -64,6 +64,7 @@ export function FeaturedCarousel() {
                         src={cider.image || "/placeholder.svg"}
                         alt={cider.name}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         className="object-contain"
                       />
                     </motion.div>
