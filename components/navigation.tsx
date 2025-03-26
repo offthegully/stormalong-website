@@ -44,7 +44,7 @@ export function Navigation() {
 
   return (
     <motion.header
-      className="sticky top-0 z-50 w-full bg-brand-navy text-white"
+      className="sticky top-0 z-[60] w-full bg-brand-navy text-white"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{
@@ -87,88 +87,21 @@ export function Navigation() {
             </motion.span>
           </Link>
 
-          <DropdownMenu.Root>
-            <DropdownMenu.Trigger
-              className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
-                pathname?.startsWith("/ciders")
-                  ? "bg-brand-navy/30 text-brand-gold"
-                  : ""
-              }`}
+          <Link
+            href="/ciders"
+            className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
+              pathname?.startsWith("/ciders")
+                ? "bg-brand-navy/30 text-brand-gold"
+                : ""
+            }`}
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
             >
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                Ciders
-              </motion.span>
-              <ChevronDown className="ml-1 h-3 w-3" />
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Portal>
-              <DropdownMenu.Content
-                className="min-w-[400px] rounded-md bg-brand-navy p-4 shadow-lg border border-brand-gold/30"
-                sideOffset={5}
-                align="center"
-              >
-                <motion.div
-                  className="grid gap-3 md:grid-cols-2"
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={{
-                    visible: {
-                      transition: {
-                        staggerChildren: 0.05,
-                      },
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="col-span-2"
-                    variants={menuItemVariants}
-                  >
-                    <Link
-                      href="/ciders"
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-brand-navy/50 to-brand-navy p-6 no-underline outline-none focus:shadow-md hover:bg-brand-gold/30"
-                    >
-                      <div className="mb-2 mt-4 text-lg font-oswald uppercase text-white">
-                        Our Ciders
-                      </div>
-                      <p className="text-sm leading-tight text-white/70">
-                        Explore our full range of craft hard ciders made with
-                        fresh-pressed apples.
-                      </p>
-                    </Link>
-                  </motion.div>
-                  <motion.div variants={menuItemVariants}>
-                    <Link
-                      href="/ciders/legendary-dry"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
-                    >
-                      <div className="text-sm font-oswald uppercase leading-none text-white">
-                        Legendary Dry
-                      </div>
-                      <p className="line-clamp-2 text-sm leading-snug text-white/70">
-                        Crisp, Dry & Champagne-Like
-                      </p>
-                    </Link>
-                  </motion.div>
-                  <motion.div variants={menuItemVariants}>
-                    <Link
-                      href="/ciders/mass-appeal"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
-                    >
-                      <div className="text-sm font-oswald uppercase leading-none text-white">
-                        Mass Appeal
-                      </div>
-                      <p className="line-clamp-2 text-sm leading-snug text-white/70">
-                        Juicy & Semi-Sweet
-                      </p>
-                    </Link>
-                  </motion.div>
-                </motion.div>
-              </DropdownMenu.Content>
-            </DropdownMenu.Portal>
-          </DropdownMenu.Root>
+              Ciders
+            </motion.span>
+          </Link>
 
           <DropdownMenu.Root>
             <DropdownMenu.Trigger
@@ -186,7 +119,7 @@ export function Navigation() {
             </DropdownMenu.Trigger>
             <DropdownMenu.Portal>
               <DropdownMenu.Content
-                className="min-w-[200px] rounded-md bg-brand-navy p-4 shadow-lg border border-brand-gold/30"
+                className="min-w-[200px] rounded-md bg-brand-navy/95 p-4 shadow-lg border border-brand-gold/30 z-[100]"
                 sideOffset={5}
                 align="center"
               >
@@ -206,20 +139,26 @@ export function Navigation() {
                   <motion.div variants={menuItemVariants}>
                     <Link
                       href="/shop"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-gold/20 hover:text-white group relative overflow-hidden"
                     >
-                      <div className="text-sm font-oswald uppercase leading-none text-white">
-                        Ciders
+                      <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative">
+                        <div className="text-sm font-oswald uppercase leading-none text-white">
+                          Ciders
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
                   <motion.div variants={menuItemVariants}>
                     <Link
                       href="/store2"
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-gold/20 hover:text-white group relative overflow-hidden"
                     >
-                      <div className="text-sm font-oswald uppercase leading-none text-white">
-                        Merch
+                      <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative">
+                        <div className="text-sm font-oswald uppercase leading-none text-white">
+                          Merch
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
