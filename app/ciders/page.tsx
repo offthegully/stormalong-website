@@ -14,7 +14,7 @@ export default function CidersPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Header */}
-      <div className="relative h-[400px] w-full">
+      {/* <div className="relative h-[400px] w-full">
         <Image
           src="/images/landing-page/award-winning-landing.jpg"
           alt="Our Ciders"
@@ -32,7 +32,7 @@ export default function CidersPage() {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
-      </div>
+      </div> */}
 
       {/* Category Navigation */}
       <div className="bg-brand-navy py-6">
