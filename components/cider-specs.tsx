@@ -44,7 +44,7 @@ export function CiderSpecs({
     <div className="space-y-4">
       <div className="flex items-center group">
         <div className="w-10 h-10 flex items-center justify-center mr-4">
-          <Wine className="w-6 h-6" />
+          <Wine className="w-8 h-8" />
         </div>
         <div>
           <p className="text-lg">{abv}%</p>
@@ -54,7 +54,7 @@ export function CiderSpecs({
 
       <div className="flex items-center group">
         <div className="w-10 h-10 flex items-center justify-center mr-4">
-          <Calendar className="w-6 h-6" />
+          <Calendar className="w-8 h-8" />
         </div>
         <div>
           <p className="text-lg">{availability}</p>
@@ -64,7 +64,7 @@ export function CiderSpecs({
 
       <div className="flex items-center group">
         <div className="w-10 h-10 flex items-center justify-center mr-4">
-          <Tag className="w-6 h-6" />
+          <Tag className="w-8 h-8" />
         </div>
         <div>
           <p className="text-lg">{category}</p>
@@ -76,13 +76,17 @@ export function CiderSpecs({
         <>
           <div className="flex group">
             <div className="w-10 h-10 flex items-center justify-center mr-4">
-              <Award className="w-6 h-6" />
+              <Award className="w-8 h-8 drop-shadow-sm" />
             </div>
-            <div>
-              <ul className="text-gray-700 text-sm space-y-1">
+            <div className="flex-1">
+              <h3 className="text-sm font-semibold text-amber-950 mb-2">
+                Awards & Recognition
+              </h3>
+              <ul className="space-y-2">
                 {awards.map((award, index) => (
-                  <li key={index} className="mb-1">
-                    {award}
+                  <li key={index} className="flex items-start">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 mr-2"></span>
+                    <span className="text-sm text-amber-900">{award}</span>
                   </li>
                 ))}
               </ul>
