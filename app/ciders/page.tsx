@@ -35,7 +35,7 @@ export default function CidersPage() {
       </div>
 
       {/* Category Navigation */}
-      <div className="bg-brand-navy py-12">
+      <div className="bg-brand-navy py-6">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-oswald text-white mb-8 text-center">
             Explore Our Cider Collections

@@ -10,7 +10,7 @@ export default function ContactPage() {
       {/* Page Header */}
       <PageHeader
         title="Contact Us"
-        backgroundImage="/images/landing-page/legendary-dry-landing.jpg"
+        backgroundImage="/images/cider-details-images/blue-skies-1.jpg"
         subtitle="We'd love to hear from you. Reach out with any questions about our ciders, events, or distribution."
       />
 

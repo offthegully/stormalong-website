@@ -7,6 +7,25 @@ import {
   Droplets,
   Candy,
 } from "lucide-react";
+import type React from "react";
+
+interface BadgeProps {
+  icon: React.ReactNode;
+  title: string;
+}
+
+function Badge({ icon, title }: BadgeProps) {
+  return (
+    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-amber-50 to-amber-100 rounded-full shadow-sm hover:shadow-md transition-all duration-300 border border-amber-200">
+      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white text-amber-800">
+        {icon}
+      </div>
+      <span className="font-medium text-xs text-amber-950 whitespace-nowrap">
+        {title}
+      </span>
+    </div>
+  );
+}
 
 interface CiderSpecsProps {
   abv: number;
@@ -74,33 +93,13 @@ export function CiderSpecs({
       )}
 
       {/* Product Features */}
-      <div className="flex justify-center gap-4 pt-8">
-        <div className="w-24 h-24 rounded-full bg-amber-100 flex items-center justify-center">
-          <div className="text-center">
-            <div className="flex justify-center">
-              <Wheat className="w-8 h-8" />
-            </div>
-            <p className="text-xs font-medium mt-1 uppercase">Gluten Free</p>
-          </div>
-        </div>
-        <div className="w-24 h-24 rounded-full bg-amber-100 flex items-center justify-center">
-          <div className="text-center">
-            <div className="flex justify-center">
-              <Droplets className="w-8 h-8" />
-            </div>
-            <p className="text-xs font-medium mt-1 uppercase">
-              Not From Concentrate
-            </p>
-          </div>
-        </div>
-        <div className="w-24 h-24 rounded-full bg-amber-100 flex items-center justify-center">
-          <div className="text-center">
-            <div className="flex justify-center">
-              <Candy className="w-8 h-8" />
-            </div>
-            <p className="text-xs font-medium mt-1 uppercase">No Added Sugar</p>
-          </div>
-        </div>
+      <div className="flex flex-wrap items-center justify-start gap-2 py-3 mx-auto">
+        <Badge icon={<Wheat className="h-4 w-4" />} title="Gluten Free" />
+        <Badge icon={<Candy className="h-4 w-4" />} title="No Added Sugar" />
+        <Badge
+          icon={<Droplets className="h-4 w-4" />}
+          title="Not From Concentrate"
+        />
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ export default function OurStoryPage() {
       />
 
       {/* Main Content */}
-      <div className="py-12 md:py-20 bg-white">
+      <div className="py-12 md:py-20 bg-white max-w-6xl mx-auto">
         <div className="stormalong-container px-4 md:px-8 lg:px-12">
           {/* True Cider Section */}
           <section className="mb-20 md:mb-32">

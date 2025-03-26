@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { CiderType } from "@/types/cider";
-import { Apple } from "lucide-react";
+import { Apple, Gem } from "lucide-react";
 
 interface CiderGridProps {
   ciders: CiderType[];
@@ -22,10 +22,7 @@ export function CiderGrid({ ciders, category }: CiderGridProps) {
         if (category === "core") return cider.availability === "Year-round";
         if (category === "seasonal") return cider.availability === "Seasonal";
         if (category === "rare")
-          return (
-            cider.apples.toLowerCase().includes("rare") ||
-            cider.name.toLowerCase().includes("rare")
-          );
+          return cider.features.includes("rare-apple-series");
         if (category === "barrel-aged")
           return cider.features.includes("barrel");
         return true;
@@ -115,13 +112,17 @@ function CiderCard({ cider }: { cider: CiderType }) {
               key={index}
               className="w-6 h-6 transition-transform duration-200 hover:scale-110"
             >
-              <Image
-                src={`/images/icons/${feature}.png`}
-                alt={feature}
-                width={24}
-                height={24}
-                className="w-full h-full object-contain"
-              />
+              {feature === "rare-apple-series" ? (
+                <Gem className="w-6 h-6 text-amber-500" />
+              ) : (
+                <Image
+                  src={`/images/icons/${feature}.png`}
+                  alt={feature}
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-contain"
+                />
+              )}
             </div>
           ))}
         </div>

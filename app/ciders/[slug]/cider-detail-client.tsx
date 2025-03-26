@@ -212,6 +212,11 @@ export default function CiderDetailClient({
           </div>
         </div>
       </section>
+
+      {/* Related Ciders Section */}
+      <section className="bg-white py-16">
+        <RelatedCiders ciders={allCiders} currentCiderId={cider.id} />
+      </section>
     </main>
   );
 }
