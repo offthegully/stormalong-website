@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { CiderType } from "@/types/cider";
 import { Apple, Gem } from "lucide-react";
+import { CiderFeatureIcons } from "@/components/cider-feature-icons";
 
 interface CiderGridProps {
   ciders: CiderType[];
@@ -107,24 +108,7 @@ function CiderCard({ cider }: { cider: CiderType }) {
         </p>
 
         <div className="flex items-center gap-2">
-          {cider.features.map((feature, index) => (
-            <div
-              key={index}
-              className="w-6 h-6 transition-transform duration-200 hover:scale-110"
-            >
-              {feature === "rare-apple-series" ? (
-                <Gem className="w-6 h-6 text-amber-500" />
-              ) : (
-                <Image
-                  src={`/images/icons/${feature}.png`}
-                  alt={feature}
-                  width={24}
-                  height={24}
-                  className="w-full h-full object-contain"
-                />
-              )}
-            </div>
-          ))}
+          <CiderFeatureIcons features={cider.features} size={24} />
         </div>
       </div>
     </Link>

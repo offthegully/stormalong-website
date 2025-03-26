@@ -27,7 +27,27 @@ export default function CiderDetailClient({
   allCiders,
 }: CiderDetailClientProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasDetailImages, setHasDetailImages] = useState(false);
   const router = useRouter();
+
+  // Function to get the correct image path with extension
+  const getDetailImagePath = (ciderSlug: string, imageNumber: number) => {
+    const basePath = `/images/cider-details-images/${ciderSlug}-${imageNumber}`;
+    return `${basePath}.jpg`;
+  };
+
+  // Check if detail images exist
+  useEffect(() => {
+    const checkImages = async () => {
+      try {
+        const response = await fetch(getDetailImagePath(cider.slug, 1));
+        setHasDetailImages(response.ok);
+      } catch (error) {
+        setHasDetailImages(false);
+      }
+    };
+    checkImages();
+  }, [cider.slug]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -190,28 +210,38 @@ export default function CiderDetailClient({
       </section>
 
       {/* Image Gallery Section */}
-      <section className="max-w-6xl mx-auto py-8 md:py-16 bg-white">
-        <div className="container mx-auto px-4 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-            <div className="md:col-span-4 space-y-6">
-              <Image
-                src={`/images/ciders/${cider.slug}-lifestyle-1.jpg`}
-                alt={`${cider.name} lifestyle image 1`}
-                width={400}
-                height={300}
-                className="w-full h-auto rounded-lg object-cover"
-              />
-              <Image
-                src={`/images/ciders/${cider.slug}-lifestyle-2.jpg`}
-                alt={`${cider.name} lifestyle image 2`}
-                width={400}
-                height={300}
-                className="w-full h-auto rounded-lg object-cover"
-              />
+      {hasDetailImages && (
+        <section className="max-w-6xl mx-auto py-8 md:py-16 bg-white">
+          <div className="container mx-auto px-4 md:px-8 lg:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src={getDetailImagePath(cider.slug, 1)}
+                  alt={`${cider.name} detail image 1`}
+                  fill
+                  className="object-cover rounded-lg"
+                />
+              </div>
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src={getDetailImagePath(cider.slug, 2)}
+                  alt={`${cider.name} detail image 2`}
+                  fill
+                  className="object-cover rounded-lg"
+                />
+              </div>
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src={getDetailImagePath(cider.slug, 3)}
+                  alt={`${cider.name} detail image 3`}
+                  fill
+                  className="object-cover rounded-lg"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Related Ciders Section */}
       <section className="bg-white py-16">
