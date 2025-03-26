@@ -24,7 +24,7 @@ export function Footer() {
           </div>
 
           {/* Newsletter Section */}
-          <div className="md:col-span-6 flex justify-center">
+          <div className="md:col-span-5 flex justify-center">
             <div className="mb-6 md:mb-0 w-full max-w-md">
               <h3 className="text-lg font-oswald mb-4 text-center md:text-left">
                 Stay Connected
@@ -47,12 +47,12 @@ export function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <div className="md:col-span-2 flex justify-center">
+          <div className="md:col-span-3 flex justify-center">
             <div className="mb-6 md:mb-0">
               <h3 className="text-lg font-oswald mb-4 text-center md:text-left">
                 Quick Links
               </h3>
-              <div className="flex flex-col space-y-3">
+              <div className="grid grid-cols-2 gap-4">
                 <Link
                   href="/our-story"
                   className="text-white hover:text-brand-gold transition-colors text-center md:text-left"

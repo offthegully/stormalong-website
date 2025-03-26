@@ -5,14 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   Sheet,
   SheetContent,
@@ -21,6 +14,7 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet";
 import { ANIMATION_CONFIG } from "@/lib/animation-config";
+import { ChevronDown } from "lucide-react";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,50 +70,47 @@ export function Navigation() {
         </Link>
 
         {/* Desktop Navigation */}
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList className="space-x-2">
-            <NavigationMenuItem>
-              <Link href="/our-story" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
-                    pathname === "/our-story"
-                      ? "bg-brand-navy/30 text-brand-gold"
-                      : ""
-                  }`}
-                >
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    About
-                  </motion.span>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className={`font-oswald uppercase tracking-wider bg-transparent hover:bg-brand-navy/30 hover:text-brand-gold focus:bg-transparent ${
-                  pathname?.startsWith("/ciders")
-                    ? "bg-brand-navy/30 text-brand-gold"
-                    : ""
-                }`}
+        <nav className="hidden md:flex items-center space-x-2">
+          <Link
+            href="/our-story"
+            className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
+              pathname === "/our-story"
+                ? "bg-brand-navy/30 text-brand-gold"
+                : ""
+            }`}
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              About
+            </motion.span>
+          </Link>
+
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger
+              className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
+                pathname?.startsWith("/ciders")
+                  ? "bg-brand-navy/30 text-brand-gold"
+                  : ""
+              }`}
+            >
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
               >
-                <Link
-                  href="/ciders"
-                  className="inline-flex items-center hover:no-underline"
-                >
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                    className="pr-1"
-                  >
-                    Ciders
-                  </motion.span>
-                </Link>
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <motion.ul
-                  className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-brand-navy"
+                Ciders
+              </motion.span>
+              <ChevronDown className="ml-1 h-3 w-3" />
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content
+                className="min-w-[400px] rounded-md bg-brand-navy p-4 shadow-lg border border-brand-gold/30"
+                sideOffset={5}
+                align="center"
+              >
+                <motion.div
+                  className="grid gap-3 md:grid-cols-2"
                   initial="hidden"
                   animate="visible"
                   exit="exit"
@@ -131,84 +122,76 @@ export function Navigation() {
                     },
                   }}
                 >
-                  <motion.li className="row-span-3" variants={menuItemVariants}>
-                    <NavigationMenuLink asChild>
-                      <motion.a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-brand-navy/50 to-brand-navy p-6 no-underline outline-none focus:shadow-md"
-                        href="/ciders"
-                        whileHover={{
-                          scale: 1.02,
-                          backgroundColor: "rgba(212, 175, 55, 0.3)",
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="mb-2 mt-4 text-lg font-oswald uppercase text-white">
-                          Our Ciders
-                        </div>
-                        <p className="text-sm leading-tight text-white/70">
-                          Explore our full range of craft hard ciders made with
-                          fresh-pressed apples.
-                        </p>
-                      </motion.a>
-                    </NavigationMenuLink>
-                  </motion.li>
-                  <motion.li variants={menuItemVariants}>
-                    <NavigationMenuLink asChild>
-                      <motion.a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground"
-                        href="/ciders/legendary-dry"
-                        whileHover={{
-                          backgroundColor: "rgba(212, 175, 55, 0.3)",
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="text-sm font-oswald uppercase leading-none text-white">
-                          Legendary Dry
-                        </div>
-                        <p className="line-clamp-2 text-sm leading-snug text-white/70">
-                          Crisp, Dry & Champagne-Like
-                        </p>
-                      </motion.a>
-                    </NavigationMenuLink>
-                  </motion.li>
-                  <motion.li variants={menuItemVariants}>
-                    <NavigationMenuLink asChild>
-                      <motion.a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground"
-                        href="/ciders/mass-appeal"
-                        whileHover={{
-                          backgroundColor: "rgba(212, 175, 55, 0.3)",
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="text-sm font-oswald uppercase leading-none text-white">
-                          Mass Appeal
-                        </div>
-                        <p className="line-clamp-2 text-sm leading-snug text-white/70">
-                          Juicy & Semi-Sweet
-                        </p>
-                      </motion.a>
-                    </NavigationMenuLink>
-                  </motion.li>
-                </motion.ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className={`font-oswald uppercase tracking-wider bg-transparent hover:bg-brand-navy/30 hover:text-brand-gold focus:bg-transparent ${
-                  isShopActive ? "bg-brand-navy/30 text-brand-gold" : ""
-                }`}
+                  <motion.div
+                    className="col-span-2"
+                    variants={menuItemVariants}
+                  >
+                    <Link
+                      href="/ciders"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-brand-navy/50 to-brand-navy p-6 no-underline outline-none focus:shadow-md hover:bg-brand-gold/30"
+                    >
+                      <div className="mb-2 mt-4 text-lg font-oswald uppercase text-white">
+                        Our Ciders
+                      </div>
+                      <p className="text-sm leading-tight text-white/70">
+                        Explore our full range of craft hard ciders made with
+                        fresh-pressed apples.
+                      </p>
+                    </Link>
+                  </motion.div>
+                  <motion.div variants={menuItemVariants}>
+                    <Link
+                      href="/ciders/legendary-dry"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
+                    >
+                      <div className="text-sm font-oswald uppercase leading-none text-white">
+                        Legendary Dry
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-white/70">
+                        Crisp, Dry & Champagne-Like
+                      </p>
+                    </Link>
+                  </motion.div>
+                  <motion.div variants={menuItemVariants}>
+                    <Link
+                      href="/ciders/mass-appeal"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
+                    >
+                      <div className="text-sm font-oswald uppercase leading-none text-white">
+                        Mass Appeal
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-white/70">
+                        Juicy & Semi-Sweet
+                      </p>
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
+
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger
+              className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
+                isShopActive ? "bg-brand-navy/30 text-brand-gold" : ""
+              }`}
+            >
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
               >
-                <motion.span
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Shop
-                </motion.span>
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <motion.ul
-                  className="grid w-[200px] gap-3 p-4 bg-brand-navy md:w-[250px]"
+                Shop
+              </motion.span>
+              <ChevronDown className="ml-1 h-3 w-3" />
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content
+                className="min-w-[200px] rounded-md bg-brand-navy p-4 shadow-lg border border-brand-gold/30"
+                sideOffset={5}
+                align="center"
+              >
+                <motion.div
+                  className="grid gap-3"
                   initial="hidden"
                   animate="visible"
                   exit="exit"
@@ -220,97 +203,75 @@ export function Navigation() {
                     },
                   }}
                 >
-                  <motion.li variants={menuItemVariants}>
-                    <NavigationMenuLink asChild>
-                      <motion.a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground w-full"
-                        href="/shop"
-                        whileHover={{
-                          backgroundColor: "rgba(212, 175, 55, 0.3)",
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="text-sm font-oswald uppercase leading-none text-white">
-                          Ciders
-                        </div>
-                      </motion.a>
-                    </NavigationMenuLink>
-                  </motion.li>
-                  <motion.li variants={menuItemVariants}>
-                    <NavigationMenuLink asChild>
-                      <motion.a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white focus:bg-accent focus:text-accent-foreground w-full"
-                        href="/store2"
-                        whileHover={{
-                          backgroundColor: "rgba(212, 175, 55, 0.3)",
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="text-sm font-oswald uppercase leading-none text-white">
-                          Merch
-                        </div>
-                      </motion.a>
-                    </NavigationMenuLink>
-                  </motion.li>
-                </motion.ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/locator" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
-                    pathname === "/locator"
-                      ? "bg-brand-navy/30 text-brand-gold"
-                      : ""
-                  }`}
-                >
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    Find Us
-                  </motion.span>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/cider-club" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
-                    pathname === "/cider-club"
-                      ? "bg-brand-navy/30 text-brand-gold"
-                      : ""
-                  }`}
-                >
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    Cider Club
-                  </motion.span>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
-                    pathname === "/contact"
-                      ? "bg-brand-navy/30 text-brand-gold"
-                      : ""
-                  }`}
-                >
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    Contact
-                  </motion.span>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+                  <motion.div variants={menuItemVariants}>
+                    <Link
+                      href="/shop"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
+                    >
+                      <div className="text-sm font-oswald uppercase leading-none text-white">
+                        Ciders
+                      </div>
+                    </Link>
+                  </motion.div>
+                  <motion.div variants={menuItemVariants}>
+                    <Link
+                      href="/store2"
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-brand-gold/30 hover:text-white"
+                    >
+                      <div className="text-sm font-oswald uppercase leading-none text-white">
+                        Merch
+                      </div>
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
+
+          <Link
+            href="/locator"
+            className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
+              pathname === "/locator" ? "bg-brand-navy/30 text-brand-gold" : ""
+            }`}
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Find Us
+            </motion.span>
+          </Link>
+
+          <Link
+            href="/cider-club"
+            className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
+              pathname === "/cider-club"
+                ? "bg-brand-navy/30 text-brand-gold"
+                : ""
+            }`}
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Cider Club
+            </motion.span>
+          </Link>
+
+          <Link
+            href="/contact"
+            className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-oswald uppercase tracking-wider transition-colors hover:text-brand-gold hover:bg-brand-navy/30 focus:outline-none ${
+              pathname === "/contact" ? "bg-brand-navy/30 text-brand-gold" : ""
+            }`}
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Contact
+            </motion.span>
+          </Link>
+        </nav>
 
         {/* Mobile Navigation Toggle */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>

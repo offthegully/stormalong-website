@@ -15,6 +15,12 @@ const NavigationMenu = React.forwardRef<
       "relative z-10 flex max-w-max flex-1 items-center justify-center",
       className
     )}
+    onMouseEnter={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    }}
+    delayDuration={0}
+    skipDelayDuration={0}
     {...props}
   >
     {children}
@@ -51,6 +57,8 @@ const NavigationMenuTrigger = React.forwardRef<
   <NavigationMenuPrimitive.Trigger
     ref={ref}
     className={cn(navigationMenuTriggerStyle(), "group", className)}
+    delayDuration={0}
+    skipDelayDuration={0}
     {...props}
   >
     {children}{" "}
