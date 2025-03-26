@@ -165,7 +165,7 @@ export default function CiderDetailClient({
       </div>
 
       {/* Cider Details Section */}
-      <section className="max-w-6xl mx-auto py-8 md:py-16 bg-white mt-0 md:mt-12">
+      <section className="max-w-6xl mx-auto py-8 md:py-8 bg-white mt-0 md:mt-8">
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
             {/* Description Column */}
