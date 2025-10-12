@@ -20,12 +20,12 @@ export default function Home() {
       className="flex flex-col"
     >
       <Hero
-        imageSrc="/images/landing-page/legendary-dry-landing.jpg"
-        title="Grow With Us"
-        highlightedText="Get a piece of Stormalong Cider"
-        description="Join us on our journey to revolutionize the craft cider industry. Invest in Stormalong Cider and become part of our growing success story."
-        buttonText="INVEST NOW"
-        buttonLink="https://www.startengine.com/offering/stormalong-cider"
+        imageSrc="/images/landing-page/farmstand-fall.jpg"
+        title="Farmstand"
+        highlightedText="Unfiltered"
+        description="Unfiltered hard cider reminiscent of freshly pressed cider made at harvest!"
+        buttonText="More Details"
+        buttonLink="ciders/farmstand-unfiltered"
       />
       <SimpleRespectApple />
       <FeaturedCidersGrid />

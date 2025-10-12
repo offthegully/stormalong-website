@@ -11,19 +11,19 @@ import { RelatedCiders } from "@/components/related-ciders";
 import { useRouter } from "next/navigation";
 import { PatternedSection } from "@/components/patterned-section";
 
+import type { CiderType } from "@/types/cider";
+
 interface CiderDetailClientProps {
-  cider: any;
-  prevCider: any;
-  nextCider: any;
-  relatedCiders: any[];
-  allCiders: any[];
+  cider: CiderType;
+  prevCider: CiderType;
+  nextCider: CiderType;
+  allCiders: CiderType[];
 }
 
 export default function CiderDetailClient({
   cider,
   prevCider,
   nextCider,
-  relatedCiders,
   allCiders,
 }: CiderDetailClientProps) {
   const [isLoaded, setIsLoaded] = useState(false);

@@ -1,23 +1,23 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, type Variants, type Transition } from "framer-motion"
 import { useRef, type ReactNode } from "react"
 import { ANIMATION_CONFIG, fadeUp } from "@/lib/animation-config"
 
 interface MotionWrapperProps {
   children: ReactNode
-  variants?: any
+  variants?: Variants
   delay?: number
   duration?: number
   className?: string
   once?: boolean
-  viewport?: any
-  transition?: any
-  initial?: any
-  animate?: any
-  whileHover?: any
-  whileTap?: any
-  whileInView?: any
+  viewport?: { once?: boolean; amount?: "some" | "all" | number; margin?: string }
+  transition?: Transition
+  initial?: string
+  animate?: string
+  whileHover?: unknown
+  whileTap?: unknown
+  whileInView?: string
   direction?: "up" | "down" | "left" | "right" | "none"
 }
 
@@ -98,4 +98,3 @@ function getDirectionVariant(direction: "up" | "down" | "left" | "right" | "none
       }
   }
 }
-

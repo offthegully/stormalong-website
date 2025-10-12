@@ -8,10 +8,10 @@ export const ciders: CiderType[] = [
     tagline: "A crisp, dry cider with a clean finish",
     description:
       "In homage to America's hard cider history and the larger-than-life Captain Stormalong, our flagship cider is named \"Legendary Dry\". Made with a unique blend of 'bittersweet' cider apples which impart a tannic finish and 'champagne-like' character. A British inspired cider with an American take. Less than 3 grams of sugar per can.",
-    image: "/images/ciders/legendary-dry.png",
+    image: "/images/ciders/legendary-dry-2025.png",
     abv: 6.5,
     availability: "Year-round",
-    features: ["apple-gold", "apple-red", "rare-apple-series"],
+    features: ["apple-gold", "apple-red"],
     flavor: "Crisp, Dry & Champagne-Like",
     apples:
       "Ashton Bitter, Ashmead's Kernel, Dabinett, Ellis Bitter, Esopus Spitzenburg, Northern Spy, Idared, Pinova, Golden Delicious, Wickson, Yarlington Mill, Redfield, Calville Blanc d'hiver, Ananas Reinette, Jonagold",
@@ -22,9 +22,9 @@ export const ciders: CiderType[] = [
       "GLINTCAP 2022 - Gold",
       "SFChronicle 2022 - Silver",
       "GLINTCAP 2021 - Gold",
-      "GLINTCAP 2017 – Bronze",
-      "GLINTCAP 2016 – Bronze",
-      "GLINTCAP 2015 – Silver",
+      "GLINTCAP 2017 - Bronze",
+      "GLINTCAP 2016 - Bronze",
+      "GLINTCAP 2015 - Silver",
     ],
   },
   {

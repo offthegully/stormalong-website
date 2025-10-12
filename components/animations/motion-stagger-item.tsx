@@ -1,14 +1,14 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import type { ReactNode } from "react"
 import { fadeUp } from "@/lib/animation-config"
 
 interface MotionStaggerItemProps {
   children: ReactNode
   className?: string
-  variants?: any
-  custom?: any
+  variants?: Variants
+  custom?: unknown
 }
 
 export function MotionStaggerItem({ children, className = "", variants = fadeUp, custom }: MotionStaggerItemProps) {
@@ -18,4 +18,3 @@ export function MotionStaggerItem({ children, className = "", variants = fadeUp,
     </motion.div>
   )
 }
-

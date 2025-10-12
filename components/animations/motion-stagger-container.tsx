@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, type Variants } from "framer-motion"
 import { useRef, type ReactNode } from "react"
 import { ANIMATION_CONFIG, staggerContainer } from "@/lib/animation-config"
 
@@ -10,8 +10,8 @@ interface MotionStaggerContainerProps {
   delay?: number
   staggerDelay?: number
   once?: boolean
-  viewport?: any
-  variants?: any
+  viewport?: { once?: boolean; amount?: "some" | "all" | number; margin?: string }
+  variants?: Variants
 }
 
 export function MotionStaggerContainer({
@@ -50,4 +50,3 @@ export function MotionStaggerContainer({
     </motion.div>
   )
 }
-
