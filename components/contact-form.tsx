@@ -83,27 +83,40 @@ export function ContactForm() {
     setFormError(null)
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      })
+
+      if (!res.ok) {
+        const data = await safeJson(res)
+        throw new Error(
+          (data && (data.error || data.details)) || `Failed with ${res.status}`
+        )
+      }
 
       // Reset form and show success message
-      setFormState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
+      setFormState({ name: "", email: "", subject: "", message: "" })
       setIsSubmitting(false)
       setIsSubmitted(true)
 
       // Hide success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-      }, 5000)
+      setTimeout(() => setIsSubmitted(false), 5000)
     } catch (error) {
-      setIsSubmitting(false)
-      setFormError("There was an error submitting your form. Please try again.")
       console.error("Form submission error:", error)
+      setIsSubmitting(false)
+      setFormError(
+        "There was an error submitting your form. Please try again or email us directly."
+      )
+    }
+  }
+
+  async function safeJson(res: Response) {
+    try {
+      return await res.json()
+    } catch {
+      return null
     }
   }
 
@@ -206,4 +219,3 @@ export function ContactForm() {
     </div>
   )
 }
-
