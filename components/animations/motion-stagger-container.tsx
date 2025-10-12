@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView, type Variants } from "framer-motion"
+import { motion, useInView, type Variants, type UseInViewOptions } from "framer-motion"
 import { useRef, type ReactNode } from "react"
 import { ANIMATION_CONFIG, staggerContainer } from "@/lib/animation-config"
 
@@ -10,7 +10,7 @@ interface MotionStaggerContainerProps {
   delay?: number
   staggerDelay?: number
   once?: boolean
-  viewport?: { once?: boolean; amount?: "some" | "all" | number; margin?: string }
+  viewport?: UseInViewOptions
   variants?: Variants
 }
 
@@ -20,18 +20,17 @@ export function MotionStaggerContainer({
   delay = 0,
   staggerDelay = ANIMATION_CONFIG.stagger.medium,
   once = true,
-  viewport = ANIMATION_CONFIG.viewport,
+  viewport = ANIMATION_CONFIG.viewport as unknown as UseInViewOptions,
   variants = staggerContainer,
 }: MotionStaggerContainerProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, viewport)
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     ...variants,
     visible: {
-      ...variants.visible,
+      ...(variants as any).visible,
       transition: {
-        ...variants.visible.transition,
         delayChildren: delay,
         staggerChildren: staggerDelay,
       },

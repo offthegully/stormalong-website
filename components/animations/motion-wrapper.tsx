@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView, type Variants, type Transition } from "framer-motion"
+import { motion, useInView, type Variants, type Transition, type UseInViewOptions, type TargetAndTransition, type VariantLabels } from "framer-motion"
 import { useRef, type ReactNode } from "react"
 import { ANIMATION_CONFIG, fadeUp } from "@/lib/animation-config"
 
@@ -11,12 +11,12 @@ interface MotionWrapperProps {
   duration?: number
   className?: string
   once?: boolean
-  viewport?: { once?: boolean; amount?: "some" | "all" | number; margin?: string }
+  viewport?: UseInViewOptions
   transition?: Transition
   initial?: string
   animate?: string
-  whileHover?: unknown
-  whileTap?: unknown
+  whileHover?: TargetAndTransition | VariantLabels
+  whileTap?: TargetAndTransition | VariantLabels
   whileInView?: string
   direction?: "up" | "down" | "left" | "right" | "none"
 }
@@ -28,7 +28,7 @@ export function MotionWrapper({
   duration = ANIMATION_CONFIG.duration.medium,
   className = "",
   once = true,
-  viewport = ANIMATION_CONFIG.viewport,
+  viewport = ANIMATION_CONFIG.viewport as unknown as UseInViewOptions,
   transition,
   initial = "hidden",
   animate,
