@@ -10,6 +10,7 @@ const SWEETNESS_LABELS: Record<number, string> = {
   5: "Sweet",
 }
 
+
 export function SweetnessScale({ level }: SweetnessScaleProps) {
   // Clamp to 1..5
   const validLevel = Math.min(Math.max(Math.round(level), 1), 5)
