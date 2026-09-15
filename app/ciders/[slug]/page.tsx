@@ -12,6 +12,7 @@ import {
   sweetnessLabel,
   type AwardRecord,
 } from "@/lib/catalogue";
+import { ciderPhotos } from "@/lib/cider-photos";
 import { CiderBadges, HouseClaims } from "@/components/press-house/cider-badges";
 import { LocatorBand } from "@/components/press-house/locator-band";
 import { MedalSeal } from "@/components/press-house/medal-seal";
@@ -106,6 +107,7 @@ export default async function CiderDetailPage({
   // site, not a blend on file — so it is not presented as one.
   const varieties = cider.provisional ? [] : appleVarieties(cider.apples);
   const isRare = cider.features.includes("rare-apple-series");
+  const photos = ciderPhotos(slug);
 
   return (
     <>
@@ -349,10 +351,55 @@ export default async function CiderDetailPage({
         </div>
       </section>
 
+      {/* Photography ---------------------------------------------------
+          The best images in the repo, and they were on the old detail
+          pages. Full bleed, square, hairline gutters — the same grid
+          the tiles use. */}
+      {photos.length > 0 && (
+        <section className="border-t border-ink/12 bg-paper-dark pb-14 pt-11">
+          <div className="ph-gutter">
+            <SectionRule
+              eyebrow="The orchard, the can, the pour"
+              note="Sherborn, Mass."
+            />
+          </div>
+          <ul className="grid gap-px bg-ink/15 sm:grid-cols-2">
+            {photos.map((photo, index) => (
+              <li
+                key={photo}
+                className={
+                  // A lead image twice the width of the rest, when there
+                  // are enough of them to make a row out of the others.
+                  index === 0 && photos.length >= 3
+                    ? "relative aspect-[16/10] sm:col-span-2"
+                    : "relative aspect-[4/3]"
+                }
+              >
+                <Image
+                  src={photo}
+                  // These are editorial photographs whose subject differs
+                  // per cider; describing them accurately needs a person
+                  // who has seen them. Marked decorative until then —
+                  // the surrounding copy carries the meaning.
+                  alt=""
+                  fill
+                  sizes={
+                    index === 0 && photos.length >= 3
+                      ? "(min-width: 640px) 100vw, 100vw"
+                      : "(min-width: 640px) 50vw, 100vw"
+                  }
+                  className="object-cover"
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* Running order ----------------------------------------------- */}
       {(prev || next) && (
         <section className="border-t border-ink/12 bg-paper-dark">
-          <div className="ph-gutter grid items-center gap-6 py-8 md:grid-cols-[1fr_auto_1fr]">
+          <div className="ph-gutter grid grid-cols-2 items-center gap-x-6 gap-y-7 py-8 md:grid-cols-[1fr_auto_1fr]">
             {prev ? (
               <Link
                 href={`/ciders/${prev.slug}`}
@@ -378,9 +425,12 @@ export default async function CiderDetailPage({
               <span />
             )}
 
+            {/* Below md this drops to its own full-width row under the
+                two ciders, rather than sitting between them and
+                pushing them out of line. */}
             <Link
               href={routes.ciders}
-              className="ph-label justify-self-center border-2 border-ink px-6 py-3 text-[0.53rem] transition-colors hover:bg-ink hover:text-paper-light"
+              className="ph-label order-last col-span-2 justify-self-center border-2 border-ink px-6 py-3 text-[0.53rem] transition-colors hover:bg-ink hover:text-paper-light md:order-none md:col-span-1"
             >
               All the ciders
             </Link>

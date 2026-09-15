@@ -128,6 +128,32 @@ message was not sent and give the address to write to instead.
 - **Cidery address.** `130 Oak Street, Sherborn, MA 01770` is in this
   repo but not on the live contact page. Confirm it should be public.
 
+## Photography
+
+The detail pages carry a full-bleed photo band built from
+`public/images/cider-details-images/` — 50 shots, three per cider,
+1800 to 4500px. They are the best images in the repo and they were on
+the old detail pages; the first rebuild dropped them. The lead shot
+runs full width, the rest sit two-up beneath it, square corners and
+hairline gutters like the tiles.
+
+The manifest in `lib/cider-photos.ts` is read off disk at build time
+rather than typed out, so adding a `<slug>-4.jpg` is enough to make it
+appear. Ragtime Reserve has two photos and degrades to a two-up row;
+Alyson's Orchard and Blue Hills have none and get no band — the same
+two ciders missing from `data/ciders.ts`.
+
+Two things worth doing when you have a moment:
+
+- **Alt text.** The photos differ per cider — apples in bins, a can on
+  a piling, a pour — and describing them accurately needs someone who
+  has seen them. They are marked decorative for now, which is honest
+  but not ideal.
+- **Weight.** The folder is ~195 MB; several files are over 3.5 MB at
+  4548px. Next resizes them on demand and caches the result, so pages
+  are not shipping 4 MB, but pre-resizing the originals to ~2000px
+  would make the repo far lighter with no visible difference.
+
 ## Feature icons (review finding 04)
 
 The old badge row set `apple-gold` on 18 of 18 ciders and `apple-red`
