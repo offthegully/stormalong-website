@@ -22,11 +22,7 @@ const bySlug = new Map(allRecords.map((c) => [c.slug, c]));
 
 /** Apple varieties are stored as one comma-separated string. */
 function countApples(apples: string): number {
-  if (!apples.trim()) return 0;
-  return apples
-    .split(/,| and /i)
-    .map((a) => a.trim())
-    .filter(Boolean).length;
+  return appleVarieties(apples).length;
 }
 
 function toShelfCider(record: CiderType, group: CiderGroup): ShelfCider {
@@ -272,3 +268,33 @@ export const featuredAwards: AwardRecord[] = [
     (a) => !a.isBestOfClass && ["Winner", "Judge's Pick"].includes(a.medal),
   ),
 ].slice(0, 4);
+
+/* ------------------------------------------------------------------ */
+/* Running order                                                       */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Previous and next cider in shelf order, wrapping at both ends. The
+ * five records that are in the data but off the live shelf have no
+ * place in the running order, so they get no neighbours rather than
+ * being spliced into a sequence they are not part of.
+ */
+export function ciderNeighbours(slug: string): {
+  prev?: ShelfCider;
+  next?: ShelfCider;
+} {
+  const index = shelf.findIndex((c) => c.slug === slug);
+  if (index === -1 || shelf.length < 2) return {};
+  return {
+    prev: shelf[(index - 1 + shelf.length) % shelf.length],
+    next: shelf[(index + 1) % shelf.length],
+  };
+}
+
+/** Apple varieties as a list, from the one comma-separated string. */
+export function appleVarieties(apples: string): string[] {
+  return apples
+    .split(/,| and /i)
+    .map((a) => a.trim())
+    .filter(Boolean);
+}

@@ -6,6 +6,8 @@ import { AgeGate } from "@/components/press-house/age-gate";
 import { AGE_GATE_BOOTSTRAP } from "@/components/press-house/age-gate-bootstrap";
 import { Footer } from "@/components/press-house/footer";
 import { Masthead } from "@/components/press-house/masthead";
+import { site } from "@/components/press-house/site-config";
+import { trophyCase } from "@/lib/catalogue";
 
 /**
  * Press House uses exactly two faces. Alfa Slab One has a single
@@ -28,12 +30,14 @@ const libreFranklin = Libre_Franklin({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
     default: "Stormalong Cider | Quality Craft Hard Cider",
     template: "%s | Stormalong Cider",
   },
-  description:
-    "Unfiltered hard cider from Sherborn, Massachusetts. 100% fresh pressed apples, 26 medals since 2015. Find Legendary Dry, Mass Appeal, Kingston Black and the rest of the range near you.",
+  // The medal count is read from the catalogue, not typed in, so the
+  // one number in this sentence cannot go stale.
+  description: `Unfiltered hard cider from Sherborn, Massachusetts. 100% fresh pressed apples, ${trophyCase.total} medals since ${trophyCase.firstYear}. Find Legendary Dry, Mass Appeal, Kingston Black and the rest of the range near you.`,
   icons: {
     icon: "/favicon.jpg",
     apple: "/apple-icon.jpg",

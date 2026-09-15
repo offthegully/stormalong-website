@@ -53,6 +53,9 @@ export const site = {
   blurb:
     "Unfiltered. 100% fresh pressed apples. That's it. Made in Sherborn, Massachusetts since 2014.",
   email: "info@stormalong.com",
+  /** Canonical origin, for metadataBase and absolute OG image URLs.
+   *  Override with NEXT_PUBLIC_SITE_URL on preview deployments. */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://stormalong.com",
   instagram: "https://www.instagram.com/stormalongcider/",
   facebook: "https://www.facebook.com/stormalongcider/",
 } as const;
