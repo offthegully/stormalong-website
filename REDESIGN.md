@@ -50,7 +50,7 @@ the live site: 15 ciders in 3 groups.
   no artwork in the repo.
 - Five records in `data/ciders.ts` are **not** on the live shelf and are
   currently hidden from `/ciders` (their URLs still work): Pog Punch,
-  Ragtime Reserve, The Big Appeal, Bittersweet Symphonie, Lady
+  Ragtime Reserve, Big Appeal, Bittersweet Symphonie, Lady
   Legendary. Lady Legendary is promoted on the current home page but
   absent from the live `/ciders`, so it needs a decision either way.
 

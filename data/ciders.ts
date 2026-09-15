@@ -8,7 +8,7 @@ export const ciders: CiderType[] = [
     tagline: "A crisp, dry cider with a clean finish",
     description:
       "In homage to America's hard cider history and the larger-than-life Captain Stormalong, our flagship cider is named \"Legendary Dry\". Made with a unique blend of 'bittersweet' cider apples which impart a tannic finish and 'champagne-like' character. A British inspired cider with an American take. Less than 3 grams of sugar per can.",
-    image: "/images/ciders/legendary-dry-2025.png",
+    image: "/images/ciders/legendary-dry.png",
     abv: 6.5,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
@@ -145,7 +145,7 @@ export const ciders: CiderType[] = [
     tagline: "Unfiltered hard cider made with fresh pressed apples",
     description:
       "Featuring a blend of 100% high-quality, fresh pressed, locally sourced apples from orchards across New England, this unfiltered hard cider is reminiscent of classic farmstand fresh apple cider pressed and sold at harvest. Its tangy, juicy and refreshing.",
-    image: "/images/ciders/farm-stand.png",
+    image: "/images/ciders/farmstand-unfiltered.png",
     abv: 4.5,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
@@ -175,7 +175,7 @@ export const ciders: CiderType[] = [
     tagline: "Legendary Dry's tannic sister",
     description:
       "Legendary Dry's tannic sister. Made with a blend of rare, Heirloom apples aged in oak barrels. It's a delicious oaky, off-dry cider similar to sparkling white wine.",
-    image: "/images/ciders/the-lady-legendary.png",
+    image: "/images/ciders/lady-legendary.png",
     abv: 7.2,
     availability: "Year-round",
     features: ["apple-gold", "apple-red", "barrel", "rare-apple-series"],
@@ -232,13 +232,13 @@ export const ciders: CiderType[] = [
     sweetness: 2,
   },
   {
-    id: "the-big-appeal",
-    name: "The Big Appeal",
-    slug: "the-big-appeal",
+    id: "big-appeal",
+    name: "Big Appeal",
+    slug: "big-appeal",
     tagline: "Made with Golden Delicious & McIntosh Apples (NY+NJ only)",
     description:
       "This cider is easy-drinking with a nice balance of semi-sweet and tart apple. Big apple flavor and juiciness from the classic New England Macintosh variety, while Golden Delicious adds a tropical layer to the finish.",
-    image: "/images/ciders/the-big-appeal.png",
+    image: "/images/ciders/big-appeal.png",
     abv: 5.5,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
@@ -284,7 +284,7 @@ export const ciders: CiderType[] = [
     tagline: "A summertime Cider featuring Cranberry and Lime",
     description:
       "A summertime Cider featuring Cranberry and Lime. Made in collaboration with the Iconic Beachcomber in Wellfleet, Cape Cod.",
-    image: "/images/ciders/beachcomber.png",
+    image: "/images/ciders/beachcomber-cidah.png",
     abv: 5.0,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
@@ -299,7 +299,7 @@ export const ciders: CiderType[] = [
     tagline: "Made with 100% bittersweet cider apples",
     description:
       "This cider is made with a blend of British bittersweet cider apples that are high in tannin and low in acid. This batch is finished in the French style where some cider is left unfermented retaining residual sweetness.",
-    image: "/images/ciders/bittersweet-symphone.png",
+    image: "/images/ciders/bittersweet-symphonie.png",
     abv: 5.4,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red", "rare-apple-series"],

@@ -18,7 +18,7 @@
 
      - 5 records in data/ciders.ts are NOT on the live shelf and are
        omitted here: pog-punch, lady-legendary, ragtime-reserve,
-       the-big-appeal, bittersweet-symphonie. Their data is untouched
+       big-appeal, bittersweet-symphonie. Their data is untouched
        and their detail pages still resolve; they simply do not appear
        on /ciders. (Note: lady-legendary IS promoted on the current
        home page but absent from the live /ciders — one more thing the

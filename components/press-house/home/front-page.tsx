@@ -32,7 +32,7 @@ const secondaries = [
     eyebrow: "Seasonal · at harvest",
     title: "Farmstand is pouring",
     copy: "Cloudy and tangy, pressed at harvest.",
-    image: "/images/ciders/farm-stand.png",
+    image: "/images/ciders/farmstand-unfiltered.png",
     ground: "bg-moss",
   },
   {
