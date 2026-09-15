@@ -19,14 +19,20 @@ follows; its numbered findings are cited in the code where they apply.
 | Find our cider | `/locator` | Frame done, embed slot empty |
 | Rare Apple Series | `/releases` | Done, calendar provisional |
 | Taproom | `/taproom` | Drafted, unlinked, `noindex` |
-| Cider detail | `/ciders/[slug]` | **Still the old design** |
-| Cider Club | `/cider-club` | **Still the old design** |
-| Our Story | `/our-story` | **Still the old design** |
-| Contact | `/contact` | **Still the old design** |
+| Cider detail | `/ciders/[slug]` | Done, all 20 static |
+| Cider Club | `/cider-club` | Done, join is email-only |
+| Our Story | `/our-story` | Done |
+| Contact | `/contact` | Done |
+| 404 / error | — | Done |
 
-Shell, age gate, footer and the design system are done and apply to
-every page, including the four not yet rebuilt — so those four work,
-they just still carry the old look inside the new chrome.
+Every page is Direction D. Nothing of the old design is left: the 34
+legacy components, the `brand` colours and the Oswald / Poppins /
+Bebas / Cinzel font entries have all been removed, and the global
+`h1–h6 { Oswald, uppercase }` rule with them. `components/ui/` (the
+shadcn primitives) stays.
+
+The whole site now prerenders — 33 static pages, including a page per
+cider from `generateStaticParams`.
 
 ## What I need from you
 
@@ -70,7 +76,31 @@ the data; say the word if the artboard is right:
   "Nothing here yet" rather than padding them. Either the scale should
   be three steps, or some sweetness values are wrong.
 
-### 3. Smaller unblocks
+### 3. Three things in the repo that are wrong today
+
+These are live on the current site, not introduced by the redesign.
+
+- **`(508) 555-5555`** is on the contact page of the current build. A
+  placeholder phone number is worse than no phone number, so the new
+  contact page shows the email address only. Send a real number and it
+  goes back.
+- **`public/images/respect-the-apple.png` is a blank white image.** It
+  is used on the live footer and Our Story page, where it renders as
+  nothing. Not used in the redesign.
+- **`public/images/our-story/stormalong-taproom.png` is not a
+  photograph of a taproom** — it is an architect's proposed-elevation
+  drawing, complete with "PROPOSED PATIO PLAN", "NEW SIGNAGE" and
+  "OUTHOUSE TO RECEIVE NEW MURAL". It is currently presented as a
+  picture of the place. The redesign uses a real product photograph
+  instead. This is also the strongest evidence yet that the taproom is
+  a plan rather than a place — see the taproom note below.
+
+Two forms used to answer "sent!" while throwing the message away. Both
+now refuse to: `/api/newsletter` and `/api/contact` return **501** with
+`configured: false` when no mail provider is set, and the forms say the
+message was not sent and give the address to write to instead.
+
+### 4. Smaller unblocks
 
 - **Locator embed.** Set `NEXT_PUBLIC_LOCATOR_EMBED_URL` and the finder
   drops straight into `/locator`. It is `finder.vtinfo.com`, custID SMC
@@ -88,6 +118,32 @@ the data; say the word if the artboard is right:
   and run sizes — `data/releases.ts`.
 - **Taproom.** Confirm it exists, or delete `app/taproom/` and the
   `taproom` entry in `site-config.ts`.
+- **Club signup.** There is no join mechanism and there never was —
+  the current site's "Join our Rare Apple Club" button is a styled
+  `<button>` with no href and no handler. The new page will not draw a
+  signup form over a checkout that does not exist, so Join opens an
+  email to `info@stormalong.com`, the address the membership copy
+  already gives for opting out. Point `joinUrl` in `data/club.ts` at a
+  real signup and the page switches to it.
+- **Cidery address.** `130 Oak Street, Sherborn, MA 01770` is in this
+  repo but not on the live contact page. Confirm it should be public.
+
+## Feature icons (review finding 04)
+
+The old badge row set `apple-gold` on 18 of 18 ciders and `apple-red`
+on 14 of 18, and labelled them "Gold Rush" and "Red Delicious" —
+varieties that appear in no cider's blend. A badge on every product
+distinguishes nothing, and those two were inaccurate besides, so they
+are gone. What is drawn now is only what varies: barrel-aged, Rare
+Apple Series, and the hibiscus / passionfruit / guava infusions, with
+the label on screen rather than in a hover tooltip that a phone cannot
+show.
+
+The three claims that hold for everything — 100% fresh pressed, never
+from concentrate, naturally gluten free — are stated once per detail
+page as house claims, not sprinkled onto individual cans as though
+they differed. They have no data field behind them; they come from the
+site's own FAQ and the "We respect the apple" copy.
 
 ## Conventions
 

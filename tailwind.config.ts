@@ -53,11 +53,6 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Brand colors (legacy direction — kept until the last old page is retired)
-        brand: {
-          navy: "#0F2A47",
-          gold: "#D4AF37",
-        },
         // ---------------------------------------------------------------
         // Press House (Direction D). The redesign's palette.
         // Rule from the canvas review, finding 09: type on a coloured
@@ -118,14 +113,13 @@ const config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-poppins)", "sans-serif"],
-        oswald: ["var(--font-oswald)"],
-        // Press House
+        // Press House runs on two faces and no more. The legacy
+        // direction's Oswald, Poppins, Bebas Neue and Cinzel are gone
+        // along with the pages that used them — layout.tsx stopped
+        // loading them, so their --font-* variables no longer resolve.
+        sans: ["var(--font-libre-franklin)", "Helvetica Neue", "Arial", "sans-serif"],
         slab: ["var(--font-alfa-slab)", "Georgia", "serif"],
         franklin: ["var(--font-libre-franklin)", "Helvetica Neue", "Arial", "sans-serif"],
-        "bebas-neue": ["var(--font-bebas-neue)"],
-        cinzel: ["var(--font-cinzel)"],
-        poppins: ["var(--font-poppins)"],
       },
       borderRadius: {
         lg: "var(--radius)",
