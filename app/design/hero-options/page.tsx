@@ -5,6 +5,7 @@ import type { ShelfCider } from "@/types/cider";
 import { ciderPhotos } from "@/lib/cider-photos";
 import {
   HeroBanner,
+  HeroCover,
   HeroStacked,
   HeroTriptych,
   HeroWithSpread,
@@ -52,6 +53,12 @@ const options = [
     name: "Plate, then a spread",
     note: "D with the strip composed rather than even: one shot leads at twice the size, the other two stack beside it.",
     render: (c: ShelfCider, p: string[]) => <HeroWithSpread cider={c} photos={p} />,
+  },
+  {
+    key: "H",
+    name: "The cover",
+    note: "A different skeleton rather than another arrangement of the same one. The photograph becomes the page and carries the name on a flat ink plate; the tile colour shrinks to a dateline band; the information stops being a panel and becomes an article with a rail, where the cutout appears at pack-shot size because the photograph above has already shown the can.",
+    render: (c: ShelfCider, p: string[]) => <HeroCover cider={c} photos={p} />,
   },
 ];
 

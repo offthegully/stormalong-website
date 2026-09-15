@@ -396,3 +396,178 @@ export function HeroWithSpread({
     </>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* H — the cover. A different skeleton, not a rearrangement.           */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Every option from A to G is the same frame: a coloured block holding
+ * the cutout can, an ink panel holding everything else, and the
+ * photographs added somewhere around them. H throws that frame away.
+ *
+ * The photograph becomes the page and carries the name on a flat ink
+ * plate — Press House furniture, so no gradient scrim, just a solid
+ * block with the gold rule on top. The tile colour survives as a
+ * dateline band rather than a fifth of the screen. And the information
+ * stops being a panel and becomes an article: lede, body, and a rail
+ * down the side where the cutout can appears at the size a product
+ * sheet gives a pack shot, because the photograph above has already
+ * shown the can at full size.
+ *
+ * The plate overlays the photograph from `sm` up. Below that it drops
+ * underneath, because at phone width a plate deep enough to hold the
+ * name would cover the middle of the shot, which is where the can is
+ * in almost all of this photography.
+ */
+export function HeroCover({
+  cider,
+  photos,
+}: {
+  cider: ShelfCider;
+  photos: string[];
+}) {
+  const [lead, ...rest] = photos;
+  if (!lead) return <HeroCurrent cider={cider} />;
+
+  const varieties = cider.provisional ? [] : appleVarieties(cider.apples);
+
+  return (
+    <>
+      <section className="relative">
+        <div className="relative h-[380px] sm:h-[520px] lg:h-[620px]">
+          <Image
+            src={lead}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="border-t-4 border-double border-gold bg-ink px-5 py-8 text-paper sm:absolute sm:bottom-0 sm:left-0 sm:max-w-[38rem] sm:px-10 sm:py-9 lg:max-w-[46rem] lg:px-14">
+          <div className="ph-label mb-3 text-gold">
+            {groupLabels[cider.group]} &middot; {cider.availability}
+          </div>
+          <h1 className="ph-slab text-[2.6rem] leading-[0.92] sm:text-[3.6rem] lg:text-[4.4rem]">
+            {cider.name}
+          </h1>
+          <p className="mt-4 max-w-[34ch] font-franklin text-lg font-light leading-snug text-paper/85">
+            {cider.flavor}
+          </p>
+        </div>
+      </section>
+
+      {/* The dateline. All four figures on one line, the way a masthead
+          carries its volume and price. */}
+      <div style={{ backgroundColor: cider.tileColor }}>
+        <dl className="ph-gutter grid grid-cols-2 gap-x-6 gap-y-5 py-6 text-paper-light sm:grid-cols-4">
+          {[
+            ["ABV", cider.provisional ? <Tbc key="a">{cider.abv}%</Tbc> : `${cider.abv}%`],
+            [
+              "Sweetness",
+              cider.provisional ? (
+                <Tbc key="s">{sweetnessLabel(cider.sweetness)}</Tbc>
+              ) : (
+                sweetnessLabel(cider.sweetness)
+              ),
+            ],
+            ["Apples", varieties.length > 0 ? varieties.length : <Tbc key="p" />],
+            ["Available", cider.availability],
+          ].map(([label, value]) => (
+            <div key={String(label)}>
+              <dt className="ph-label mb-1 text-[0.53rem] text-paper-light">
+                {label}
+              </dt>
+              <dd className="ph-num text-[0.95rem] font-semibold">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      {/* The article. */}
+      <section className="ph-gutter grid gap-x-14 gap-y-10 py-12 lg:grid-cols-12 lg:py-16">
+        <div className="lg:col-span-7">
+          <p className="max-w-[40ch] font-franklin text-[1.45rem] font-light leading-[1.3] text-ink sm:text-[1.7rem]">
+            {cider.description}
+          </p>
+          {varieties.length > 0 && (
+            <div className="mt-9 border-t border-ink/15 pt-6">
+              <div className="ph-label mb-3.5 text-[0.53rem] text-prose-faint">
+                Pressed from
+              </div>
+              <ul className="flex flex-wrap gap-x-7 gap-y-2.5">
+                {varieties.map((variety) => (
+                  <li
+                    key={variety}
+                    className="ph-slab text-[1.05rem] leading-none text-ink"
+                  >
+                    {variety}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {cider.features.some((f) => BADGE_FEATURES.includes(f)) && (
+            <div className="mt-8 border-t border-ink/15 pt-6">
+              <CiderBadges features={cider.features} />
+            </div>
+          )}
+        </div>
+
+        {/* The rail. The cutout at pack-shot size, not hero size. */}
+        <aside className="lg:col-span-5">
+          <div className="border-2 border-ink">
+            <div
+              style={{ backgroundColor: cider.tileColor }}
+              className="flex items-center justify-center px-6 py-8"
+            >
+              <Image
+                src={cider.image}
+                alt={`A can of ${cider.name}`}
+                width={300}
+                height={700}
+                className="h-[190px] w-auto object-contain drop-shadow-[0_18px_32px_rgba(0,0,0,0.45)]"
+              />
+            </div>
+            <div className="px-6 py-7">
+              <SweetnessStrip
+                value={cider.sweetness}
+                provisional={cider.provisional}
+                onInk={false}
+              />
+              <div className="mt-7 flex flex-col gap-3">
+                <PhButton
+                  href={routes.locator}
+                  tone="brick"
+                  icon={<PinIcon size={15} />}
+                >
+                  Find it near me
+                </PhButton>
+                <PhButton href={routes.ciders} tone="outline">
+                  All the ciders
+                </PhButton>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      {rest.length > 0 && (
+        <ul className="grid gap-px bg-ink/15 sm:grid-cols-2">
+          {rest.slice(0, 2).map((photo) => (
+            <li key={photo} className="relative aspect-[4/3]">
+              <Image
+                src={photo}
+                alt=""
+                fill
+                sizes="(min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
