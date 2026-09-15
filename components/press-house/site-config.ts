@@ -97,3 +97,28 @@ export const distribution: {
   retailCount: null,
   onPremiseCount: null,
 };
+
+/**
+ * The stockist finder.
+ *
+ * stormalong.com/locator already runs a working embedded distributor
+ * finder from finder.vtinfo.com (custID SMC), and every "Find It" on
+ * the live cider pages points at it. The rebuild's own /locator was a
+ * 404 — a regression the redesign introduced, not a missing capability.
+ *
+ * This page supplies the frame; the finder keeps its own data. Set
+ * NEXT_PUBLIC_LOCATOR_EMBED_URL to the embed's URL and it drops in.
+ * Until then the page renders a clearly marked slot rather than a
+ * search box that does nothing.
+ *
+ * Still to decide with the vendor: whether the embed can be themed, or
+ * whether its data can be read directly. A native list would let each
+ * cider link straight to its own results.
+ */
+export const locator = {
+  embedUrl: process.env.NEXT_PUBLIC_LOCATOR_EMBED_URL ?? null,
+  vendor: "finder.vtinfo.com",
+  customerId: "SMC",
+  /** The finder that is live today, for as long as ours has no embed. */
+  liveFallbackUrl: "https://stormalong.com/locator",
+} as const;
