@@ -133,15 +133,36 @@ message was not sent and give the address to write to instead.
 The detail pages carry a full-bleed photo band built from
 `public/images/cider-details-images/` — 50 shots, three per cider,
 1800 to 4500px. They are the best images in the repo and they were on
-the old detail pages; the first rebuild dropped them. The lead shot
-runs full width, the rest sit two-up beneath it, square corners and
-hairline gutters like the tiles.
+the old detail pages; the first rebuild dropped them.
+
+`components/press-house/photo-spread.tsx` sits directly under the hero
+with no section furniture between them: the can has just been shown as
+a cutout on a flat colour, and these are the same cider as a
+photograph, so the join is the point. The band is not three equal
+panes — one shot leads at two thirds width and full height, the other
+two stack beside it in a 420px row, which reads as a composed spread
+rather than a row of thumbnails. Square corners and hairline gutters
+like the tiles. Below `sm` it unwinds to one column at 4:3, because a
+fixed-height row split three ways on a phone crops every shot to a
+letterbox it was not composed for.
+
+Six other arrangements were built and compared before this one, all
+now deleted. The two that lost narrowly: the same spread with the
+photograph stacked over the colour plate inside the hero, and a
+"cover" layout that made the photograph the page and dropped the
+cutout to pack-shot size. The cover is the better-looking page when
+the photography is strong, but it falls back to the plain hero for
+every cider with no photos, which would have given five of them a
+visibly different page.
 
 The manifest in `lib/cider-photos.ts` is read off disk at build time
 rather than typed out, so adding a `<slug>-4.jpg` is enough to make it
-appear. Ragtime Reserve has two photos and degrades to a two-up row;
-Alyson's Orchard and Blue Hills have none and get no band — the same
-two ciders missing from `data/ciders.ts`.
+appear. It keys on the filename prefix, which is why the three Lady
+Legendary shots were renamed from `the-lady-legendary-*` to
+`lady-legendary-*`: the slug in `data/ciders.ts` is `lady-legendary`,
+so the page had silently been showing no photographs at all. Ragtime
+Reserve has two and degrades to two equal halves; Pog Punch, Alyson's
+Orchard and Blue Hills have none and get no band.
 
 Two things worth doing when you have a moment:
 
