@@ -256,3 +256,143 @@ export function HeroWithStrip({
     </>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* E — plate over photograph, stacked in the left column.              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The compromise between C and D: photograph and can sit together at
+ * the top, but stacked rather than side by side, so the information
+ * column keeps its full seven columns and the two images are never
+ * the same size — which is what stopped the eye in C, where the can
+ * appeared once as a cutout and again inside the photograph.
+ */
+export function HeroStacked({
+  cider,
+  photos,
+}: {
+  cider: ShelfCider;
+  photos: string[];
+}) {
+  const lead = photos[0];
+
+  return (
+    <section className="grid lg:grid-cols-12">
+      <div className="flex flex-col lg:col-span-5">
+        <div
+          style={{ backgroundColor: cider.tileColor }}
+          className="relative flex flex-grow items-center justify-center px-8 py-11"
+        >
+          <GroupTag cider={cider} />
+          <Image
+            src={cider.image}
+            alt={`A can of ${cider.name}`}
+            width={300}
+            height={700}
+            className="h-[250px] w-auto object-contain drop-shadow-[0_22px_40px_rgba(0,0,0,0.5)] lg:h-[330px]"
+          />
+        </div>
+        {lead && (
+          <div className="relative h-[190px] shrink-0 lg:h-[230px]">
+            <Image
+              src={lead}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
+      </div>
+      <InfoPanel cider={cider} className="lg:col-span-7" />
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* F — a wide photograph above the hero.                               */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The photograph leads and the hero is untouched beneath it. Costs
+ * nothing in width and nothing in legibility; it costs height, which
+ * pushes the specs further down.
+ */
+export function HeroBanner({
+  cider,
+  photos,
+}: {
+  cider: ShelfCider;
+  photos: string[];
+}) {
+  const lead = photos[0];
+
+  return (
+    <>
+      {lead && (
+        <div className="relative h-[240px] sm:h-[320px] lg:h-[420px]">
+          <Image
+            src={lead}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+      )}
+      <HeroCurrent cider={cider} />
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* G — hero, then one large photograph and two small.                  */
+/* ------------------------------------------------------------------ */
+
+/**
+ * D, but the strip is not three equal panes. One shot leads at twice
+ * the size and the other two stack beside it, which reads as a
+ * composed spread rather than a row of thumbnails.
+ */
+export function HeroWithSpread({
+  cider,
+  photos,
+}: {
+  cider: ShelfCider;
+  photos: string[];
+}) {
+  const [lead, ...rest] = photos;
+
+  return (
+    <>
+      <HeroCurrent cider={cider} />
+      {lead && (
+        <ul className="grid gap-px bg-ink/15 sm:h-[420px] sm:grid-cols-3 sm:grid-rows-2">
+          <li className="relative aspect-[16/10] sm:col-span-2 sm:row-span-2 sm:aspect-auto">
+            <Image
+              src={lead}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 67vw, 100vw"
+              className="object-cover"
+            />
+          </li>
+          {rest.slice(0, 2).map((photo) => (
+            <li key={photo} className="relative aspect-[4/3] sm:aspect-auto">
+              <Image
+                src={photo}
+                alt=""
+                fill
+                sizes="(min-width: 640px) 33vw, 100vw"
+                className="object-cover"
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { shelf, getCider } from "@/lib/catalogue";
+import type { ShelfCider } from "@/types/cider";
 import { ciderPhotos } from "@/lib/cider-photos";
 import {
-  HeroCurrent,
-  HeroPhoto,
+  HeroBanner,
+  HeroStacked,
   HeroTriptych,
+  HeroWithSpread,
   HeroWithStrip,
 } from "@/components/press-house/detail/hero-variants";
 
@@ -22,32 +24,34 @@ export const metadata: Metadata = {
 
 const options = [
   {
-    key: "A",
-    name: "What is there now",
-    note: "Flat colour plate, cutout can. Photographs sit far down the page, below the awards and the blend.",
-    render: (c: ReturnType<typeof getCider>, p: string[]) =>
-      c ? <HeroCurrent cider={c} /> : null,
-  },
-  {
-    key: "B",
-    name: "Photograph takes the plate",
-    note: "The cutout goes. Colour survives as the solid tag in the corner, which still ties back to the tile you clicked.",
-    render: (c: ReturnType<typeof getCider>, p: string[]) =>
-      c ? <HeroPhoto cider={c} photos={p} /> : null,
-  },
-  {
     key: "C",
     name: "Photograph, plate, information",
-    note: "Three blocks in a row. Photograph and can side by side at the top; the information column narrows to half.",
-    render: (c: ReturnType<typeof getCider>, p: string[]) =>
-      c ? <HeroTriptych cider={c} photos={p} /> : null,
+    note: "Three blocks in a row. Watch the can: on most ciders it appears twice, once as the cutout and again inside the photograph.",
+    render: (c: ShelfCider, p: string[]) => <HeroTriptych cider={c} photos={p} />,
   },
   {
     key: "D",
     name: "Plate, then a strip",
-    note: "Hero untouched; all three photographs move up into a band directly beneath it.",
-    render: (c: ReturnType<typeof getCider>, p: string[]) =>
-      c ? <HeroWithStrip cider={c} photos={p} /> : null,
+    note: "Hero untouched; all three photographs move up into an even band beneath it.",
+    render: (c: ShelfCider, p: string[]) => <HeroWithStrip cider={c} photos={p} />,
+  },
+  {
+    key: "E",
+    name: "Plate over photograph",
+    note: "C, stacked instead of side by side. Photograph and can together at the top, but at different sizes so they stop competing — and the information column keeps its full width.",
+    render: (c: ShelfCider, p: string[]) => <HeroStacked cider={c} photos={p} />,
+  },
+  {
+    key: "F",
+    name: "Photograph above the hero",
+    note: "The photograph leads, edge to edge, and the hero is untouched beneath it. Costs no width and no legibility; costs height, which pushes the specs down.",
+    render: (c: ShelfCider, p: string[]) => <HeroBanner cider={c} photos={p} />,
+  },
+  {
+    key: "G",
+    name: "Plate, then a spread",
+    note: "D with the strip composed rather than even: one shot leads at twice the size, the other two stack beside it.",
+    render: (c: ShelfCider, p: string[]) => <HeroWithSpread cider={c} photos={p} />,
   },
 ];
 
