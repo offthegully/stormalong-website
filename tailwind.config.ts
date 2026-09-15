@@ -53,15 +53,76 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Brand colors
+        // Brand colors (legacy direction — kept until the last old page is retired)
         brand: {
           navy: "#0F2A47",
           gold: "#D4AF37",
+        },
+        // ---------------------------------------------------------------
+        // Press House (Direction D). The redesign's palette.
+        // Rule from the canvas review, finding 09: type on a coloured
+        // ground is always `parchment` on a tile from `cider.*`, and gold
+        // only ever sits on ink. Every pairing below clears 4.5:1.
+        // ---------------------------------------------------------------
+        ink: {
+          DEFAULT: "#0A1A2B", // navy — mastheads, footers, dark sections
+          deep: "#07131f",
+        },
+        paper: {
+          DEFAULT: "#F0E6D2", // cream — the page ground
+          light: "#FBF6EA", // type on coloured tiles, raised cards
+          dark: "#E5D9C0", // banded sections on cream
+        },
+        gold: {
+          DEFAULT: "#C9A227",
+          dark: "#9A6B24",
+          pale: "#F5E6BE",
+        },
+        brick: {
+          DEFAULT: "#A8321F", // primary action
+          dark: "#7C2314",
+          light: "#A8402C",
+        },
+        wine: "#63202C",
+        moss: {
+          DEFAULT: "#35604A",
+          light: "#3D5A49",
+        },
+        // Ink-on-cream text ramp
+        prose: {
+          DEFAULT: "#4A4638",
+          muted: "#6B6450",
+          faint: "#8A836C",
+          fainter: "#B3AB92",
+        },
+        // Per-cider tile grounds. Not an eyedropper of the label: hue is
+        // taken from the can, then separated *by value* within each hue
+        // family so no two tiles read alike. Lowest contrast against
+        // paper.light is 5.44:1. See canvas review finding 09.
+        cider: {
+          "legendary-dry": "#164A7A",
+          "farmstand-unfiltered": "#12482C",
+          "mass-appeal": "#07253F",
+          "light-of-the-sun": "#5A6015",
+          "red-skies-at-night": "#722710",
+          "massive-appeal": "#471813",
+          "alysons-orchard": "#216156",
+          "blue-hills": "#68521A",
+          "happy-holidays": "#161206",
+          "white-mountain-magic": "#3C3831",
+          "blue-skies": "#27636B",
+          "beachcomber-cidah": "#194340",
+          "boston-heirloom": "#352A0C",
+          "grand-banks": "#3D5A49",
+          "kingston-black": "#181A22",
         },
       },
       fontFamily: {
         sans: ["var(--font-poppins)", "sans-serif"],
         oswald: ["var(--font-oswald)"],
+        // Press House
+        slab: ["var(--font-alfa-slab)", "Georgia", "serif"],
+        franklin: ["var(--font-libre-franklin)", "Helvetica Neue", "Arial", "sans-serif"],
         "bebas-neue": ["var(--font-bebas-neue)"],
         cinzel: ["var(--font-cinzel)"],
         poppins: ["var(--font-poppins)"],

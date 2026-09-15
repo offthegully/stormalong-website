@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "redesign",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "next", "dev", "--port", "3001"],
+      "port": 3001
+    }
+  ]
+}

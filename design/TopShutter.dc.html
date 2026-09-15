@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Libre+Franklin:wght@300;400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; background: #0A1A2B; }
+    a { color: #C9A227; } a:hover { color: #E8C55A; }
+    .slab { font-family: "Alfa Slab One", Georgia, serif; }
+    .lbl { text-transform: uppercase; letter-spacing: 0.22em; font-size: 10.5px; font-weight: 700; }
+    .vert { writing-mode: vertical-rl; transform: rotate(180deg); }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #0A1A2B; color: #F0E6D2;">
+
+  <div style="background: #F0E6D2; padding: 12px 56px; display: flex; align-items: baseline; justify-content: space-between;">
+    <span class="lbl" style="color: #A8321F;">Option 4</span>
+    <span class="slab" style="color: #0A1A2B; font-size: 16px;">SHUTTER &mdash; panels that open under the cursor</span>
+    <span class="lbl" style="color: rgba(10,26,43,.5);">Handles 3&ndash;4 &middot; nothing moves on its own</span>
+  </div>
+
+  <div style="border-bottom: 4px double #C9A227; padding: 14px 56px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; gap: 22px; width: 380px;">
+      <span class="lbl">Ciders</span><span class="lbl">Releases</span><span class="lbl">Taproom</span><span class="lbl">The Club</span>
+    </div>
+    <div class="slab" style="font-size: 23px; letter-spacing: 0.04em;">STORMALONG</div>
+    <div style="width: 380px; display: flex; justify-content: flex-end;">
+      <span class="lbl" style="background: #A8321F; color: #F0E6D2; padding: 11px 20px; border: 2px solid #C9A227;">Find a can near you</span>
+    </div>
+  </div>
+
+  <!-- SHUTTER -->
+  <div style="display: flex; height: 430px;">
+
+    <!-- open panel -->
+    <div style="flex-grow: 1; background: #63202C; border-right: 2px solid #C9A227; padding: 34px 36px; display: flex; gap: 28px; align-items: center; position: relative;">
+      <span class="lbl" style="position: absolute; top: 16px; left: 36px; color: #C9A227; font-size: 9px;">&#9733; Open &middot; No. 07 &#9733;</span>
+      <div style="flex-grow: 1;">
+        <div class="lbl" style="color: rgba(240,230,210,.6); font-size: 9px; margin-bottom: 12px;">Limited release</div>
+        <h1 class="slab" style="font-size: 46px; line-height: 0.98; margin: 0 0 14px 0;">KINGSTON<br>BLACK 2026</h1>
+        <p style="font-size: 15.5px; line-height: 1.58; color: rgba(240,230,210,.84); margin: 0 0 20px 0; font-weight: 300; max-width: 40ch;">Marzipan, sour cherry, a long tannic finish. 1,400 bottles and no more until next autumn.</p>
+        <span class="lbl" style="background: #C9A227; color: #0A1A2B; padding: 13px 24px; display: inline-block;">Find it near me</span>
+      </div>
+      <img src="can-kingston.png" alt="Kingston Black" style="height: 280px; width: auto; flex-shrink: 0; filter: drop-shadow(0 16px 30px rgba(0,0,0,.5));">
+    </div>
+
+    <!-- closed panels -->
+    <div style="width: 128px; background: #35604A; border-right: 2px solid rgba(240,230,210,.25); padding: 26px 0 22px 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+      <img src="can-farmstand.png" alt="Farmstand Unfiltered" style="height: 128px; width: auto;">
+      <div class="vert slab" style="font-size: 21px; letter-spacing: 0.02em;">FARMSTAND</div>
+      <div class="lbl" style="color: #C9A227; font-size: 8px;">Seasonal</div>
+    </div>
+
+    <div style="width: 128px; background: #1B3A6B; border-right: 2px solid rgba(240,230,210,.25); padding: 26px 0 22px 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+      <div style="width: 54px; height: 82px; border: 2px solid #C9A227; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="slab" style="color: #C9A227; font-size: 19px; line-height: 1;">19.2</div>
+        <div class="lbl" style="color: #C9A227; font-size: 7px; margin-top: 2px;">oz</div>
+      </div>
+      <div class="vert slab" style="font-size: 21px; letter-spacing: 0.02em;">TALL CANS</div>
+      <div class="lbl" style="color: #C9A227; font-size: 8px;">New</div>
+    </div>
+
+    <div style="width: 128px; background: #0A1A2B; padding: 26px 0 22px 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+      <img src="captain.png" alt="Captain Stormalong" style="height: 112px; width: auto;">
+      <div class="vert slab" style="font-size: 21px; letter-spacing: 0.02em;">TAPROOM</div>
+      <div class="lbl" style="color: #A8321F; font-size: 8px;">Thu &ndash; Sun</div>
+    </div>
+
+  </div>
+
+  <div style="background: #C9A227; color: #0A1A2B; padding: 11px 56px; display: flex; align-items: center; justify-content: center; gap: 14px;">
+    <span class="lbl" style="font-size: 9.5px;">&#9733; Hover or tap any panel to open it &mdash; nothing rotates by itself &#9733;</span>
+  </div>
+
+  <div style="background: #071523; padding: 18px 56px 22px 56px; border-top: 1px solid rgba(201,162,39,.3);">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;">
+      <div style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.72);"><strong style="color: #C9A227;">Good at:</strong> giving the lead real space without hiding the others. All four are on screen and named at all times &mdash; the closed panels are labelled and carry their can, so nobody has to guess what is behind them. The reader opens what they want; nothing advances on a timer.</div>
+      <div style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.72);"><strong style="color: #A8321F;">Costs:</strong> it needs a real interaction to pay off, and the three closed panels get a fraction of the attention the open one does. Caps out at four. On a phone the shutter has to become a stack, so you are building two layouts.</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":780}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

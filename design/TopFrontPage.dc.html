@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Libre+Franklin:wght@300;400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; background: #0A1A2B; }
+    a { color: #C9A227; } a:hover { color: #E8C55A; }
+    .slab { font-family: "Alfa Slab One", Georgia, serif; }
+    .lbl { text-transform: uppercase; letter-spacing: 0.22em; font-size: 10.5px; font-weight: 700; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #0A1A2B; color: #F0E6D2;">
+
+  <div style="background: #F0E6D2; padding: 12px 56px; display: flex; align-items: baseline; justify-content: space-between;">
+    <span class="lbl" style="color: #A8321F;">Option 1</span>
+    <span class="slab" style="color: #0A1A2B; font-size: 16px;">FRONT PAGE &mdash; one lead, three below it, all visible</span>
+    <span class="lbl" style="color: rgba(10,26,43,.5);">Handles 2&ndash;4 &middot; no interaction needed</span>
+  </div>
+
+  <!-- masthead -->
+  <div style="border-bottom: 4px double #C9A227; padding: 14px 56px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; gap: 22px; width: 380px;">
+      <span class="lbl">Ciders</span><span class="lbl">Releases</span><span class="lbl">Taproom</span><span class="lbl">The Club</span>
+    </div>
+    <div class="slab" style="font-size: 23px; letter-spacing: 0.04em;">STORMALONG</div>
+    <div style="width: 380px; display: flex; justify-content: flex-end;">
+      <span class="lbl" style="background: #A8321F; color: #F0E6D2; padding: 11px 20px; border: 2px solid #C9A227;">Find a can near you</span>
+    </div>
+  </div>
+
+  <div style="padding: 26px 56px 30px 56px;">
+    <div style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 22px;">
+
+      <!-- LEAD -->
+      <div style="background: #63202C; border: 2px solid #C9A227; padding: 34px 36px; display: flex; gap: 30px; align-items: center; min-height: 400px;">
+        <div style="flex-grow: 1;">
+          <div style="display: inline-block; border: 2px solid #C9A227; padding: 5px 12px; margin-bottom: 18px;">
+            <span class="lbl" style="color: #C9A227; font-size: 9.5px;">&#9733; Limited &middot; Release No. 07 &#9733;</span>
+          </div>
+          <h1 class="slab" style="font-size: 52px; line-height: 0.96; margin: 0 0 14px 0;">KINGSTON<br>BLACK 2026</h1>
+          <p style="font-size: 16px; line-height: 1.58; color: rgba(240,230,210,.84); margin: 0 0 20px 0; font-weight: 300;">Marzipan, sour cherry, a long tannic finish. 1,400 bottles and no more until next autumn.</p>
+          <span class="lbl" style="background: #C9A227; color: #0A1A2B; padding: 13px 24px; display: inline-block;">Find it near me</span>
+        </div>
+        <img src="can-kingston.png" alt="Kingston Black" style="height: 270px; width: auto; flex-shrink: 0; filter: drop-shadow(0 16px 30px rgba(0,0,0,.5));">
+      </div>
+
+      <!-- THREE SECONDARIES -->
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="background: #35604A; border: 2px solid rgba(240,230,210,.3); padding: 20px 22px; display: flex; gap: 18px; align-items: center; flex-grow: 1;">
+          <img src="can-farmstand.png" alt="Farmstand Unfiltered" style="height: 94px; width: auto; flex-shrink: 0;">
+          <div>
+            <div class="lbl" style="color: #C9A227; font-size: 9px; margin-bottom: 7px;">Seasonal &middot; while it lasts</div>
+            <div class="slab" style="font-size: 21px; line-height: 1.08; margin-bottom: 6px;">FARMSTAND IS POURING</div>
+            <div style="font-size: 13.5px; line-height: 1.5; color: rgba(240,230,210,.75);">Cloudy and tangy, pressed at harvest.</div>
+          </div>
+        </div>
+        <div style="background: #1B3A6B; border: 2px solid rgba(240,230,210,.3); padding: 20px 22px; display: flex; gap: 18px; align-items: center; flex-grow: 1;">
+          <div style="width: 62px; height: 94px; border: 2px solid #C9A227; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+            <div class="slab" style="color: #C9A227; font-size: 22px; line-height: 1;">19.2</div>
+            <div class="lbl" style="color: #C9A227; font-size: 8px; margin-top: 3px;">oz</div>
+          </div>
+          <div>
+            <div class="lbl" style="color: #C9A227; font-size: 9px; margin-bottom: 7px;">New format</div>
+            <div class="slab" style="font-size: 21px; line-height: 1.08; margin-bottom: 6px;">TALL CANS HAVE LANDED</div>
+            <div style="font-size: 13.5px; line-height: 1.5; color: rgba(240,230,210,.75);">Bigger pour, in stores now.</div>
+          </div>
+        </div>
+        <div style="background: #0A1A2B; border: 2px solid #C9A227; padding: 20px 22px; display: flex; gap: 18px; align-items: center; flex-grow: 1;">
+          <img src="captain.png" alt="Captain Stormalong" style="height: 82px; width: auto; flex-shrink: 0;">
+          <div>
+            <div class="lbl" style="color: #A8321F; font-size: 9px; margin-bottom: 7px;">Every Thursday to Sunday</div>
+            <div class="slab" style="font-size: 21px; line-height: 1.08; margin-bottom: 6px;">THE TAPROOM IS OPEN</div>
+            <div style="font-size: 13.5px; line-height: 1.5; color: rgba(240,230,210,.75);">Including what never gets canned.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="background: #071523; padding: 18px 56px 22px 56px; border-top: 1px solid rgba(201,162,39,.3);">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;">
+      <div style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.72);"><strong style="color: #C9A227;">Good at:</strong> explicit hierarchy. One thing is obviously the lead and three others are obviously secondary, and a reader takes all four in without touching anything. Newspaper logic &mdash; it is what a broadside does.</div>
+      <div style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.72);"><strong style="color: #A8321F;">Costs:</strong> the three small slots are genuinely small &mdash; a headline and one line each. On a phone they stack into a long column under the lead. Needs a decent image or can for every slot.</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":760}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

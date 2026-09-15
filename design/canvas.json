@@ -1,0 +1,365 @@
+{
+  "artboards": [
+    {
+      "file": "Review.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 900,
+      "h": 2400,
+      "page": "page-1",
+      "title": "14 findings",
+      "print": "flow"
+    },
+    {
+      "file": "HomeRevised.dc.html",
+      "x": 1020,
+      "y": 0,
+      "w": 1440,
+      "h": 2180,
+      "page": "page-1",
+      "title": "Home, with the fixes applied"
+    },
+    {
+      "file": "DirectionA.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1540,
+      "page": "page-2",
+      "title": "A — Orchard Table"
+    },
+    {
+      "file": "DirectionB.dc.html",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 1580,
+      "page": "page-2",
+      "title": "B — Scrimshaw (chosen)"
+    },
+    {
+      "file": "DirectionC.dc.html",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 1500,
+      "page": "page-2",
+      "title": "C — Shelf"
+    },
+    {
+      "file": "Main.dc.html",
+      "x": 1560,
+      "y": 1780,
+      "w": 1440,
+      "h": 3020,
+      "page": "page-2",
+      "title": "B built out"
+    },
+    {
+      "file": "MainMobile.dc.html",
+      "x": 3120,
+      "y": 1780,
+      "w": 390,
+      "h": 2320,
+      "page": "page-2",
+      "title": "B on a phone"
+    },
+    {
+      "file": "ResearchNotes.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 900,
+      "h": 2320,
+      "page": "page-3",
+      "title": "What the category does",
+      "print": "flow"
+    },
+    {
+      "file": "DirectionD.dc.html",
+      "x": 1020,
+      "y": 0,
+      "w": 1440,
+      "h": 3400,
+      "page": "page-3",
+      "title": "D — Press House"
+    },
+    {
+      "file": "TopFrontPage.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 780,
+      "page": "page-4",
+      "title": "1 — Front page (chosen)"
+    },
+    {
+      "file": "TopPinnedBills.dc.html",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 860,
+      "page": "page-4",
+      "title": "2 — Pinned bills"
+    },
+    {
+      "file": "TopManifest.dc.html",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 900,
+      "page": "page-4",
+      "title": "3 — The manifest (not taken)"
+    },
+    {
+      "file": "TopShutter.dc.html",
+      "x": 0,
+      "y": 1040,
+      "w": 1440,
+      "h": 800,
+      "page": "page-4",
+      "title": "4 — Shutter"
+    },
+    {
+      "file": "TopBands.dc.html",
+      "x": 1560,
+      "y": 1040,
+      "w": 1440,
+      "h": 920,
+      "page": "page-4",
+      "title": "5 — Bands"
+    },
+    {
+      "file": "TopMobile.dc.html",
+      "x": 2580,
+      "y": 0,
+      "w": 390,
+      "h": 1920,
+      "page": "page-3",
+      "title": "D on a phone"
+    },
+    {
+      "file": "CanvasReview.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 900,
+      "h": 5700,
+      "page": "page-5",
+      "title": "What to fix in the canvas",
+      "print": "flow"
+    },
+    {
+      "file": "Ciders.dc.html",
+      "x": 1020,
+      "y": 0,
+      "w": 1440,
+      "h": 4260,
+      "page": "page-5",
+      "title": "Our Ciders"
+    },
+    {
+      "file": "CiderDetail.dc.html",
+      "x": 2580,
+      "y": 0,
+      "w": 1440,
+      "h": 2700,
+      "page": "page-5",
+      "title": "Legendary Dry"
+    },
+    {
+      "file": "Locator.dc.html",
+      "x": 4140,
+      "y": 0,
+      "w": 1440,
+      "h": 2160,
+      "page": "page-5",
+      "title": "Find our cider"
+    },
+    {
+      "file": "Releases.dc.html",
+      "x": 1020,
+      "y": 5820,
+      "w": 1440,
+      "h": 2580,
+      "page": "page-5",
+      "title": "Rare Apple Series"
+    },
+    {
+      "file": "Taproom.dc.html",
+      "x": 2580,
+      "y": 5820,
+      "w": 1440,
+      "h": 2460,
+      "page": "page-5",
+      "title": "Taproom (unverified)"
+    },
+    {
+      "file": "Club.dc.html",
+      "x": 4140,
+      "y": 5820,
+      "w": 1440,
+      "h": 2600,
+      "page": "page-5",
+      "title": "Rare Apple Club"
+    },
+    {
+      "file": "OurStory.dc.html",
+      "x": 1020,
+      "y": 8540,
+      "w": 1440,
+      "h": 2920,
+      "page": "page-5",
+      "title": "Our Story"
+    },
+    {
+      "file": "Contact.dc.html",
+      "x": 2580,
+      "y": 8540,
+      "w": 1440,
+      "h": 1540,
+      "page": "page-5",
+      "title": "Contact"
+    },
+    {
+      "file": "CidersMobile.dc.html",
+      "x": 4140,
+      "y": 8540,
+      "w": 390,
+      "h": 5950,
+      "page": "page-5",
+      "title": "Ciders on a phone"
+    },
+    {
+      "file": "CiderDetailMobile.dc.html",
+      "x": 4650,
+      "y": 8540,
+      "w": 390,
+      "h": 2500,
+      "page": "page-5",
+      "title": "Detail on a phone"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "read-me-1",
+      "x": 0,
+      "y": -210,
+      "w": 900,
+      "page": "page-1",
+      "text": "Fourteen findings against stormalong.offthegully.com, the local build and the live site.\n\nThe sheet on the left is the argument. The page on the right is the same redesign with the five most consequential fixes applied — same navy, same gold, same Oswald, same sections in the same order. Numbered pins on the page match the numbered findings on the sheet."
+    },
+    {
+      "id": "read-me-2",
+      "x": 0,
+      "y": -230,
+      "w": 980,
+      "page": "page-2",
+      "text": "Three directions, deliberately far apart — warm editorial, folkloric broadside, stripped retail.\n\nYou picked B. It stays exactly as it was, built out below as a full page plus the phone layout. A and C are kept for the record, not for further work."
+    },
+    {
+      "id": "leading-note",
+      "x": 0,
+      "y": 1780,
+      "w": 620,
+      "page": "page-2",
+      "text": "B, built out: full home page plus the phone layout.\n\nTwo bracketed placeholders to watch — stockist counts and sugar figures. Those need real data before anything ships."
+    },
+    {
+      "id": "read-me-3",
+      "x": 0,
+      "y": -250,
+      "w": 1100,
+      "page": "page-3",
+      "text": "D is B's voice on a spine borrowed from the category — built to explain the cider and say where it is, not to take payment.\n\nTop of page is the front-page mosaic: one lead and three secondaries, all on screen, nothing moving. Under it, the trophy case — 26 medals counted from the awards already in data/ciders.ts, across 8 ciders and 7 competitions, 2015 to 2024. Nothing in that section is invented.\n\nNote what is now missing: with the manifest gone, nothing on the page says what lands next. Say the word if you want a one-line next-release strip somewhere."
+    },
+    {
+      "id": "top-options",
+      "x": 3120,
+      "y": 1040,
+      "w": 960,
+      "page": "page-4",
+      "text": "Five ways to put 2–4 things at the top without a carousel.\n\nYou took 1. The manifest (3) was dropped — it would have needed updating most weeks, which is a job nobody does for long. The trophy case took its place in D: 26 real medals that change maybe twice a year.\n\n2, 4 and 5 are kept here for the record."
+    },
+    {
+      "id": "read-me-5",
+      "x": 0,
+      "y": -300,
+      "w": 1080,
+      "page": "page-5",
+      "text": "Eight pages in Direction D's language, plus the two phone layouts that matter most.\n\nThe copy is yours. Taglines and flavour lines come from each cider's own page, the founding story and Sherborn mill history from Our Story, the full membership terms from the Cider Club page, and the Rare Apple Series description from the cider pages. No em dashes, no jokes.\n\nTwo things to decide: there is no taproom anywhere on stormalong.com, so that page is marked unverified and may want deleting; and /shop is an empty stub on the live site as well as a 404 in the rebuild."
+    },
+    {
+      "id": "note-locator-5",
+      "x": 4140,
+      "y": -150,
+      "w": 620,
+      "page": "page-5",
+      "text": "The locator is the one to look at first — and its premise changed.\n\nstormalong.com/locator is already live and working, running an embedded distributor finder. What 404s is the redesign's own /locator and /shop, so the dead buttons are a regression the rebuild introduced, not a missing capability. This page therefore wraps the finder you already licence rather than inventing one — which makes it the cheapest high-value page in the set."
+    },
+    {
+      "id": "note-mobile-5",
+      "x": 5160,
+      "y": 8540,
+      "w": 620,
+      "page": "page-5",
+      "text": "Phone layouts for the two pages that carry the most traffic and change most between breakpoints.\n\nThe other six hold up at 390 px on the same rules — one column, filter chips scrolling horizontally, the primary action full-width — but say the word if you want them drawn."
+    },
+    {
+      "id": "note-footer-5",
+      "x": 1020,
+      "y": 11600,
+      "w": 620,
+      "page": "page-5",
+      "text": "The footer on all eight pages is new.\n\nNothing in the canvas had one, and it is where three earlier findings actually land: the newsletter that currently discards addresses, the \"drink responsibly\" line, and the legal chrome. Treat it as a proposal rather than a decision."
+    },
+    {
+      "id": "b-superseded",
+      "x": 1560,
+      "y": -150,
+      "w": 660,
+      "page": "page-2",
+      "text": "Where this ended up: Direction D is what is being built.\n\nB is still the chosen voice — D, on the next page, is B's language rebuilt on a spine taken from the category, and it is what every page mockup on \"The other pages\" extends. A and C remain for the record only."
+    },
+    {
+      "id": "detail-page-call",
+      "x": 2580,
+      "y": -260,
+      "w": 660,
+      "page": "page-5",
+      "text": "On whether per-cider pages are still needed: yes — keep them, but move the browsing information down into the tiles.\n\nThe page earns its place on three things a tile cannot hold: the full blend, the whole medal record, and a per-cider \"where to find it\". It also gives each cider the one URL a distributor, a retailer, the press or a share card can point at, and 15 indexable pages instead of 1.\n\nWhat I would cut is not this page but /shop — an empty stub on the live site and a 404 in the rebuild."
+    },
+    {
+      "id": "copy-source",
+      "x": 1020,
+      "y": -260,
+      "w": 620,
+      "page": "page-5",
+      "text": "Where the words came from: stormalong.com, not me.\n\nEach tile carries that cider's own tagline and flavour line, word for word from its live page. Apple blends come from data/ciders.ts, except Alyson's Orchard and Blue Hills, which the repo does not include at all, so those were read off the live site."
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "page-5"
+  },
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Review of your redesign"
+    },
+    {
+      "id": "page-2",
+      "name": "Directions A–C"
+    },
+    {
+      "id": "page-3",
+      "name": "D — from the category"
+    },
+    {
+      "id": "page-4",
+      "name": "Top of page — 5 options"
+    },
+    {
+      "id": "page-5",
+      "name": "The other pages"
+    }
+  ]
+}

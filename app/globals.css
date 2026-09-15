@@ -107,3 +107,88 @@
   transition: opacity 300ms, transform 300ms;
 }
 
+
+/* ==================================================================
+   Press House (Direction D)
+   The redesign's typographic grammar. Three things do most of the
+   work: the slab display face, the tracked-caps label, and the double
+   gold rule that separates every band from the next.
+   ================================================================== */
+
+@layer components {
+  /* Display face. Alfa Slab One has a single weight, so hierarchy comes
+     from size alone — never from font-weight. */
+  .ph-slab {
+    @apply font-slab font-normal uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  /* The tracked-caps label. Used for eyebrows, nav items, button text,
+     spec keys and the ticker. Small, wide, and always bold — at this
+     tracking anything lighter falls apart. */
+  .ph-label {
+    @apply font-franklin font-bold uppercase;
+    font-size: 0.656rem; /* 10.5px */
+    letter-spacing: 0.22em;
+    line-height: 1.4;
+  }
+
+  /* Figures that sit in columns — ABV, medal counts, run sizes. */
+  .ph-num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The double rule. Separates masthead from page and band from band.
+     `border-style: double` needs >= 3px to render as two lines. */
+  .ph-rule-gold {
+    border-bottom: 4px double theme("colors.gold.DEFAULT");
+  }
+  .ph-frame-gold {
+    border: 3px double theme("colors.gold.DEFAULT");
+  }
+
+  /* Page gutter. Artboards are drawn at 1440px with 56px gutters; this
+     holds that proportion and collapses to 20px on a phone. */
+  .ph-gutter {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-14;
+  }
+}
+
+@layer base {
+  /* The old direction set every heading to Oswald caps globally. Press
+     House pages opt out and choose their own face per element. */
+  .ph-page h1,
+  .ph-page h2,
+  .ph-page h3,
+  .ph-page h4,
+  .ph-page h5,
+  .ph-page h6 {
+    @apply font-slab normal-case;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Age gate visibility.
+
+   The gate ships HIDDEN and is revealed by the bootstrap script in
+   <head> (see components/press-house/age-gate.tsx). That ordering is
+   deliberate: a crawler, a link unfurler or anything else that does
+   not run the script gets the page itself rather than an interstitial,
+   and a returning visitor with the cookie never sees a flash of it.
+   ------------------------------------------------------------------ */
+
+[data-ph-age-gate] {
+  display: none;
+}
+
+html[data-age-gate="1"] [data-ph-age-gate] {
+  display: flex;
+}
+
+/* Nothing behind the gate should scroll or be reachable by tab while
+   it is up. */
+html[data-age-gate="1"],
+html[data-age-gate="1"] body {
+  overflow: hidden;
+}

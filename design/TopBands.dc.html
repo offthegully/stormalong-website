@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Libre+Franklin:wght@300;400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; background: #0A1A2B; }
+    a { color: #C9A227; } a:hover { color: #E8C55A; }
+    .slab { font-family: "Alfa Slab One", Georgia, serif; }
+    .lbl { text-transform: uppercase; letter-spacing: 0.22em; font-size: 10.5px; font-weight: 700; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #0A1A2B; color: #F0E6D2;">
+
+  <div style="background: #F0E6D2; padding: 12px 56px; display: flex; align-items: baseline; justify-content: space-between;">
+    <span class="lbl" style="color: #A8321F;">Option 5</span>
+    <span class="slab" style="color: #0A1A2B; font-size: 16px;">BANDS &mdash; each one a full-width stripe in its own colour</span>
+    <span class="lbl" style="color: rgba(10,26,43,.5);">Handles 2&ndash;4 &middot; simplest to build and maintain</span>
+  </div>
+
+  <div style="border-bottom: 4px double #C9A227; padding: 14px 56px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; gap: 22px; width: 380px;">
+      <span class="lbl">Ciders</span><span class="lbl">Releases</span><span class="lbl">Taproom</span><span class="lbl">The Club</span>
+    </div>
+    <div class="slab" style="font-size: 23px; letter-spacing: 0.04em;">STORMALONG</div>
+    <div style="width: 380px; display: flex; justify-content: flex-end;">
+      <span class="lbl" style="background: #A8321F; color: #F0E6D2; padding: 11px 20px; border: 2px solid #C9A227;">Find a can near you</span>
+    </div>
+  </div>
+
+  <!-- BAND 1 : the lead, taller -->
+  <div style="background: #63202C; padding: 30px 56px; display: flex; align-items: center; gap: 34px; border-bottom: 2px solid #C9A227;">
+    <img src="can-kingston.png" alt="Kingston Black" style="height: 190px; width: auto; flex-shrink: 0; filter: drop-shadow(0 14px 26px rgba(0,0,0,.5));">
+    <div style="flex-grow: 1;">
+      <div class="lbl" style="color: #C9A227; font-size: 9px; margin-bottom: 11px;">&#9733; Limited &middot; Release No. 07 &#9733;</div>
+      <h1 class="slab" style="font-size: 44px; line-height: 1; margin: 0 0 10px 0;">KINGSTON BLACK 2026</h1>
+      <p style="font-size: 15.5px; line-height: 1.55; color: rgba(240,230,210,.82); margin: 0; font-weight: 300; max-width: 62ch;">Marzipan, sour cherry, a long tannic finish. 1,400 bottles and no more until next autumn.</p>
+    </div>
+    <span class="lbl" style="background: #C9A227; color: #0A1A2B; padding: 14px 26px; flex-shrink: 0;">Find it near me</span>
+  </div>
+
+  <!-- BAND 2 -->
+  <div style="background: #35604A; padding: 22px 56px; display: flex; align-items: center; gap: 30px; border-bottom: 2px solid rgba(240,230,210,.2);">
+    <img src="can-farmstand.png" alt="Farmstand Unfiltered" style="height: 124px; width: auto; flex-shrink: 0;">
+    <div style="flex-grow: 1;">
+      <div class="lbl" style="color: #C9A227; font-size: 9px; margin-bottom: 9px;">Seasonal &middot; through November</div>
+      <div class="slab" style="font-size: 30px; line-height: 1.04; margin-bottom: 7px;">FARMSTAND IS POURING</div>
+      <p style="font-size: 14.5px; line-height: 1.5; color: rgba(240,230,210,.78); margin: 0; font-weight: 300;">Cloudy and tangy, pressed at harvest. As close to the cider mill as a can gets.</p>
+    </div>
+    <span class="lbl" style="border: 2px solid #F0E6D2; color: #F0E6D2; padding: 12px 22px; flex-shrink: 0;">Find it near me</span>
+  </div>
+
+  <!-- BAND 3 -->
+  <div style="background: #1B3A6B; padding: 22px 56px; display: flex; align-items: center; gap: 30px; border-bottom: 2px solid rgba(240,230,210,.2);">
+    <div style="width: 82px; height: 124px; border: 3px solid #C9A227; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+      <div class="slab" style="color: #C9A227; font-size: 28px; line-height: 1;">19.2</div>
+      <div class="lbl" style="color: #C9A227; font-size: 9px; margin-top: 4px;">ounces</div>
+    </div>
+    <div style="flex-grow: 1;">
+      <div class="lbl" style="color: #C9A227; font-size: 9px; margin-bottom: 9px;">New format &middot; MA and NH first</div>
+      <div class="slab" style="font-size: 30px; line-height: 1.04; margin-bottom: 7px;">TALL CANS HAVE LANDED</div>
+      <p style="font-size: 14.5px; line-height: 1.5; color: rgba(240,230,210,.78); margin: 0; font-weight: 300;">Legendary Dry and Mass Appeal, in a bigger pour. Rolling out now.</p>
+    </div>
+    <span class="lbl" style="border: 2px solid #F0E6D2; color: #F0E6D2; padding: 12px 22px; flex-shrink: 0;">Who has them</span>
+  </div>
+
+  <!-- BAND 4 -->
+  <div style="background: #0A1A2B; padding: 22px 56px; display: flex; align-items: center; gap: 30px; border-bottom: 2px solid #C9A227;">
+    <img src="captain.png" alt="Captain Stormalong" style="height: 110px; width: auto; flex-shrink: 0;">
+    <div style="flex-grow: 1;">
+      <div class="lbl" style="color: #A8321F; font-size: 9px; margin-bottom: 9px;">Thursday to Sunday &middot; Sherborn, MA</div>
+      <div class="slab" style="font-size: 30px; line-height: 1.04; margin-bottom: 7px;">THE TAPROOM IS OPEN</div>
+      <p style="font-size: 14.5px; line-height: 1.5; color: rgba(240,230,210,.72); margin: 0; font-weight: 300;">Everything on tap, including two barrel projects that never get canned.</p>
+    </div>
+    <span class="lbl" style="border: 2px solid #C9A227; color: #C9A227; padding: 12px 22px; flex-shrink: 0;">Plan a visit</span>
+  </div>
+
+  <div style="background: #071523; padding: 18px 56px 22px 56px;">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;">
+      <div style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.72);"><strong style="color: #C9A227;">Good at:</strong> being boring in the right way. Every item gets the full page width, its own colour from its own can, and a headline that can actually be read. Reordering is moving a block; dropping to two bands or going to five changes nothing. Identical on a phone.</div>
+      <div style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.72);"><strong style="color: #A8321F;">Costs:</strong> vertical space. Four bands push the ciders and the locator a long way down, and by band three a reader may have stopped. Works best at two or three &mdash; the lead band taller, the rest compact, as shown.</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

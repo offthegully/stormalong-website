@@ -1,38 +1,25 @@
-"use client";
+import { FindACan } from "@/components/press-house/find-a-can";
+import { FrontPage } from "@/components/press-house/home/front-page";
+import { Fleet } from "@/components/press-house/home/fleet";
+import { TrophyCase } from "@/components/press-house/home/trophy-case";
+import { RareAppleBand } from "@/components/press-house/rare-apple-band";
+import { SweetnessGuide } from "@/components/press-house/sweetness-guide";
 
-import { motion } from "framer-motion";
-import { Hero } from "@/components/hero-image";
-import { SimpleRespectApple } from "@/components/simple-respect-apple";
-import { FeaturedCidersGrid } from "@/components/featured-ciders-grid";
-import { TestimonialCarousel } from "@/components/testimonial-carousel";
-import { CiderClub } from "@/components/cider-club";
-import { ShopLinks } from "@/components/shop-links";
-import { pageTransition } from "@/lib/animation-config";
-import { DecorativeFooter } from "@/components/decorative-footer";
-
+/**
+ * Direction D, "Press House". The order is the argument: what is new,
+ * what the brand has won, what it makes, how dry each one is, and then
+ * the only question a distribution-led business actually needs to
+ * answer — where can I buy it.
+ */
 export default function Home() {
   return (
-    <motion.div
-      variants={pageTransition}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className="flex flex-col"
-    >
-      <Hero
-        imageSrc="/images/landing-page/farmstand-fall.jpg"
-        title="Farmstand"
-        highlightedText="Unfiltered"
-        description="Unfiltered hard cider reminiscent of freshly pressed cider made at harvest!"
-        buttonText="More Details"
-        buttonLink="ciders/farmstand-unfiltered"
-      />
-      <SimpleRespectApple />
-      <FeaturedCidersGrid />
-      {/* <TestimonialCarousel /> */}
-      <CiderClub />
-      <ShopLinks />
-      <DecorativeFooter />
-    </motion.div>
+    <>
+      <FrontPage />
+      <TrophyCase />
+      <Fleet />
+      <SweetnessGuide />
+      <FindACan />
+      <RareAppleBand />
+    </>
   );
 }
