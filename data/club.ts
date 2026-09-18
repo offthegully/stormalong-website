@@ -35,7 +35,9 @@ export const clubHeadlines: { label: string; value: string }[] = [
 
 export const clubBenefits: { title: string; copy: string }[] = [
   {
-    title: "Two times a year",
+    // "Twice a year" to match the paragraph directly above this list on
+    // /cider-club, which already says it that way.
+    title: "Twice a year",
     copy: "Typically Spring and Fall, we ship you a variety of small batch ciders. The cost of each shipment will range between $45 to $75 (+shipping) depending upon what is included in the release.",
   },
   {
@@ -55,6 +57,9 @@ export const clubBenefits: { title: string; copy: string }[] = [
 export const clubTerms: string[] = [
   "We will keep your payment information on file and you can opt out anytime (email info@stormalong.com). You won't be billed until the shipment goes out.",
   "Members will receive an email before each shipment in case you wish to opt out or need to update any information.",
-  "Members can either have cider shipped to your front door (in approved states) or we also offer pick-up at our seasonal, regional farmers market locations throughout the year.",
+  // The live site's version of this line shifts person mid-sentence —
+  // "Members can ... to your front door". The rest of these terms are
+  // addressed to "you", so this one is too.
+  "You can have cider shipped to your front door (in approved states), or collect it at one of our seasonal regional farmers market locations throughout the year.",
   "You must be 21 years of age or older. Adult signature is required for all shipments.",
 ];

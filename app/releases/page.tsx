@@ -30,20 +30,25 @@ const statusLabels = {
 } as const;
 
 export default function ReleasesPage() {
-  const sorted = [...releases].sort((a, b) => b.date.localeCompare(a.date));
-  const current = sorted.filter((r) => r.status !== "gone");
-  const archive = sorted.filter((r) => r.status === "gone");
+  // Two lists, two directions. The archive reads backwards from the
+  // most recent, which is what an archive is for. What is current reads
+  // FORWARDS, nearest first, so the cider actually on shelves leads and
+  // the ones you cannot buy yet follow it. Sorting both descending put
+  // "Pouring now" third, behind two months that have not happened.
+  const byDate = [...releases].sort((a, b) => a.date.localeCompare(b.date));
+  const current = byDate.filter((r) => r.status !== "gone");
+  const archive = byDate.filter((r) => r.status === "gone").reverse();
 
   return (
     <>
       <PageHeader
         eyebrow="In the vault"
         title="Rare Apple Series"
-        intro="Small batch ciders made with some of our favourite rare apples. This is what is out now, what is coming, and what has already sold out for the year."
+        intro="Small batch ciders made with some of our favorite rare apples. This is what is out now, what is coming, and what has already sold out for the year."
       >
         <Link
           href={routes.club}
-          className="ph-label mt-6 inline-flex items-center gap-2 border-2 border-gold px-6 py-3.5 text-gold transition-colors hover:bg-gold hover:text-ink"
+          className="ph-press ph-label mt-6 inline-flex items-center gap-2 border-2 border-gold px-6 py-3.5 text-gold hover:bg-gold hover:text-ink"
         >
           Club members get first access →
         </Link>
@@ -51,6 +56,12 @@ export default function ReleasesPage() {
 
       <section className="bg-paper">
         <div className="ph-gutter py-12">
+          <div className="mb-5 flex items-center gap-4">
+            <h2 className="ph-label whitespace-nowrap text-brick">
+              Out now and next
+            </h2>
+            <span className="h-px flex-grow bg-ink/15" />
+          </div>
           <div className="flex flex-col gap-4">
             {current.map((release) => (
               <ReleaseRow key={release.slug} release={release} />
@@ -59,10 +70,13 @@ export default function ReleasesPage() {
 
           {archive.length > 0 && (
             <>
+              {/* A real heading, not an eyebrow. With only styled text
+                  here the sold-out archive was structurally
+                  indistinguishable from what is pouring now. */}
               <div className="mb-5 mt-12 flex items-center gap-4">
-                <Eyebrow className="text-brick" stars={false}>
+                <h2 className="ph-label whitespace-nowrap text-brick">
                   The archive
-                </Eyebrow>
+                </h2>
                 <span className="h-px flex-grow bg-ink/15" />
               </div>
               <div className="flex flex-col gap-4">
@@ -99,10 +113,10 @@ export default function ReleasesPage() {
             {clubFacts.map((fact) => (
               <div
                 key={fact.label}
-                className="flex gap-5 border-t-2 border-ink pt-4"
+                className="ph-tint group flex gap-5 border-t-2 border-ink pt-4 hover:border-brick"
               >
                 <div className="w-[68px] shrink-0">
-                  <div className="ph-slab ph-num text-[1.7rem] leading-none">
+                  <div className="ph-figure ph-slab ph-num origin-left text-[1.7rem] leading-none group-hover:scale-110 group-hover:text-brick">
                     {fact.confirmed ? fact.figure : <Tbc>N</Tbc>}
                   </div>
                   <div className="ph-label mt-1.5 text-[0.53rem] text-prose-faint">
@@ -135,7 +149,7 @@ export default function ReleasesPage() {
             <NewsletterForm />
             <Link
               href={routes.club}
-              className="ph-label mt-3 inline-block text-gold hover:underline"
+              className="ph-press ph-label mt-3 inline-block text-gold underline-offset-4 hover:underline"
             >
               Or join the club →
             </Link>
@@ -162,8 +176,11 @@ function ReleaseRow({ release }: { release: Release }) {
   return (
     <article
       className={cn(
-        "grid gap-6 border-2 border-ink/20 bg-paper-light px-6 py-6 sm:grid-cols-[110px_1fr_auto] sm:items-center",
-        gone && "opacity-70",
+        "ph-tint group grid gap-6 border-2 border-ink/20 bg-paper-light px-6 py-6 hover:border-ink/50 sm:grid-cols-[110px_1fr_auto] sm:items-center",
+        // A sold-out release is dimmed so the current ones read first,
+        // but it comes back to full strength under the pointer — the
+        // archive is still worth reading, just not first.
+        gone && "opacity-70 hover:opacity-100",
       )}
     >
       {/* Date + status */}
@@ -187,18 +204,24 @@ function ReleaseRow({ release }: { release: Release }) {
           src={cider.image}
           alt=""
           width={50}
-          height={120}
-          className={cn("h-[92px] w-auto object-contain", gone && "grayscale")}
+          height={119}
+          sizes="50px"
+          className={cn(
+            "ph-move h-[118px] w-auto object-contain group-hover:-translate-y-1.5 group-hover:rotate-2",
+            gone && "grayscale group-hover:grayscale-0",
+          )}
         />
         <div>
-          <h2 className="ph-slab mb-1.5 text-[1.35rem] leading-tight">
+          {/* h3: each release sits under the "Out now and next" or
+              "The archive" heading for its group, not beside it. */}
+          <h3 className="ph-slab mb-1.5 text-[1.35rem] leading-tight">
             <Link
               href={`/ciders/${cider.slug}`}
-              className="transition-colors hover:text-brick"
+              className="ph-press hover:text-brick"
             >
               {cider.name}
             </Link>
-          </h2>
+          </h3>
           <p className="mb-3 max-w-[54ch] font-franklin text-[0.88rem] font-light leading-relaxed text-prose">
             {cider.flavor}. {cider.tagline}.
           </p>

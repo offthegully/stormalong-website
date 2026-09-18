@@ -39,14 +39,14 @@ export function Footer() {
                 <a
                   href={site.instagram}
                   aria-label="Stormalong on Instagram"
-                  className="flex h-8 w-8 items-center justify-center border border-paper/35 text-paper transition-colors hover:border-gold hover:text-gold"
+                  className="ph-lift flex h-8 w-8 items-center justify-center border border-paper/35 text-paper hover:border-gold hover:bg-gold hover:text-ink"
                 >
                   <InstagramIcon size={15} strokeWidth={1.7} />
                 </a>
                 <a
                   href={site.facebook}
                   aria-label="Stormalong on Facebook"
-                  className="flex h-8 w-8 items-center justify-center border border-paper/35 text-paper transition-colors hover:border-gold hover:text-gold"
+                  className="ph-lift flex h-8 w-8 items-center justify-center border border-paper/35 text-paper hover:border-gold hover:bg-gold hover:text-ink"
                 >
                   <FacebookIcon size={15} strokeWidth={1.7} />
                 </a>
@@ -94,7 +94,7 @@ function FooterColumn({
           <Link
             key={link.href}
             href={link.href}
-            className="font-franklin text-[0.84rem] font-light text-paper/80 transition-colors hover:text-gold"
+            className="ph-wipe ph-press inline-block self-start font-franklin text-[0.84rem] font-light text-paper/80 hover:text-gold"
           >
             {link.label}
           </Link>

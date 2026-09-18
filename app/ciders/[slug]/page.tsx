@@ -120,7 +120,7 @@ export default async function CiderDetailPage({
         <div className="ph-gutter flex items-center justify-between gap-6 py-3">
           <ol className="ph-label flex items-center gap-2.5 text-[0.5rem] text-prose-faint">
             <li>
-              <Link href={routes.ciders} className="hover:text-brick">
+              <Link href={routes.ciders} className="ph-press hover:text-brick">
                 Ciders
               </Link>
             </li>
@@ -132,7 +132,7 @@ export default async function CiderDetailPage({
               {prev && (
                 <Link
                   href={`/ciders/${prev.slug}`}
-                  className="hover:text-brick-dark"
+                  className="ph-press hover:text-brick-dark"
                 >
                   &larr; {prev.name}
                 </Link>
@@ -141,7 +141,7 @@ export default async function CiderDetailPage({
               {next && (
                 <Link
                   href={`/ciders/${next.slug}`}
-                  className="hover:text-brick-dark"
+                  className="ph-press hover:text-brick-dark"
                 >
                   {next.name} &rarr;
                 </Link>
@@ -163,10 +163,11 @@ export default async function CiderDetailPage({
           <Image
             src={cider.image}
             alt={`A can of ${cider.name}`}
-            width={300}
-            height={700}
+            width={210}
+            height={500}
+            sizes="(min-width: 1024px) 200px, (min-width: 640px) 185px, 140px"
             priority
-            className="h-[300px] w-auto object-contain drop-shadow-[0_22px_40px_rgba(0,0,0,0.5)] sm:h-[390px]"
+            className="h-[330px] w-auto object-contain drop-shadow-[0_22px_40px_rgba(0,0,0,0.5)] sm:h-[440px] lg:h-[470px]"
           />
         </div>
 
@@ -366,20 +367,24 @@ export default async function CiderDetailPage({
             {prev ? (
               <Link
                 href={`/ciders/${prev.slug}`}
-                className="group flex items-center gap-4"
+                className="ph-press group flex items-center gap-4"
               >
+                {/* The can leans toward the direction of travel — left
+                    for previous, right for next — so the pair reads as
+                    a running order rather than two unrelated links. */}
                 <Image
                   src={prev.image}
                   alt=""
-                  width={40}
-                  height={96}
-                  className="h-16 w-auto object-contain"
+                  width={42}
+                  height={100}
+                  sizes="38px"
+                  className="h-[88px] w-auto object-contain ph-move group-hover:-translate-x-1"
                 />
                 <span>
                   <span className="ph-label block text-[0.5rem] text-prose-faint">
                     &larr; Previous
                   </span>
-                  <span className="ph-slab block text-base group-hover:text-brick">
+                  <span className="ph-slab block text-base ph-tint group-hover:text-brick">
                     {prev.name}
                   </span>
                 </span>
@@ -393,7 +398,7 @@ export default async function CiderDetailPage({
                 pushing them out of line. */}
             <Link
               href={routes.ciders}
-              className="ph-label order-last col-span-2 justify-self-center border-2 border-ink px-6 py-3 text-[0.53rem] transition-colors hover:bg-ink hover:text-paper-light md:order-none md:col-span-1"
+              className="ph-press ph-label order-last col-span-2 justify-self-center border-2 border-ink px-6 py-3 text-[0.53rem] hover:bg-ink hover:text-paper-light md:order-none md:col-span-1"
             >
               All the ciders
             </Link>
@@ -401,22 +406,23 @@ export default async function CiderDetailPage({
             {next ? (
               <Link
                 href={`/ciders/${next.slug}`}
-                className="group flex items-center justify-end gap-4 text-right"
+                className="ph-press group flex items-center justify-end gap-4 text-right"
               >
                 <span>
                   <span className="ph-label block text-[0.5rem] text-prose-faint">
                     Next &rarr;
                   </span>
-                  <span className="ph-slab block text-base group-hover:text-brick">
+                  <span className="ph-slab block text-base ph-tint group-hover:text-brick">
                     {next.name}
                   </span>
                 </span>
                 <Image
                   src={next.image}
                   alt=""
-                  width={40}
-                  height={96}
-                  className="h-16 w-auto object-contain"
+                  width={42}
+                  height={100}
+                  sizes="38px"
+                  className="h-[88px] w-auto object-contain ph-move group-hover:translate-x-1"
                 />
               </Link>
             ) : (

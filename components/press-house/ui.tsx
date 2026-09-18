@@ -40,9 +40,12 @@ export function PhButton({
   icon?: ReactNode;
   className?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  // `ph-press` carries both the colour transition and the 1px press;
+  // the focus ring is the site-wide one in globals.css rather than a
+  // per-button rule, so every control answers the keyboard alike.
   const classes = cn(
-    "ph-label inline-flex items-center justify-center gap-2 px-6 py-3.5 transition-colors duration-150",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
+    "ph-lift ph-label inline-flex items-center justify-center gap-2 px-6 py-3.5",
+    "hover:shadow-[0_10px_22px_rgba(10,26,43,0.3)]",
     toneClasses[tone],
     className,
   );

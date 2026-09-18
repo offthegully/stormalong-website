@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { CountUp } from "../count-up";
 import {
   featuredAwards,
   medalsByCompetition,
   trophyCase,
 } from "@/lib/catalogue";
 import { MedalSeal } from "../medal-seal";
-import { Eyebrow } from "../ui";
+import { Eyebrow, Tbc } from "../ui";
 import { routes } from "../site-config";
 
 /**
@@ -28,21 +29,25 @@ export function TrophyCase() {
           <Eyebrow className="mb-3.5 block text-brick">The trophy case</Eyebrow>
           <div className="mb-2.5 flex items-baseline gap-3.5">
             <span className="ph-slab ph-num text-[5.25rem] leading-[0.85] text-gold">
-              {trophyCase.total}
+              <CountUp value={trophyCase.total} />
             </span>
             <span className="ph-slab text-3xl leading-none">Medals</span>
           </div>
           <div className="mb-4 h-[3px] w-[140px] bg-gold" />
           <p className="mb-5 max-w-[42ch] font-franklin text-[0.97rem] font-light leading-relaxed text-paper/75">
+            {/* Not "every year since 2015" — the awards in the data skip
+                2018 and 2020, and the tally below this paragraph prints
+                the real range. A claim a reader can falsify by looking
+                six inches down the page is not worth making. */}
             Across {trophyCase.ciders} ciders and {trophyCase.competitions}{" "}
-            competitions, every year since {trophyCase.firstYear}.{" "}
+            competitions, from {trophyCase.firstYear} to {trophyCase.lastYear}.{" "}
             {bestOfClassCount === 1
               ? "One Best of Class."
               : `${capitalise(numberWord(bestOfClassCount))} Best of Class.`}
           </p>
           <Link
             href={`${routes.ciders}#awards`}
-            className="ph-label inline-block border-2 border-gold px-6 py-3.5 text-gold transition-colors hover:bg-gold hover:text-ink"
+            className="ph-lift ph-label inline-block border-2 border-gold px-6 py-3.5 text-gold hover:bg-gold hover:text-ink hover:shadow-[0_10px_24px_rgba(0,0,0,0.45)]"
           >
             See every medal
           </Link>
@@ -54,13 +59,15 @@ export function TrophyCase() {
             {featuredAwards.map((award) => {
               const gold = award.isBestOfClass;
               return (
-                <div
+                <Link
                   key={`${award.slug}-${award.competition}-${award.year ?? "n"}`}
+                  href={`/ciders/${award.slug}`}
                   className={cn(
-                    "border-2 px-4 py-5 text-center",
+                    "ph-lift group block border-2 px-4 py-5 text-center",
                     gold
-                      ? "border-gold bg-gold/[0.06] text-gold"
-                      : "border-paper/35 text-paper",
+                      ? "border-gold bg-gold/[0.06] text-gold hover:bg-gold/[0.14]"
+                      : "border-paper/35 text-paper hover:border-gold hover:bg-paper/[0.06]",
+                    "hover:shadow-[0_14px_30px_rgba(0,0,0,0.5)]",
                   )}
                 >
                   <MedalSeal
@@ -78,11 +85,23 @@ export function TrophyCase() {
                   <div className="ph-slab mb-1.5 text-sm leading-tight text-paper">
                     {award.ciderName}
                   </div>
+                  {/* Kingston Black's Best of Class carries no year —
+                      not a transcription slip, the live site omits it
+                      too. Three seals showing a year beside one showing
+                      none reads as an oversight, so the gap is marked
+                      the way every other unverified value on the site
+                      is marked, and someone can go and find it. */}
                   <div className="font-franklin text-[0.72rem] leading-snug text-paper/60">
-                    {award.competition}
-                    {award.year ? `, ${award.year}` : ""}
+                    {award.competition},{" "}
+                    {award.year ?? <Tbc>year</Tbc>}
                   </div>
-                </div>
+                  {/* Collapsed to nothing until hover, so the resting
+                      card is still the artboard's four clean seals and
+                      the row does not grow when you point at one. */}
+                  <span className="ph-hint ph-label mt-0 block h-0 -translate-y-1 overflow-hidden text-[0.5rem] text-gold opacity-0 group-hover:mt-2.5 group-hover:h-4 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:mt-2.5 group-focus-visible:h-4 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                    See the cider &rarr;
+                  </span>
+                </Link>
               );
             })}
           </div>
@@ -93,7 +112,7 @@ export function TrophyCase() {
               {medalsByCompetition.map(({ competition, count }) => (
                 <div key={competition}>
                   <span className="ph-slab ph-num text-[1.35rem] text-gold">
-                    {count}
+                    <CountUp value={count} duration={800} />
                   </span>
                   <span className="ph-label ml-1.5 text-[0.56rem] text-paper/60">
                     {competition}

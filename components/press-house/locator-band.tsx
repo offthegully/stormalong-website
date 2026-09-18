@@ -21,7 +21,7 @@ export function LocatorBand() {
         </div>
         <Link
           href={routes.locator}
-          className="ph-label inline-flex shrink-0 items-center gap-2 bg-gold px-7 py-4 text-ink transition-colors hover:bg-gold-pale"
+          className="ph-press ph-label inline-flex shrink-0 items-center gap-2 bg-gold px-7 py-4 text-ink hover:bg-gold-pale"
         >
           <PinIcon size={14} />
           Find it

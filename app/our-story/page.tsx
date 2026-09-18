@@ -35,7 +35,7 @@ const founding = [
 ];
 
 const mill = [
-  "In the late 1800's, the largest refined cider mill in the world was located in Sherborn, MA, exporting a “champagne cider” to England, and other places abroad. Around that time there were some 40 orchards in the town and the owner of the cider mill, Jonathan Holbrook, convinced the Framingham & Mansfield railroad to align their track through Sherborn with his cider mill. The first freight train into the town was loaded with apples headed to Holbrook's mill.",
+  "In the late 1800s, the largest refined cider mill in the world was located in Sherborn, MA, exporting a “champagne cider” to England, and other places abroad. Around that time there were some 40 orchards in the town and the owner of the cider mill, Jonathan Holbrook, convinced the Framingham & Mansfield railroad to align their track through Sherborn with his cider mill. The first freight train into the town was loaded with apples headed to Holbrook's mill.",
   "With such a rich history of cider making in the Northeast, it is hard to fathom how this tradition has virtually disappeared. At Stormalong, we are both fascinated and inspired by this robust hard cider lineage, and with the legacy of cider here in Sherborn, MA, it felt like an ideal place to help reignite this tradition.",
 ];
 
@@ -66,8 +66,11 @@ export default function OurStoryPage() {
       <section className="ph-rule-gold border-b-4 border-t-0 bg-ink text-paper">
         <div className="ph-gutter py-16 text-center sm:py-20">
           <Eyebrow className="mb-5 block">Sherborn, Mass. &middot; Est. 2014</Eyebrow>
+          {/* "True Cider" read well and identified nothing — neither the
+              brand nor the page. This names both, and matches the
+              <title>. Revert if the shorter line is worth the ambiguity. */}
           <h1 className="ph-slab text-[3.2rem] leading-[0.9] sm:text-[5.5rem]">
-            True Cider
+            The Stormalong story
           </h1>
           <p className="mx-auto mt-6 max-w-[48ch] font-franklin text-base font-light leading-relaxed text-paper/75">
             Whole apples, pressed here, fermented slowly. Everything else on
@@ -88,7 +91,7 @@ export default function OurStoryPage() {
               className="mb-7 h-24 w-24"
             />
             <h2 className="ph-slab text-[2.1rem] leading-[0.98] sm:text-[2.6rem]">
-              We respect
+              We respect{" "}
               <br />
               the apple.
             </h2>
@@ -141,16 +144,21 @@ export default function OurStoryPage() {
                 {paragraph}
               </p>
             ))}
+            {/* The label is written once, as the `dt`, and it is visible.
+                It used to be an sr-only `dt` plus an unhidden copy inside
+                the `dd`, which a screen reader read out as "Founded,
+                2014, Founded". `dt` still precedes `dd` in the DOM, as a
+                definition list requires; `order` flips them visually so
+                the figure keeps leading. */}
             <dl className="mt-7 grid grid-cols-3 gap-6 border-t border-ink/15 pt-6">
               {figures.map((figure) => (
-                <div key={figure.label}>
-                  <dt className="sr-only">{figure.label}</dt>
-                  <dd>
-                    <span className="ph-slab ph-num block text-[1.9rem] leading-none text-ink">
+                <div key={figure.label} className="group flex flex-col">
+                  <dt className="ph-label order-2 mt-2 text-[0.5rem] text-prose-muted">
+                    {figure.label}
+                  </dt>
+                  <dd className="order-1">
+                    <span className="ph-figure ph-slab ph-num block origin-bottom-left text-[1.9rem] leading-none text-ink group-hover:scale-110 group-hover:text-brick">
                       {figure.value}
-                    </span>
-                    <span className="ph-label mt-2 block text-[0.5rem] text-prose-muted">
-                      {figure.label}
                     </span>
                   </dd>
                 </div>
@@ -193,9 +201,9 @@ export default function OurStoryPage() {
                 {thenAndNow.map((item) => (
                   <div
                     key={item.figure}
-                    className="flex items-baseline gap-5 border-t border-paper/20 py-3.5 first:border-t-0 first:pt-0"
+                    className="ph-tint group flex items-baseline gap-5 border-t border-paper/20 py-3.5 first:border-t-0 first:pt-0 hover:border-gold/60"
                   >
-                    <dt className="ph-slab ph-num w-[5.5rem] shrink-0 text-[1.35rem] leading-none text-gold">
+                    <dt className="ph-figure ph-slab ph-num w-[5.5rem] shrink-0 origin-left text-[1.35rem] leading-none text-gold group-hover:scale-110">
                       {item.figure}
                     </dt>
                     <dd className="font-franklin text-[0.88rem] font-light leading-snug text-paper/80">
@@ -223,7 +231,7 @@ export default function OurStoryPage() {
               width={800}
               height={800}
               sizes="(min-width: 1024px) 30vw, 60vw"
-              className="mx-auto w-full max-w-[280px]"
+              className="ph-move mx-auto w-full max-w-[280px] hover:scale-[1.04]"
             />
           </div>
           <div className="lg:col-span-8">

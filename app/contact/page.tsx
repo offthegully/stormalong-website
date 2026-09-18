@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/press-house/contact-form";
 import { PageHeader } from "@/components/press-house/page-header";
 import { PinIcon } from "@/components/press-house/icons";
 import { routes, site } from "@/components/press-house/site-config";
-import { SectionRule, Tbc } from "@/components/press-house/ui";
+import { SectionRule } from "@/components/press-house/ui";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -49,7 +49,7 @@ export default function ContactPage() {
               </div>
               <Link
                 href={`mailto:${site.email}`}
-                className="ph-slab block break-words text-[1.35rem] leading-tight underline-offset-4 hover:text-gold hover:underline"
+                className="ph-press ph-slab block break-words text-[1.35rem] leading-tight underline-offset-4 hover:text-gold hover:underline"
               >
                 {site.email}
               </Link>
@@ -59,7 +59,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="mb-6 border border-ink/20 p-6">
+            <div className="ph-tint mb-6 border border-ink/20 p-6 hover:border-brick">
               <h2 className="ph-slab mb-2.5 text-[1.2rem] leading-tight">
                 Looking for a can?
               </h2>
@@ -69,28 +69,21 @@ export default function ContactPage() {
               </p>
               <Link
                 href={routes.locator}
-                className="ph-label inline-flex items-center gap-2 bg-brick px-5 py-3 text-[0.53rem] text-paper transition-colors hover:bg-brick-dark"
+                className="ph-press ph-label inline-flex items-center gap-2 bg-brick px-5 py-3 text-[0.53rem] text-paper hover:bg-brick-dark"
               >
                 <PinIcon size={13} />
                 Find our cider
               </Link>
             </div>
 
-            <div className="border-t border-ink/15 pt-6">
-              <div className="ph-label mb-2.5 text-[0.53rem] text-prose-muted">
-                Cidery
-              </div>
-              <address className="font-franklin text-[0.95rem] not-italic leading-relaxed text-ink">
-                130 Oak Street
-                <br />
-                Sherborn, MA 01770
-              </address>
-              <p className="mt-3 font-franklin text-[0.8rem] font-light leading-relaxed text-prose-faint">
-                Mail only — <Tbc>visiting hours</Tbc>. This address is in the
-                repository but not on the live contact page; confirm it should
-                be public.
-              </p>
-            </div>
+            {/* The cidery address (130 Oak Street, Sherborn, MA 01770) is
+                in this repository but has never been on the live contact
+                page, and nobody has confirmed it should be public. It is
+                not rendered until they do — an unconfirmed street address
+                is not a thing to publish by default, and the caveat that
+                used to stand in for the confirmation was addressed to us,
+                not to the reader. Restore this block once it is cleared,
+                with real visiting hours or an explicit "mail only". */}
           </aside>
         </div>
       </section>

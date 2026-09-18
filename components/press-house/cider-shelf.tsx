@@ -33,7 +33,9 @@ export function CiderShelf({ ciders }: { ciders: ShelfCider[] }) {
             active={filter === "all"}
             onClick={() => setFilter("all")}
           >
-            All {ciders.length}
+            {/* Parenthesised like every other chip in this row — it
+                used to read "All 15" beside "Core line-up (8)". */}
+            All ciders ({ciders.length})
           </FilterChip>
           {groupOrder.map((group) => (
             <FilterChip
@@ -47,7 +49,11 @@ export function CiderShelf({ ciders }: { ciders: ShelfCider[] }) {
         </div>
       </div>
 
-      <div className="ph-gutter py-12">
+      {/* Keyed on the filter so React remounts this subtree and the
+          CSS entrance replays. The shelf swaps instantly either way —
+          the animation only says *that* it swapped, which is easy to
+          miss when two filters share most of their tiles. */}
+      <div key={filter} className="ph-enter ph-gutter py-12">
         {groupsShown.map((group, i) => {
           const inGroup = ciders.filter((c) => c.group === group);
           if (!inGroup.length) return null;
@@ -89,10 +95,10 @@ function FilterChip({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "ph-label border-2 px-5 py-3 text-[0.59rem] transition-colors",
+        "ph-press ph-label border-2 px-5 py-3 text-[0.59rem]",
         active
           ? "border-ink bg-ink text-gold"
-          : "border-ink/20 text-ink hover:border-ink/50",
+          : "border-ink/20 text-ink hover:border-ink/50 hover:bg-ink/5",
       )}
     >
       {children}

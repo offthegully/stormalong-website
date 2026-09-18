@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 type State =
   | { kind: "idle" }
@@ -55,7 +56,7 @@ export function NewsletterForm() {
     return (
       <p
         role="status"
-        className="font-franklin text-[0.84rem] font-light leading-relaxed text-gold"
+        className="ph-enter font-franklin text-[0.84rem] font-light leading-relaxed text-gold"
       >
         You're on the list. Watch for the next release.
       </p>
@@ -64,7 +65,7 @@ export function NewsletterForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate>
-      <div className="flex border border-paper/35 focus-within:border-gold">
+      <div className="flex border border-paper/35 ph-tint focus-within:border-gold">
         <label htmlFor="ph-newsletter-email" className="sr-only">
           Email address
         </label>
@@ -91,15 +92,25 @@ export function NewsletterForm() {
         <button
           type="submit"
           disabled={state.kind === "sending"}
-          className="ph-label shrink-0 bg-gold px-5 text-ink transition-colors hover:bg-gold-pale disabled:opacity-60"
+          // The pulse is the only thing on the page that repeats, and
+          // it lives for as long as a request is in flight. Without
+          // it the button just greys out, which reads as broken
+          // rather than busy.
+          className={cn(
+            "ph-press ph-label shrink-0 bg-gold px-5 text-ink hover:bg-gold-pale disabled:opacity-60",
+            state.kind === "sending" && "animate-pulse",
+          )}
         >
+          {/* Still the bare ellipsis: this button sits in a narrow
+              footer field, and a longer word would widen it and shove
+              the input it shares a border with. */}
           {state.kind === "sending" ? "…" : "Sign up"}
         </button>
       </div>
       {state.kind === "error" && (
         <p
           role="alert"
-          className="mt-2 font-franklin text-[0.78rem] font-light leading-relaxed text-gold"
+          className="ph-enter mt-2 font-franklin text-[0.78rem] font-light leading-relaxed text-gold"
         >
           {state.message}
         </p>

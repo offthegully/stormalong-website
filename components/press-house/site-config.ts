@@ -114,6 +114,17 @@ export const distribution: {
  * Until then the page renders a clearly marked slot rather than a
  * search box that does nothing.
  *
+ * The URL is not a mystery. `stormalong.com/locator` embeds it today:
+ * view source there and take the `src` of the `finder.vtinfo.com`
+ * iframe, which carries `custID`, a per-account `uuid` and `from`.
+ *
+ * The value is deliberately not written down here. It is not much of a
+ * secret — it ships in the live page's HTML — but it is an account
+ * identifier, it is the kind of thing that gets rotated, and a copy
+ * pasted into a comment is a copy nobody updates. It belongs in the
+ * environment. Check with the vendor that the embed may be served from
+ * a second origin, then set the variable.
+ *
  * Still to decide with the vendor: whether the embed can be themed, or
  * whether its data can be read directly. A native list would let each
  * cider link straight to its own results.

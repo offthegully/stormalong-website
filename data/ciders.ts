@@ -5,7 +5,11 @@ export const ciders: CiderType[] = [
     id: "legendary-dry",
     name: "Legendary Dry",
     slug: "legendary-dry",
-    tagline: "A crisp, dry cider with a clean finish",
+    // Every other tagline in this file says what is IN the cider, and
+    // the detail page prints it under a heading about apples. This one
+    // used to restate the `flavor` field shown inches above it. The
+    // live site's own line is the apple one; use that.
+    tagline: "Made with Heirloom Bittersweet Apples",
     description:
       "In homage to America's hard cider history and the larger-than-life Captain Stormalong, our flagship cider is named \"Legendary Dry\". Made with a unique blend of 'bittersweet' cider apples which impart a tannic finish and 'champagne-like' character. A British inspired cider with an American take. Less than 3 grams of sugar per can.",
     image: "/images/ciders/legendary-dry.png",

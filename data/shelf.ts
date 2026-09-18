@@ -26,8 +26,8 @@
      - 2 ciders on the live shelf are missing from data/ciders.ts
        entirely: Alyson's Orchard and Blue Hills. Both are 4.5%
        year-round core products with their own live pages. They are
-       stubbed at the bottom of this file, read off the live site, and
-       flagged `provisional` — their sweetness is genuinely unknown.
+       stubbed at the bottom of this file, transcribed from those
+       pages. Only Alyson's sweetness is still a guess.
 
    Open questions for the real list, in priority order:
      1. Which 15 (or n) ciders are on the shelf, and in which group?
@@ -35,7 +35,7 @@
         the artboard. Is the 2026 vintage genuinely different?
      3. Farmstand Unfiltered: 4.5% (data) or 6.2% (artboard)?
      4. Red Skies at Night: semi-dry / 2 (data) or medium / 3 (artboard)?
-     5. Sweetness for Alyson's Orchard and Blue Hills.
+     5. Sweetness for Alyson's Orchard.
    ==================================================================== */
 
 import type { CiderGroup, CiderType } from "@/types/cider";
@@ -76,6 +76,10 @@ export const tileColors: Record<string, string> = {
   "red-skies-at-night": "#722710",
   "massive-appeal": "#471813",
   "alysons-orchard": "#216156",
+  // Chosen while this tile was wrongly drawing the Blue Skies can. The
+  // real label's dominant hues are yellow-green (90°) and yellow (60°),
+  // so this olive-gold still sits in the right family and still clears
+  // 4.5:1 — but it is worth an eye now that the artwork is correct.
   "blue-hills": "#68521A",
   "happy-holidays": "#161206",
   "white-mountain-magic": "#3C3831",
@@ -91,42 +95,61 @@ export const fallbackTileColor = "#0A1A2B";
 
 /**
  * The two ciders the live site sells that data/ciders.ts does not
- * contain. Read off stormalong.com, not invented — but unverified,
- * hence `provisional`. Sweetness is a placeholder in both cases.
+ * contain. Every field here is now read off the cider's own page on
+ * stormalong.com — description, flavour, apple blend, ABV and
+ * availability — rather than paraphrased, so only one guess is left:
+ *
+ *   - Blue Hills sweetness is 3, taken from the `Medium_Sweetness_Scale`
+ *     graphic the live page renders. Confirmed, not assumed.
+ *   - Alyson's Orchard sweetness is still unknown, because that page's
+ *     sweetness-scale image has an empty `src`. It stays provisional.
+ *
+ * Blue Hills also has real can artwork now
+ * (`public/images/ciders/blue-hills.png`, pulled from the live CDN and
+ * run through scripts/normalize-can-images.py). It was previously
+ * pointed at blue-skies.png, which put the same label on two different
+ * ciders on the same page.
  */
 export const missingFromData: CiderType[] = [
   {
     id: "alysons-orchard",
     name: "Alyson's Orchard",
     slug: "alysons-orchard",
-    tagline: "Made with apples from Alyson's Orchard",
+    tagline: "Unfiltered hard cider made with fresh pressed apples",
     description:
-      "A single orchard cider pressed from fruit grown at Alyson's Orchard in Walpole, New Hampshire.",
+      "Perched on a hill, overlooking the Connecticut River into Vermont, sits the spectacular Alyson's Orchard in Walpole, NH. Alyson's is consistently rated as a top 10 apple picking destination in New England. We use a selection of their 30+ apple varieties in this 'farmstand' style unfiltered hard cider.",
     image: "/images/ciders/alysons-orchard.png",
     abv: 4.5,
     availability: "Year-round",
     features: [],
-    flavor: "Crisp & Refreshing",
-    apples: "Alyson's Orchard blend",
-    sweetness: 2, // [TBC] — not published on the live site
+    flavor: "Tangy, juicy, and refreshing",
+    apples: "McIntosh, Honeycrisp, Gala, Empire, Cortland, Macoun",
+    // Still [TBC]: the live page's sweetness-scale image has an empty
+    // `src`, so unlike Blue Hills there is nothing to read it off.
+    sweetness: 2,
   },
   {
     id: "blue-hills",
     name: "Blue Hills",
     slug: "blue-hills",
-    tagline: "Made with New England apples",
+    tagline: "Unfiltered cider made with fresh pressed apples",
     description:
-      "A year-round New England cider, crisp and easy-drinking.",
-    image: "/images/ciders/blue-skies.png", // [TBC] — no artwork in the repo
+      "Unfiltered hard cider reminiscent of Blue Hills Orchard's farmstand cider press and sold at harvest. Featuring the quintessential McIntosh variety blended with other New England favorites.",
+    image: "/images/ciders/blue-hills.png",
     abv: 4.5,
     availability: "Year-round",
     features: [],
-    flavor: "Crisp & Easy-Drinking",
-    apples: "New England blend",
-    sweetness: 2, // [TBC] — not published on the live site
+    flavor: "Crisp, Refreshing with a Savory Balance of Tart & Sweet",
+    apples: "McIntosh, Honeycrisp, Gala, Empire, Cortland, Macoun",
+    // No longer a guess: the live page renders `Medium_Sweetness_Scale`
+    // for this cider, so it is 3, not the 2 the stub assumed.
+    sweetness: 3,
   },
 ];
 
 /** Slugs whose specs are known to be unverified. Drives the UI's
- *  [TBC] marks so nothing presents a guess as a fact. */
-export const provisionalSlugs = new Set(["alysons-orchard", "blue-hills"]);
+ *  [TBC] marks so nothing presents a guess as a fact.
+ *
+ *  Blue Hills has left this set: its sweetness is now read off the live
+ *  page's own scale graphic rather than guessed. */
+export const provisionalSlugs = new Set(["alysons-orchard"]);

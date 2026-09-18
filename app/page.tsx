@@ -14,6 +14,19 @@ import { SweetnessGuide } from "@/components/press-house/sweetness-guide";
 export default function Home() {
   return (
     <>
+      {/* The page's h1. The design has no slot for a masthead line — the
+          largest type on screen is the lead cider's name, which used to
+          be the h1 and so made the home page's one top-level heading a
+          seasonal product. That is wrong for a crawler and wrong for a
+          screen reader arriving cold: neither learned what this site
+          sells. The lead is now an h2 where it belongs, and this states
+          the proposition once. It is the same claim the footer, the
+          <title> and the meta description all make, so it is not
+          saying anything to a crawler that a reader is not told. */}
+      <h1 className="sr-only">
+        Stormalong Cider — unfiltered craft hard cider from Sherborn,
+        Massachusetts
+      </h1>
       <FrontPage />
       <TrophyCase />
       <Fleet />

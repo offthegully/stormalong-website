@@ -10,6 +10,11 @@ import { Tbc } from "./ui";
  * A colour-blocked cider tile — the unit that /ciders and the home
  * fleet are both built from.
  *
+ * The can is the tile. The labels are the best thing Stormalong owns
+ * and they are what somebody scanning a shelf actually reads, so they
+ * get the top half of the tile at a size where the artwork resolves.
+ * Everything else is a caption under a photograph.
+ *
  * The ground comes from `cider.tileColor`, which is NOT an eyedropper
  * of the can. The fifteen labels collapse into only five hue families,
  * so a straight sample produces eleven pairs of tiles that read
@@ -31,56 +36,98 @@ export function CiderTile({
       href={`/ciders/${cider.slug}`}
       style={{ backgroundColor: cider.tileColor }}
       className={cn(
-        "group flex flex-col p-6 text-paper-light transition-shadow hover:shadow-[inset_0_0_0_2px_#C9A227]",
+        "ph-lift ph-ring group flex flex-col text-paper-light",
+        "hover:shadow-[0_16px_34px_rgba(10,26,43,0.32)]",
         className,
       )}
     >
-      {showGroupTag && cider.availability !== "Year-round" && (
-        <div className="ph-label mb-2.5 text-[0.56rem] text-gold">
-          {cider.availability}
-        </div>
-      )}
+      {/* The stage. The tag is positioned rather than stacked so that
+          a seasonal and a year-round tile put their cans on exactly
+          the same line — otherwise every other tile in a row sits a
+          row of small caps lower than its neighbours.
 
-      <div className="mb-4 flex items-start justify-between gap-4">
-        <h3 className="ph-slab text-[1.3rem] leading-tight">{cider.name}</h3>
+          The tag earns its corner only when it says something the
+          group heading has not. "Year-round" is the default and never
+          shows. "Seasonal" is dropped inside the Rare Apple Series,
+          where three of the four cans carry it and the heading has
+          already covered it — that group was labelling its own members
+          "Seasonal". "Limited" survives everywhere, because it is
+          scarcer than the group it sits in and it is what the home
+          page's hero calls Kingston Black. */}
+      <div className="relative flex justify-center px-6 pb-6 pt-8">
+        {showGroupTag && showsAvailability(cider) && (
+          <div className="ph-label absolute left-5 top-5 text-[0.56rem] text-gold">
+            {cider.availability}
+          </div>
+        )}
         <Image
           src={cider.image}
           alt=""
-          width={54}
-          height={128}
-          className="h-[86px] w-auto shrink-0 object-contain"
+          width={210}
+          height={500}
+          sizes="(min-width: 1024px) 110px, (min-width: 640px) 95px, 105px"
+          className="ph-move h-[225px] w-auto object-contain drop-shadow-[0_16px_26px_rgba(0,0,0,0.45)] group-hover:-translate-y-2.5 group-hover:rotate-3 group-hover:scale-105 group-focus-visible:-translate-y-2.5 group-focus-visible:rotate-3 group-focus-visible:scale-105 lg:h-[250px]"
         />
       </div>
 
-      <p className="mb-4 font-franklin text-[0.85rem] font-light leading-snug text-paper-light/80">
-        {cider.flavor}
-      </p>
+      <div className="flex flex-grow flex-col border-t border-paper-light/25 px-6 pb-6 pt-5">
+        <h3 className="ph-slab mb-2 text-[1.3rem] leading-tight">
+          {cider.name}
+        </h3>
 
-      <div className="mt-auto flex gap-5 border-t border-paper-light/25 pt-3.5">
-        <div>
-          <div className="ph-label mb-1 text-[0.5rem] text-paper-light/55">
-            ABV
+        <p className="mb-4 font-franklin text-[0.85rem] font-light leading-snug text-paper-light/80">
+          {cider.flavor}
+        </p>
+
+        <div className="mt-auto flex gap-5">
+          <div>
+            <div className="ph-label mb-1 text-[0.5rem] text-paper-light/55">
+              ABV
+            </div>
+            <div className="ph-num text-[0.9rem] font-semibold">
+              {cider.abv}%
+            </div>
           </div>
-          <div className="ph-num text-[0.9rem] font-semibold">{cider.abv}%</div>
+          <div>
+            <div className="ph-label mb-1 text-[0.5rem] text-paper-light/55">
+              Sweetness
+            </div>
+            <div className="text-[0.9rem] font-semibold">
+              {cider.provisional ? (
+                <Tbc>{sweetnessLabel(cider.sweetness)}</Tbc>
+              ) : (
+                sweetnessLabel(cider.sweetness)
+              )}
+            </div>
+          </div>
         </div>
-        <div>
-          <div className="ph-label mb-1 text-[0.5rem] text-paper-light/55">
-            Sweetness
-          </div>
-          <div className="text-[0.9rem] font-semibold">
-            {cider.provisional ? (
-              <Tbc>{sweetnessLabel(cider.sweetness)}</Tbc>
-            ) : (
-              sweetnessLabel(cider.sweetness)
-            )}
-          </div>
-        </div>
+
+        {/* This tile goes to the cider, not to the locator, so it says
+            so. The old label read "Where to find it", which is the
+            locator's promise and a different page. */}
+        <span className="ph-label mt-4 inline-flex items-center gap-1.5 text-[0.56rem] text-gold">
+          See the cider
+          <ArrowRightIcon
+            size={12}
+            className="ph-move-fast group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5"
+          />
+        </span>
       </div>
-
-      <span className="ph-label mt-4 inline-flex items-center gap-1.5 text-[0.56rem] text-gold">
-        Where to find it
-        <ArrowRightIcon size={12} className="transition-transform group-hover:translate-x-0.5" />
-      </span>
     </Link>
   );
+}
+
+/**
+ * Whether the availability tag adds anything over the group heading the
+ * tile is sitting under.
+ *
+ * "Year-round" is the default state and is never worth a tag. "Seasonal"
+ * is worth one in the core and seasonal groups but not in the Rare Apple
+ * Series, whose heading has already said it. Anything scarcer than that
+ * — "Limited" today — always shows, in any group.
+ */
+function showsAvailability(cider: ShelfCider): boolean {
+  if (cider.availability === "Year-round") return false;
+  if (cider.availability === "Seasonal" && cider.group === "rare") return false;
+  return true;
 }

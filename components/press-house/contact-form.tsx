@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { site } from "./site-config";
 
 type State =
@@ -24,7 +25,7 @@ const subjects = [
 ];
 
 const fieldClasses =
-  "w-full border border-ink/25 bg-paper-light px-3.5 py-3 font-franklin text-[0.9rem] text-ink placeholder:text-prose-faint focus:border-gold-dark focus:outline-none";
+  "w-full border border-ink/25 bg-paper-light px-3.5 py-3 font-franklin text-[0.9rem] text-ink ph-tint placeholder:text-prose-faint focus:border-gold-dark focus:outline-none";
 
 export function ContactForm() {
   const [state, setState] = useState<State>({ kind: "idle" });
@@ -69,7 +70,7 @@ export function ContactForm() {
 
   if (state.kind === "done") {
     return (
-      <div role="status" className="border-l-[3px] border-gold pl-5">
+      <div role="status" className="ph-enter border-l-[3px] border-gold pl-5">
         <h3 className="ph-slab mb-2 text-xl">Message sent.</h3>
         <p className="font-franklin text-[0.92rem] leading-relaxed text-prose">
           We do our best to get back to you within 48 hours.
@@ -155,7 +156,12 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={state.kind === "sending"}
-        className="ph-label bg-brick px-7 py-3.5 text-paper transition-colors hover:bg-brick-dark disabled:opacity-60"
+        // See the note on the newsletter's button: the pulse is what
+        // separates "busy" from "broken" while the request is out.
+        className={cn(
+          "ph-press ph-label bg-brick px-7 py-3.5 text-paper hover:bg-brick-dark disabled:opacity-60",
+          state.kind === "sending" && "animate-pulse",
+        )}
       >
         {state.kind === "sending" ? "Sending…" : "Send"}
       </button>
@@ -163,7 +169,7 @@ export function ContactForm() {
       {state.kind === "error" && (
         <p
           role="alert"
-          className="mt-4 border-l-[3px] border-brick pl-4 font-franklin text-[0.85rem] leading-relaxed text-brick"
+          className="ph-enter mt-4 border-l-[3px] border-brick pl-4 font-franklin text-[0.85rem] leading-relaxed text-brick"
         >
           {state.message}
         </p>

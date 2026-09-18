@@ -56,9 +56,9 @@ export function SweetnessGuide() {
               <div
                 key={step.label}
                 style={{ borderLeftColor: step.color }}
-                className="border-l-[3px] pl-3.5"
+                className="ph-tint group border-l-[3px] pl-3.5 hover:bg-ink/[0.04]"
               >
-                <div className="ph-slab text-[1.05rem] leading-none">
+                <div className="ph-figure ph-slab origin-left text-[1.05rem] leading-none group-hover:scale-105">
                   {step.label}
                 </div>
                 <div className="ph-label ph-num mt-1.5 text-[0.56rem] text-prose-muted">
@@ -86,12 +86,15 @@ export function SweetnessGuide() {
           </div>
 
           {/* The ramp itself */}
-          <div className="mt-6 flex gap-[3px]">
+          {/* The ramp reads as one continuous scale, so each band
+              grows in place on hover rather than moving — a band that
+              slid would shift every band after it. */}
+          <div className="mt-6 flex h-4 items-end gap-[3px]">
             {steps.map((step) => (
               <span
                 key={step.label}
                 style={{ backgroundColor: step.color }}
-                className="h-2 flex-grow"
+                className="ph-move h-2 flex-grow origin-bottom hover:scale-y-[2]"
               />
             ))}
           </div>

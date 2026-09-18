@@ -67,7 +67,7 @@ export const releases: Release[] = [
  * pages on stormalong.com rather than rewritten.
  */
 export const seriesDescription =
-  "In 2017, we started making small batch ciders with some of our favourite rare apples, such as the British Kingston Black apple, and other American Heirloom varieties that were among some of the first apples cultivated in the United States. These apples are incredibly rare in the United States and many of the American Heirloom varieties were pretty much wiped out after Prohibition. They have only recently started to make a small comeback through the efforts of apple evangelists.";
+  "In 2017, we started making small batch ciders with some of our favorite rare apples, such as the British Kingston Black apple, and other American Heirloom varieties that were among some of the first apples cultivated in the United States. These apples are incredibly rare in the United States and many of the American Heirloom varieties were pretty much wiped out after Prohibition. They have only recently started to make a small comeback through the efforts of apple evangelists.";
 
 /** Club facts, from the live Cider Club page. */
 export const clubFacts: {

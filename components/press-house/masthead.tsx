@@ -7,21 +7,42 @@ import { CloseIcon, MenuIcon, PinIcon, SearchIcon, Star } from "./icons";
 import { primaryNav, routes, site, ticker } from "./site-config";
 
 /**
- * Gold announcement bar. Static on desktop, where all three fit; on a
- * phone it scrolls horizontally rather than wrapping to three lines.
+ * Gold announcement bar, running as a newspaper ticker.
+ *
+ * The run of items is rendered twice and the pair scrolls as one
+ * track; at -50% the second copy is exactly where the first began, so
+ * the loop has no seam and no item is ever cut in half. The duplicate
+ * is `aria-hidden`, so a screen reader hears the three announcements
+ * once rather than six times.
+ *
+ * It stops under the pointer, and stops outright under reduced
+ * motion — a line of text that will not hold still cannot be read.
+ * This also replaced the horizontal scroll the phone used to need: the
+ * track carries the items past on its own at every width.
  */
+function TickerRun({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <div
+      className="flex shrink-0 items-center gap-3 pr-3"
+      aria-hidden={hidden || undefined}
+    >
+      {ticker.map((item) => (
+        <span key={item} className="flex shrink-0 items-center gap-3">
+          <Star className="ph-label" />
+          <span className="ph-label whitespace-nowrap">{item}</span>
+        </span>
+      ))}
+      <Star className="ph-label" />
+    </div>
+  );
+}
+
 function Ticker() {
   return (
-    <div className="bg-gold text-ink">
-      <div className="ph-gutter flex items-center justify-center gap-3 overflow-x-auto py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <Star className="ph-label shrink-0" />
-        {ticker.map((item, i) => (
-          <span key={item} className="flex shrink-0 items-center gap-3">
-            <span className="ph-label whitespace-nowrap">{item}</span>
-            {i < ticker.length - 1 && <Star className="ph-label" />}
-          </span>
-        ))}
-        <Star className="ph-label shrink-0" />
+    <div className="ph-marquee bg-gold py-2.5 text-ink">
+      <div className="ph-marquee__track">
+        <TickerRun />
+        <TickerRun hidden />
       </div>
     </div>
   );
@@ -29,7 +50,10 @@ function Ticker() {
 
 function Wordmark({ className }: { className?: string }) {
   return (
-    <Link href={routes.home} className={cn("text-center", className)}>
+    <Link
+      href={routes.home}
+      className={cn("ph-lift text-center hover:opacity-95", className)}
+    >
       <span className="ph-slab block text-[1.55rem] leading-none tracking-[0.04em] text-paper">
         {site.name.toUpperCase()}
       </span>
@@ -59,9 +83,28 @@ export function Masthead() {
               aria-expanded={open}
               aria-controls="ph-mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="text-paper lg:hidden"
+              className="ph-press text-paper lg:hidden"
             >
-              {open ? <CloseIcon size={22} /> : <MenuIcon size={22} />}
+              {/* Both glyphs are always rendered and turned past each
+                  other, so the button answers the tap itself rather
+                  than only once the drawer has finished opening. A
+                  conditional render would have nothing to animate. */}
+              <span className="relative block h-[22px] w-[22px]">
+                <MenuIcon
+                  size={22}
+                  className={cn(
+                    "ph-reveal absolute inset-0",
+                    open ? "rotate-90 opacity-0" : "rotate-0 opacity-100",
+                  )}
+                />
+                <CloseIcon
+                  size={22}
+                  className={cn(
+                    "ph-reveal absolute inset-0",
+                    open ? "rotate-0 opacity-100" : "-rotate-90 opacity-0",
+                  )}
+                />
+              </span>
             </button>
 
             <nav className="hidden items-center gap-6 lg:flex">
@@ -69,7 +112,7 @@ export function Masthead() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="ph-label text-paper transition-colors hover:text-gold"
+                  className="ph-wipe ph-press ph-label text-paper hover:text-gold"
                 >
                   {item.label}
                 </Link>
@@ -84,13 +127,13 @@ export function Masthead() {
             <Link
               href={routes.ciders}
               aria-label="Search the ciders"
-              className="text-paper transition-colors hover:text-gold"
+              className="ph-lift text-paper hover:scale-110 hover:text-gold"
             >
               <SearchIcon size={19} strokeWidth={1.7} />
             </Link>
             <Link
               href={routes.locator}
-              className="ph-label hidden items-center gap-2 border-2 border-gold bg-brick px-6 py-3.5 text-paper transition-colors hover:bg-brick-dark sm:inline-flex"
+              className="ph-lift ph-label hidden items-center gap-2 border-2 border-gold bg-brick px-6 py-3.5 text-paper hover:bg-brick-dark hover:shadow-[0_10px_22px_rgba(0,0,0,0.45)] sm:inline-flex"
             >
               <PinIcon size={14} className="text-gold" />
               Find a can near you
@@ -98,40 +141,54 @@ export function Masthead() {
           </div>
         </div>
 
-        {/* Mobile drawer */}
-        <nav
-          id="ph-mobile-nav"
-          hidden={!open}
-          className="ph-gutter border-t border-gold/25 pb-6 pt-4 lg:hidden"
-        >
-          <div className="flex flex-col gap-4">
-            {primaryNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="ph-label text-paper"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link
-              href={routes.ourStory}
-              onClick={() => setOpen(false)}
-              className="ph-label text-paper"
+        {/* Mobile drawer.
+
+            The `hidden` attribute is gone because an attribute cannot
+            be transitioned; `ph-collapse` does the same job in CSS —
+            it opens to the drawer's own height, and while closed its
+            `visibility: hidden` keeps these links out of the tab order
+            and the accessibility tree exactly as `hidden` did. */}
+        <div className="ph-collapse lg:hidden" data-open={open}>
+          {/* This bare div is load-bearing. `min-height: 0` lets a grid
+              child's CONTENT shrink to nothing but cannot touch its own
+              padding or border, so with the padding on the clipped
+              child the drawer stayed 41px open. It lives one level in,
+              where the clipping can reach it. */}
+          <div>
+            <nav
+              id="ph-mobile-nav"
+              className="ph-gutter border-t border-gold/25 pb-6 pt-4"
             >
-              Our story
-            </Link>
-            <Link
-              href={routes.locator}
-              onClick={() => setOpen(false)}
-              className="ph-label mt-2 inline-flex items-center justify-center gap-2 border-2 border-gold bg-brick px-6 py-3.5 text-paper"
-            >
-              <PinIcon size={14} className="text-gold" />
-              Find a can near you
-            </Link>
+              <div className="flex flex-col gap-4">
+                {primaryNav.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="ph-press ph-label text-paper hover:text-gold"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link
+                  href={routes.ourStory}
+                  onClick={() => setOpen(false)}
+                  className="ph-press ph-label text-paper hover:text-gold"
+                >
+                  Our story
+                </Link>
+                <Link
+                  href={routes.locator}
+                  onClick={() => setOpen(false)}
+                  className="ph-press ph-label mt-2 inline-flex items-center justify-center gap-2 border-2 border-gold bg-brick px-6 py-3.5 text-paper hover:bg-brick-dark"
+                >
+                  <PinIcon size={14} className="text-gold" />
+                  Find a can near you
+                </Link>
+              </div>
+            </nav>
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );

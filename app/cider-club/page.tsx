@@ -44,7 +44,7 @@ export default function CiderClubPage() {
         <div className="bg-ink px-5 py-12 text-paper sm:px-8 lg:col-span-7 lg:px-14 lg:py-16">
           <Eyebrow className="mb-4 block">Member offerings</Eyebrow>
           <h1 className="ph-slab text-[2.7rem] leading-[0.95] sm:text-[3.6rem]">
-            The Rare
+            The Rare{" "}
             <br />
             Apple Club
           </h1>
@@ -61,11 +61,11 @@ export default function CiderClubPage() {
 
           <dl className="mb-8 grid grid-cols-1 gap-y-5 border-y border-paper/25 py-5 sm:grid-cols-3">
             {clubHeadlines.map((headline) => (
-              <div key={headline.label}>
+              <div key={headline.label} className="group">
                 <dt className="ph-label mb-1.5 text-[0.53rem] text-paper/45">
                   {headline.label}
                 </dt>
-                <dd className="ph-slab ph-num text-[1.35rem] leading-none text-gold">
+                <dd className="ph-figure ph-slab ph-num origin-bottom-left text-[1.35rem] leading-none text-gold group-hover:scale-110">
                   {headline.value}
                 </dd>
               </div>
@@ -76,7 +76,7 @@ export default function CiderClubPage() {
             Join the Rare Apple Club
           </PhButton>
           <p className="ph-label mt-4 text-[0.5rem] text-paper/50">
-            You won&rsquo;t be billed until the shipment goes out.
+            You won't be billed until the shipment goes out.
           </p>
         </div>
 
@@ -100,8 +100,8 @@ export default function CiderClubPage() {
         />
         <ol className="grid gap-px bg-ink/12 sm:grid-cols-2 lg:grid-cols-4">
           {clubBenefits.map((benefit) => (
-            <li key={benefit.title} className="bg-paper p-6">
-              <h2 className="ph-slab mb-3 text-[1.15rem] leading-tight">
+            <li className="ph-tint group bg-paper p-6 hover:bg-paper-light" key={benefit.title}>
+              <h2 className="ph-tint ph-slab mb-3 text-[1.15rem] leading-tight group-hover:text-brick">
                 {benefit.title}
               </h2>
               <p className="font-franklin text-[0.9rem] leading-relaxed text-prose">
@@ -126,8 +126,11 @@ export default function CiderClubPage() {
           </div>
           <ol className="grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:col-span-8">
             {clubTerms.map((term, index) => (
-              <li key={term} className="flex gap-4 border-t border-paper/20 pt-4">
-                <span className="ph-label ph-num shrink-0 text-[0.6rem] text-gold">
+              <li
+                key={term}
+                className="ph-tint group flex gap-4 border-t border-paper/20 pt-4 hover:border-gold/60"
+              >
+                <span className="ph-figure ph-label ph-num shrink-0 origin-left text-[0.6rem] text-gold group-hover:scale-125">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <p className="font-franklin text-[0.9rem] font-light leading-relaxed text-paper/80">
@@ -159,7 +162,7 @@ export default function CiderClubPage() {
         <div className="ph-gutter grid gap-10 py-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <h2 className="ph-slab mb-4 text-[2.1rem] leading-[0.98] sm:text-[2.6rem]">
-              Join our Rare
+              Join our Rare{" "}
               <br />
               Apple Club
             </h2>
@@ -191,7 +194,7 @@ export default function CiderClubPage() {
               Questions about a membership already running? Email{" "}
               <Link
                 href={`mailto:${site.email}`}
-                className="underline underline-offset-4 hover:text-gold"
+                className="ph-press underline underline-offset-4 hover:text-gold"
               >
                 {site.email}
               </Link>

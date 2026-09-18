@@ -180,7 +180,14 @@ export function parseAward(
   return {
     slug,
     ciderName,
-    competition,
+    // Normalised, not raw. The tally at the foot of the trophy case was
+    // already collapsing these; the seals above it and the per-cider
+    // award lists were not, so one seal read "Los Angeles Invitational
+    // Wine & Spirits" directly above a tally that called the same body
+    // "LA Invitational", and every detail page printed the data's
+    // "SFChronicle" with the space missing. One canonical name, used
+    // everywhere it is shown.
+    competition: normaliseCompetition(competition),
     year,
     medal: label,
     isBestOfClass: label === "Best of Class",

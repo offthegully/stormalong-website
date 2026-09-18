@@ -62,7 +62,7 @@ export function FrontPage() {
       <div className="ph-gutter py-8 lg:py-9">
         <SectionRule
           eyebrow="This month"
-          note="Four things, all on screen, none of them moving"
+          note="New release, new format, and the vault"
           onInk
         />
 
@@ -75,9 +75,11 @@ export function FrontPage() {
                   ★ {lead.badge} ★
                 </span>
               </div>
-              <h1 className="ph-slab mb-4 text-[2.6rem] leading-[0.95] sm:text-[3.5rem]">
+              {/* h2, not h1 — see the note on the sr-only h1 in
+                  app/page.tsx. Unchanged visually. */}
+              <h2 className="ph-slab mb-4 text-[2.6rem] leading-[0.95] sm:text-[3.5rem]">
                 {lead.displayName}
-              </h1>
+              </h2>
               <div className="mb-5 h-[3px] w-[170px] bg-gold" />
               <p className="mb-4 max-w-[40ch] font-franklin text-[1.03rem] font-light leading-relaxed text-paper/85">
                 {lead.note}
@@ -99,20 +101,27 @@ export function FrontPage() {
 
               <Link
                 href={routes.locator}
-                className="ph-label inline-flex items-center gap-2 bg-gold px-6 py-3.5 text-ink transition-colors hover:bg-gold-pale"
+                className="ph-lift ph-label inline-flex items-center gap-2 bg-gold px-6 py-3.5 text-ink hover:bg-gold-pale hover:shadow-[0_12px_26px_rgba(0,0,0,0.5)]"
               >
                 <PinIcon size={14} />
                 Find it near me
               </Link>
             </div>
 
+            {/* The can breathes. It is the only thing on the page that
+                moves without being asked, and it is deliberately a
+                photograph rather than any piece of text — six seconds
+                a cycle, ten pixels of travel, beside the copy and
+                never in it. `ph-float` is the hook the reduced-motion
+                block uses to stop it outright. */}
             <Image
               src="/images/ciders/kingston-black.png"
               alt={`${lead.displayName} can`}
-              width={180}
-              height={420}
+              width={210}
+              height={500}
+              sizes="(min-width: 1024px) 165px, (min-width: 640px) 140px, 105px"
               priority
-              className="h-[220px] w-auto shrink-0 object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.5)] sm:h-[320px]"
+              className="ph-float h-[240px] w-auto shrink-0 animate-float object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.5)] sm:h-[330px] lg:h-[390px]"
             />
           </article>
 
@@ -122,20 +131,21 @@ export function FrontPage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group flex flex-grow items-center gap-5 border-2 border-paper/30 px-6 py-5 transition-colors hover:border-gold ${item.ground}`}
+                className={`ph-lift group flex flex-grow items-center gap-5 border-2 border-paper/30 px-6 py-5 hover:border-gold hover:shadow-[0_14px_30px_rgba(0,0,0,0.5)] ${item.ground}`}
               >
                 {item.image && (
                   <Image
                     src={item.image}
                     alt=""
                     width={70}
-                    height={160}
-                    className="h-[104px] w-auto shrink-0 object-contain"
+                    height={167}
+                    sizes="48px"
+                    className="ph-move h-[116px] w-auto shrink-0 object-contain group-hover:-translate-y-1.5 group-hover:rotate-[-4deg] group-focus-visible:-translate-y-1.5 group-focus-visible:rotate-[-4deg]"
                   />
                 )}
                 {item.figure && (
                   <div className="shrink-0 text-center">
-                    <div className="ph-slab ph-num text-[2.4rem] leading-none text-gold">
+                    <div className="ph-move ph-slab ph-num text-[2.4rem] leading-none text-gold group-hover:scale-110 group-focus-visible:scale-110">
                       {item.figure.value}
                     </div>
                     <div className="ph-label mt-1 text-[0.56rem] text-paper/70">
@@ -154,9 +164,12 @@ export function FrontPage() {
                     {item.copy}
                   </div>
                 </div>
+                {/* The arrow both fades and travels: on a tile this
+                    wide, opacity alone is easy to miss at the far
+                    right of the card. */}
                 <ArrowRightIcon
                   size={18}
-                  className="ml-auto hidden shrink-0 text-gold opacity-0 transition-opacity group-hover:opacity-100 sm:block"
+                  className="ph-reveal ml-auto hidden shrink-0 -translate-x-1 text-gold opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 sm:block"
                 />
               </Link>
             ))}

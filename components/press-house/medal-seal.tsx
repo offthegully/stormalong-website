@@ -4,6 +4,12 @@ import { cn } from "@/lib/utils";
  * The award seal: a rayed medallion over a ribbon. Drawn rather than
  * imported so it takes the gold treatment for a Best of Class and the
  * quieter cream one for everything else.
+ *
+ * The two groups carry `ph-seal-rays` and `ph-seal-body` so that a
+ * parent marked `group` can turn the rays and swell the medallion on
+ * hover — see the rules in globals.css. The seal has no hover
+ * behaviour of its own; it only answers when something around it is
+ * being pointed at.
  */
 export function MedalSeal({
   tone = "cream",
@@ -20,6 +26,7 @@ export function MedalSeal({
       aria-hidden="true"
     >
       <g
+        className="ph-seal-body"
         stroke="currentColor"
         fill="none"
         strokeWidth={gold ? 1.6 : 1.5}
@@ -29,7 +36,12 @@ export function MedalSeal({
         <circle cx="32" cy="30" r="25" />
         <circle cx="32" cy="30" r="20" />
       </g>
-      <g stroke="currentColor" strokeWidth={gold ? 1.1 : 1} opacity={gold ? 1 : 0.7}>
+      <g
+        className="ph-seal-rays"
+        stroke="currentColor"
+        strokeWidth={gold ? 1.1 : 1}
+        opacity={gold ? 1 : 0.7}
+      >
         <line x1="32" y1="30" x2="32" y2="7" />
         <line x1="32" y1="30" x2="48" y2="14" />
         <line x1="32" y1="30" x2="55" y2="30" />

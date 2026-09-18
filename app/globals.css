@@ -104,15 +104,323 @@
   }
 }
 
+/* ==================================================================
+   Motion.
+
+   Press House is a still design and stays one: nothing moves while
+   you read. Every rule below fires only when something RESPONDS —
+   a hover, a press, a focus, a panel opening, a filter changing, a
+   form answering. There is no scroll-triggered motion anywhere on
+   the site and no ambient loop, so a paragraph is never withheld
+   from a reader waiting for an animation to finish.
+
+   Two durations do all the work. `--ph-fast` is for feedback that
+   should feel like the pointer itself; `--ph-base` is for something
+   changing state. Both use the same ease, which starts immediately
+   and settles — the motion equivalent of the design's hard edges.
+   ================================================================== */
+
+@layer base {
+  :root {
+    --ph-ease: cubic-bezier(0.2, 0, 0, 1);
+    /* Overshoots its target and settles back. This is what separates a
+       panel that lifts from a panel that merely moves up, and it is
+       the reason the hovers read as alive rather than mechanical. Only
+       ever on transform — a colour that overshoots just looks wrong. */
+    --ph-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+    --ph-fast: 130ms;
+    --ph-base: 200ms;
+    --ph-slow: 320ms;
+  }
+
+  /* One focus ring for the whole site: an ink hairline inside a gold
+     one. Either colour alone fails somewhere — gold is nearly
+     invisible on cream (1.9:1) and ink disappears on the ink bands —
+     but the pair always leaves one ring reading against the ground,
+     and it echoes the double rule the design is built on.
+
+     The transparent outline is not decorative: Windows High Contrast
+     Mode drops box-shadows and repaints that outline, so the ring
+     survives where the shadow does not. */
+  :where(a, button, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow:
+      0 0 0 2px theme("colors.ink.DEFAULT"),
+      0 0 0 5px theme("colors.gold.DEFAULT");
+  }
+}
+
+@layer components {
+  /* NOTE — each class below declares a WHOLE `transition`, so the last
+     one in this file wins outright. An element takes exactly one of
+     `ph-press`, `ph-lift`, `ph-tint`, `ph-move`, `ph-move-fast`,
+     `ph-reveal`, `ph-figure` and `ph-hint`; never two.
+
+     Which one is not a style choice, it is a claim about the element:
+     `ph-lift` is for things you can click, everything else is for
+     things you cannot.
+
+     The standard response for anything clickable: colour and border
+     ease rather than snap, and the whole control takes a 1px press.
+     A pixel is enough — at this scale it reads as the control giving
+     way under the pointer, which is all a press state has to say. */
+  .ph-press {
+    transition:
+      background-color var(--ph-fast) var(--ph-ease),
+      border-color var(--ph-fast) var(--ph-ease),
+      color var(--ph-fast) var(--ph-ease),
+      transform var(--ph-fast) var(--ph-ease);
+  }
+  .ph-press:active {
+    transform: translateY(1px);
+  }
+
+  /* A gold rule that wipes in under a nav item, left to right. The
+     underline is the one piece of furniture the masthead already
+     uses everywhere else, so hover draws the same line rather than
+     introducing a new idea. */
+  .ph-wipe {
+    position: relative;
+    --ph-wipe-out: 0;
+  }
+  .ph-wipe:hover,
+  .ph-wipe:focus-visible {
+    --ph-wipe-out: 1;
+  }
+  /* The state is carried by a custom property on the link rather than
+     by a `:hover::after` rule. Custom properties inherit into the
+     pseudo-element, so the hover only has to win the cascade on the
+     element itself — where a plain `:hover` reliably does. Setting
+     the transform from a `.ph-wipe:hover::after` rule looked correct
+     and higher-specificity, but lost to the base `::after` rule in
+     the compiled sheet and drew nothing. */
+  .ph-wipe::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -0.45em;
+    height: 2px;
+    background: theme("colors.gold.DEFAULT");
+    transform: scaleX(var(--ph-wipe-out));
+    transform-origin: left;
+    transition: transform var(--ph-base) var(--ph-ease);
+  }
+
+  /* Tailwind's `transition-*` utilities carry their own 150ms and
+     their own ease, and in this build they are emitted after the
+     `duration-*` / `ease-*` utilities — so pairing them silently
+     loses both. These name the whole transition in one declaration
+     instead, which is also the only place the two motion tokens
+     need to be spelled out. */
+  .ph-move {
+    transition: transform var(--ph-base) var(--ph-ease);
+  }
+  .ph-move-fast {
+    transition: transform var(--ph-fast) var(--ph-ease);
+  }
+  .ph-tint {
+    transition:
+      color var(--ph-fast) var(--ph-ease),
+      background-color var(--ph-fast) var(--ph-ease),
+      border-color var(--ph-fast) var(--ph-ease);
+  }
+  .ph-reveal {
+    transition:
+      opacity var(--ph-base) var(--ph-ease),
+      transform var(--ph-base) var(--ph-ease);
+  }
+
+  /* The gold frame a tile draws around itself on hover. A
+     pseudo-element rather than an inset box-shadow: it is the same
+     frame the design uses elsewhere, and it leaves `box-shadow` free
+     for the focus ring, which the two would otherwise fight over. */
+  .ph-ring {
+    position: relative;
+  }
+  .ph-ring::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 2px solid theme("colors.gold.DEFAULT");
+    opacity: 0;
+    transition: opacity var(--ph-fast) var(--ph-ease);
+  }
+  .ph-ring:hover::after,
+  .ph-ring:focus-visible::after {
+    opacity: 1;
+  }
+
+  /* The main hover gesture: the whole panel rises off the page and
+     settles. Paired at every call site with its own ground and border
+     change, and with a shadow — which is in the transition list here
+     so a `hover:shadow-*` utility fades rather than snapping.
+
+     `:active` drops it most of the way back down, so pressing a
+     raised panel still reads as a press. */
+  .ph-lift {
+    transition:
+      transform var(--ph-slow) var(--ph-spring),
+      box-shadow var(--ph-base) var(--ph-ease),
+      background-color var(--ph-fast) var(--ph-ease),
+      border-color var(--ph-fast) var(--ph-ease),
+      color var(--ph-fast) var(--ph-ease);
+  }
+  .ph-lift:hover {
+    transform: translateY(-4px);
+  }
+  .ph-lift:active {
+    transform: translateY(-1px);
+  }
+
+  /* The award seal's two moving parts. SVG needs `transform-box:
+     fill-box` before `transform-origin: center` means the glyph's own
+     centre rather than the viewport's, without which the rays swing
+     off screen instead of turning in place. */
+  .ph-seal-rays,
+  .ph-seal-body {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform var(--ph-slow) var(--ph-spring);
+  }
+  .group:hover .ph-seal-rays,
+  .group:focus-visible .ph-seal-rays {
+    transform: rotate(22.5deg);
+  }
+  .group:hover .ph-seal-body,
+  .group:focus-visible .ph-seal-body {
+    transform: scale(1.07);
+  }
+
+  /* A figure inside a panel marked `group` — a medal count, a year, a
+     run size. Pairs with `ph-stat` on the panel: the panel takes the
+     accent colour and the figure grows a little in place. This is what
+     an informational panel does INSTEAD of lifting, because a panel
+     that rises under the pointer promises a click it cannot honour.
+
+     `inline-block` because a transform does nothing to an inline box. */
+  .ph-figure {
+    display: inline-block;
+    transition:
+      transform var(--ph-base) var(--ph-spring),
+      color var(--ph-fast) var(--ph-ease);
+  }
+
+  /* A line that is not there until you point at the panel it belongs
+     to. Height and margin-top animate alongside opacity, so the panel
+     keeps its clean resting size instead of reserving the room. */
+  .ph-hint {
+    transition:
+      height var(--ph-base) var(--ph-ease),
+      margin-top var(--ph-base) var(--ph-ease),
+      opacity var(--ph-base) var(--ph-ease),
+      transform var(--ph-base) var(--ph-spring);
+  }
+
+  /* The ticker. Two identical copies of the run of items scroll as one
+     track; at -50% the second copy sits exactly where the first
+     started, so the loop has no seam. It pauses under the pointer and
+     while anything inside it has focus, because a line of text that
+     will not hold still is unreadable. */
+  .ph-marquee {
+    overflow: hidden;
+  }
+  .ph-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: ph-marquee 42s linear infinite;
+  }
+  .ph-marquee:hover .ph-marquee__track,
+  .ph-marquee:focus-within .ph-marquee__track {
+    animation-play-state: paused;
+  }
+
+  /* Content that has just replaced other content — a filtered shelf,
+     a form's answer. Short and shallow: this is an acknowledgement
+     that something changed, not an entrance. */
+  .ph-enter {
+    animation: ph-enter var(--ph-base) var(--ph-ease) both;
+  }
+
+  /* A panel that opens to its own height without one being measured
+     in JS. `grid-template-rows: 0fr -> 1fr` is the only way to
+     transition to `auto`; `visibility` is what keeps the closed
+     panel's links out of the tab order and the accessibility tree,
+     and it is delayed on the way out so the collapse is visible
+     before the panel is taken away. */
+  .ph-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows var(--ph-base) var(--ph-ease),
+      visibility 0s linear var(--ph-base);
+  }
+  .ph-collapse > * {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .ph-collapse[data-open="true"] {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition:
+      grid-template-rows var(--ph-base) var(--ph-ease),
+      visibility 0s;
+  }
+}
+
+@keyframes ph-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ph-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ph-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ph-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @layer base {
   /* Headings default to the slab face in their own case; a heading
-     that wants otherwise says so. */
-  .ph-page h1,
-  .ph-page h2,
-  .ph-page h3,
-  .ph-page h4,
-  .ph-page h5,
-  .ph-page h6 {
+     that wants otherwise says so — and `.ph-label` is how it says so.
+     The `:not()` is load-bearing. This selector is `.ph-page h2`
+     (0-1-1) and beats a bare `.ph-label` (0-1-0), so without the
+     exception a heading marked as a label came out as a hybrid of the
+     two: `ph-label`'s 10.5px survived because this rule sets no
+     font-size, while the face, the casing and the tracking were all
+     taken back by this rule. Excluding labelled headings outright is
+     cleaner than making every one of them shout with `!`. */
+  .ph-page :is(h1, h2, h3, h4, h5, h6):not(.ph-label) {
     @apply font-slab normal-case;
     letter-spacing: 0.02em;
   }
@@ -134,6 +442,15 @@
 
 html[data-age-gate="1"] [data-ph-age-gate] {
   display: flex;
+  animation: ph-fade 200ms var(--ph-ease) both;
+}
+
+/* The gate is the one interstitial on the site, so it is allowed to
+   arrive rather than appear. The bootstrap runs before first paint,
+   so this plays as the page paints and a returning visitor with the
+   cookie never sees it at all. */
+html[data-age-gate="1"] [data-ph-age-gate] > * {
+  animation: ph-rise 260ms var(--ph-ease) both;
 }
 
 /* Nothing behind the gate should scroll or be reachable by tab while
@@ -141,4 +458,36 @@ html[data-age-gate="1"] [data-ph-age-gate] {
 html[data-age-gate="1"],
 html[data-age-gate="1"] body {
   overflow: hidden;
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion.
+
+   Everything above is feedback, and feedback still has to arrive when
+   someone has asked for no motion — so the rules are not removed,
+   they are collapsed to a duration nobody perceives. A press still
+   registers, a panel still opens, the shelf still swaps; none of it
+   travels. `scroll-behavior` is reset here too, because the smooth
+   scrolling set on <html> in layout.tsx is motion the reader did not
+   ask for either.
+   ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* The two ambient loops are stopped outright rather than sped up.
+     Collapsing their duration would leave each parked on its final
+     keyframe, which for the ticker means scrolled halfway along. */
+  .ph-marquee__track,
+  .ph-float {
+    animation: none !important;
+    transform: none !important;
+  }
 }

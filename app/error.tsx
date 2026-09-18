@@ -27,7 +27,7 @@ export default function Error({
           at{" "}
           <a
             href="mailto:info@stormalong.com"
-            className="underline underline-offset-4 hover:text-gold"
+            className="ph-press underline underline-offset-4 hover:text-gold"
           >
             info@stormalong.com
           </a>

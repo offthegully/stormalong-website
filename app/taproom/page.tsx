@@ -159,7 +159,7 @@ export default function TaproomPage() {
             {["Cask", "Pilot batch"].map((name) => (
               <div
                 key={name}
-                className="border-2 border-dashed border-ink/30 px-6 py-5"
+                className="ph-tint border-2 border-dashed border-ink/30 px-6 py-5 hover:border-ink/60"
               >
                 <div className="ph-slab mb-3 text-[1.2rem] leading-tight text-prose-faint">
                   <Tbc>{name}</Tbc>
@@ -186,7 +186,10 @@ export default function TaproomPage() {
             </h2>
             <div className="grid gap-5 sm:grid-cols-2">
               {expectations.map((item) => (
-                <div key={item.title} className="border-t-2 border-ink pt-3.5">
+                <div
+                key={item.title}
+                className="ph-tint group border-t-2 border-ink pt-3.5 hover:border-brick"
+              >
                   <div className="ph-slab mb-1.5 text-[1.05rem] leading-tight">
                     {item.title}
                   </div>
@@ -229,7 +232,7 @@ export default function TaproomPage() {
             </p>
             <a
               href={`mailto:${site.email}`}
-              className="ph-label mt-4 inline-flex items-center gap-2 border-2 border-ink px-6 py-3.5 text-ink transition-colors hover:bg-ink hover:text-paper"
+              className="ph-press ph-label mt-4 inline-flex items-center gap-2 border-2 border-ink px-6 py-3.5 text-ink hover:bg-ink hover:text-paper"
             >
               Get in touch
             </a>

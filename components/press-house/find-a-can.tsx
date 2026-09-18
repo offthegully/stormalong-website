@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { PinIcon } from "./icons";
+import { PinIcon, SearchIcon } from "./icons";
 import { distribution, routes, site } from "./site-config";
 import { Tbc } from "./ui";
 
@@ -73,15 +73,23 @@ export function FindACan({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div className="mb-9 flex justify-center">
+          {/* A link dressed as a search field, so hover has to answer
+              on the whole control rather than on the button alone —
+              otherwise the field half looks inert and people click
+              into it expecting a caret. */}
           <Link
             href={routes.locator}
-            className="flex w-full max-w-[620px] border-[3px] border-ink"
+            className="ph-lift group flex w-full max-w-[620px] border-[3px] border-ink hover:border-brick hover:shadow-[0_14px_30px_rgba(10,26,43,0.28)]"
           >
-            <span className="flex-grow px-5 py-4 font-franklin text-[1rem] text-prose-muted">
+            <span className="flex-grow px-5 py-4 font-franklin text-[1rem] text-prose-muted ph-tint group-hover:text-ink">
               Town, or ZIP code
             </span>
-            <span className="ph-label flex items-center bg-ink px-7 text-gold">
+            <span className="ph-tint ph-label flex items-center gap-2 bg-ink px-7 text-gold group-hover:bg-brick group-hover:text-paper">
               Search
+              <SearchIcon
+                size={14}
+                className="ph-move-fast group-hover:translate-x-1"
+              />
             </span>
           </Link>
         </div>
@@ -119,7 +127,7 @@ export function FindACan({ compact = false }: { compact?: boolean }) {
             foot={
               <a
                 href={`mailto:${site.email}`}
-                className="text-gold hover:underline"
+                className="ph-press text-gold underline-offset-4 hover:underline"
               >
                 Ask us
               </a>
@@ -131,8 +139,11 @@ export function FindACan({ compact = false }: { compact?: boolean }) {
             because nobody has supplied them yet. */}
         <div className="grid grid-cols-3 gap-3.5 sm:grid-cols-6">
           {distribution.states.map((state) => (
-            <div key={state.code} className="border-t-[3px] border-ink pt-3">
-              <div className="ph-slab text-[1.6rem] leading-none">
+            <div
+              key={state.code}
+              className="ph-tint group border-t-[3px] border-ink pt-3 hover:border-brick"
+            >
+              <div className="ph-figure ph-slab origin-bottom-left text-[1.6rem] leading-none group-hover:scale-110 group-hover:text-brick">
                 {state.code}
               </div>
               <div className="ph-num mt-1.5 font-franklin text-[0.82rem] text-prose">
@@ -164,13 +175,22 @@ function Card({
   dark?: boolean;
 }) {
   return (
+    // Two of these three cards are not clickable, so they deliberately
+    // do NOT lift — a panel that rises under the pointer promises a
+    // click it cannot honour. The icon answers instead, which reads as
+    // the card being alive rather than as an affordance.
     <div
       className={cn(
-        "border-2 border-ink px-6 py-6",
-        dark && "bg-ink text-paper",
+        "ph-tint group border-2 border-ink px-6 py-6",
+        dark ? "bg-ink text-paper hover:border-gold" : "hover:border-brick",
       )}
     >
-      <div className={cn("mb-3.5", dark ? "text-gold" : "text-brick")}>
+      <div
+        className={cn(
+          "ph-move mb-3.5 w-fit origin-bottom-left group-hover:-rotate-6 group-hover:scale-110",
+          dark ? "text-gold" : "text-brick",
+        )}
+      >
         {icon}
       </div>
       <div className="ph-slab mb-2 text-[1.25rem] leading-tight">{title}</div>

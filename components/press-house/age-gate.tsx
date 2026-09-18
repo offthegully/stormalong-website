@@ -83,7 +83,7 @@ export function AgeGate() {
           id="ph-age-gate-title"
           className="ph-slab mb-5 text-[1.7rem] leading-[1.08] text-paper"
         >
-          Are you 21
+          Are you 21{" "}
           <br />
           or older?
         </h2>
@@ -93,14 +93,14 @@ export function AgeGate() {
             ref={confirmRef}
             type="button"
             onClick={dismiss}
-            className="ph-label bg-gold px-7 py-4 text-ink transition-colors hover:bg-gold-pale"
+            className="ph-press ph-label bg-gold px-7 py-4 text-ink hover:bg-gold-pale"
           >
             Yes, I am
           </button>
           <button
             type="button"
             onClick={decline}
-            className="ph-label border-2 border-paper/50 px-6 py-3.5 text-paper transition-colors hover:border-paper"
+            className="ph-press ph-label border-2 border-paper/50 px-6 py-3.5 text-paper hover:border-paper"
           >
             No
           </button>

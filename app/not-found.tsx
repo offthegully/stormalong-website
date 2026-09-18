@@ -27,7 +27,7 @@ export default function NotFound() {
         </div>
         <Link
           href="/"
-          className="ph-label mt-8 text-[0.53rem] text-paper/55 underline-offset-4 hover:text-gold hover:underline"
+          className="ph-press ph-label mt-8 text-[0.53rem] text-paper/55 underline-offset-4 hover:text-gold hover:underline"
         >
           Back to the front page
         </Link>

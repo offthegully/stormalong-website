@@ -19,7 +19,7 @@ export function RareAppleBand() {
         </div>
         <Link
           href={routes.releases}
-          className="ph-label shrink-0 border-2 border-gold px-6 py-3.5 text-gold transition-colors hover:bg-gold hover:text-ink"
+          className="ph-press ph-label shrink-0 border-2 border-gold px-6 py-3.5 text-gold hover:bg-gold hover:text-ink"
         >
           See the releases →
         </Link>

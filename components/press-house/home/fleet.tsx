@@ -18,17 +18,20 @@ export function Fleet() {
       <div className="ph-gutter py-12">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <div className="ph-label mb-2.5 text-brick">The core line-up</div>
+            <div className="ph-label mb-2.5 text-brick">On shelves now</div>
             <h2 className="ph-slab text-[2rem] leading-none sm:text-[2.4rem]">
-              Every can its own colour
+              The core line-up
             </h2>
           </div>
           <Link
             href={routes.ciders}
-            className="ph-label inline-flex items-center gap-1.5 text-brick transition-colors hover:text-brick-dark"
+            className="ph-press group ph-label inline-flex items-center gap-1.5 text-brick hover:text-brick-dark"
           >
-            All {shelf.length}
-            <ArrowRightIcon size={12} />
+            All {shelf.length} ciders
+            <ArrowRightIcon
+              size={12}
+              className="ph-move-fast group-hover:translate-x-1"
+            />
           </Link>
         </div>
 

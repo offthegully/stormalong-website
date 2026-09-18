@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { CiderShelf } from "@/components/press-house/cider-shelf";
 import { LocatorBand } from "@/components/press-house/locator-band";
 import { PageHeader } from "@/components/press-house/page-header";
-import { RareAppleBand } from "@/components/press-house/rare-apple-band";
 import { SweetnessGuide } from "@/components/press-house/sweetness-guide";
 import { shelf } from "@/lib/catalogue";
 
@@ -22,7 +21,11 @@ export default function CidersPage() {
       />
       <CiderShelf ciders={shelf} />
       <SweetnessGuide />
-      <RareAppleBand />
+      {/* No RareAppleBand here. Its copy is word-for-word the "Rare
+          Apple Series" group blurb that CiderShelf has already printed
+          further up this same page, so the band made /ciders say the
+          same twenty words twice. The band still earns its place on
+          every other page, where the vault has not been shown. */}
       <LocatorBand />
     </>
   );
