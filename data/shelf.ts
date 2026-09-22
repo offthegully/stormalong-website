@@ -61,9 +61,9 @@ export const shelfOrder: { slug: string; group: CiderGroup }[] = [
 
 /**
  * Tile grounds. NOT an eyedropper of the label — the fifteen cans
- * collapse into only five hue families, which would produce eleven
+ * collapse into only a handful of hue families, which would produce
  * pairs of tiles that read identically. Hue is taken from the can,
- * then separated *by value* within each family. All fifteen clear
+ * then separated *by value* within each family. All twenty clear
  * 4.5:1 against paper.light (#FBF6EA); the lowest is 5.44:1.
  * See canvas review, finding 09. Mirrors `colors.cider` in
  * tailwind.config.ts — keep the two in sync.
@@ -88,6 +88,11 @@ export const tileColors: Record<string, string> = {
   "boston-heirloom": "#352A0C",
   "grand-banks": "#3D5A49",
   "kingston-black": "#181A22",
+  "ragtime-reserve": "#8A4A14",
+  "pog-punch": "#8B2252",
+  "lady-legendary": "#25305C",
+  "big-appeal": "#1F3F8F",
+  "bittersweet-symphonie": "#2F6B1E",
 };
 
 /** Fallback for a cider with no tile colour assigned yet. */
@@ -123,9 +128,18 @@ export const missingFromData: CiderType[] = [
     availability: "Year-round",
     features: [],
     flavor: "Tangy, juicy, and refreshing",
-    apples: "McIntosh, Honeycrisp, Gala, Empire, Cortland, Macoun",
-    // Still [TBC]: the live page's sweetness-scale image has an empty
-    // `src`, so unlike Blue Hills there is nothing to read it off.
+    blend: {
+      varieties: [
+        "McIntosh",
+        "Honeycrisp",
+        "Gala",
+        "Empire",
+        "Cortland",
+        "Macoun",
+      ],
+      appleNote: "A selection from the orchard's thirty-odd varieties.",
+      orchards: ["Alyson's Orchard"],
+    },
     sweetness: 2,
   },
   {
@@ -140,9 +154,18 @@ export const missingFromData: CiderType[] = [
     availability: "Year-round",
     features: [],
     flavor: "Crisp, Refreshing with a Savory Balance of Tart & Sweet",
-    apples: "McIntosh, Honeycrisp, Gala, Empire, Cortland, Macoun",
-    // No longer a guess: the live page renders `Medium_Sweetness_Scale`
-    // for this cider, so it is 3, not the 2 the stub assumed.
+    blend: {
+      varieties: [
+        "McIntosh",
+        "Honeycrisp",
+        "Gala",
+        "Empire",
+        "Cortland",
+        "Macoun",
+      ],
+      appleNote: "McIntosh led, with other New England favourites.",
+      orchards: ["Blue Hills Orchard"],
+    },
     sweetness: 3,
   },
 ];

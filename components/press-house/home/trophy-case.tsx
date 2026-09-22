@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { CountUp } from "../count-up";
 import {
   featuredAwards,
   medalsByCompetition,
@@ -29,7 +28,7 @@ export function TrophyCase() {
           <Eyebrow className="mb-3.5 block text-brick">The trophy case</Eyebrow>
           <div className="mb-2.5 flex items-baseline gap-3.5">
             <span className="ph-slab ph-num text-[5.25rem] leading-[0.85] text-gold">
-              <CountUp value={trophyCase.total} />
+              {trophyCase.total}
             </span>
             <span className="ph-slab text-3xl leading-none">Medals</span>
           </div>
@@ -95,10 +94,16 @@ export function TrophyCase() {
                     {award.competition},{" "}
                     {award.year ?? <Tbc>year</Tbc>}
                   </div>
-                  {/* Collapsed to nothing until hover, so the resting
-                      card is still the artboard's four clean seals and
-                      the row does not grow when you point at one. */}
-                  <span className="ph-hint ph-label mt-0 block h-0 -translate-y-1 overflow-hidden text-[0.5rem] text-gold opacity-0 group-hover:mt-2.5 group-hover:h-4 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:mt-2.5 group-focus-visible:h-4 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                  {/* The line's space is held open at rest rather than
+                      grown on hover. Animating its height and margin
+                      made the hovered card taller, and since a grid row
+                      is as tall as its tallest cell, the other three
+                      seals and everything below them stepped down with
+                      it — a reflow every frame, which is both the jerk
+                      and the shift. Only opacity and transform move
+                      now, so the row is fixed and the reveal is a
+                      compositor job. */}
+                  <span className="ph-hint ph-label mt-2.5 block -translate-y-1 text-[0.5rem] text-gold opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                     See the cider &rarr;
                   </span>
                 </Link>
@@ -112,7 +117,7 @@ export function TrophyCase() {
               {medalsByCompetition.map(({ competition, count }) => (
                 <div key={competition}>
                   <span className="ph-slab ph-num text-[1.35rem] text-gold">
-                    <CountUp value={count} duration={800} />
+                    {count}
                   </span>
                   <span className="ph-label ml-1.5 text-[0.56rem] text-paper/60">
                     {competition}

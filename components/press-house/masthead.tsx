@@ -9,30 +9,51 @@ import { primaryNav, routes, site, ticker } from "./site-config";
 /**
  * Gold announcement bar, running as a newspaper ticker.
  *
- * The run of items is rendered twice and the pair scrolls as one
- * track; at -50% the second copy is exactly where the first began, so
- * the loop has no seam and no item is ever cut in half. The duplicate
- * is `aria-hidden`, so a screen reader hears the three announcements
- * once rather than six times.
+ * The run of items is repeated `TICKER_REPEATS` times to fill a half
+ * of the track, and the track carries two identical halves; at -50%
+ * the second half is exactly where the first began, so the loop has
+ * no seam and no item is ever cut in half. Repeating within the half
+ * is what keeps the line CONTINUOUS: three short announcements are
+ * narrower than a wide viewport, so a single-run half would clear the
+ * screen and leave the bar blank until the second half arrived. Every
+ * copy beyond the first is `aria-hidden`, so a screen reader hears the
+ * announcements once rather than once per copy.
+ *
+ * Every star LEADS its item and no run carries a trailing one: the
+ * star that separates the last item from the next run is simply the
+ * first item's own, so the seam reads like every other join. A
+ * trailing star would meet the next run's leading star and print two
+ * in a row with a gap around them. `pr-5` is what makes that join
+ * measure the same as the `gap-5` between items, since the track
+ * itself puts no gap between the runs.
  *
  * It stops under the pointer, and stops outright under reduced
  * motion — a line of text that will not hold still cannot be read.
  * This also replaced the horizontal scroll the phone used to need: the
  * track carries the items past on its own at every width.
  */
+
+/**
+ * Copies of the run per half of the track. Three covers a half of
+ * roughly three viewport widths, so the line stays unbroken well past
+ * any desktop. The stylesheet reads the same number from
+ * `--ph-marquee-repeats` to scale the duration with the distance, so
+ * the items pass at one speed whatever this is set to.
+ */
+const TICKER_REPEATS = 3;
+
 function TickerRun({ hidden = false }: { hidden?: boolean }) {
   return (
     <div
-      className="flex shrink-0 items-center gap-3 pr-3"
+      className="flex shrink-0 items-center gap-5 pr-5"
       aria-hidden={hidden || undefined}
     >
       {ticker.map((item) => (
-        <span key={item} className="flex shrink-0 items-center gap-3">
+        <span key={item} className="flex shrink-0 items-center gap-5">
           <Star className="ph-label" />
           <span className="ph-label whitespace-nowrap">{item}</span>
         </span>
       ))}
-      <Star className="ph-label" />
     </div>
   );
 }
@@ -41,8 +62,9 @@ function Ticker() {
   return (
     <div className="ph-marquee bg-gold py-2.5 text-ink">
       <div className="ph-marquee__track">
-        <TickerRun />
-        <TickerRun hidden />
+        {Array.from({ length: TICKER_REPEATS * 2 }, (_, i) => (
+          <TickerRun key={i} hidden={i > 0} />
+        ))}
       </div>
     </div>
   );

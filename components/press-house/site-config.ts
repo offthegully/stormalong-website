@@ -26,6 +26,7 @@ export const routes = {
  * locator instead.
  */
 export const primaryNav = [
+  { label: "Our Story", href: routes.ourStory },
   { label: "Ciders", href: routes.ciders },
   { label: "Releases", href: routes.releases },
   { label: "The Club", href: routes.club },
@@ -104,35 +105,57 @@ export const distribution: {
 /**
  * The stockist finder.
  *
- * stormalong.com/locator already runs a working embedded distributor
- * finder from finder.vtinfo.com (custID SMC), and every "Find It" on
- * the live cider pages points at it. The rebuild's own /locator was a
- * 404 — a regression the redesign introduced, not a missing capability.
+ * /locator embeds VIP's hosted widget — the same one running on
+ * stormalong.com today. VIP (finder.vtinfo.com) aggregate our
+ * distributors' depletion reports, so the widget knows which accounts
+ * actually bought cider recently. That freshness is the whole product
+ * and we cannot reproduce it from a list we keep by hand, which is why
+ * the native finder built against this page is shelved rather than
+ * shipped. It is in archive/locator-native-finder/, with a README on
+ * what would bring it back.
  *
- * This page supplies the frame; the finder keeps its own data. Set
- * NEXT_PUBLIC_LOCATOR_EMBED_URL to the embed's URL and it drops in.
- * Until then the page renders a clearly marked slot rather than a
- * search box that does nothing.
+ * HOW THE EMBED IS GATED — worth knowing before it "mysteriously breaks".
  *
- * The URL is not a mystery. `stormalong.com/locator` embeds it today:
- * view source there and take the `src` of the `finder.vtinfo.com`
- * iframe, which carries `custID`, a per-account `uuid` and `from`.
+ * VIP serve the widget only when BOTH hold:
  *
- * The value is deliberately not written down here. It is not much of a
- * secret — it ships in the live page's HTML — but it is an account
- * identifier, it is the kind of thing that gets rotated, and a copy
- * pasted into a comment is a copy nobody updates. It belongs in the
- * environment. Check with the vendor that the embed may be served from
- * a second origin, then set the variable.
+ *   1. It is genuinely framed. The request must carry
+ *      `Sec-Fetch-Dest: iframe`. Open the URL in a tab and you get
+ *      "Please view our Finder from the parent website" — that notice
+ *      means top-level navigation, not a broken URL.
+ *   2. The Referer is on their allowlist. stormalong.com passes and
+ *      localhost passes, so development works out of the box. An
+ *      arbitrary host does not.
  *
- * Still to decide with the vendor: whether the embed can be themed, or
- * whether its data can be read directly. A native list would let each
- * cider link straight to its own results.
+ * Point 2 is the one that will bite: a preview deployment, a staging
+ * domain or the new production domain must be added to the allowlist
+ * by VIP before the finder renders there. Ask them first, not after.
+ *
+ * Point 2 also means the embed depends on the browser sending a
+ * referrer. Setting `Referrer-Policy: no-referrer` anywhere that
+ * covers this page would silently blank the finder, so the iframe
+ * names its own `referrerPolicy` rather than inheriting a site-wide
+ * one. See app/locator/page.tsx.
+ *
+ * ON THEMING. The widget cannot be styled from here — it is
+ * cross-origin, it exposes no CSS custom properties and it carries its
+ * own Bootswatch theme. But its body tag is
+ * `class="SUPP_SMC THEME_bs-litera"`: the theme is a per-supplier
+ * setting on VIP's side, and the `SUPP_SMC` hook exists so they can
+ * ship CSS scoped to our account. So the way to make the finder match
+ * this site is to ask VIP for it, quoting those two class names. Until
+ * then the page frames the widget as a deliberate inset — see the
+ * comment on `Finder` in app/locator/page.tsx.
  */
 export const locator = {
-  embedUrl: process.env.NEXT_PUBLIC_LOCATOR_EMBED_URL ?? null,
+  /**
+   * The embed. The default is the URL stormalong.com serves today; the
+   * environment variable is there because `uuid` is an account
+   * identifier of the kind that gets rotated, and when it does, this
+   * can be corrected without a deploy.
+   */
+  embedUrl:
+    process.env.NEXT_PUBLIC_LOCATOR_EMBED_URL ??
+    "https://finder.vtinfo.com/finder/web/v2/iframe?custID=SMC&uuid=ZAQWdr6j3M398zgTxnr8ZnpzohvaD4NgBX2U&from=srsweb",
   vendor: "finder.vtinfo.com",
   customerId: "SMC",
-  /** The finder that is live today, for as long as ours has no embed. */
-  liveFallbackUrl: "https://stormalong.com/locator",
 } as const;

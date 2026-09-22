@@ -79,6 +79,31 @@ export function DropIcon(props: IconProps) {
   );
 }
 
+/** A pair of cherries on one stem, for fruit that goes in the can.
+ *  Distinct from DropIcon, which stays with syrups and sweeteners. */
+export function FruitIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <circle cx="7" cy="16.5" r="4" />
+      <circle cx="17" cy="17.5" r="3.5" />
+      <path d="M7 12.5C8 8 11 4.5 15 3M17 14c-.3-4-1-7.6-2-11" />
+      <path d="M15 3c2 .2 4 1.3 5 3-2 .5-3.8.2-5-3Z" />
+    </svg>
+  );
+}
+
+/** Star anise, standing in for the spice blends the house does not
+ *  itemise. Distinct from LeafIcon so a spice and a botanical do not
+ *  read as the same ingredient. */
+export function SpiceIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <circle cx="12" cy="12" r="2.4" />
+      <path d="M12 3v6.6M12 14.4V21M3 12h6.6M14.4 12H21M5.6 5.6l4.7 4.7M13.7 13.7l4.7 4.7M18.4 5.6l-4.7 4.7M10.3 13.7l-4.7 4.7" />
+    </svg>
+  );
+}
+
 export function AppleIcon(props: IconProps) {
   return (
     <svg {...base(props)}>

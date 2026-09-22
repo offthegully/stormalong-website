@@ -308,28 +308,49 @@
   }
 
   /* A line that is not there until you point at the panel it belongs
-     to. Height and margin-top animate alongside opacity, so the panel
-     keeps its clean resting size instead of reserving the room. */
+     to. It holds its room at rest and only fades and rises: animating
+     its height and margin instead did keep the resting panel tighter,
+     but it relaid out the page on every frame of every hover, and in a
+     grid — where the row is as tall as its tallest cell — that dragged
+     the panel's neighbours and everything below them down with it.
+     Opacity and transform are the two properties that can move without
+     asking the layout anything. */
   .ph-hint {
     transition:
-      height var(--ph-base) var(--ph-ease),
-      margin-top var(--ph-base) var(--ph-ease),
       opacity var(--ph-base) var(--ph-ease),
       transform var(--ph-base) var(--ph-spring);
   }
 
-  /* The ticker. Two identical copies of the run of items scroll as one
-     track; at -50% the second copy sits exactly where the first
-     started, so the loop has no seam. It pauses under the pointer and
-     while anything inside it has focus, because a line of text that
-     will not hold still is unreadable. */
+  /* The ticker. Two identical halves of the run scroll as one track;
+     at -50% the second half sits exactly where the first started, so
+     the loop has no seam. Each half repeats the run
+     `--ph-marquee-repeats` times — kept in step with `TICKER_REPEATS`
+     in masthead.tsx — so a half is always wider than the viewport and
+     the line never empties out between passes. The duration scales
+     with that count, so the items travel at one fixed speed however
+     many copies a half holds. It pauses under the pointer and while
+     anything inside it has focus, because a line of text that will
+     not hold still is unreadable. */
   .ph-marquee {
+    --ph-marquee-repeats: 3;
     overflow: hidden;
   }
   .ph-marquee__track {
     display: flex;
     width: max-content;
-    animation: ph-marquee 42s linear infinite;
+    animation: ph-marquee calc(42s * var(--ph-marquee-repeats)) linear
+      infinite;
+  }
+  /* The floor that makes "a half is wider than the viewport" true
+     rather than merely likely: each run is at least its share of a
+     screen, so a half spans one whatever the announcements say and
+     however wide the window is. At the natural width there is no free
+     space for `space-around` to hand out and it changes nothing; it
+     only matters if the ticker is ever cut down to a line or two, and
+     then it spreads them evenly instead of leaving a hole. */
+  .ph-marquee__track > * {
+    min-width: calc(100vw / var(--ph-marquee-repeats));
+    justify-content: space-around;
   }
   .ph-marquee:hover .ph-marquee__track,
   .ph-marquee:focus-within .ph-marquee__track {

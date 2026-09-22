@@ -33,24 +33,38 @@ export const clubHeadlines: { label: string; value: string }[] = [
   { label: "Member discount", value: "15% off" },
 ];
 
-export const clubBenefits: { title: string; copy: string }[] = [
+/*
+   The photograph on each benefit card. Chosen for what the benefit
+   says, not at random: blossom for the Spring shipment, the current
+   lineup for first access to a release, the Kingston Black bottle —
+   the rarest thing Stormalong makes — for the exclusive tier, and a
+   poured glass for the discount that runs all year.
+
+   These are the same editorial shots the cider detail pages use, so
+   nothing new had to be shot or cropped for this page.
+*/
+export const clubBenefits: { title: string; copy: string; photo: string }[] = [
   {
     // "Twice a year" to match the paragraph directly above this list on
     // /cider-club, which already says it that way.
     title: "Twice a year",
     copy: "Typically Spring and Fall, we ship you a variety of small batch ciders. The cost of each shipment will range between $45 to $75 (+shipping) depending upon what is included in the release.",
+    photo: "/images/cider-details-images/bittersweet-symphonie-3.jpg",
   },
   {
     title: "First access",
     copy: "To new product releases and limited small batch ciders. As a club member you will get first dibs on these ciders before we release them to the public.",
+    photo: "/images/landing-page/lineup-2025.jpg",
   },
   {
     title: "Exclusive access",
     copy: "To ultra limited small batch cider offerings, occasional surprises, special offers and invitations to special events.",
+    photo: "/images/cider-details-images/kingston-black-2.jpg",
   },
   {
     title: "A permanent 15% discount",
     copy: "On all cider orders online throughout the year.",
+    photo: "/images/cider-details-images/lady-legendary-1.jpg",
   },
 ];
 

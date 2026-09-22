@@ -61,8 +61,8 @@ export function FrontPage() {
     <section className="bg-ink text-paper">
       <div className="ph-gutter py-8 lg:py-9">
         <SectionRule
-          eyebrow="This month"
-          note="New release, new format, and the vault"
+          eyebrow="At a Glance"
+          note="Everything New"
           onInk
         />
 

@@ -6,7 +6,13 @@ import {
   shelfOrder,
   tileColors,
 } from "@/data/shelf";
-import type { CiderGroup, CiderType, ShelfCider } from "@/types/cider";
+import type {
+  Addition,
+  Blend,
+  CiderGroup,
+  CiderType,
+  ShelfCider,
+} from "@/types/cider";
 
 /**
  * Everything the Press House pages know about the catalogue goes
@@ -20,17 +26,11 @@ const allRecords: CiderType[] = [...ciders, ...missingFromData];
 
 const bySlug = new Map(allRecords.map((c) => [c.slug, c]));
 
-/** Apple varieties are stored as one comma-separated string. */
-function countApples(apples: string): number {
-  return appleVarieties(apples).length;
-}
-
 function toShelfCider(record: CiderType, group: CiderGroup): ShelfCider {
   return {
     ...record,
     group,
     tileColor: tileColors[record.slug] ?? fallbackTileColor,
-    appleCount: countApples(record.apples),
     provisional: provisionalSlugs.has(record.slug) || undefined,
   };
 }
@@ -298,10 +298,78 @@ export function ciderNeighbours(slug: string): {
   };
 }
 
-/** Apple varieties as a list, from the one comma-separated string. */
-export function appleVarieties(apples: string): string[] {
-  return apples
-    .split(/,| and /i)
-    .map((a) => a.trim())
-    .filter(Boolean);
+/* ------------------------------------------------------------------ */
+/* The blend                                                           */
+/* ------------------------------------------------------------------ */
+
+/** "Ten months in Bully Boy whiskey barrels." */
+export function barrelLine(barrel: NonNullable<Blend["barrel"]>): string {
+  const words = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+  const months = barrel.months
+    ? `${words[barrel.months - 1] ?? barrel.months} months in `
+    : "";
+  const whose = barrel.cooperage ? `${barrel.cooperage} ` : "";
+  const head = `${months}${whose}${barrel.spirit.toLowerCase()} barrels`;
+  return `${head.charAt(0).toUpperCase()}${head.slice(1)}.`;
+}
+
+/**
+ * The at-a-glance marks on a cider tile: what is in the can, one icon
+ * each, in the same reading order as the detail page's blend panel.
+ *
+ * Built from `blend` rather than the old `features` flags. Those put a
+ * gold and a red apple on almost every can and named varieties no
+ * blend contains, so they could not be trusted to say anything. Every
+ * mark here is something the detail page backs up.
+ *
+ * Additions collapse to one mark per kind, so Pog Punch's four fruits
+ * read "Fruit" once rather than filling the tile with the same icon.
+ */
+export type BlendMarkKind =
+  | "apples"
+  | "single"
+  | "barrel"
+  | "orchard"
+  | Addition["kind"];
+
+export interface BlendMark {
+  kind: BlendMarkKind;
+  label: string;
+}
+
+const additionMarkLabels: Record<Addition["kind"], string> = {
+  fruit: "Fruit",
+  botanical: "Botanical",
+  spice: "Spice",
+  sweetener: "Sweetener",
+};
+
+export function blendMarks(blend: Blend): BlendMark[] {
+  const marks: BlendMark[] = [];
+  const count = blend.varieties.length;
+
+  if (blend.singleVarietal) {
+    marks.push({ kind: "single", label: "Single varietal" });
+  } else if (count > 1) {
+    marks.push({ kind: "apples", label: `${count} apples` });
+  } else {
+    marks.push({ kind: "apples", label: "Apples" });
+  }
+
+  if (blend.barrel) marks.push({ kind: "barrel", label: "Barrel aged" });
+
+  const orchards = blend.orchards ?? [];
+  if (orchards.length > 0) {
+    marks.push({
+      kind: "orchard",
+      label: orchards.length === 1 ? "One orchard" : `${orchards.length} orchards`,
+    });
+  }
+
+  const kinds = new Set((blend.additions ?? []).map((a) => a.kind));
+  for (const kind of ["fruit", "botanical", "spice", "sweetener"] as const) {
+    if (kinds.has(kind)) marks.push({ kind, label: additionMarkLabels[kind] });
+  }
+
+  return marks;
 }

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { AppleIcon, BarrelIcon, DropIcon, LeafIcon, RareIcon } from "./icons";
+import { BarrelIcon, DropIcon, LeafIcon, RareIcon } from "./icons";
 
 /**
  * The badge row, rebuilt from the feature flags that actually vary.
@@ -50,35 +50,6 @@ export function CiderBadges({
         >
           <span className="text-gold">{badge.icon}</span>
           {badge.label}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-/**
- * Claims that hold for the whole house, so they belong to the house
- * and not to any one can. Both are the site's own words — see the FAQ
- * and the "We respect the apple" block. There is no data field behind
- * either, which is exactly why they are stated once, here, instead of
- * being sprinkled onto individual products as if they varied.
- */
-const houseClaims = [
-  { label: "100% fresh pressed", icon: <AppleIcon size={20} /> },
-  { label: "Never from concentrate", icon: <DropIcon size={20} /> },
-  { label: "Naturally gluten free", icon: <LeafIcon size={20} /> },
-];
-
-export function HouseClaims({ className }: { className?: string }) {
-  return (
-    <div className={cn("flex flex-wrap items-center gap-x-8 gap-y-3", className)}>
-      {houseClaims.map((claim) => (
-        <span
-          key={claim.label}
-          className="ph-label inline-flex items-center gap-2.5 text-[0.53rem] text-prose-muted"
-        >
-          <span className="text-gold-dark">{claim.icon}</span>
-          {claim.label}
         </span>
       ))}
     </div>

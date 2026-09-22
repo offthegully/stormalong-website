@@ -19,6 +19,12 @@ const config = {
       },
     },
     extend: {
+      // Hairlines on cream are drawn at 12%, between the default 10 and
+      // 15 steps. Without this step `border-ink/12` and `bg-ink/12`
+      // compile to nothing and fall back to the default border colour.
+      opacity: {
+        12: "0.12",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -110,6 +116,11 @@ const config = {
           "boston-heirloom": "#352A0C",
           "grand-banks": "#3D5A49",
           "kingston-black": "#181A22",
+          "ragtime-reserve": "#8A4A14",
+          "pog-punch": "#8B2252",
+          "lady-legendary": "#25305C",
+          "big-appeal": "#1F3F8F",
+          "bittersweet-symphonie": "#2F6B1E",
         },
       },
       fontFamily: {

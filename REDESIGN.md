@@ -111,11 +111,28 @@ message was not sent and give the address to write to instead.
 
 ### 4. Smaller unblocks
 
-- **Locator embed.** Set `NEXT_PUBLIC_LOCATOR_EMBED_URL` and the finder
-  drops straight into `/locator`. It is `finder.vtinfo.com`, custID SMC
-  — the same one running on stormalong.com today. Worth asking the
-  vendor whether it can be themed, or its data read directly; a native
-  list would let each cider link to its own results.
+- **Locator embed.** `/locator` embeds VIP's finder
+  (`finder.vtinfo.com`, custID SMC) — the same widget stormalong.com
+  runs — framed as a boxed inset so it reads as deliberate rather than
+  as a patch. The URL now defaults in `site-config.ts` and works out of
+  the box; `NEXT_PUBLIC_LOCATOR_EMBED_URL` overrides it if the account
+  `uuid` is ever rotated.
+
+  **Before launching on a new domain:** VIP serve the widget only to an
+  allowlisted `Referer`, and only when it is genuinely framed. Today's
+  allowlist covers `stormalong.com` and `localhost`, so dev works — a
+  staging or preview domain will render their "view our Finder from the
+  parent website" notice until VIP add it. Ask first.
+
+  It cannot be styled from here (cross-origin, its own Bootswatch
+  theme). But its body carries `class="SUPP_SMC THEME_bs-litera"`, so
+  the theme is a per-account setting on VIP's side and `SUPP_SMC` is a
+  hook for CSS scoped to us — matching the site is an ask to the
+  vendor, quoting those two names.
+
+  A full native finder was built against this page and is shelved in
+  `archive/locator-native-finder/` (excluded from the build). It works;
+  it lacks data. Its README covers what would bring it back.
 - **Newsletter.** Set `RESEND_API_KEY` and `NEWSLETTER_AUDIENCE_ID`.
   Until then the form tells people their address was not saved, rather
   than showing a tick over a black hole.
@@ -394,14 +411,23 @@ pointer, since the archive is still worth reading, just not first.
 The four award seals on the home page are now **links to the cider
 that won**, which is what gives their hover something to mean: the
 card lifts, its ground warms, the seal's rays turn 22.5° and its
-medallion swells, and a "See the cider →" line grows in. Every
+medallion swells, and a "See the cider →" line fades up. Every
 `group-hover:` reveal has a matching `group-focus-visible:`, so a
 keyboard gets the same answer as a pointer.
 
-It is CSS, with one exception. Nothing became a client component
-except `count-up.tsx` (about 30 lines, no dependency): the 33 pages
-still prerender, First Load JS is unchanged at 111 kB and the home
-page grew by 385 bytes. `framer-motion` is still in `package.json`
+That line holds its room at rest. It used to grow its height and
+margin on hover, which kept the resting card a little tighter and cost
+far more than it was worth: the hovered card got taller, the grid row
+is as tall as its tallest cell, so the other three seals and the tally
+under them stepped down — and it relaid out the page on every frame of
+the transition. Hover reveals move opacity and transform only.
+
+It is CSS, with no exception. Nothing here became a client component
+and the 33 pages still prerender. `count-up.tsx` — the one piece that
+had, a figure that counted up to itself when scrolled into view — is
+gone: the medal count and the per-competition tallies simply print.
+The flourish read as a gimmick, and it was the band's only reason to
+ship JavaScript. `framer-motion` is still in `package.json`
 but nothing imports it — everything here is pointer and focus state,
 which CSS does with no JavaScript and no client boundary.
 `lib/animation-config.ts`, left over from the retired design, is gone.

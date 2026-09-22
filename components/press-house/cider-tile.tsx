@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { sweetnessLabel } from "@/lib/catalogue";
 import type { ShelfCider } from "@/types/cider";
+import { BlendMarks } from "./blend-marks";
 import { ArrowRightIcon } from "./icons";
 import { Tbc } from "./ui";
 
@@ -78,6 +79,8 @@ export function CiderTile({
         <p className="mb-4 font-franklin text-[0.85rem] font-light leading-snug text-paper-light/80">
           {cider.flavor}
         </p>
+
+        <BlendMarks blend={cider.blend} className="mb-5" />
 
         <div className="mt-auto flex gap-5">
           <div>

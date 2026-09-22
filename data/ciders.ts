@@ -17,8 +17,26 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
     flavor: "Crisp, Dry & Champagne-Like",
-    apples:
-      "Ashton Bitter, Ashmead's Kernel, Dabinett, Ellis Bitter, Esopus Spitzenburg, Northern Spy, Idared, Pinova, Golden Delicious, Wickson, Yarlington Mill, Redfield, Calville Blanc d'hiver, Ananas Reinette, Jonagold",
+    blend: {
+      varieties: [
+        "Ashton Bitter",
+        "Ashmead's Kernel",
+        "Dabinett",
+        "Ellis Bitter",
+        "Esopus Spitzenburg",
+        "Northern Spy",
+        "Idared",
+        "Pinova",
+        "Golden Delicious",
+        "Wickson",
+        "Yarlington Mill",
+        "Redfield",
+        "Calville Blanc d'hiver",
+        "Ananas Reinette",
+        "Jonagold",
+      ],
+      appleNote: "Heirloom bittersweets, for tannin and a champagne-like finish.",
+    },
     sweetness: 1,
     awards: [
       "LA Invitational 2023 - Silver",
@@ -43,7 +61,9 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
     flavor: "Juicy & Semi-Sweet",
-    apples: "Golden Delicious and McIntosh",
+    blend: {
+      varieties: ["Golden Delicious", "McIntosh"],
+    },
     sweetness: 3,
     awards: [
       "Los Angeles Invitational Wine & Spirits 2022 - BEST OF CLASS",
@@ -64,7 +84,13 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold", "hibiscus", "passionfruit"],
     flavor: "Tart, Fruit-Forward & Tropical",
-    apples: "Idared and McIntosh",
+    blend: {
+      varieties: ["Idared", "McIntosh"],
+      additions: [
+        { name: "Passionfruit", kind: "fruit" },
+        { name: "Hibiscus", kind: "botanical" },
+      ],
+    },
     sweetness: 2,
     awards: [
       "UK International Cider Awards 2024 Bronze",
@@ -87,7 +113,15 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold"],
     flavor: "Easy-Drinking, Bright & Citrusy",
-    apples: "GoldRush, Baldwin and Northern Spy",
+    blend: {
+      varieties: ["GoldRush", "Baldwin", "Northern Spy"],
+      additions: [
+        { name: "Lemon", kind: "fruit" },
+        { name: "Lime", kind: "fruit" },
+        { name: "Yuzu", kind: "fruit" },
+        { name: "Jasmine green tea", kind: "botanical" },
+      ],
+    },
     sweetness: 2,
   },
   {
@@ -102,7 +136,17 @@ export const ciders: CiderType[] = [
     availability: "Seasonal",
     features: ["apple-gold", "barrel"],
     flavor: "Rich, Smooth, Vanilla Oakiness",
-    apples: "Blend of Traditional Cider Apples",
+    blend: {
+      // The house does not name these. The barrel is the story here,
+      // and it is the field that carries it.
+      varieties: [],
+      appleNote: "A blend of traditional cider apples.",
+      barrel: {
+        spirit: "Whiskey",
+        cooperage: "Bully Boy Distillers",
+        months: 10,
+      },
+    },
     sweetness: 2,
     awards: ["GLINTCAP 2016 – Bronze"],
   },
@@ -118,7 +162,12 @@ export const ciders: CiderType[] = [
     availability: "Limited",
     features: ["apple-gold", "apple-red", "rare-apple-series"],
     flavor: "Tart & Tangy with a Touch of Funk",
-    apples: "100% Kingston Black apples",
+    blend: {
+      varieties: ["Kingston Black"],
+      singleVarietal: true,
+      appleNote:
+        "Originating in the UK and very sparsely grown here, it carries all three of the things a balanced cider needs — tannin, acidity and sugar — in one apple, which is why it can be pressed alone.",
+    },
     sweetness: 1,
     awards: [
       "Los Angeles Invitational Wine & Spirits - BEST OF CLASS",
@@ -139,7 +188,10 @@ export const ciders: CiderType[] = [
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
     flavor: "Bright, Crisp & Fruit Forward",
-    apples: "Roxbury Russet and Baldwin",
+    blend: {
+      varieties: ["Roxbury Russet", "Baldwin"],
+      appleNote: "Half and half — two New England heirlooms, nothing else.",
+    },
     sweetness: 1,
   },
   {
@@ -154,7 +206,16 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
     flavor: "Tangy, juicy, and refreshing",
-    apples: "McIntosh, Honeycrisp, Gala, Empire, Cortland, Macoun",
+    blend: {
+      varieties: [
+        "McIntosh",
+        "Honeycrisp",
+        "Gala",
+        "Empire",
+        "Cortland",
+        "Macoun",
+      ],
+    },
     sweetness: 2,
   },
   {
@@ -169,7 +230,15 @@ export const ciders: CiderType[] = [
     availability: "Seasonal",
     features: ["apple-gold", "passionfruit", "guava"],
     flavor: "Tropical, Juicy, and Refreshing",
-    apples: "Idared, McIntosh, Golden Delicious, Empire, Pink Lady",
+    blend: {
+      varieties: ["Idared", "McIntosh", "Golden Delicious", "Empire", "Pink Lady"],
+      additions: [
+        { name: "Passion fruit", kind: "fruit" },
+        { name: "Blood orange", kind: "fruit" },
+        { name: "Tangerine", kind: "fruit" },
+        { name: "Guava", kind: "fruit" },
+      ],
+    },
     sweetness: 3,
   },
   {
@@ -184,7 +253,10 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold", "apple-red", "barrel", "rare-apple-series"],
     flavor: "Crisp, Oaky & Sparkling",
-    apples: "Franklin, Goldrush, Northern Spy, Baldwin and Pink Lady",
+    blend: {
+      varieties: ["Franklin", "Goldrush", "Northern Spy", "Baldwin", "Pink Lady"],
+      barrel: { spirit: "Oak" },
+    },
     sweetness: 2,
   },
   {
@@ -199,7 +271,9 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
     flavor: "Juicy, Crisp & Apple Forward",
-    apples: "Golden Delicious and McIntosh",
+    blend: {
+      varieties: ["Golden Delicious", "McIntosh"],
+    },
     sweetness: 3,
     awards: ["CiderCraft Awards 2024 - Judge's Pick (Imperial)"],
   },
@@ -216,8 +290,17 @@ export const ciders: CiderType[] = [
     features: ["apple-gold", "apple-red"],
     flavor:
       "Savory yet crisp with a flavor profile reminiscent of freshly baked goods",
-    apples:
-      "Blend of Freshly Pressed Apples from Lull Farm and Alyson's Orchard",
+    blend: {
+      // Two named farms rather than named varieties: the provenance is
+      // what the house sells here, so it is what the page shows.
+      varieties: [],
+      appleNote: "Freshly pressed New Hampshire apples.",
+      orchards: ["Lull Farm", "Alyson's Orchard"],
+      additions: [
+        { name: "Maple syrup", kind: "sweetener", origin: "New Hampshire" },
+        { name: "Winter spices", kind: "spice" },
+      ],
+    },
     sweetness: 3,
   },
   {
@@ -232,7 +315,9 @@ export const ciders: CiderType[] = [
     availability: "Seasonal",
     features: ["apple-gold", "apple-red", "rare-apple-series"],
     flavor: "Tart, Tangy & Fruit-Forward Acidity",
-    apples: "Harrison, Graniwinkle, Newtown Pippin and Franklin",
+    blend: {
+      varieties: ["Harrison", "Graniwinkle", "Newtown Pippin", "Franklin"],
+    },
     sweetness: 2,
   },
   {
@@ -247,7 +332,9 @@ export const ciders: CiderType[] = [
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
     flavor: "Juicy & Semi-Sweet",
-    apples: "Golden Delicious & McIntosh",
+    blend: {
+      varieties: ["Golden Delicious", "McIntosh"],
+    },
     sweetness: 3,
   },
   {
@@ -262,7 +349,11 @@ export const ciders: CiderType[] = [
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
     flavor: "Freshly Baked Apple Pie and Mulled Cider",
-    apples: "Blend of McIntosh, Golden Delicious and other New England Apples",
+    blend: {
+      varieties: ["McIntosh", "Golden Delicious"],
+      appleNote: "Plus other New England apples.",
+      additions: [{ name: "Holiday spices", kind: "spice" }],
+    },
     sweetness: 3,
     awards: ["New York International Cider Competition 2021 - Silver"],
   },
@@ -278,7 +369,13 @@ export const ciders: CiderType[] = [
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
     flavor: "Blueberry forward with a Hint of Sweetness & Subtle Tartness",
-    apples: "Blend of New England Apples with Wild Maine Blueberries",
+    blend: {
+      varieties: [],
+      appleNote: "A blend of freshly pressed New England apples.",
+      additions: [
+        { name: "Wild blueberries", kind: "fruit", origin: "Maine" },
+      ],
+    },
     sweetness: 3,
   },
   {
@@ -293,7 +390,14 @@ export const ciders: CiderType[] = [
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
     flavor: "Cranberry, Lime",
-    apples: "Blend of New England Apples",
+    blend: {
+      varieties: [],
+      appleNote: "A blend of New England apples.",
+      additions: [
+        { name: "Cranberry", kind: "fruit" },
+        { name: "Lime", kind: "fruit" },
+      ],
+    },
     sweetness: 2,
   },
   {
@@ -309,8 +413,17 @@ export const ciders: CiderType[] = [
     features: ["apple-gold", "apple-red", "rare-apple-series"],
     flavor:
       "Rich, Complex Tannins, Finishing with a Hint of Sweet Apple Flavor",
-    apples:
-      "Ashton Bitter, Ellis Bitter, Dabinett, Yarlington Mill, Chisel Jersey",
+    blend: {
+      varieties: [
+        "Ashton Bitter",
+        "Ellis Bitter",
+        "Dabinett",
+        "Yarlington Mill",
+        "Chisel Jersey",
+      ],
+      appleNote:
+        "British bittersweets — high in tannin, low in acid. Finished in the French style, with some cider left unfermented.",
+    },
     sweetness: 2,
     awards: ["GLINTCAP Best in Class 2021 - Gold"],
   },

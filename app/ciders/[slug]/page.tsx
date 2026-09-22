@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   allCiderSlugs,
-  appleVarieties,
   awardsFor,
   ciderNeighbours,
   getCider,
@@ -12,15 +11,17 @@ import {
   sweetnessLabel,
   type AwardRecord,
 } from "@/lib/catalogue";
+import type { Blend } from "@/types/cider";
 import { ciderPhotos } from "@/lib/cider-photos";
-import { CiderBadges, HouseClaims } from "@/components/press-house/cider-badges";
+import { BlendPanel } from "@/components/press-house/blend-panel";
+import { CiderBadges } from "@/components/press-house/cider-badges";
 import { LocatorBand } from "@/components/press-house/locator-band";
 import { MedalSeal } from "@/components/press-house/medal-seal";
 import { PhotoSpread } from "@/components/press-house/photo-spread";
 import { SweetnessStrip } from "@/components/press-house/sweetness-strip";
 import { PinIcon } from "@/components/press-house/icons";
 import { routes } from "@/components/press-house/site-config";
-import { PhButton, SectionRule, Spec, Tbc } from "@/components/press-house/ui";
+import { PhButton, Spec, Tbc } from "@/components/press-house/ui";
 
 /** Every cider in the data gets a page, shelf or not. */
 export function generateStaticParams() {
@@ -91,6 +92,56 @@ function medalSummary(records: AwardRecord[]): string {
   return `${list.charAt(0).toUpperCase()}${list.slice(1)}${since}.`;
 }
 
+/**
+ * The heading over the blend band. It used to read "N varieties,
+ * pressed and nothing else" for every cider that was not in the Rare
+ * Apple Series — which was a plain untruth on Light of the Sun (yuzu,
+ * jasmine green tea), POG Punch (four tropical fruits) and every other
+ * can with something in it besides apples.
+ */
+function blendHeading(blend: Blend, isRare: boolean): string {
+  if (blend.singleVarietal) return "One apple, and nothing else in the can";
+  if (isRare) return "Made with heirloom apples, many of them rare";
+  if (blend.barrel) return "Pressed apples, and a long time in wood";
+  if (blend.additions?.length) {
+    return "Pressed apples, and what goes in with them";
+  }
+  if (blend.varieties.length > 1) {
+    return `${blend.varieties.length} varieties, pressed and nothing else`;
+  }
+  return "Whole apples, pressed and nothing else";
+}
+
+/**
+ * Most taglines are the ingredient list again ("Made with Golden
+ * Delicious & McIntosh Apples"), which the ingredient table beside it
+ * already says in full. Quote it only when it carries a word the table
+ * does not — "Unfiltered", "Imperial Cider", "Legendary Dry's tannic
+ * sister".
+ */
+const TAGLINE_FILLER = new Set([
+  "made", "with", "apples", "apple", "cider", "blend", "fresh", "pressed",
+  "aged", "featuring", "from", "that", "this", "their",
+]);
+
+function taglineAddsSomething(tagline: string, blend: Blend): boolean {
+  const table = [
+    ...blend.varieties,
+    blend.appleNote ?? "",
+    ...(blend.orchards ?? []),
+    ...(blend.additions ?? []).flatMap((a) => [a.name, a.kind, a.origin ?? ""]),
+    blend.barrel ? `${blend.barrel.spirit} barrels ${blend.barrel.cooperage ?? ""}` : "",
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return tagline
+    .toLowerCase()
+    .split(/[^a-z']+/)
+    .filter((word) => word.length >= 4 && !TAGLINE_FILLER.has(word))
+    .some((word) => !table.includes(word));
+}
+
 /* ------------------------------------------------------------------ */
 
 export default async function CiderDetailPage({
@@ -104,9 +155,11 @@ export default async function CiderDetailPage({
 
   const medals = awardsFor(slug);
   const { prev, next } = ciderNeighbours(slug);
-  // A provisional record's `apples` is a placeholder read off the live
-  // site, not a blend on file — so it is not presented as one.
-  const varieties = cider.provisional ? [] : appleVarieties(cider.apples);
+  // The blend is shown even on a provisional record. `provisional` now
+  // marks one unverified *spec* — Alyson's sweetness — and the two
+  // stubs' blends were transcribed from the live pages like every
+  // other field, so blanking them hid something we actually know.
+  const { blend } = cider;
   const isRare = cider.features.includes("rare-apple-series");
   const photos = ciderPhotos(slug);
 
@@ -205,9 +258,14 @@ export default async function CiderDetailPage({
               }
               onInk
             />
+            {/* A count only when the house names the varieties. Six
+                ciders do not, and printing "1" for "a blend of New
+                England apples" was worse than saying nothing. */}
             <Spec
               label="Apples"
-              value={varieties.length > 0 ? varieties.length : <Tbc />}
+              value={
+                blend.varieties.length > 0 ? blend.varieties.length : "Blend"
+              }
               onInk
             />
             <Spec label="Available" value={cider.availability} onInk />
@@ -253,7 +311,7 @@ export default async function CiderDetailPage({
           can has just been shown as a cutout on a flat colour; these
           are the same cider as a photograph, and the join between the
           two is the point. */}
-      <PhotoSpread photos={photos} />
+      <PhotoSpread photos={photos} ground={cider.tileColor} />
 
       {/* Medals ------------------------------------------------------ */}
       {medals.length > 0 && (
@@ -305,57 +363,30 @@ export default async function CiderDetailPage({
         </section>
       )}
 
-      {/* The blend --------------------------------------------------- */}
+      {/* What goes in ------------------------------------------------ */}
       <section className="ph-gutter py-14">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="ph-label mb-3 text-brick">What is in it</div>
             <h2 className="ph-slab mb-4 text-[1.9rem] leading-tight sm:text-[2.2rem]">
-              {isRare
-                ? "Made with heirloom apples, many of them rare"
-                : `${varieties.length > 1 ? `${varieties.length} varieties` : "The blend"}, pressed and nothing else`}
+              {blendHeading(blend, isRare)}
             </h2>
-            <p className="mb-5 max-w-[46ch] font-franklin text-[0.97rem] leading-relaxed text-prose">
+            <p className="mb-7 max-w-[46ch] font-franklin text-[0.97rem] leading-relaxed text-prose">
               {isRare
-                ? "The mission of our Rare Apple Series is to highlight the virtues of extraordinary heirloom apple varieties and their exquisite transformation into distinctive cider. We aim to increase awareness of the diversity of apple cultivars and show what the right apples can do."
-                : "Every cider we make starts as whole apples pressed here in Sherborn. What changes from can to can is which apples, and in what proportion."}
+                ? "The mission of our Rare Apple Series is to highlight the virtues of extraordinary heirloom apple varieties and their exquisite transformation into distinctive cider."
+                : "Every cider we make starts as whole apples, pressed here in Sherborn. The rest is which apples, and what goes in with them."}
             </p>
-            <blockquote className="mb-7 border-l-[3px] border-gold pl-5">
-              <p className="font-franklin text-[0.97rem] font-medium leading-relaxed">
-                {cider.tagline}
-              </p>
-            </blockquote>
-            <HouseClaims />
+            {taglineAddsSomething(cider.tagline, blend) && (
+              <blockquote className="mb-7 border-l-[3px] border-gold pl-5">
+                <p className="font-franklin text-[0.97rem] font-medium leading-relaxed">
+                  {cider.tagline}
+                </p>
+              </blockquote>
+            )}
           </div>
 
           <div className="lg:col-span-7">
-            <SectionRule
-              eyebrow="The blend, in full"
-              note={
-                varieties.length > 0
-                  ? `${varieties.length} ${varieties.length === 1 ? "variety" : "varieties"}`
-                  : undefined
-              }
-            />
-            {varieties.length > 0 ? (
-              <ol className="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-                {varieties.map((variety, index) => (
-                  <li
-                    key={variety}
-                    className="flex items-baseline gap-2.5 border-b border-ink/12 py-2.5 font-franklin text-[0.9rem]"
-                  >
-                    <span className="ph-label ph-num text-[0.5rem] text-gold-dark">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    {variety}
-                  </li>
-                ))}
-              </ol>
-            ) : (
-              <p className="font-franklin text-[0.95rem] text-prose-muted">
-                <Tbc>blend not yet on file</Tbc>
-              </p>
-            )}
+            <BlendPanel blend={blend} />
           </div>
         </div>
       </section>
