@@ -36,9 +36,9 @@ export default function ContactPage() {
       />
 
       <section className="ph-gutter py-14">
-        <div className="grid gap-14 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <SectionRule eyebrow="Send us a note" note="We read all of it" />
+            <SectionRule eyebrow="Send us a note" />
             <ContactForm />
           </div>
 
@@ -49,13 +49,12 @@ export default function ContactPage() {
               </div>
               <Link
                 href={`mailto:${site.email}`}
-                className="ph-press ph-slab block break-words text-[1.35rem] leading-tight underline-offset-4 hover:text-gold hover:underline"
+                className="ph-press ph-slab block break-words text-[1.05rem] leading-tight sm:text-[1.35rem] underline-offset-4 hover:text-gold hover:underline"
               >
                 {site.email}
               </Link>
               <p className="mt-3.5 font-franklin text-[0.88rem] font-light leading-relaxed text-paper/75">
-                One address for everything. We do our best to get back to you
-                in 48 hours.
+                One address for everything.
               </p>
             </div>
 
@@ -64,8 +63,7 @@ export default function ContactPage() {
                 Looking for a can?
               </h2>
               <p className="mb-4 font-franklin text-[0.9rem] leading-relaxed text-prose">
-                Our finder knows every shop and bar that carries us, and it is
-                quicker than an email.
+                The store finder is quicker than an email.
               </p>
               <Link
                 href={routes.locator}

@@ -5,7 +5,6 @@ import { sweetnessLabel } from "@/lib/catalogue";
 import type { ShelfCider } from "@/types/cider";
 import { BlendMarks } from "./blend-marks";
 import { ArrowRightIcon } from "./icons";
-import { Tbc } from "./ui";
 
 /**
  * A colour-blocked cider tile — the unit that /ciders and the home
@@ -96,11 +95,7 @@ export function CiderTile({
               Sweetness
             </div>
             <div className="text-[0.9rem] font-semibold">
-              {cider.provisional ? (
-                <Tbc>{sweetnessLabel(cider.sweetness)}</Tbc>
-              ) : (
-                sweetnessLabel(cider.sweetness)
-              )}
+              {sweetnessLabel(cider.sweetness)}
             </div>
           </div>
         </div>

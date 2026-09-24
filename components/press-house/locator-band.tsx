@@ -16,7 +16,7 @@ export function LocatorBand() {
             Know which one you want?
           </h2>
           <p className="max-w-[52ch] font-franklin text-[0.95rem] font-light leading-relaxed text-paper/85">
-            Our finder already knows every shop and bar that carries us.
+            Find the nearest shop or bar that carries it.
           </p>
         </div>
         <Link

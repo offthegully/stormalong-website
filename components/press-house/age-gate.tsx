@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef } from "react";
 import { AGE_COOKIE, AGE_COOKIE_DAYS } from "./age-gate-bootstrap";
+import { BrandMark } from "./brand-mark";
 import { Star } from "./icons";
-import { site } from "./site-config";
 
 export function AgeGate() {
   const confirmRef = useRef<HTMLButtonElement>(null);
@@ -70,10 +70,8 @@ export function AgeGate() {
           priority
           className="mx-auto mb-4 h-[86px] w-[86px] object-contain"
         />
-        <div className="ph-slab text-xl leading-none tracking-[0.03em] text-paper">
-          {site.name.toUpperCase()}
-        </div>
-        <div className="ph-label mb-6 mt-1.5 text-[0.53rem] text-gold">
+        <BrandMark mark="wordmark" className="mx-auto w-[150px]" />
+        <div className="ph-label mb-6 mt-2 text-[0.53rem] text-gold">
           <Star className="mr-1" />
           New England Hard Cider
           <Star className="ml-1" />

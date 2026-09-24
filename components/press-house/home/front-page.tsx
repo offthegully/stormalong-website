@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getCider, sweetnessLabel } from "@/lib/catalogue";
 import { ArrowRightIcon, PinIcon } from "../icons";
 import { routes } from "../site-config";
-import { SectionRule, Spec, Tbc } from "../ui";
+import { SectionRule, Spec } from "../ui";
 
 /**
  * The front-page mosaic: one lead and three secondaries, all on screen
@@ -18,10 +18,11 @@ import { SectionRule, Spec, Tbc } from "../ui";
 
 const lead = {
   slug: "kingston-black",
-  badge: "Limited · Release No. 07",
+  badge: "Rare Apple Series · Limited",
   /** Kept in the config because it is a vintage, not the product name. */
   displayName: "Kingston Black",
-  note: "Marzipan, sour cherry and bruised apple skin, with a long tannic finish. A single varietal, crash-cooled mid-ferment.",
+  /** From the house's own copy for this cider, not written fresh. */
+  note: "Tart and tangy, with a touch of funk. Made with 100% Kingston Black, a British cider apple that is very sparsely grown in the United States.",
   /** Unverified — the brand has never published a run size. */
   runSize: null as string | null,
 };
@@ -29,9 +30,9 @@ const lead = {
 const secondaries = [
   {
     href: "/ciders/farmstand-unfiltered",
-    eyebrow: "Seasonal · at harvest",
-    title: "Farmstand is pouring",
-    copy: "Cloudy and tangy, pressed at harvest.",
+    eyebrow: "Year-round · unfiltered",
+    title: "Farmstand Unfiltered",
+    copy: "Cloudy and tangy, like cider from the farmstand at harvest.",
     image: "/images/ciders/farmstand-unfiltered.png",
     ground: "bg-moss",
   },
@@ -92,11 +93,9 @@ export function FrontPage() {
                   value={cider ? sweetnessLabel(cider.sweetness) : "—"}
                   onInk
                 />
-                <Spec
-                  label="This year's run"
-                  value={lead.runSize ?? <Tbc>run size</Tbc>}
-                  onInk
-                />
+                {lead.runSize && (
+                  <Spec label="This year's run" value={lead.runSize} onInk />
+                )}
               </div>
 
               <Link

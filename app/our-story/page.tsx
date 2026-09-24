@@ -73,8 +73,8 @@ export default function OurStoryPage() {
             The Stormalong story
           </h1>
           <p className="mx-auto mt-6 max-w-[48ch] font-franklin text-base font-light leading-relaxed text-paper/75">
-            Whole apples, pressed here, fermented slowly. Everything else on
-            this page follows from that.
+            A cidery in the town that was once home to the largest cider
+            mill in the world.
           </p>
         </div>
       </section>

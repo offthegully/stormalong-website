@@ -9,14 +9,14 @@ export const ciders: CiderType[] = [
     // the detail page prints it under a heading about apples. This one
     // used to restate the `flavor` field shown inches above it. The
     // live site's own line is the apple one; use that.
-    tagline: "Made with Heirloom Bittersweet Apples",
+    tagline: "Made with heirloom bittersweet apples",
     description:
-      "In homage to America's hard cider history and the larger-than-life Captain Stormalong, our flagship cider is named \"Legendary Dry\". Made with a unique blend of 'bittersweet' cider apples which impart a tannic finish and 'champagne-like' character. A British inspired cider with an American take. Less than 3 grams of sugar per can.",
+      "In homage to America's hard cider history and the larger-than-life Captain Stormalong, our flagship cider is named \"Legendary Dry\". Made with a unique blend of 'bittersweet' cider apples which impart a tannic finish and 'champagne-like' character. A British-inspired cider with an American take. Less than 3 grams of sugar per can.",
     image: "/images/ciders/legendary-dry.png",
     abv: 6.5,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
-    flavor: "Crisp, Dry & Champagne-Like",
+    flavor: "Crisp, dry & champagne-like",
     blend: {
       varieties: [
         "Ashton Bitter",
@@ -53,14 +53,14 @@ export const ciders: CiderType[] = [
     id: "mass-appeal",
     name: "Mass Appeal",
     slug: "mass-appeal",
-    tagline: "Made with Golden Delicious & McIntosh Apples",
+    tagline: "Made with Golden Delicious & McIntosh apples",
     description:
-      "This cider is easy-drinking with a nice balance of semi-sweet and tart apple. Big apple flavor and juiciness from the classic New England Macintosh variety, while Golden Delicious adds a tropical layer to the finish.",
+      "This cider is easy-drinking with a nice balance of semi-sweet and tart apple. Big apple flavor and juiciness from the classic New England McIntosh variety, while Golden Delicious adds a tropical layer to the finish.",
     image: "/images/ciders/mass-appeal.png",
     abv: 5.5,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
-    flavor: "Juicy & Semi-Sweet",
+    flavor: "Juicy & semi-sweet",
     blend: {
       varieties: ["Golden Delicious", "McIntosh"],
     },
@@ -76,14 +76,14 @@ export const ciders: CiderType[] = [
     id: "red-skies-at-night",
     name: "Red Skies at Night",
     slug: "red-skies-at-night",
-    tagline: "Made with Passionfruit & Hibiscus",
+    tagline: "Made with passionfruit & hibiscus",
     description:
-      "A tropical, fruit forward cider made with passionfruit and hibiscus. It has a rich finish and deep pink color.",
+      "A tropical, fruit-forward cider made with passionfruit and hibiscus. It has a rich finish and deep pink color.",
     image: "/images/ciders/red-skies-at-night.png",
     abv: 5.5,
     availability: "Year-round",
     features: ["apple-gold", "hibiscus", "passionfruit"],
-    flavor: "Tart, Fruit-Forward & Tropical",
+    flavor: "Tart, fruit-forward & tropical",
     blend: {
       varieties: ["Idared", "McIntosh"],
       additions: [
@@ -105,14 +105,14 @@ export const ciders: CiderType[] = [
     id: "light-of-the-sun",
     name: "Light of the Sun",
     slug: "light-of-the-sun",
-    tagline: "Lemon, Lime, Yuzu and Jasmine Green Tea",
+    tagline: "Lemon, lime, yuzu & jasmine green tea",
     description:
       "A well-balanced and extremely easy-drinking cider with bright citrusy flavor. Made with fresh lemon, lime, and yuzu juices as well as jasmine green tea.",
     image: "/images/ciders/light-of-the-sun.png",
     abv: 5.0,
     availability: "Year-round",
     features: ["apple-gold"],
-    flavor: "Easy-Drinking, Bright & Citrusy",
+    flavor: "Easy-drinking, bright & citrusy",
     blend: {
       varieties: ["GoldRush", "Baldwin", "Northern Spy"],
       additions: [
@@ -128,14 +128,14 @@ export const ciders: CiderType[] = [
     id: "grand-banks",
     name: "Grand Banks",
     slug: "grand-banks",
-    tagline: "Cider Aged in Whiskey Barrels",
+    tagline: "Cider aged in whiskey barrels",
     description:
       "Premium cider blends are aged for 10 months in freshly dumped whiskey barrels from our friends at Bully Boy Distillers. The aging process yields a decadent cider with an oaky, vanilla, boozy flavor. Liquid apple whiskey gold.",
     image: "/images/ciders/grand-banks.png",
     abv: 8.3,
     availability: "Seasonal",
     features: ["apple-gold", "barrel"],
-    flavor: "Rich, Smooth, Vanilla Oakiness",
+    flavor: "Rich, smooth & vanilla-oaky",
     blend: {
       // The house does not name these. The barrel is the story here,
       // and it is the field that carries it.
@@ -154,19 +154,19 @@ export const ciders: CiderType[] = [
     id: "kingston-black",
     name: "Kingston Black",
     slug: "kingston-black",
-    tagline: "Made with 100% Kingston Black Apples",
+    tagline: "Made with 100% Kingston Black apples",
     description:
-      "THE KINGSTON BLACK apple has garnered much praise and admiration from cider makers on these shores and beyond. Originating in the UK, and very sparsely grown here in the United States, these apples possess the 3 ingredients known to make a well balanced cider: tannins, acidity, & sugar.",
+      "The Kingston Black apple has garnered much praise and admiration from cider makers on these shores and beyond. Originating in the UK, and very sparsely grown here in the United States, these apples have all three things a well-balanced cider needs: tannin, acidity and sugar.",
     image: "/images/ciders/kingston-black.png",
     abv: 6.5,
     availability: "Limited",
     features: ["apple-gold", "apple-red", "rare-apple-series"],
-    flavor: "Tart & Tangy with a Touch of Funk",
+    flavor: "Tart & tangy with a touch of funk",
     blend: {
       varieties: ["Kingston Black"],
       singleVarietal: true,
       appleNote:
-        "Originating in the UK and very sparsely grown here, it carries all three of the things a balanced cider needs — tannin, acidity and sugar — in one apple, which is why it can be pressed alone.",
+        "Pressed on its own, with no other apples in the blend.",
     },
     sweetness: 1,
     awards: [
@@ -180,17 +180,17 @@ export const ciders: CiderType[] = [
     id: "boston-heirloom",
     name: "Boston Heirloom",
     slug: "boston-heirloom",
-    tagline: "50% Roxbury Russet & 50% Baldwin Apples",
+    tagline: "50% Roxbury Russet & 50% Baldwin apples",
     description:
-      "In homage to the rich cider history rooted in New England, 'Boston Heirloom' is made with a blend of Roxbury Russet and Baldwin apple cultivars. These apples were initially bred in the Boston area in the mid 1700's, making them some of the oldest apple varietals in the United States.",
+      "In homage to the rich cider history rooted in New England, 'Boston Heirloom' is made with a blend of Roxbury Russet and Baldwin apple cultivars. These apples were initially bred in the Boston area in the mid-1700s, making them some of the oldest apple varietals in the United States.",
     image: "/images/ciders/boston-heirloom.png",
     abv: 6.9,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
-    flavor: "Bright, Crisp & Fruit Forward",
+    flavor: "Bright, crisp & fruit-forward",
     blend: {
       varieties: ["Roxbury Russet", "Baldwin"],
-      appleNote: "Half and half — two New England heirlooms, nothing else.",
+      appleNote: "Half Roxbury Russet, half Baldwin.",
     },
     sweetness: 1,
   },
@@ -200,12 +200,12 @@ export const ciders: CiderType[] = [
     slug: "farmstand-unfiltered",
     tagline: "Unfiltered hard cider made with fresh pressed apples",
     description:
-      "Featuring a blend of 100% high-quality, fresh pressed, locally sourced apples from orchards across New England, this unfiltered hard cider is reminiscent of classic farmstand fresh apple cider pressed and sold at harvest. Its tangy, juicy and refreshing.",
+      "Featuring a blend of 100% high-quality, fresh pressed, locally sourced apples from orchards across New England, this unfiltered hard cider is reminiscent of classic farmstand fresh apple cider pressed and sold at harvest. It's tangy, juicy and refreshing.",
     image: "/images/ciders/farmstand-unfiltered.png",
     abv: 4.5,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
-    flavor: "Tangy, juicy, and refreshing",
+    flavor: "Tangy, juicy & refreshing",
     blend: {
       varieties: [
         "McIntosh",
@@ -222,14 +222,14 @@ export const ciders: CiderType[] = [
     id: "pog-punch",
     name: "Pog Punch",
     slug: "pog-punch",
-    tagline: "Made with Passion Fruit, Blood Orange, Tangerine, and Guava",
+    tagline: "Made with passion fruit, blood orange, tangerine & guava",
     description:
-      "AVAILABLE FROM APRIL - AUGUST. Cider made with a blend of Passion Fruit, Blood Orange, Tangerine, and Guava. Island time in a can taking you to the Tropics! Fun in the sun any time you want.",
+      "Available April to August. Cider made with a blend of passion fruit, blood orange, tangerine and guava. Island time in a can, taking you to the tropics! Fun in the sun any time you want.",
     image: "/images/ciders/pog-punch.png",
     abv: 5.8,
     availability: "Seasonal",
     features: ["apple-gold", "passionfruit", "guava"],
-    flavor: "Tropical, Juicy, and Refreshing",
+    flavor: "Tropical, juicy & refreshing",
     blend: {
       varieties: ["Idared", "McIntosh", "Golden Delicious", "Empire", "Pink Lady"],
       additions: [
@@ -247,12 +247,12 @@ export const ciders: CiderType[] = [
     slug: "lady-legendary",
     tagline: "Legendary Dry's tannic sister",
     description:
-      "Legendary Dry's tannic sister. Made with a blend of rare, Heirloom apples aged in oak barrels. It's a delicious oaky, off-dry cider similar to sparkling white wine.",
+      "Legendary Dry's tannic sister. Made with a blend of rare heirloom apples aged in oak barrels. It's a delicious oaky, off-dry cider similar to sparkling white wine.",
     image: "/images/ciders/lady-legendary.png",
     abv: 7.2,
     availability: "Year-round",
     features: ["apple-gold", "apple-red", "barrel", "rare-apple-series"],
-    flavor: "Crisp, Oaky & Sparkling",
+    flavor: "Crisp, oaky & sparkling",
     blend: {
       varieties: ["Franklin", "Goldrush", "Northern Spy", "Baldwin", "Pink Lady"],
       barrel: { spirit: "Oak" },
@@ -263,14 +263,14 @@ export const ciders: CiderType[] = [
     id: "massive-appeal",
     name: "Massive Appeal",
     slug: "massive-appeal",
-    tagline: "Imperial Cider",
+    tagline: "Imperial cider",
     description:
-      "An imperial cider that has a similar taste profile as Mass Appeal, but with a higher ABV at 8.2%. It's juicy, crisp and apple forward.",
+      "An imperial cider that has a similar taste profile as Mass Appeal, but with a higher ABV at 8.2%. It's juicy, crisp and apple-forward.",
     image: "/images/ciders/massive-appeal.png",
     abv: 8.2,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
-    flavor: "Juicy, Crisp & Apple Forward",
+    flavor: "Juicy, crisp & apple-forward",
     blend: {
       varieties: ["Golden Delicious", "McIntosh"],
     },
@@ -281,15 +281,15 @@ export const ciders: CiderType[] = [
     id: "white-mountain-magic",
     name: "White Mountain Magic",
     slug: "white-mountain-magic",
-    tagline: "Made with NH Apples & Maple Syrup",
+    tagline: "Made with NH apples & maple syrup",
     description:
-      "AVAILABLE FROM LATE DECEMBER - MARCH. Unfiltered hard cider made with a blend of winter spices and a hint of New Hampshire maple syrup. Your perfect slope side cider.",
+      "Available late December to March. Unfiltered hard cider made with a blend of winter spices and a hint of New Hampshire maple syrup. Your perfect slopeside cider.",
     image: "/images/ciders/white-mountain-magic.png",
     abv: 5.2,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
     flavor:
-      "Savory yet crisp with a flavor profile reminiscent of freshly baked goods",
+      "Savory yet crisp, with a hint of freshly baked goods",
     blend: {
       // Two named farms rather than named varieties: the provenance is
       // what the house sells here, so it is what the page shows.
@@ -307,14 +307,14 @@ export const ciders: CiderType[] = [
     id: "ragtime-reserve",
     name: "Ragtime Reserve",
     slug: "ragtime-reserve",
-    tagline: "Prohibition Era Cider",
+    tagline: "Prohibition-era cider",
     description:
       "Full-bodied with rich baked apple flavors and a candied fruit acidity. Made with Harrison, Graniwinkle, Newtown Pippin, and Franklin Cider apples.",
     image: "/images/ciders/ragtime-reserve.png",
     abv: 8.3,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red", "rare-apple-series"],
-    flavor: "Tart, Tangy & Fruit-Forward Acidity",
+    flavor: "Tart & tangy, with fruit-forward acidity",
     blend: {
       varieties: ["Harrison", "Graniwinkle", "Newtown Pippin", "Franklin"],
     },
@@ -324,14 +324,14 @@ export const ciders: CiderType[] = [
     id: "big-appeal",
     name: "Big Appeal",
     slug: "big-appeal",
-    tagline: "Made with Golden Delicious & McIntosh Apples (NY+NJ only)",
+    tagline: "Made with Golden Delicious & McIntosh apples (NY and NJ only)",
     description:
-      "This cider is easy-drinking with a nice balance of semi-sweet and tart apple. Big apple flavor and juiciness from the classic New England Macintosh variety, while Golden Delicious adds a tropical layer to the finish.",
+      "This cider is easy-drinking with a nice balance of semi-sweet and tart apple. Big apple flavor and juiciness from the classic New England McIntosh variety, while Golden Delicious adds a tropical layer to the finish.",
     image: "/images/ciders/big-appeal.png",
     abv: 5.5,
     availability: "Year-round",
     features: ["apple-gold", "apple-red"],
-    flavor: "Juicy & Semi-Sweet",
+    flavor: "Juicy & semi-sweet",
     blend: {
       varieties: ["Golden Delicious", "McIntosh"],
     },
@@ -343,12 +343,12 @@ export const ciders: CiderType[] = [
     slug: "happy-holidays",
     tagline: "Unfiltered hard cider with a blend of holiday spices",
     description:
-      "AVAILABLE FROM SEPTEMBER - DECEMBER. Featuring a blend of holiday spices, this unfiltered hard cider is bursting with flavors of freshly baked apple pie and mulled cider. It is a delicious holiday companion that captures the smells, tastes, and atmosphere of the holiday season.",
+      "Available September to December. Featuring a blend of holiday spices, this unfiltered hard cider is bursting with flavors of freshly baked apple pie and mulled cider. It is a delicious holiday companion that captures the smells, tastes, and atmosphere of the holiday season.",
     image: "/images/ciders/happy-holidays.png",
     abv: 5.2,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
-    flavor: "Freshly Baked Apple Pie and Mulled Cider",
+    flavor: "Freshly baked apple pie & mulled cider",
     blend: {
       varieties: ["McIntosh", "Golden Delicious"],
       appleNote: "Plus other New England apples.",
@@ -361,14 +361,14 @@ export const ciders: CiderType[] = [
     id: "blue-skies",
     name: "Blue Skies",
     slug: "blue-skies",
-    tagline: "A fruit forward cider made with Wild Maine Blueberries",
+    tagline: "A fruit-forward cider made with wild Maine blueberries",
     description:
-      "AVAILABLE FROM APRIL - AUGUST. Freshly Pressed Apples, Wild Maine Blueberries.",
+      "Available April to August. Fresh pressed apples and wild Maine blueberries.",
     image: "/images/ciders/blue-skies.png",
     abv: 5.5,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
-    flavor: "Blueberry forward with a Hint of Sweetness & Subtle Tartness",
+    flavor: "Blueberry-forward, with a hint of sweetness & subtle tartness",
     blend: {
       varieties: [],
       appleNote: "A blend of freshly pressed New England apples.",
@@ -382,14 +382,14 @@ export const ciders: CiderType[] = [
     id: "beachcomber-cidah",
     name: "Beachcomber Cidah'",
     slug: "beachcomber-cidah",
-    tagline: "A summertime Cider featuring Cranberry and Lime",
+    tagline: "A summertime cider featuring cranberry & lime",
     description:
-      "A summertime Cider featuring Cranberry and Lime. Made in collaboration with the Iconic Beachcomber in Wellfleet, Cape Cod.",
+      "A summertime cider featuring cranberry and lime. Made in collaboration with the iconic Beachcomber in Wellfleet, Cape Cod.",
     image: "/images/ciders/beachcomber-cidah.png",
     abv: 5.0,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red"],
-    flavor: "Cranberry, Lime",
+    flavor: "Cranberry & lime",
     blend: {
       varieties: [],
       appleNote: "A blend of New England apples.",
@@ -406,13 +406,13 @@ export const ciders: CiderType[] = [
     slug: "bittersweet-symphonie",
     tagline: "Made with 100% bittersweet cider apples",
     description:
-      "This cider is made with a blend of British bittersweet cider apples that are high in tannin and low in acid. This batch is finished in the French style where some cider is left unfermented retaining residual sweetness.",
+      "This cider is made with a blend of British bittersweet cider apples that are high in tannin and low in acid. This batch is finished in the French style where some of the sugar is left unfermented, for a touch of residual sweetness.",
     image: "/images/ciders/bittersweet-symphonie.png",
     abv: 5.4,
     availability: "Seasonal",
     features: ["apple-gold", "apple-red", "rare-apple-series"],
     flavor:
-      "Rich, Complex Tannins, Finishing with a Hint of Sweet Apple Flavor",
+      "Rich, complex tannins, with a hint of sweet apple at the finish",
     blend: {
       varieties: [
         "Ashton Bitter",
@@ -422,7 +422,7 @@ export const ciders: CiderType[] = [
         "Chisel Jersey",
       ],
       appleNote:
-        "British bittersweets — high in tannin, low in acid. Finished in the French style, with some cider left unfermented.",
+        "British bittersweets, high in tannin and low in acid.",
     },
     sweetness: 2,
     awards: ["GLINTCAP Best in Class 2021 - Gold"],

@@ -48,7 +48,7 @@ export const clubBenefits: { title: string; copy: string; photo: string }[] = [
     // "Twice a year" to match the paragraph directly above this list on
     // /cider-club, which already says it that way.
     title: "Twice a year",
-    copy: "Typically Spring and Fall, we ship you a variety of small batch ciders. The cost of each shipment will range between $45 to $75 (+shipping) depending upon what is included in the release.",
+    copy: "Typically Spring and Fall, we ship you a variety of small batch ciders. The cost of each shipment will range between $45 and $75 depending upon what is included in the release.",
     photo: "/images/cider-details-images/bittersweet-symphonie-3.jpg",
   },
   {

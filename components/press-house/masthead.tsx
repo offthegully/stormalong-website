@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "./brand-mark";
 import { CloseIcon, MenuIcon, PinIcon, SearchIcon, Star } from "./icons";
 import { primaryNav, routes, site, ticker } from "./site-config";
 
@@ -76,10 +77,8 @@ function Wordmark({ className }: { className?: string }) {
       href={routes.home}
       className={cn("ph-lift text-center hover:opacity-95", className)}
     >
-      <span className="ph-slab block text-[1.55rem] leading-none tracking-[0.04em] text-paper">
-        {site.name.toUpperCase()}
-      </span>
-      <span className="ph-label mt-1.5 block text-[0.53rem] text-gold">
+      <BrandMark mark="wordmark" className="mx-auto w-[136px] sm:w-[168px]" />
+      <span className="ph-label mt-2 block whitespace-nowrap text-[0.53rem] text-gold">
         <Star className="mr-1" />
         {site.origin}
         <Star className="ml-1" />

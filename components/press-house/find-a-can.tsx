@@ -2,7 +2,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PinIcon, SearchIcon } from "./icons";
 import { distribution, routes, site } from "./site-config";
-import { Tbc } from "./ui";
 
 /**
  * The payoff band. Stormalong sells through distribution, not a cart,
@@ -66,31 +65,25 @@ export function FindACan({ compact = false }: { compact?: boolean }) {
             Find a can near you
           </h2>
           <p className="mx-auto max-w-[56ch] font-franklin text-[1.03rem] font-light leading-relaxed text-prose">
-            Our finder already knows every shop and bar that carries us.
-            Search a town or a ZIP code and it will tell you what is on the
-            shelf right now.
+            Search by town or ZIP code to find the shops and bars that
+            carry us.
           </p>
         </div>
 
         <div className="mb-9 flex justify-center">
-          {/* A link dressed as a search field, so hover has to answer
-              on the whole control rather than on the button alone —
-              otherwise the field half looks inert and people click
-              into it expecting a caret. */}
+          {/* A plain button, not a link dressed as a search field. The
+              finder lives in an iframe on /locator and cannot take a
+              query from here, so a box you could click into but not
+              type in promised something the page could not do. */}
           <Link
             href={routes.locator}
-            className="ph-lift group flex w-full max-w-[620px] border-[3px] border-ink hover:border-brick hover:shadow-[0_14px_30px_rgba(10,26,43,0.28)]"
+            className="ph-lift ph-label group inline-flex items-center gap-2.5 bg-ink px-8 py-4 text-gold hover:bg-brick hover:text-paper hover:shadow-[0_14px_30px_rgba(10,26,43,0.28)]"
           >
-            <span className="flex-grow px-5 py-4 font-franklin text-[1rem] text-prose-muted ph-tint group-hover:text-ink">
-              Town, or ZIP code
-            </span>
-            <span className="ph-tint ph-label flex items-center gap-2 bg-ink px-7 text-gold group-hover:bg-brick group-hover:text-paper">
-              Search
-              <SearchIcon
-                size={14}
-                className="ph-move-fast group-hover:translate-x-1"
-              />
-            </span>
+            <SearchIcon
+              size={15}
+              className="ph-move-fast group-hover:scale-110"
+            />
+            Open the finder
           </Link>
         </div>
 
@@ -100,11 +93,9 @@ export function FindACan({ compact = false }: { compact?: boolean }) {
             title="Take it home"
             copy="Package stores and supermarkets carrying cans and bottles."
             foot={
-              distribution.retailCount ? (
-                `${distribution.retailCount} locations`
-              ) : (
-                <Tbc>count</Tbc>
-              )
+              distribution.retailCount
+                ? `${distribution.retailCount} locations`
+                : null
             }
           />
           <Card
@@ -112,18 +103,16 @@ export function FindACan({ compact = false }: { compact?: boolean }) {
             title="Drink it there"
             copy="Bars and restaurants pouring Stormalong on draft or by the can."
             foot={
-              distribution.onPremiseCount ? (
-                `${distribution.onPremiseCount} locations`
-              ) : (
-                <Tbc>count</Tbc>
-              )
+              distribution.onPremiseCount
+                ? `${distribution.onPremiseCount} locations`
+                : null
             }
           />
           <Card
             dark
             icon={<PinIcon size={26} strokeWidth={1.7} />}
             title="Can't find it?"
-            copy="Tell us where you are and we will chase the nearest distributor for you."
+            copy="Tell us where you are and we'll track down the nearest place that has it."
             foot={
               <a
                 href={`mailto:${site.email}`}
@@ -135,8 +124,8 @@ export function FindACan({ compact = false }: { compact?: boolean }) {
           />
         </div>
 
-        {/* Where we are. States are real; the counts are not filled in
-            because nobody has supplied them yet. */}
+        {/* Where we are. A state shows its count once someone supplies
+            it, and its name until then. */}
         <div className="grid grid-cols-3 gap-3.5 sm:grid-cols-6">
           {distribution.states.map((state) => (
             <div
@@ -202,14 +191,16 @@ function Card({
       >
         {copy}
       </p>
-      <div
-        className={cn(
-          "ph-label ph-num text-[0.68rem]",
-          dark ? "text-gold" : "text-ink",
-        )}
-      >
-        {foot}
-      </div>
+      {foot && (
+        <div
+          className={cn(
+            "ph-label ph-num text-[0.68rem]",
+            dark ? "text-gold" : "text-ink",
+          )}
+        >
+          {foot}
+        </div>
+      )}
     </div>
   );
 }

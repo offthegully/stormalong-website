@@ -125,22 +125,6 @@ export function SectionRule({
   );
 }
 
-/**
- * A value the business has not confirmed. Rendered visibly rather than
- * silently guessed — the bracketed-placeholder discipline the canvas
- * review singled out as worth keeping.
- */
-export function Tbc({ children }: { children?: ReactNode }) {
-  return (
-    <span
-      className="ph-num text-brick"
-      title="Not yet confirmed — see data/shelf.ts"
-    >
-      [{children ?? "TBC"}]
-    </span>
-  );
-}
-
 /** Gold-on-ink spec pair. ABV, sweetness, run size, apple count. */
 export function Spec({
   label,

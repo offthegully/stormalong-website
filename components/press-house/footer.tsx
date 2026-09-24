@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandMark } from "./brand-mark";
 import { FacebookIcon, InstagramIcon, Star } from "./icons";
 import { NewsletterForm } from "./newsletter-form";
 import { footerNav, site } from "./site-config";
@@ -21,13 +22,11 @@ export function Footer() {
     <footer>
       <div className="ph-rule-gold border-b-0 border-t-4 bg-ink text-paper">
         <div className="ph-gutter pb-8 pt-12">
-          <div className="grid gap-10 border-b border-paper/20 pb-9 md:grid-cols-2 lg:grid-cols-[4fr_2fr_2fr_3fr]">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[4fr_2fr_2fr_3fr]">
             {/* Identity */}
             <div>
-              <div className="ph-slab text-[1.4rem] tracking-[0.04em]">
-                {site.name.toUpperCase()}
-              </div>
-              <div className="ph-label mb-4 mt-1.5 text-[0.53rem] text-gold">
+              <BrandMark mark="wordmark" className="w-[180px]" />
+              <div className="ph-label mb-4 mt-2 text-[0.53rem] text-gold">
                 <Star className="mr-1" />
                 {site.tagline}
                 <Star className="ml-1" />
@@ -65,7 +64,21 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 pt-5 sm:flex-row sm:items-center sm:justify-between">
+          {/* The sign-off. Every page ends on the brand's own motto, in
+              its own lettering, set between rules like a stamp on a
+              crate. It stands in for the plain rule that used to sit
+              here. */}
+          <div className="flex items-center gap-6 py-9">
+            <span className="h-px flex-grow bg-paper/20" />
+            <BrandMark
+              mark="respect"
+              tone="gold"
+              className="w-[132px] shrink-0 sm:w-[160px]"
+            />
+            <span className="h-px flex-grow bg-paper/20" />
+          </div>
+
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
             <span className="ph-label text-[0.56rem] text-paper/45">
               © {year} {site.name} Cider · Please drink responsibly · 21+
             </span>

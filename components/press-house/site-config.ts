@@ -11,15 +11,11 @@ export const routes = {
   locator: "/locator",
   ourStory: "/our-story",
   contact: "/contact",
-  /** Built to the design but deliberately unlinked — see below. */
-  taproom: "/taproom",
 } as const;
 
 /**
- * The masthead. Taproom is absent on purpose: the canvas review found
- * no taproom, hours, address or phone anywhere on stormalong.com, so
- * the page exists at /taproom with bracketed placeholders but is not
- * advertised until the business confirms there is a room to visit.
+ * The masthead. There is no taproom page: Stormalong has no taproom
+ * open to the public, so the drafted /taproom page was removed.
  *
  * /shop is absent for the same class of reason — an empty stub on the
  * live site and a 404 in the rebuild. Every "buy" intent goes to the

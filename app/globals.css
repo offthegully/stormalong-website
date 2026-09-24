@@ -97,6 +97,23 @@
     border: 3px double theme("colors.gold.DEFAULT");
   }
 
+  /* A brand mark painted through its own artwork (see brand-mark.tsx).
+     The fill is a background, so it is held against forced colours,
+     which would otherwise repaint it as the page ground and erase it,
+     and against print, which drops backgrounds by default. */
+  .ph-mark {
+    display: block;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    forced-color-adjust: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
   /* Page gutter. Artboards are drawn at 1440px with 56px gutters; this
      holds that proportion and collapses to 20px on a phone. */
   .ph-gutter {
