@@ -46,9 +46,9 @@ export const footerNav = {
 export const site = {
   name: "Stormalong",
   tagline: "Quality craft hard cider",
-  origin: "Sherborn, Mass. · Est. 2014",
+  origin: "Est. 2014",
   blurb:
-    "Unfiltered. 100% fresh pressed apples. That's it. Made in Sherborn, Massachusetts since 2014.",
+    "Unfiltered. 100% fresh pressed apples. That's it. Made in Massachusetts since 2014.",
   email: "info@stormalong.com",
   /** Canonical origin, for metadataBase and absolute OG image URLs.
    *  Override with NEXT_PUBLIC_SITE_URL on preview deployments. */

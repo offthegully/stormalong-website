@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   // The medal count is read from the catalogue, not typed in, so the
   // one number in this sentence cannot go stale.
-  description: `Unfiltered hard cider from Sherborn, Massachusetts. 100% fresh pressed apples, ${trophyCase.total} medals since ${trophyCase.firstYear}. Find Legendary Dry, Mass Appeal, Kingston Black and the rest of the range near you.`,
+  description: `Unfiltered hard cider from Massachusetts. 100% fresh pressed apples, ${trophyCase.total} medals since ${trophyCase.firstYear}. Find Legendary Dry, Mass Appeal, Kingston Black and the rest of the range near you.`,
   // The image itself is app/opengraph-image.tsx; this asks X and the
   // like to show it full width rather than as a thumbnail.
   twitter: { card: "summary_large_image" },

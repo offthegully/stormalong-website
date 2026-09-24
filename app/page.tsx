@@ -23,8 +23,7 @@ export default function Home() {
           <title> and the meta description all make, so it is not
           saying anything to a crawler that a reader is not told. */}
       <h1 className="sr-only">
-        Stormalong Cider — unfiltered craft hard cider from Sherborn,
-        Massachusetts
+        Stormalong Cider — unfiltered craft hard cider from Massachusetts
       </h1>
       <FrontPage />
       <TrophyCase />
