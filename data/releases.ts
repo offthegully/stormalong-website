@@ -85,7 +85,7 @@ export const clubFacts: {
   {
     figure: "4–6",
     label: "Ciders a box",
-    copy: "In each club shipment, with the apple varieties that went into them.",
+    copy: "Small batch ciders in every club shipment.",
     confirmed: true,
   },
   {

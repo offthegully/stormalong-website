@@ -15,9 +15,9 @@ export default function CidersPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Award winning craft cider"
+        eyebrow="Award-winning craft cider"
         title="Our ciders"
-        intro="Every cider we make, in the three groups you already sort them into. Each one shows its apples, its strength and where it sits on the dry to sweet scale."
+        intro="The core line-up, our seasonals and the Rare Apple Series."
       />
       <CiderShelf ciders={shelf} />
       <SweetnessGuide />

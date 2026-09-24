@@ -21,7 +21,7 @@ import { PhotoSpread } from "@/components/press-house/photo-spread";
 import { SweetnessStrip } from "@/components/press-house/sweetness-strip";
 import { PinIcon } from "@/components/press-house/icons";
 import { routes } from "@/components/press-house/site-config";
-import { PhButton, Spec, Tbc } from "@/components/press-house/ui";
+import { PhButton, Spec } from "@/components/press-house/ui";
 
 /** Every cider in the data gets a page, shelf or not. */
 export function generateStaticParams() {
@@ -100,16 +100,14 @@ function medalSummary(records: AwardRecord[]): string {
  * can with something in it besides apples.
  */
 function blendHeading(blend: Blend, isRare: boolean): string {
-  if (blend.singleVarietal) return "One apple, and nothing else in the can";
+  if (blend.singleVarietal) return "A single apple variety";
   if (isRare) return "Made with heirloom apples, many of them rare";
-  if (blend.barrel) return "Pressed apples, and a long time in wood";
-  if (blend.additions?.length) {
-    return "Pressed apples, and what goes in with them";
-  }
+  if (blend.barrel) return "Fresh pressed, then aged in barrels";
+  if (blend.additions?.length) return "Fresh pressed apples, and a little more";
   if (blend.varieties.length > 1) {
-    return `${blend.varieties.length} varieties, pressed and nothing else`;
+    return `${blend.varieties.length} apple varieties, fresh pressed`;
   }
-  return "Whole apples, pressed and nothing else";
+  return "Fresh pressed apples";
 }
 
 /**
@@ -210,9 +208,6 @@ export default async function CiderDetailPage({
           style={{ backgroundColor: cider.tileColor }}
           className="relative flex items-center justify-center px-8 py-12 lg:col-span-5 lg:py-16"
         >
-          <span className="ph-label absolute left-5 top-5 border border-paper/55 px-3 py-1.5 text-[0.5rem] text-paper">
-            {groupLabels[cider.group]} &middot; {cider.availability}
-          </span>
           <Image
             src={cider.image}
             alt={`A can of ${cider.name}`}
@@ -242,20 +237,12 @@ export default async function CiderDetailPage({
           <div className="mb-7 grid grid-cols-2 gap-y-5 border-y border-paper/25 py-4 sm:grid-cols-4">
             <Spec
               label="ABV"
-              value={
-                cider.provisional ? <Tbc>{cider.abv}%</Tbc> : `${cider.abv}%`
-              }
+              value={`${cider.abv}%`}
               onInk
             />
             <Spec
               label="Sweetness"
-              value={
-                cider.provisional ? (
-                  <Tbc>{sweetnessLabel(cider.sweetness)}</Tbc>
-                ) : (
-                  sweetnessLabel(cider.sweetness)
-                )
-              }
+              value={sweetnessLabel(cider.sweetness)}
               onInk
             />
             {/* A count only when the house names the varieties. Six
@@ -271,22 +258,25 @@ export default async function CiderDetailPage({
             <Spec label="Available" value={cider.availability} onInk />
           </div>
 
+          {/* The Rare Apple Series badge is left out here: the eyebrow
+              over the name already says it. */}
           {cider.features.some((f) =>
-            ["barrel", "rare-apple-series", "hibiscus", "passionfruit", "guava"].includes(f),
+            ["barrel", "hibiscus", "passionfruit", "guava"].includes(f),
           ) && (
             <div className="mb-7 border-b border-paper/25 pb-7">
               <div className="ph-label mb-3.5 text-[0.53rem] text-paper/45">
                 At a glance
               </div>
-              <CiderBadges features={cider.features} />
+              <CiderBadges
+                features={cider.features.filter(
+                  (f) => f !== "rare-apple-series",
+                )}
+              />
             </div>
           )}
 
           <div className="mb-8">
-            <SweetnessStrip
-              value={cider.sweetness}
-              provisional={cider.provisional}
-            />
+            <SweetnessStrip value={cider.sweetness} />
           </div>
 
           {/* Full width on a phone: the primary action should be a
@@ -352,9 +342,11 @@ export default async function CiderDetailPage({
                     <div className="font-franklin text-[0.85rem] font-medium leading-snug">
                       {medal.competition}
                     </div>
-                    <div className="ph-label ph-num mt-1 text-[0.5rem] text-paper/45">
-                      {medal.year ?? <Tbc>year</Tbc>}
-                    </div>
+                    {medal.year && (
+                      <div className="ph-label ph-num mt-1 text-[0.5rem] text-paper/45">
+                        {medal.year}
+                      </div>
+                    )}
                   </div>
                 </li>
               ))}
@@ -371,11 +363,13 @@ export default async function CiderDetailPage({
             <h2 className="ph-slab mb-4 text-[1.9rem] leading-tight sm:text-[2.2rem]">
               {blendHeading(blend, isRare)}
             </h2>
-            <p className="mb-7 max-w-[46ch] font-franklin text-[0.97rem] leading-relaxed text-prose">
-              {isRare
-                ? "The mission of our Rare Apple Series is to highlight the virtues of extraordinary heirloom apple varieties and their exquisite transformation into distinctive cider."
-                : "Every cider we make starts as whole apples, pressed here in Sherborn. The rest is which apples, and what goes in with them."}
-            </p>
+            {isRare && (
+              <p className="mb-7 max-w-[46ch] font-franklin text-[0.97rem] leading-relaxed text-prose">
+                The mission of our Rare Apple Series is to highlight the
+                virtues of extraordinary heirloom apple varieties and their
+                exquisite transformation into distinctive cider.
+              </p>
+            )}
             {taglineAddsSomething(cider.tagline, blend) && (
               <blockquote className="mb-7 border-l-[3px] border-gold pl-5">
                 <p className="font-franklin text-[0.97rem] font-medium leading-relaxed">

@@ -18,9 +18,11 @@ export function Fleet() {
       <div className="ph-gutter py-12">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <div className="ph-label mb-2.5 text-brick">On shelves now</div>
+            <div className="ph-label mb-2.5 text-brick">On shelves all year</div>
+            {/* Not "The core line-up": this is six of them, and the
+                heading should not claim the whole set. */}
             <h2 className="ph-slab text-[2rem] leading-none sm:text-[2.4rem]">
-              The core line-up
+              Where to start
             </h2>
           </div>
           <Link

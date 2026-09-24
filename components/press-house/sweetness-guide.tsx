@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { shelf, sweetnessLabels } from "@/lib/catalogue";
 
 /**
@@ -27,10 +28,6 @@ export function SweetnessGuide() {
     ciders: shelf.filter((c) => c.sweetness === i + 1),
   }));
 
-  const anyProvisional = steps.some((s) =>
-    s.ciders.some((c) => c.provisional),
-  );
-
   return (
     <section
       id="sweetness"
@@ -39,14 +36,13 @@ export function SweetnessGuide() {
       <div className="ph-gutter py-12">
         <div className="mb-7">
           <div className="ph-label mb-2.5 text-brick">
-            The only question anyone asks
+            Dry to sweet
           </div>
           <h2 className="ph-slab text-[2rem] leading-none sm:text-[2.4rem]">
             How dry is it?
           </h2>
           <p className="mt-2.5 max-w-[58ch] font-franklin text-[0.97rem] font-light leading-relaxed text-prose">
-            Every cider on one line, driest on the left. Pick a step, then
-            pick a can.
+            Every cider we make, from driest to sweetest.
           </p>
         </div>
 
@@ -66,18 +62,16 @@ export function SweetnessGuide() {
                 </div>
                 <div className="mt-2.5 font-franklin text-[0.84rem] font-light leading-relaxed text-prose">
                   {step.ciders.length === 0 ? (
-                    <span className="text-prose-faint">Nothing here yet</span>
+                    <span className="text-prose-faint">None right now</span>
                   ) : (
                     step.ciders.map((c) => (
-                      <span key={c.slug} className="block">
+                      <Link
+                        key={c.slug}
+                        href={`/ciders/${c.slug}`}
+                        className="ph-press block w-fit hover:text-brick hover:underline hover:underline-offset-4"
+                      >
                         {c.name}
-                        {c.provisional && (
-                          <span className="text-brick" title="Unconfirmed">
-                            {" "}
-                            *
-                          </span>
-                        )}
-                      </span>
+                      </Link>
                     ))
                   )}
                 </div>
@@ -99,13 +93,6 @@ export function SweetnessGuide() {
             ))}
           </div>
 
-          {anyProvisional && (
-            <p className="mt-3 font-franklin text-[0.75rem] leading-relaxed text-prose-muted">
-              Placements come from the sweetness values in the cider data.
-              Ciders marked <span className="text-brick">*</span> are
-              unconfirmed.
-            </p>
-          )}
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ import { LocatorBand } from "@/components/press-house/locator-band";
 import { NewsletterForm } from "@/components/press-house/newsletter-form";
 import { PageHeader } from "@/components/press-house/page-header";
 import { routes } from "@/components/press-house/site-config";
-import { Eyebrow, Tbc } from "@/components/press-house/ui";
+import { Eyebrow } from "@/components/press-house/ui";
 
 export const metadata: Metadata = {
   title: "Rare Apple Series",
@@ -44,7 +44,7 @@ export default function ReleasesPage() {
       <PageHeader
         eyebrow="In the vault"
         title="Rare Apple Series"
-        intro="Small batch ciders made with some of our favorite rare apples. This is what is out now, what is coming, and what has already sold out for the year."
+        intro="Small batch ciders made with some of our favorite rare apples. What is out now, what is coming next, and what has already sold out."
       >
         <Link
           href={routes.club}
@@ -87,10 +87,6 @@ export default function ReleasesPage() {
             </>
           )}
 
-          <p className="mt-6 font-franklin text-[0.78rem] leading-relaxed text-prose-muted">
-            Which release lands in which month is drafted and needs
-            confirming with production, as do run sizes.
-          </p>
         </div>
       </section>
 
@@ -110,14 +106,16 @@ export default function ReleasesPage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            {clubFacts.map((fact) => (
+            {/* A fact nobody has confirmed is left off rather than
+                shown as a blank to fill in. */}
+            {clubFacts.filter((fact) => fact.confirmed).map((fact) => (
               <div
                 key={fact.label}
                 className="ph-tint group flex gap-5 border-t-2 border-ink pt-4 hover:border-brick"
               >
                 <div className="w-[68px] shrink-0">
                   <div className="ph-figure ph-slab ph-num origin-left text-[1.7rem] leading-none group-hover:scale-110 group-hover:text-brick">
-                    {fact.confirmed ? fact.figure : <Tbc>N</Tbc>}
+                    {fact.figure}
                   </div>
                   <div className="ph-label mt-1.5 text-[0.53rem] text-prose-faint">
                     {fact.label}
@@ -228,10 +226,9 @@ function ReleaseRow({ release }: { release: Release }) {
           <div className="flex flex-wrap gap-5">
             <Fact label="ABV" value={`${cider.abv}%`} />
             <Fact label="Sweetness" value={sweetnessLabel(cider.sweetness)} />
-            <Fact
-              label="Run size"
-              value={release.runSize ? `${release.runSize}` : <Tbc>run</Tbc>}
-            />
+            {release.runSize && (
+              <Fact label="Run size" value={release.runSize} />
+            )}
           </div>
         </div>
       </div>

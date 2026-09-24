@@ -89,10 +89,7 @@ export default function CiderClubPage() {
 
       {/* What membership includes ------------------------------------- */}
       <section className="ph-gutter py-14">
-        <SectionRule
-          eyebrow="Membership includes"
-          note="Four things, all year"
-        />
+        <SectionRule eyebrow="Membership includes" />
         {/* Each benefit leads with its photograph. Four paragraphs on
             cream is what the four benefits used to be, and it read as
             a table of terms rather than as the reason to join — the
@@ -178,7 +175,7 @@ export default function CiderClubPage() {
                 </h2>
                 <div className="mb-4 h-[3px] w-28 bg-gold" />
                 <p className="max-w-[38ch] font-franklin text-[0.95rem] font-light leading-relaxed text-paper/75">
-                  Four things worth knowing before you sign up.
+                  Worth knowing before you sign up.
                 </p>
               </div>
               {/* The club's own crest, which the site owns and had
@@ -243,7 +240,7 @@ export default function CiderClubPage() {
               <p className="mt-4 max-w-[46ch] font-franklin text-[0.82rem] font-light leading-relaxed text-paper/70">
                 {joinUrl
                   ? "You won't be billed until the shipment goes out."
-                  : "Membership opens by email while the online signup is being built — tell us where to ship and we'll take it from there."}
+                  : "To join, email us your name and shipping address and we'll set you up."}
               </p>
             </div>
 
@@ -252,7 +249,7 @@ export default function CiderClubPage() {
                 Not ready to commit?
               </h3>
               <p className="mb-5 max-w-[44ch] font-franklin text-[0.9rem] font-light leading-relaxed text-paper/80">
-                The newsletter goes out when a release lands, club or not.
+                Get an email when a new release lands.
               </p>
               <NewsletterForm />
               <p className="mt-6 font-franklin text-[0.85rem] font-light text-paper/70">

@@ -28,7 +28,7 @@ export default function LocatorPage() {
       <PageHeader
         eyebrow="Find our cider"
         title="Find a can near you"
-        intro="Search a town or a ZIP code and we will tell you which package stores, supermarkets, bars and restaurants have Stormalong on the shelf."
+        intro="Search by town or ZIP code to find the package stores, supermarkets, bars and restaurants that carry Stormalong."
       />
 
       <section className="bg-paper">
@@ -38,14 +38,14 @@ export default function LocatorPage() {
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             <aside className="ph-tint border-2 border-ink px-7 py-7 hover:border-brick">
               <Eyebrow className="mb-3 block text-brick" stars={false}>
-                Ask for it
+                Not on the shelf?
               </Eyebrow>
               <h2 className="ph-slab mb-2.5 text-[1.4rem] leading-tight">
                 Ask your local shop
               </h2>
               <p className="mb-4 font-franklin text-[0.92rem] font-light leading-relaxed text-prose">
-                If your local shop does not stock us yet, they can order us
-                in. It is the quickest way to get a cider into your own
+                If your local shop doesn't stock us yet, ask them to order us
+                in. It's the quickest way to get Stormalong into your
                 neighborhood.
               </p>
               <a
@@ -64,9 +64,9 @@ export default function LocatorPage() {
                 Still stuck?
               </h2>
               <p className="mb-4 font-franklin text-[0.92rem] font-light leading-relaxed text-paper/75">
-                Tell us where you are and we will point you at the closest
-                place that has it. Email {site.email} and we will do our best
-                to come back to you within 48 hours.
+                Email {site.email} with your town and we&rsquo;ll point you
+                to the closest place that has it. We do our best to reply
+                within 48 hours.
               </p>
               <a
                 href={`mailto:${site.email}`}
@@ -179,7 +179,7 @@ function Finder() {
         >
           Tell us where you are
         </a>{" "}
-        and we will point you at the closest place that has it.
+        and we&rsquo;ll point you to the closest place that has it.
       </p>
     </div>
   );

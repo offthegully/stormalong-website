@@ -6,7 +6,7 @@ import {
   trophyCase,
 } from "@/lib/catalogue";
 import { MedalSeal } from "../medal-seal";
-import { Eyebrow, Tbc } from "../ui";
+import { Eyebrow } from "../ui";
 import { routes } from "../site-config";
 
 /**
@@ -84,15 +84,12 @@ export function TrophyCase() {
                   <div className="ph-slab mb-1.5 text-sm leading-tight text-paper">
                     {award.ciderName}
                   </div>
-                  {/* Kingston Black's Best of Class carries no year —
-                      not a transcription slip, the live site omits it
-                      too. Three seals showing a year beside one showing
-                      none reads as an oversight, so the gap is marked
-                      the way every other unverified value on the site
-                      is marked, and someone can go and find it. */}
+                  {/* Kingston Black's Best of Class carries no year; the
+                      live site omits it too. Until someone finds it, the
+                      line simply ends at the competition. */}
                   <div className="font-franklin text-[0.72rem] leading-snug text-paper/60">
-                    {award.competition},{" "}
-                    {award.year ?? <Tbc>year</Tbc>}
+                    {award.competition}
+                    {award.year && `, ${award.year}`}
                   </div>
                   {/* The line's space is held open at rest rather than
                       grown on hover. Animating its height and margin

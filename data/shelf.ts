@@ -122,12 +122,12 @@ export const missingFromData: CiderType[] = [
     slug: "alysons-orchard",
     tagline: "Unfiltered hard cider made with fresh pressed apples",
     description:
-      "Perched on a hill, overlooking the Connecticut River into Vermont, sits the spectacular Alyson's Orchard in Walpole, NH. Alyson's is consistently rated as a top 10 apple picking destination in New England. We use a selection of their 30+ apple varieties in this 'farmstand' style unfiltered hard cider.",
+      "Perched on a hill, overlooking the Connecticut River into Vermont, sits the spectacular Alyson's Orchard in Walpole, NH. Alyson's is consistently rated as a top 10 apple-picking destination in New England. We use a selection of their 30+ apple varieties in this 'farmstand' style unfiltered hard cider.",
     image: "/images/ciders/alysons-orchard.png",
     abv: 4.5,
     availability: "Year-round",
     features: [],
-    flavor: "Tangy, juicy, and refreshing",
+    flavor: "Tangy, juicy & refreshing",
     blend: {
       varieties: [
         "McIntosh",
@@ -137,7 +137,7 @@ export const missingFromData: CiderType[] = [
         "Cortland",
         "Macoun",
       ],
-      appleNote: "A selection from the orchard's thirty-odd varieties.",
+      appleNote: "A selection from the orchard's 30+ varieties.",
       orchards: ["Alyson's Orchard"],
     },
     sweetness: 2,
@@ -148,12 +148,12 @@ export const missingFromData: CiderType[] = [
     slug: "blue-hills",
     tagline: "Unfiltered cider made with fresh pressed apples",
     description:
-      "Unfiltered hard cider reminiscent of Blue Hills Orchard's farmstand cider press and sold at harvest. Featuring the quintessential McIntosh variety blended with other New England favorites.",
+      "Unfiltered hard cider reminiscent of the cider pressed and sold at harvest at Blue Hills Orchard's farmstand. Featuring the quintessential McIntosh variety blended with other New England favorites.",
     image: "/images/ciders/blue-hills.png",
     abv: 4.5,
     availability: "Year-round",
     features: [],
-    flavor: "Crisp, Refreshing with a Savory Balance of Tart & Sweet",
+    flavor: "Crisp & refreshing, with a savory balance of tart & sweet",
     blend: {
       varieties: [
         "McIntosh",
@@ -163,7 +163,7 @@ export const missingFromData: CiderType[] = [
         "Cortland",
         "Macoun",
       ],
-      appleNote: "McIntosh led, with other New England favourites.",
+      appleNote: "McIntosh-led, with other New England favorites.",
       orchards: ["Blue Hills Orchard"],
     },
     sweetness: 3,
