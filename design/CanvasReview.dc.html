@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: Poppins, "Helvetica Neue", Arial, sans-serif; background: #ffffff; }
+    a { color: #0F2A47; } a:hover { color: #8C2F1F; }
+    .h { font-family: Oswald, "Arial Narrow", Arial, sans-serif; text-transform: uppercase; }
+    .num { font-variant-numeric: tabular-nums; }
+  </style>
+</helmet>
+<div style="background: #ffffff; color: #23272E; padding: 56px 64px 72px 64px; width: 900px; box-sizing: border-box;">
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; border-bottom: 3px solid #0F2A47; padding-bottom: 14px;">
+    <div class="h" style="font-size: 13px; letter-spacing: 0.18em; color: #0F2A47; font-weight: 600;">Stormalong Cider &middot; Review of the canvas</div>
+    <div style="font-size: 12px; color: #6B7280; letter-spacing: 0.04em;">Directions A&ndash;D, the top-of-page set, and what is missing</div>
+  </div>
+  <h1 class="h" style="font-size: 44px; line-height: 1.05; color: #0F2A47; margin: 28px 0 14px 0; font-weight: 600; letter-spacing: 0.01em;">Reviewing the redesign<br>you already had</h1>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 10px 0; max-width: 62ch;">The earlier sheet reviewed the <em>site</em>. This one reviews the <em>canvas</em>, the four directions, the top-of-page options and the home page built out in each. The design work is good and the research-then-design chain behind Direction&nbsp;D is the strongest thing here. What follows is what I would fix before any of it reaches a build, plus what was simply absent until now. Checked against the live range as well as the repository.</p>
+  <div style="display: flex; align-items: center; gap: 12px; margin: 40px 0 18px 0;">
+    <span class="h" style="background: #8C2F1F; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Wrong on the facts</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #8C2F1F; letter-spacing: 0.06em;">4 findings &middot; fix before anyone quotes them</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 22px;">
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #8C2F1F; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">01</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">Three specs on Direction D contradict the data file</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">The tiles and the lead panel carry ABV and sweetness figures, which is exactly right, it is what makes the mockup persuasive. But three of them disagree with <span class="num">data/ciders.ts</span>, the file the rest of the artboard cites as its source.</p>
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 0; border: 1px solid #E3E6EA; margin: 12px 0 10px 0; max-width: 62ch;">
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">Where</div>
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">The artboard says</div>
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">ciders.ts says</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">D lead, Kingston Black</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">7.0% &middot; Semi-dry</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">6.5% &middot; Dry (1)</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">D tile, Farmstand</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">6.2%</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">4.5%</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; ">D tile &amp; guide, Red Skies</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; ">Medium &middot; 3 of 5</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; ">Semi-dry (2)</div>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">Kingston Black is labelled &ldquo;2026&rdquo;, so a genuinely new vintage could legitimately differ, but then the artboard should say so, because as drawn it reads as the same product with different numbers. The other two look like drift. Whichever way they go, the fix is cheap now and expensive after someone has set them in a build.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #8C2F1F; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">02</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">The trophy case undercounts its own best result</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">The panel reads &ldquo;Two Best of Class&rdquo;. There are three in the data: Mass Appeal and Kingston Black both took BEST OF CLASS at the LA Invitational, and Blue Skies took GLINTCAP Best in Class in 2021. The headline figure of 26 medals across 8 ciders is correct, I recounted it, and so is the 2015&ndash;2024 range. Only the Best of Class line is short, and it is short in the direction that undersells you.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #8C2F1F; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">03</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">The cider data and the shelf disagree, in both directions</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">The live site sells <strong>fifteen</strong> ciders in three groups, Core line-up (8), Seasonal (3), Limited / Rare Apple Series (4). <span class="num">data/ciders.ts</span> holds eighteen, and the two lists do not reconcile.</p>
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 0; border: 1px solid #E3E6EA; margin: 12px 0 10px 0; max-width: 62ch;">
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">Where</div>
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">The artboard says</div>
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">ciders.ts says</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">On the shelf, missing from the data</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">Alyson&rsquo;s Orchard, Blue Hills</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">,</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">In the data, not on the shelf</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">,</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">Pog Punch, Ragtime Reserve, The Big Appeal, Bittersweet Symphonie (Lady Legendary is promoted on the home page but absent from /ciders)</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; ">Grouping</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; ">Core / Seasonal / Limited</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; ">no group field at all</div>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">Alyson&rsquo;s Orchard and Blue Hills are both 4.5% year-round core products with their own pages on the live site, and the application does not know they exist. Meanwhile the redesign&rsquo;s filter row offers a <em>fourth</em> taxonomy, Core, Seasonal, Rare Apple, Barrel-Aged, that matches neither the data nor the shelf. Before any of this is built, one of these has to become the source of truth.</p>
+      </div>
+    </div>
+  </div>
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #8C2F1F; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">04</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">The feature icons are on almost everything, and their labels are wrong</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">Every cider carries a row of little icons, and they are a genuinely good idea, they are the fastest thing on the page to read. As set up, they say nothing.</p>
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 0; border: 1px solid #E3E6EA; margin: 12px 0 10px 0; max-width: 62ch;">
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">Where</div>
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">The artboard says</div>
+          <div class="h" style="font-size: 10px; letter-spacing: 0.14em; color: #6B7280; padding: 9px 12px; background: #F7F8FA; border-bottom: 1px solid #E3E6EA;">ciders.ts says</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">apple-gold</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">set on 18 of 18 ciders</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">&ldquo;Made with Gold Rush apples&rdquo;</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">apple-red</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">set on 14 of 18</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; border-bottom: 1px solid #E3E6EA;">&ldquo;Made with Red Delicious apples&rdquo;</div>
+          <div style="font-size: 13.5px; color: #23272E; padding: 10px 12px; ">barrel / rare / infusions</div>
+          <div class="num" style="font-size: 13.5px; color: #8C2F1F; padding: 10px 12px; ">set on 1&ndash;4 each</div>
+          <div class="num" style="font-size: 13.5px; color: #1F6F43; padding: 10px 12px; ">correct, and actually useful</div>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">A badge on every product distinguishes nothing, so the two apple glyphs are decoration. Worse, the tooltip text is wrong: <strong>no cider in the data lists Gold Rush or Red Delicious</strong> in its blend, Legendary Dry names fifteen varieties and neither is among them. Those two labels are inaccurate on all eighteen products.</p>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">The flags that do vary, barrel-aged, Rare Apple Series, and the hibiscus, passionfruit and guava infusions, are the ones worth drawing. And the labels belong on screen, not in a tooltip: the current ones only appear on hover, which does not exist on a phone. Three more icon assets sit unused in <span class="num">public/images/icons/</span>, gluten free, no added sugar, not from concentrate, which are real shelf claims with no data field behind them yet.</p>
+      </div>
+    </div>
+  <div style="display: flex; align-items: center; gap: 12px; margin: 40px 0 18px 0;">
+    <span class="h" style="background: #B4631E; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Gaps</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #B4631E; letter-spacing: 0.06em;">2 findings &middot; the canvas stops before the site does</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 22px;">
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #B4631E; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">05</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">The masthead promised four destinations and designed one</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">Every artboard carries the same nav, Ciders, Releases, Taproom, The Club, plus a &ldquo;Find a can near you&rdquo; button. Until now the canvas contained a design for the home page and nothing else, and the live app has routes for only two of those four. Releases, Taproom and the locator existed as promises in a navigation bar and nowhere else.</p>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">That is what the eight new page artboards on this canvas are for. One correction to my own earlier note, though: <strong>the locator is not missing from the business</strong>, <span class="num">stormalong.com/locator</span> is live and working, running an embedded distributor finder, and every &ldquo;Find It&rdquo; on the live cider pages already reaches it. What 404s is the rebuild&rsquo;s own <span class="num">/locator</span> and <span class="num">/shop</span>. The dead calls to action are a regression the redesign introduced, not a gap to fill from scratch, which makes that page the cheapest win here, since the tool and the data already exist. <span class="num">/shop</span> is a different matter: it is an empty stub on the live site too, so either it points at the club or it leaves the navigation.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #B4631E; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">06</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">There is no footer anywhere in the canvas</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">Direction D ends on the taproom strip and stops. A footer is where three of the earlier findings actually get resolved: the newsletter that currently collects addresses and discards them, the &ldquo;drink responsibly&rdquo; line an alcohol brand is expected to carry, and the legal chrome. I have drawn one and used it on all eight new pages, so it is now a proposal you can react to rather than an omission.</p>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 12px; margin: 40px 0 18px 0;">
+    <span class="h" style="background: #5A6270; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Worth a decision</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #5A6270; letter-spacing: 0.06em;">3 findings &middot; not errors, but nobody has chosen</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 22px;">
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #5A6270; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">07</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">The canvas does not say which direction is live</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">Page 2 records that B was chosen and that A and C are kept &ldquo;for the record, not for further work&rdquo;. Page 3 then introduces D, and the canvas opens on it. Both are true, D is B&rsquo;s voice on a new spine, but someone opening this cold cannot tell which one the business is building. A one-line note on page 2 pointing at D would settle it permanently.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #5A6270; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">08</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">The age gate is drawn but not priced</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">D opens with one, and the research is right that the category universally gates. The design is a genuine improvement on the plugin modal everyone else ships. What is not addressed is the cost: an interstitial sits between every inbound link and the page it promised, including paid social and search results, unless it is cookie&rsquo;d and deliberately bot-aware. That is a compliance and acquisition decision, not a design one, and it should be made by whoever owns both.</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #5A6270; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">09</div>
+      <div>
+        <h3 class="h" style="font-size: 20px; line-height: 1.2; color: #0F2A47; margin: 0 0 9px 0; font-weight: 600; letter-spacing: 0.01em;">Colour-blocking holds at fifteen cans, but only with a value ladder</h3>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">D shows six colour-blocked tiles and it works. I sampled all fifteen current labels off the live site to see whether it scales. The dominant hues collapse into <strong>five families, not fifteen colours</strong>: red-orange at 10&ndash;13&deg;, a crowded cream-gold band at 44&ndash;65&deg; holding six cans, green-teal at 148&ndash;180&deg;, deep navy at 205&ndash;218&deg;, and one near-neutral. Legendary&nbsp;Dry and Mass&nbsp;Appeal sit 3&deg; apart at almost identical luminance, they are simply both navy cans.</p>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 10px 0; max-width: 62ch;">A straight eyedropper therefore produces eleven pairs of tiles that read the same. Taking the hue from the label but separating within each family <em>by value</em> fixes it: all fifteen then clear 4.5:1 against the cream type, the lowest is 5.44:1, and only two pairs still read alike, both in different groups where the headings keep them apart.</p>
+        <p style="font-size: 15.5px; line-height: 1.66; color: #3D434C; margin: 0 0 0px 0; max-width: 62ch;">So the idea survives the full range. It just is not an eyedropper, it is a per-family value ladder, and it is worth writing down as a rule before someone builds it. The new Ciders artboard uses exactly this palette.</p>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 12px; margin: 40px 0 18px 0;">
+    <span class="h" style="background: #1F6F43; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Checked against the live site</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #1F6F43; letter-spacing: 0.06em;">what that changed</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="border-left: 3px solid #E3E6EA; padding-left: 18px;">
+      <h3 class="h" style="font-size: 17px; line-height: 1.25; color: #0F2A47; margin: 0 0 7px 0; font-weight: 600; letter-spacing: 0.01em;">There is no taproom anywhere on stormalong.com</h3>
+      <p style="font-size: 15px; line-height: 1.64; color: #3D434C; margin: 0; max-width: 62ch;">No taproom, no tasting room, no opening hours, no public address and no phone number appear anywhere on the live site. The Taproom page in this set was built from a category convention and an unused photograph in the repository, so it is now marked as an unverified proposal. Direction D&rsquo;s masthead also lists Taproom as a destination. If there is no room open to the public, both should go.</p>
+    </div>
+    <div style="border-left: 3px solid #E3E6EA; padding-left: 18px;">
+      <h3 class="h" style="font-size: 17px; line-height: 1.25; color: #0F2A47; margin: 0 0 7px 0; font-weight: 600; letter-spacing: 0.01em;">The contact page offers one address, not three</h3>
+      <p style="font-size: 15px; line-height: 1.64; color: #3D434C; margin: 0; max-width: 62ch;">The live page gives a single address, <span class="num">info@stormalong.com</span>, for general, press, marketing and sales, plus the line about replying within 48 hours. An earlier version of the Contact artboard split it into separate trade, press and general routes. That was invention, and it has been removed.</p>
+    </div>
+    <div style="border-left: 3px solid #E3E6EA; padding-left: 18px;">
+      <h3 class="h" style="font-size: 17px; line-height: 1.25; color: #0F2A47; margin: 0 0 7px 0; font-weight: 600; letter-spacing: 0.01em;">Two product claims turned out to be documented</h3>
+      <p style="font-size: 15px; line-height: 1.64; color: #3D434C; margin: 0; max-width: 62ch;">The &ldquo;We Respect the apple&rdquo; block on the home page states that the ciders never use concentrates and are all naturally gluten-free. Those were carried as unconfirmed on the detail artboard and can now be shown plainly.</p>
+    </div>
+    <div style="border-left: 3px solid #E3E6EA; padding-left: 18px;">
+      <h3 class="h" style="font-size: 17px; line-height: 1.25; color: #0F2A47; margin: 0 0 7px 0; font-weight: 600; letter-spacing: 0.01em;">The copy across this set was in my voice, not yours</h3>
+      <p style="font-size: 15px; line-height: 1.64; color: #3D434C; margin: 0; max-width: 62ch;">Tasting notes, section headings and body copy on the first pass were written from scratch. They now come from your own pages: every tagline and flavour line from the individual cider pages, the founding story, the Sherborn mill history and Captain Stormalong from Our Story, the full membership terms from the Cider Club page, and the Rare Apple Series description from the cider pages. Em dashes have been removed throughout, along with the jokes.</p>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 12px; margin: 40px 0 18px 0;">
+    <span class="h" style="background: #1F6F43; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Keep</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #1F6F43; letter-spacing: 0.06em;">already load-bearing</span>
+  </div>
+  <div style="border: 1px solid #E3E6EA; padding: 22px 24px; background: #F9FBFA;">
+    <div style="display: flex; flex-direction: column; gap: 13px;">
+      <div style="display: flex; gap: 12px; align-items: flex-start;"><span style="color: #1F6F43; font-size: 15px; line-height: 1.5; flex-shrink: 0;">&#10003;</span><p style="font-size: 15px; line-height: 1.6; color: #3D434C; margin: 0;"><strong>The research sheet driving Direction&nbsp;D.</strong> Seven structural conventions observed across four competitors, each one traced to a specific change in the design. That chain is the reason D is defensible and it is rare to see it written down.</p></div>
+      <div style="display: flex; gap: 12px; align-items: flex-start;"><span style="color: #1F6F43; font-size: 15px; line-height: 1.5; flex-shrink: 0;">&#10003;</span><p style="font-size: 15px; line-height: 1.6; color: #3D434C; margin: 0;"><strong>The trophy case.</strong> Twenty-six medals counted from the data rather than invented, on a brand that currently buries them in bullet lists. It barely changes year to year, so it earns a permanent slot without becoming a maintenance job.</p></div>
+      <div style="display: flex; gap: 12px; align-items: flex-start;"><span style="color: #1F6F43; font-size: 15px; line-height: 1.5; flex-shrink: 0;">&#10003;</span><p style="font-size: 15px; line-height: 1.6; color: #3D434C; margin: 0;"><strong>Three flavours of locator</strong>, take it home, drink it there, come to us. That is the correct decomposition for a distribution-led business and it is better than a single map.</p></div>
+      <div style="display: flex; gap: 12px; align-items: flex-start;"><span style="color: #1F6F43; font-size: 15px; line-height: 1.5; flex-shrink: 0;">&#10003;</span><p style="font-size: 15px; line-height: 1.6; color: #3D434C; margin: 0;"><strong>The bracketed placeholder discipline.</strong> Every unverified number on every artboard is marked. It is the difference between a mockup you can hand to a stakeholder and one that quietly invents facts.</p></div>
+      <div style="display: flex; gap: 12px; align-items: flex-start;"><span style="color: #1F6F43; font-size: 15px; line-height: 1.5; flex-shrink: 0;">&#10003;</span><p style="font-size: 15px; line-height: 1.6; color: #3D434C; margin: 0;"><strong>Gold on navy only.</strong> The contrast rule from the earlier review is actually honoured throughout D, including on the new pages.</p></div>
+    </div>
+  </div>
+  <div style="margin-top: 36px; padding-top: 16px; border-top: 1px solid #E3E6EA; font-size: 12.5px; line-height: 1.6; color: #6B7280;">Reviewed against the artboards on this canvas, <span class="num">data/ciders.ts</span>, the running build on <span class="num">localhost:3001</span> and the live site. Spec disagreements in finding 01 were checked line by line against the data file; the 26-medal, 8-cider and 2015&ndash;2024 figures were recounted and are correct. Hue and contrast figures in finding 08 were measured from the current label artwork.</div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":900,"height":5700}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

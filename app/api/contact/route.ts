@@ -6,6 +6,8 @@ const ContactSchema = z.object({
   email: z.string().email(),
   subject: z.string().min(1),
   message: z.string().min(1),
+  /** Honeypot. Hidden from people; anything in it is a bot. */
+  company: z.string().max(0).optional(),
 })
 
 // Map internal select values to readable subjects
@@ -36,10 +38,18 @@ export async function POST(req: Request) {
     const FROM = process.env.CONTACT_FROM_EMAIL || "no-reply@stormalong.dev"
 
     if (!RESEND_API_KEY || !TO) {
-      // Email not configured – accept but do not send to avoid blocking UX in non-prod
+      // Previously this returned 200 { ok: true, delivered: false }, so the
+      // form showed a confirmation while the message went nowhere. A
+      // message that was not delivered is not a success. Say so, and give
+      // the visitor the address to write to instead.
       return NextResponse.json(
-        { ok: true, delivered: false, reason: "Email not configured" },
-        { status: 200 }
+        {
+          ok: false,
+          configured: false,
+          error:
+            "Our contact form is not connected yet, so this message was not sent. Please email info@stormalong.com directly.",
+        },
+        { status: 501 }
       )
     }
 

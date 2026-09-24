@@ -1,38 +1,35 @@
-"use client";
+import { FindACan } from "@/components/press-house/find-a-can";
+import { FrontPage } from "@/components/press-house/home/front-page";
+import { Fleet } from "@/components/press-house/home/fleet";
+import { TrophyCase } from "@/components/press-house/home/trophy-case";
+import { RareAppleBand } from "@/components/press-house/rare-apple-band";
 
-import { motion } from "framer-motion";
-import { Hero } from "@/components/hero-image";
-import { SimpleRespectApple } from "@/components/simple-respect-apple";
-import { FeaturedCidersGrid } from "@/components/featured-ciders-grid";
-import { TestimonialCarousel } from "@/components/testimonial-carousel";
-import { CiderClub } from "@/components/cider-club";
-import { ShopLinks } from "@/components/shop-links";
-import { pageTransition } from "@/lib/animation-config";
-import { DecorativeFooter } from "@/components/decorative-footer";
-
+/**
+ * Direction D, "Press House". The order is the argument: what is new,
+ * what the brand has won, what it makes, and then
+ * the only question a distribution-led business actually needs to
+ * answer — where can I buy it.
+ */
 export default function Home() {
   return (
-    <motion.div
-      variants={pageTransition}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className="flex flex-col"
-    >
-      <Hero
-        imageSrc="/images/landing-page/farmstand-fall.jpg"
-        title="Farmstand"
-        highlightedText="Unfiltered"
-        description="Unfiltered hard cider reminiscent of freshly pressed cider made at harvest!"
-        buttonText="More Details"
-        buttonLink="ciders/farmstand-unfiltered"
-      />
-      <SimpleRespectApple />
-      <FeaturedCidersGrid />
-      {/* <TestimonialCarousel /> */}
-      <CiderClub />
-      <ShopLinks />
-      <DecorativeFooter />
-    </motion.div>
+    <>
+      {/* The page's h1. The design has no slot for a masthead line — the
+          largest type on screen is the lead cider's name, which used to
+          be the h1 and so made the home page's one top-level heading a
+          seasonal product. That is wrong for a crawler and wrong for a
+          screen reader arriving cold: neither learned what this site
+          sells. The lead is now an h2 where it belongs, and this states
+          the proposition once. It is the same claim the footer, the
+          <title> and the meta description all make, so it is not
+          saying anything to a crawler that a reader is not told. */}
+      <h1 className="sr-only">
+        Stormalong Cider — unfiltered craft hard cider from Massachusetts
+      </h1>
+      <FrontPage />
+      <TrophyCase />
+      <Fleet />
+      <FindACan />
+      <RareAppleBand />
+    </>
   );
 }

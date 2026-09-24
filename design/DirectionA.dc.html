@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=Karla:wght@300;400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: Karla, "Helvetica Neue", Arial, sans-serif; background: #F4EFE5; }
+    a { color: #9C4A21; } a:hover { color: #6E3315; }
+    .d { font-family: "Bodoni Moda", "Didot", "Times New Roman", serif; }
+    .lbl { font-family: Karla, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.22em; font-size: 11px; font-weight: 600; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #F4EFE5; color: #221D16;">
+
+  <!-- direction tag -->
+  <div style="background: #221D16; padding: 13px 56px; display: flex; align-items: baseline; justify-content: space-between;">
+    <span class="lbl" style="color: #E8C9A0;">Direction A</span>
+    <span class="d" style="color: #F4EFE5; font-size: 17px; font-style: italic;">Orchard Table &mdash; warm, editorial, food-and-drink</span>
+    <span class="lbl" style="color: rgba(244,239,229,.45);">Bodoni Moda &middot; Karla &middot; paper, russet, orchard green</span>
+  </div>
+
+  <!-- NAV -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 26px 56px 22px 56px; border-bottom: 1px solid #DCD2C0;">
+    <div style="display: flex; gap: 28px; align-items: baseline; width: 300px;">
+      <span class="lbl" style="color: #5C5245;">Ciders</span>
+      <span class="lbl" style="color: #5C5245;">Orchards</span>
+      <span class="lbl" style="color: #5C5245;">The Club</span>
+    </div>
+    <div class="d" style="font-size: 30px; letter-spacing: 0.16em; font-weight: 500;">STORMALONG</div>
+    <div style="display: flex; gap: 22px; align-items: center; justify-content: flex-end; width: 300px;">
+      <span class="lbl" style="color: #5C5245;">Journal</span>
+      <span class="lbl" style="background: #9C4A21; color: #F4EFE5; padding: 9px 16px; border-radius: 1px;">Find a can</span>
+    </div>
+  </div>
+
+  <!-- HERO: asymmetric editorial -->
+  <div style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 0; border-bottom: 1px solid #DCD2C0;">
+    <div style="padding: 62px 48px 56px 56px; display: flex; flex-direction: column; justify-content: center;">
+      <div class="lbl" style="color: #9C4A21; margin-bottom: 24px;">No. 12 &mdash; Autumn pressing</div>
+      <h1 class="d" style="font-size: 92px; line-height: 0.92; margin: 0 0 26px 0; font-weight: 400; letter-spacing: -0.015em;">The apple<br>does the<br><em style="color: #9C4A21;">talking.</em></h1>
+      <p style="font-size: 19px; line-height: 1.62; color: #4A4238; max-width: 46ch; margin: 0 0 32px 0; font-weight: 300; text-wrap: pretty;">Whole New England fruit, freshly pressed and fermented slowly. Twelve ciders, one rule &mdash; nothing in the can that did not grow on a tree.</p>
+      <div style="display: flex; gap: 26px; align-items: center;">
+        <span class="lbl" style="background: #221D16; color: #F4EFE5; padding: 14px 28px; border-radius: 1px;">Find a can near you</span>
+        <span class="lbl" style="color: #221D16; border-bottom: 2px solid #9C4A21; padding-bottom: 5px;">Meet the twelve &rarr;</span>
+      </div>
+    </div>
+    <div style="position: relative; min-height: 470px; overflow: hidden;">
+      <img src="farm.jpg" alt="Farmstand at harvest" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <div style="position: absolute; right: 26px; bottom: 26px; background: #F4EFE5; padding: 14px 18px; max-width: 200px;">
+        <div class="lbl" style="color: #9C4A21; margin-bottom: 6px;">Sherborn, MA</div>
+        <div class="d" style="font-size: 15px; line-height: 1.4; font-style: italic; color: #221D16;">Founded 2014 by Shannon Edgar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDEX OF CIDERS: editorial list, not cards -->
+  <div style="padding: 62px 56px 24px 56px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #221D16; padding-bottom: 12px; margin-bottom: 6px;">
+      <h2 class="d" style="font-size: 34px; margin: 0; font-weight: 500;">An index of ciders</h2>
+      <span class="lbl" style="color: #5C5245;">Dry &rarr; sweet</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 28px; padding: 22px 0; border-bottom: 1px solid #DCD2C0;">
+      <span class="d" style="font-size: 15px; color: #9C4A21; width: 34px; flex-shrink: 0;">01</span>
+      <img src="can-legendary-dry.png" alt="Legendary Dry" style="height: 96px; width: auto; flex-shrink: 0;">
+      <div style="width: 250px; flex-shrink: 0;">
+        <div class="d" style="font-size: 27px; line-height: 1.1; font-weight: 500;">Legendary Dry</div>
+        <div class="lbl" style="color: #7A6E5D; margin-top: 7px;">Bittersweet blend</div>
+      </div>
+      <p style="font-size: 15.5px; line-height: 1.6; color: #4A4238; margin: 0; flex-grow: 1; max-width: 40ch;">Fifteen varieties, tannic and champagne-like, under three grams of sugar. The flagship.</p>
+      <div style="width: 168px; flex-shrink: 0;">
+        <div style="display: flex; gap: 3px; margin-bottom: 7px;">
+          <span style="height: 4px; flex-grow: 1; background: #9C4A21;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+        </div>
+        <div class="lbl" style="color: #7A6E5D;">Bone dry</div>
+      </div>
+      <span class="d" style="font-size: 22px; color: #221D16; width: 62px; text-align: right; flex-shrink: 0;">6.5%</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 28px; padding: 22px 0; border-bottom: 1px solid #DCD2C0;">
+      <span class="d" style="font-size: 15px; color: #9C4A21; width: 34px; flex-shrink: 0;">02</span>
+      <img src="can-light-of-sun.png" alt="Light of the Sun" style="height: 96px; width: auto; flex-shrink: 0;">
+      <div style="width: 250px; flex-shrink: 0;">
+        <div class="d" style="font-size: 27px; line-height: 1.1; font-weight: 500;">Light of the Sun</div>
+        <div class="lbl" style="color: #7A6E5D; margin-top: 7px;">Citrus &amp; green tea</div>
+      </div>
+      <p style="font-size: 15.5px; line-height: 1.6; color: #4A4238; margin: 0; flex-grow: 1; max-width: 40ch;">Lemon, lime and yuzu over jasmine green tea. The one to open in the afternoon.</p>
+      <div style="width: 168px; flex-shrink: 0;">
+        <div style="display: flex; gap: 3px; margin-bottom: 7px;">
+          <span style="height: 4px; flex-grow: 1; background: #9C4A21;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #9C4A21;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+        </div>
+        <div class="lbl" style="color: #7A6E5D;">Semi-dry</div>
+      </div>
+      <span class="d" style="font-size: 22px; color: #221D16; width: 62px; text-align: right; flex-shrink: 0;">5.0%</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 28px; padding: 22px 0; border-bottom: 1px solid #DCD2C0;">
+      <span class="d" style="font-size: 15px; color: #9C4A21; width: 34px; flex-shrink: 0;">03</span>
+      <img src="can-mass-appeal.png" alt="Mass Appeal" style="height: 96px; width: auto; flex-shrink: 0;">
+      <div style="width: 250px; flex-shrink: 0;">
+        <div class="d" style="font-size: 27px; line-height: 1.1; font-weight: 500;">Mass Appeal</div>
+        <div class="lbl" style="color: #7A6E5D; margin-top: 7px;">McIntosh &amp; Golden Delicious</div>
+      </div>
+      <p style="font-size: 15.5px; line-height: 1.6; color: #4A4238; margin: 0; flex-grow: 1; max-width: 40ch;">Big New England apple flavour with a tropical turn at the finish. The easy one.</p>
+      <div style="width: 168px; flex-shrink: 0;">
+        <div style="display: flex; gap: 3px; margin-bottom: 7px;">
+          <span style="height: 4px; flex-grow: 1; background: #9C4A21;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #9C4A21;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #9C4A21;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+          <span style="height: 4px; flex-grow: 1; background: #DCD2C0;"></span>
+        </div>
+        <div class="lbl" style="color: #7A6E5D;">Medium</div>
+      </div>
+      <span class="d" style="font-size: 22px; color: #221D16; width: 62px; text-align: right; flex-shrink: 0;">5.5%</span>
+    </div>
+  </div>
+
+  <!-- pull quote strip -->
+  <div style="background: #3F5341; padding: 46px 56px; margin-top: 26px; display: flex; align-items: center; gap: 48px;">
+    <div class="d" style="font-size: 40px; line-height: 1.2; color: #F4EFE5; font-style: italic; font-weight: 400; flex-grow: 1;">&ldquo;No concentrate, no artificial flavours, and nothing we would not press ourselves.&rdquo;</div>
+    <div style="width: 190px; flex-shrink: 0;">
+      <div class="lbl" style="color: #C9D6BE; margin-bottom: 8px;">Our one rule</div>
+      <div style="font-size: 14.5px; line-height: 1.55; color: rgba(244,239,229,.82);">Eight GLINTCAP medals and two SF Chronicle silvers say it holds up.</div>
+    </div>
+  </div>
+
+  <div style="padding: 22px 56px 30px 56px; display: flex; justify-content: space-between; align-items: center;">
+    <div style="font-size: 13.5px; color: #7A6E5D; line-height: 1.5; max-width: 62ch;"><strong style="color:#221D16;">Why this one:</strong> cider sits with wine and food, not beer. A paper ground, a high-contrast serif and an index instead of a card grid put Stormalong on the restaurant list rather than the shelf. <strong style="color:#221D16;">The trade:</strong> it walks away from the nautical folklore entirely, and the can art &mdash; which is loud &mdash; has to be handled carefully against quiet pages.</div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":1520}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

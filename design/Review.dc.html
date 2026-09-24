@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: Poppins, "Helvetica Neue", Arial, sans-serif; background: #ffffff; }
+    a { color: #0F2A47; } a:hover { color: #8C2F1F; }
+    .h { font-family: Oswald, "Arial Narrow", Arial, sans-serif; text-transform: uppercase; }
+  </style>
+</helmet>
+
+<div style="background: #ffffff; color: #23272E; padding: 56px 64px 72px 64px; max-width: 900px;">
+
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; border-bottom: 3px solid #0F2A47; padding-bottom: 14px;">
+    <div class="h" style="font-size: 13px; letter-spacing: 0.18em; color: #0F2A47; font-weight: 600;">Stormalong Cider &middot; Design Review</div>
+    <div style="font-size: 12px; color: #6B7280; letter-spacing: 0.04em;">stormalong.offthegully.com vs stormalong.com</div>
+  </div>
+
+  <h1 class="h" style="font-size: 44px; line-height: 1.05; color: #0F2A47; margin: 28px 0 14px 0; font-weight: 600; letter-spacing: 0.01em;">What to change<br>in the current redesign</h1>
+
+  <p style="font-size: 16.5px; line-height: 1.65; color: #3D434C; margin: 0 0 10px 0; max-width: 62ch;">The redesign is a real improvement on the live site in typography, spacing and product information architecture. The problems are not aesthetic &mdash; they are that the site currently cannot sell anything, and that a handful of colour and contrast decisions undercut the work. Fourteen findings, in the order I would fix them.</p>
+
+  <!-- BLOCKERS -->
+  <div style="display: flex; align-items: center; gap: 12px; margin: 40px 0 18px 0;">
+    <span class="h" style="background: #8C2F1F; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Blockers</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #8C2F1F; letter-spacing: 0.06em;">3 findings &middot; ship-stoppers</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 22px;">
+
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #8C2F1F; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">01</div>
+      <div>
+        <h3 class="h" style="font-size: 19px; color: #0F2A47; margin: 0 0 7px 0; letter-spacing: 0.03em; font-weight: 600;">Every commercial call to action is dead</h3>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0 0 10px 0; max-width: 62ch;">On the cider detail pages, <strong>Find It</strong> points at <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">/locator</code> and <strong>Buy Now</strong> points at <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">/shop</code>. Neither route exists. Five routes are linked from the chrome and all five return 404:</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 10px;">
+          <span style="font-size: 13px; font-family: ui-monospace, Menlo, monospace; background: #FBEEEA; color: #8C2F1F; padding: 4px 9px; border-radius: 3px;">/locator &mdash; nav &ldquo;Find Us&rdquo;</span>
+          <span style="font-size: 13px; font-family: ui-monospace, Menlo, monospace; background: #FBEEEA; color: #8C2F1F; padding: 4px 9px; border-radius: 3px;">/shop</span>
+          <span style="font-size: 13px; font-family: ui-monospace, Menlo, monospace; background: #FBEEEA; color: #8C2F1F; padding: 4px 9px; border-radius: 3px;">/store2</span>
+          <span style="font-size: 13px; font-family: ui-monospace, Menlo, monospace; background: #FBEEEA; color: #8C2F1F; padding: 4px 9px; border-radius: 3px;">/press</span>
+          <span style="font-size: 13px; font-family: ui-monospace, Menlo, monospace; background: #FBEEEA; color: #8C2F1F; padding: 4px 9px; border-radius: 3px;">/blog</span>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0; max-width: 62ch;">Finding a can nearby is the single most valuable thing this site does for a cider drinker, and it is the one thing it cannot do. Build the locator, or point Find&nbsp;Us and Buy&nbsp;Now at whatever the business already uses, until it exists.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #8C2F1F; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">02</div>
+      <div>
+        <h3 class="h" style="font-size: 19px; color: #0F2A47; margin: 0 0 7px 0; letter-spacing: 0.03em; font-weight: 600;">Eight images are hotlinked to a dead scaffolding CDN</h3>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0; max-width: 62ch;">Six images in the Cider Club gallery and two on Our Story load from <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">web-assets.same.dev</code>, which returns 404 for all of them. Those sections render as broken-image icons today. Move the files into <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">public/images/</code>, then drop both scaffolding hosts from the <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">remotePatterns</code> allowlist in <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">next.config.mjs</code> so this cannot silently come back.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #8C2F1F; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">03</div>
+      <div>
+        <h3 class="h" style="font-size: 19px; color: #0F2A47; margin: 0 0 7px 0; letter-spacing: 0.03em; font-weight: 600;">The image fallback is itself a broken image</h3>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0; max-width: 62ch;">Seven components fall back to <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">/placeholder.svg</code> when a cider has no artwork, and that file is not in <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">public/</code>. Add a real placeholder &mdash; a navy tile with the Stormalong mark would do &mdash; so a missing can reads as intentional rather than broken.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIGH -->
+  <div style="display: flex; align-items: center; gap: 12px; margin: 44px 0 18px 0;">
+    <span class="h" style="background: #B4631E; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">High</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #B4631E; letter-spacing: 0.06em;">4 findings &middot; visible to every visitor</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 22px;">
+
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #B4631E; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">04</div>
+      <div>
+        <h3 class="h" style="font-size: 19px; color: #0F2A47; margin: 0 0 7px 0; letter-spacing: 0.03em; font-weight: 600;">Brand gold fails contrast on white &mdash; 2.1:1</h3>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0 0 12px 0; max-width: 62ch;">The gold is doing two different jobs and only one of them works. On navy it is a comfortable 6.8:1. On white it is 2.1:1, well under the 4.5:1 floor &mdash; and that is exactly where it is used most: the cider detail headline, the apple varietal list, the awards list and the <code style="background:#F3F4F6;padding:1px 5px;border-radius:3px;font-size:13.5px;">.cider-heading</code> class.</p>
+        <div style="display: flex; gap: 14px; margin-bottom: 12px;">
+          <div style="flex-grow: 1; background: #0F2A47; padding: 16px 18px; border-radius: 3px;">
+            <div class="h" style="color: #D4AF37; font-size: 21px; letter-spacing: 0.04em; font-weight: 600;">Legendary Dry</div>
+            <div style="font-size: 11.5px; color: #9FB0C4; margin-top: 8px; letter-spacing: 0.06em;">GOLD ON NAVY &mdash; 6.8:1 &mdash; PASSES</div>
+          </div>
+          <div style="flex-grow: 1; background: #ffffff; padding: 16px 18px; border-radius: 3px; border: 1px solid #E3E6EA;">
+            <div class="h" style="color: #D4AF37; font-size: 21px; letter-spacing: 0.04em; font-weight: 600;">Legendary Dry</div>
+            <div style="font-size: 11.5px; color: #8C2F1F; margin-top: 8px; letter-spacing: 0.06em;">GOLD ON WHITE &mdash; 2.1:1 &mdash; FAILS</div>
+          </div>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0; max-width: 62ch;">Make it a rule: gold on navy only. On light backgrounds set headings in navy and keep gold for rules, underlines and the filled button, where contrast is carried by the shape rather than the text.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #B4631E; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">05</div>
+      <div>
+        <h3 class="h" style="font-size: 19px; color: #0F2A47; margin: 0 0 7px 0; letter-spacing: 0.03em; font-weight: 600;">Nothing on the homepage can be merchandised</h3>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0; max-width: 62ch;">The live site runs a nine-slide hero carousel &mdash; The Lady Legendary, the new 19.2&nbsp;oz tall cans, Kingston Black, Beachcomber, Blue Skies, Happy Holidays. The redesign replaces all of it with one hard-coded Farmstand hero and a single &ldquo;More Details&rdquo; link. There is no surface left for a seasonal release or a new format, so the homepage will be out of date the week it launches. A carousel is not the only answer &mdash; a standing three-up promo rail under the hero is steadier and does the same job. But something has to hold that content.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #B4631E; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">06</div>
+      <div>
+        <h3 class="h" style="font-size: 19px; color: #0F2A47; margin: 0 0 7px 0; letter-spacing: 0.03em; font-weight: 600;">The cider card introduces two off-brand colours</h3>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0; max-width: 62ch;">The palette is navy and gold. The card &mdash; the most repeated component on the site &mdash; adds a mint-green availability pill and a yellow ABV pill, neither of which appears anywhere else in the brand. The mint especially reads as a stock UI component rather than as Stormalong. Both badges can be navy outline and gold text on navy and lose nothing.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 18px;">
+      <div class="h" style="font-size: 26px; color: #B4631E; line-height: 1; width: 34px; flex-shrink: 0; font-weight: 600;">07</div>
+      <div>
+        <h3 class="h" style="font-size: 19px; color: #0F2A47; margin: 0 0 7px 0; letter-spacing: 0.03em; font-weight: 600;">&ldquo;We Respect The Apple&rdquo; is 120 centred words on a busy pattern</h3>
+        <p style="font-size: 15.5px; line-height: 1.6; color: #3D434C; margin: 0; max-width: 62ch;">Centred body copy is hard to read at any width because every line starts in a different place, and the damask pattern underneath costs further contrast. On a phone the section becomes roughly 700&nbsp;px of near-empty navy before the button arrives. This is the brand's best line &mdash; give it a left-aligned two-column treatment, cut the copy to about half, and let &ldquo;Respect the apple.&rdquo; carry the weight as a pull quote.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIUM -->
+  <div style="display: flex; align-items: center; gap: 12px; margin: 44px 0 18px 0;">
+    <span class="h" style="background: #4A5768; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Medium</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #4A5768; letter-spacing: 0.06em;">7 findings &middot; housekeeping</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 28px;">
+    <div>
+      <h4 class="h" style="font-size: 15px; color: #0F2A47; margin: 0 0 5px 0; letter-spacing: 0.04em; font-weight: 600;">08 &middot; Five font families, two unused</h4>
+      <p style="font-size: 14.5px; line-height: 1.55; color: #4A5260; margin: 0;">Inter, Oswald, Bebas Neue, Cinzel and Poppins all load on every page. Cinzel and Bebas Neue never render, and <code style="background:#F3F4F6;padding:1px 4px;border-radius:3px;font-size:13px;">font-sans</code> resolves to Poppins, so Inter is dead weight too. Drop to Oswald plus Poppins.</p>
+    </div>
+    <div>
+      <h4 class="h" style="font-size: 15px; color: #0F2A47; margin: 0 0 5px 0; letter-spacing: 0.04em; font-weight: 600;">09 &middot; Every heading shouts</h4>
+      <p style="font-size: 14.5px; line-height: 1.55; color: #4A5260; margin: 0;">A global rule sets <code style="background:#F3F4F6;padding:1px 4px;border-radius:3px;font-size:13px;">h1&ndash;h6</code> to condensed uppercase. Nothing can be sentence case, so an h4 label competes with a page title and no level reads as more important than another. Scope it to h1&ndash;h2.</p>
+    </div>
+    <div>
+      <h4 class="h" style="font-size: 15px; color: #0F2A47; margin: 0 0 5px 0; letter-spacing: 0.04em; font-weight: 600;">10 &middot; The apple glyphs have no legend</h4>
+      <p style="font-size: 14.5px; line-height: 1.55; color: #4A5260; margin: 0;">A gold apple and a red apple sit under every cider detail headline with no label. Nobody can tell what they mean. Label them, or fold them into the spec list beside ABV and availability.</p>
+    </div>
+    <div>
+      <h4 class="h" style="font-size: 15px; color: #0F2A47; margin: 0 0 5px 0; letter-spacing: 0.04em; font-weight: 600;">11 &middot; Shares render blank</h4>
+      <p style="font-size: 14.5px; line-height: 1.55; color: #4A5260; margin: 0;">No OpenGraph or Twitter card images are set, so every link posted to Instagram, Facebook or a text message shows an empty box. The can artwork is the brand's strongest asset &mdash; it should be the share image on every cider page. The <code style="background:#F3F4F6;padding:1px 4px;border-radius:3px;font-size:13px;">generator: &#39;v0.dev&#39;</code> tag is still in the metadata too.</p>
+    </div>
+    <div>
+      <h4 class="h" style="font-size: 15px; color: #0F2A47; margin: 0 0 5px 0; letter-spacing: 0.04em; font-weight: 600;">12 &middot; The newsletter form does nothing</h4>
+      <p style="font-size: 14.5px; line-height: 1.55; color: #4A5260; margin: 0;">The footer sign-up has no action and no submit handler. It collects an address, looks like it worked, and discards it. Either wire it to the mail provider or take it out.</p>
+    </div>
+    <div>
+      <h4 class="h" style="font-size: 15px; color: #0F2A47; margin: 0 0 5px 0; letter-spacing: 0.04em; font-weight: 600;">13 &middot; No age gate, no responsibility line</h4>
+      <p style="font-size: 14.5px; line-height: 1.55; color: #4A5260; margin: 0;">This is an alcohol brand with no age confirmation and no &ldquo;drink responsibly&rdquo; footer line. Worth a decision with whoever handles compliance rather than an oversight.</p>
+    </div>
+    <div>
+      <h4 class="h" style="font-size: 15px; color: #0F2A47; margin: 0 0 5px 0; letter-spacing: 0.04em; font-weight: 600;">14 &middot; The sweetness scale is under-labelled</h4>
+      <p style="font-size: 14.5px; line-height: 1.55; color: #4A5260; margin: 0;">Five segments, three labels. When the marker lands on segment 2 or 4 the reader has to interpolate. Name the active stop &mdash; &ldquo;Dry&rdquo;, &ldquo;Semi-dry&rdquo; &mdash; next to the bar. The component already knows the word.</p>
+    </div>
+  </div>
+
+  <!-- KEEP -->
+  <div style="display: flex; align-items: center; gap: 12px; margin: 44px 0 18px 0;">
+    <span class="h" style="background: #2F6B4F; color: #ffffff; font-size: 11px; letter-spacing: 0.16em; padding: 5px 11px; border-radius: 2px; font-weight: 600;">Keep</span>
+    <span style="flex-grow: 1; height: 1px; background: #E3E6EA;"></span>
+    <span style="font-size: 12px; color: #2F6B4F; letter-spacing: 0.06em;">already better than the live site</span>
+  </div>
+
+  <div style="background: #F3F7F4; border-left: 3px solid #2F6B4F; padding: 20px 24px; border-radius: 0 3px 3px 0;">
+    <ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.75; color: #33413A;">
+      <li>The collection filters on <strong>/ciders</strong> &mdash; Core, Seasonal, Rare Apple, Barrel-Aged. The live site makes you scroll one undifferentiated list.</li>
+      <li>The <strong>sweetness scale</strong>. This is the question every cider shopper actually has, and no competitor answers it this plainly.</li>
+      <li><strong>Previous / next arrows</strong> between cider pages &mdash; browsing the range without going back to the grid.</li>
+      <li>The <strong>awards block</strong>, pulled out of the body copy into its own panel. Eight GLINTCAP and SF&nbsp;Chronicle medals were buried before.</li>
+      <li>Type and spacing generally are calmer and more confident than stormalong.com.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 40px; padding-top: 18px; border-top: 1px solid #E3E6EA; font-size: 13px; color: #8A9099; line-height: 1.6;">
+    Reviewed against stormalong.offthegully.com, the local build on localhost:3000, and the live stormalong.com, September 2026. Contrast figures are WCAG 2.1 relative-luminance ratios.
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":900,"height":2400}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

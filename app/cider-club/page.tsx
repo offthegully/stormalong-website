@@ -1,319 +1,308 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { CiderClubBenefits } from "@/components/cider-club-benefits";
-import { CiderClubFAQ } from "@/components/cider-club-faq";
-import { DecorativeFooter } from "@/components/decorative-footer";
-import { SimplePageHeader } from "@/components/simple-page-header";
-import { PatternedSection } from "@/components/patterned-section";
+import Link from "next/link";
+import {
+  clubBenefits,
+  clubHeadlines,
+  clubIntro,
+  clubTerms,
+  joinUrl,
+} from "@/data/club";
+import { LocatorBand } from "@/components/press-house/locator-band";
+import { NewsletterForm } from "@/components/press-house/newsletter-form";
+import { site } from "@/components/press-house/site-config";
+import { Eyebrow, PhButton, SectionRule } from "@/components/press-house/ui";
+
+export const metadata: Metadata = {
+  title: "The Rare Apple Club",
+  description:
+    "Twice a year we ship club members a variety of small batch ciders, released first — and sometimes only — to members.",
+};
+
+/**
+ * Where "Join" goes. There is no membership checkout yet, so rather
+ * than draw a signup form over nothing, the call to action opens an
+ * email to the address the membership copy already uses for opting out
+ * and updating details. Set `joinUrl` in `data/club.ts` when a real
+ * signup exists and this switches to it.
+ */
+const joinHref =
+  joinUrl ??
+  `mailto:${site.email}?subject=${encodeURIComponent("Rare Apple Club membership")}&body=${encodeURIComponent(
+    "I'd like to join the Rare Apple Club.\n\nName:\nShipping address:\n\nI am 21 or older and can sign for a delivery.",
+  )}`;
 
 export default function CiderClubPage() {
   return (
-    <div className="flex flex-col">
-      {/* Page Header */}
-      <SimplePageHeader
-        title="Rare Apple Club"
-        subtitle="Join our exclusive membership for cider enthusiasts"
-      />
+    <>
+      {/* Lead --------------------------------------------------------- */}
+      <section className="grid lg:grid-cols-12">
+        <div className="bg-ink px-5 py-12 text-paper sm:px-8 lg:col-span-7 lg:px-14 lg:py-16">
+          <Eyebrow className="mb-4 block">Member offerings</Eyebrow>
+          <h1 className="ph-slab text-[2.7rem] leading-[0.95] sm:text-[3.6rem]">
+            The Rare <br />
+            Apple Club
+          </h1>
+          <div className="my-6 h-[3px] w-48 bg-gold" />
+          <p className="mb-4 max-w-[46ch] font-franklin text-lg font-light leading-snug">
+            {clubIntro[0]}
+          </p>
+          <p className="mb-4 max-w-[58ch] font-franklin text-[0.95rem] font-light leading-relaxed text-paper/75">
+            {clubIntro[1]}
+          </p>
+          <p className="mb-8 font-franklin text-[0.95rem] font-light leading-relaxed text-paper/75">
+            {clubIntro[2]}
+          </p>
 
-      {/* Main Content */}
-      <div className="py-12 md:py-20 bg-white">
-        <div className="stormalong-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Column - Image */}
-            <div className="space-y-6">
-              <div className="relative">
-                <div className="absolute -inset-1 bg-brand-gold/20 rounded-lg blur-md"></div>
+          <dl className="mb-8 grid grid-cols-1 gap-y-5 border-y border-paper/25 py-5 sm:grid-cols-3">
+            {clubHeadlines.map((headline) => (
+              <div key={headline.label} className="group">
+                <dt className="ph-label mb-1.5 text-[0.53rem] text-paper/45">
+                  {headline.label}
+                </dt>
+                <dd className="ph-figure ph-slab ph-num origin-bottom-left text-[1.35rem] leading-none text-gold group-hover:scale-110">
+                  {headline.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <PhButton href={joinHref} tone="gold">
+            Join the Rare Apple Club
+          </PhButton>
+          <p className="ph-label mt-4 text-[0.5rem] text-paper/50">
+            You won't be billed until the shipment goes out.
+          </p>
+        </div>
+
+        <div className="relative min-h-[280px] lg:col-span-5">
+          <Image
+            src="/images/cider-club/3-drinks-rare-apple.jpg"
+            alt="Three Rare Apple Club ciders"
+            fill
+            sizes="(min-width: 1024px) 42vw, 100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+      </section>
+
+      {/* What membership includes ------------------------------------- */}
+      <section className="ph-gutter py-14">
+        <SectionRule eyebrow="Membership includes" />
+        {/* Each benefit leads with its photograph. Four paragraphs on
+            cream is what the four benefits used to be, and it read as
+            a table of terms rather than as the reason to join — the
+            photography is the argument. The cards keep the hairline
+            grid and the square corners the shelf tiles use, so the
+            band still belongs to the page.
+
+            The photographs are decorative, same as on the cider pages:
+            the heading and copy beside each one already carry what the
+            benefit is, and an alt text repeating them would only be
+            read out twice. */}
+        <ol className="grid gap-px bg-ink/12 sm:grid-cols-2 lg:grid-cols-4">
+          {clubBenefits.map((benefit) => (
+            <li
+              className="ph-tint group flex flex-col bg-paper hover:bg-paper-light"
+              key={benefit.title}
+            >
+              <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/cider-club/rare-apple-club.png"
-                  alt="Rare Apple Club"
-                  width={500}
-                  height={300}
-                  className="relative w-full h-auto rounded-lg"
-                  priority
+                  src={benefit.photo}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
                 />
               </div>
-              <div className="relative overflow-hidden rounded-lg">
-                <Image
-                  src="/images/cider-club/3-drinks-rare-apple.jpg"
-                  alt="Stormalong Cider Club"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Right Column - Content */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-oswald uppercase text-brand-navy mb-6">
-                  Member Offerings
+              <div className="flex flex-grow flex-col p-6">
+                <h2 className="ph-tint ph-slab mb-3 text-[1.15rem] leading-tight group-hover:text-brick">
+                  {benefit.title}
                 </h2>
-                <p className="text-gray-700 mb-6">
-                  From orchard to press to tank to can and then to your
-                  doorstep. Twice a year, we ship a variety of small batch
-                  ciders that include limited releases, special collaborations
-                  and limited amounts of our vintage ciders to our club members.
-                  Showcasing rare, heirloom apple varieties, some that have been
-                  around since the country was founded, these ciders are
-                  released first — and sometimes exclusively — to club members.
-                </p>
-                <p className="text-gray-700 mb-6">
-                  We hope you&apos;ll join us and make it a celebration.
+                <p className="font-franklin text-[0.9rem] leading-relaxed text-prose">
+                  {benefit.copy}
                 </p>
               </div>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-              <CiderClubBenefits />
+      {/* Subscription terms ------------------------------------------- */}
+      <section className="ph-rule-gold border-b-0 border-t-4 bg-ink-deep text-paper">
+        {/* Full bleed rather than gutter-bound, and the photograph on
+            the left — the mirror of the lead at the top of the page,
+            which runs type left and photograph right. Alternating the
+            two gives the page a rhythm it did not have when this band
+            was a column of type on flat ink. */}
+        <div className="grid lg:grid-cols-12">
+          {/* A portrait shot, so a tall column crops it barely at all.
+              The rail stretches to whatever height the terms need. */}
+          <div className="relative min-h-[300px] lg:col-span-4 lg:min-h-0">
+            <Image
+              src="/images/cider-details-images/ragtime-reserve-2.jpg"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 34vw, 100vw"
+              className="object-cover"
+            />
+            {/* Carries the photograph into the ink instead of butting
+                it against the type. The edge that needs softening is
+                whichever one faces the terms, and that moves with the
+                layout: the foot on a phone, where the rail sits above
+                them, and the right flank once it sits beside them. */}
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink-deep to-transparent lg:hidden"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-y-0 right-0 hidden w-1/2 bg-gradient-to-l from-ink-deep to-transparent lg:block"
+            />
+          </div>
 
-              <div className="pt-4">
-                <Button
-                  size="lg"
-                  className="bg-brand-navy hover:bg-brand-navy/90 text-white uppercase font-oswald tracking-wider"
+          <div className="px-5 py-14 sm:px-8 lg:col-span-8 lg:px-14">
+            {/* The heading holds the left edge the numbered terms
+                below it sit on, and the crest takes the far end of
+                the row — putting it beside the heading instead
+                indented the heading off that edge by its own width,
+                which read as a mistake. */}
+            <div className="mb-10 flex flex-col-reverse items-start justify-between gap-x-10 gap-y-7 sm:flex-row sm:items-center">
+              <div>
+                <h2 className="ph-slab mb-3 text-[2rem] leading-none">
+                  Subscriptions
+                </h2>
+                <div className="mb-4 h-[3px] w-28 bg-gold" />
+                <p className="max-w-[38ch] font-franklin text-[0.95rem] font-light leading-relaxed text-paper/75">
+                  Worth knowing before you sign up.
+                </p>
+              </div>
+              {/* The club's own crest, which the site owns and had
+                  never put anywhere. Gold line work on a transparent
+                  ground — this ink band is the one place on the page
+                  it can sit without a box drawn around it. */}
+              <Image
+                src="/images/cider-club/rare-apple-club.png"
+                alt=""
+                width={1299}
+                height={906}
+                sizes="190px"
+                className="h-auto w-[150px] shrink-0 sm:w-[190px]"
+              />
+            </div>
+            <ol className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+              {clubTerms.map((term) => (
+                <li
+                  key={term}
+                  className="ph-tint border-t border-paper/20 pt-4 hover:border-gold/60"
                 >
-                  JOIN OUR RARE APPLE CLUB
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* Membership Details */}
-          <div className="mt-20 bg-slate-50 rounded-lg p-8 md:p-12">
-            <h2 className="text-3xl font-oswald uppercase text-brand-navy mb-8 text-center">
-              Membership Details
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-              <div className="space-y-6">
-                <h3 className="text-xl font-oswald uppercase text-brand-navy">
-                  Subscription Information
-                </h3>
-                <ul className="space-y-4 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      We will keep your payment information on file and you can
-                      opt out anytime. You won&apos;t be billed until the
-                      shipment goes out.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      Members will receive an email before each shipment in case
-                      you wish to opt out or add to your order using your club
-                      discount.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      Members can either have cider shipped to your front door
-                      (in approved states) or we also offer pick-up at our
-                      seasonal, regional farmers market locations throughout the
-                      year.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      You must be 21 years of age or older. Adult signature is
-                      required for all shipments.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-6">
-                <h3 className="text-xl font-oswald uppercase text-brand-navy">
-                  Shipment Information
-                </h3>
-                <ul className="space-y-4 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      <strong>Two times a year</strong> (Spring and Fall) we
-                      ship you a variety of small batch ciders.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      The cost of each shipment will range between $45 to $75
-                      (+shipping) depending upon what is included in the
-                      release.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      Each shipment typically includes 4-6 ciders, with detailed
-                      tasting notes and information about the apple varieties
-                      used.
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-gold mr-2 font-bold">•</span>
-                    <span>
-                      Shipping is available to most states, but regulations
-                      vary. Contact us for specific shipping information.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Image Gallery */}
-          {/* <div className="mt-20">
-            <h2 className="text-3xl font-oswald uppercase text-brand-navy mb-8 text-center">
-              Club Exclusive Ciders
-            </h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src="https://web-assets.same.dev/5e5354d3337309c67af994c1/6657aa9eab5431d808a27d9f_3Y9A8830.jpg"
-                  alt="Cider image"
-                  width={200}
-                  height={200}
-                  className="w-full h-40 object-cover transition-transform hover:scale-110 duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src="https://web-assets.same.dev/5e5354d3337309c67af994c1/5e98f21dd0f2ebf168083886_(2)%20DSC_3732%20copy.jpg"
-                  alt="Cider image"
-                  width={200}
-                  height={200}
-                  className="w-full h-40 object-cover transition-transform hover:scale-110 duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src="https://web-assets.same.dev/5e5354d3337309c67af994c1/5e9dc6e9e6a5a8cbb593caf3_(2)%20IMG_2059.jpg"
-                  alt="Cider image"
-                  width={200}
-                  height={200}
-                  className="w-full h-40 object-cover transition-transform hover:scale-110 duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src="https://web-assets.same.dev/5e5354d3337309c67af994c1/5e9dc763a5db4323b1b95f2a_(2)%20Calville%20Blanc%204%20copy.jpg"
-                  alt="Cider image"
-                  width={200}
-                  height={200}
-                  className="w-full h-40 object-cover transition-transform hover:scale-110 duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src="https://web-assets.same.dev/5e5354d3337309c67af994c1/5e9a2b8c9aae7e6ea1adb5ce_(2)%20IMG_0052.jpg"
-                  alt="Cider image"
-                  width={200}
-                  height={200}
-                  className="w-full h-40 object-cover transition-transform hover:scale-110 duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src="https://web-assets.same.dev/5e5354d3337309c67af994c1/5e9dade78a5e0b259f6651a9_(2)%20IMG_9982.jpg"
-                  alt="Cider image"
-                  width={200}
-                  height={200}
-                  className="w-full h-40 object-cover transition-transform hover:scale-110 duration-500"
-                />
-              </div>
-            </div>
-          </div> */}
-
-          {/* Testimonials */}
-          {/* <div className="mt-20">
-            <h2 className="text-3xl font-oswald uppercase text-brand-navy mb-8 text-center">What Our Members Say</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-slate-50 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-5 h-5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-4">
-                  &quot;The Rare Apple Club has introduced me to cider varieties I never would have discovered
-                  otherwise. Each shipment feels like a special gift!&quot;
-                </p>
-                <p className="font-semibold">— Sarah T., Member since 2020</p>
-              </div>
-
-              <div className="bg-slate-50 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-5 h-5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-4">
-                  &quot;The 15% discount on all orders has more than paid for my membership. Plus, the exclusive small
-                  batch releases are incredible!&quot;
-                </p>
-                <p className="font-semibold">— Michael R., Member since 2021</p>
-              </div>
-
-              <div className="bg-slate-50 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-5 h-5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-4">
-                  &quot;I love learning about the different apple varieties and the history behind each cider. It&apos;s
-                  like a delicious education in a glass!&quot;
-                </p>
-                <p className="font-semibold">— Jessica L., Member since 2019</p>
-              </div>
-            </div>
-          </div> */}
-
-          {/* FAQ Section */}
-          <div className="mt-20">
-            <h2 className="text-3xl font-oswald uppercase text-brand-navy mb-8 text-center">
-              Frequently Asked Questions
-            </h2>
-            <CiderClubFAQ />
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-20">
-            <div className="rounded-2xl shadow-xl overflow-hidden">
-              <PatternedSection className="py-20 text-center">
-                <div className="relative z-10 px-4 stormalong-container">
-                  <h2 className="text-4xl font-oswald uppercase text-white mb-6">
-                    Ready to Join?
-                  </h2>
-                  <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                    Become a member today and start enjoying exclusive access to
-                    our limited small batch ciders, special offers, and more.
+                  <p className="font-franklin text-[0.9rem] font-light leading-relaxed text-paper/80">
+                    {term}
                   </p>
-                  <Button
-                    size="lg"
-                    className="bg-brand-gold hover:bg-brand-gold/90 text-brand-navy uppercase font-oswald tracking-wider px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    JOIN OUR RARE APPLE CLUB
-                  </Button>
-                </div>
-              </PatternedSection>
-            </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Decorative Footer */}
-      <DecorativeFooter />
-    </div>
+      {/* Join ---------------------------------------------------------- */}
+      <section className="bg-brick text-paper">
+        {/* Photograph on the right, the mirror of the Subscriptions band
+            — and it stands in the field of empty brick this band used to
+            end on. The newsletter column runs a good deal shorter than
+            the join copy beside it, and with the locator band below
+            sharing the same brick, the two ran together into one large
+            red nothing. The rail closes it. */}
+        <div className="grid lg:grid-cols-12">
+          {/* The two blocks sit side by side only from `xl`, a step
+              later than the rail beside them appears. Splitting them
+              at `lg` as well left each one about 270px wide between
+              1024 and 1280, which broke the heading over three lines
+              and clipped the email field's placeholder. Between those
+              widths they stack instead and use the whole column. */}
+          <div className="grid gap-10 px-5 py-14 sm:px-8 lg:col-span-8 lg:py-16 lg:pl-14 lg:pr-12 xl:grid-cols-2 xl:gap-8">
+            <div>
+              <h2 className="ph-slab mb-4 text-[2.1rem] leading-[0.98] sm:text-[2.6rem]">
+                Join our Rare <br />
+                Apple Club
+              </h2>
+              <p className="mb-7 max-w-[52ch] font-franklin text-[0.97rem] font-light leading-relaxed text-paper/85">
+                Members enjoy first access to new product releases and special
+                events, as well as a permanent 15% discount on all orders and
+                exclusive access to special small batch ciders offered only to
+                our Rare Apple Club members.
+              </p>
+              <PhButton href={joinHref} tone="gold">
+                Join the club
+              </PhButton>
+              <p className="mt-4 max-w-[46ch] font-franklin text-[0.82rem] font-light leading-relaxed text-paper/70">
+                {joinUrl
+                  ? "You won't be billed until the shipment goes out."
+                  : "To join, email us your name and shipping address and we'll set you up."}
+              </p>
+            </div>
+
+            <div className="border-t border-paper/25 pt-8 xl:border-l xl:border-t-0 xl:pl-10 xl:pt-0">
+              <h3 className="ph-slab mb-2.5 text-[1.3rem] leading-tight">
+                Not ready to commit?
+              </h3>
+              <p className="mb-5 max-w-[44ch] font-franklin text-[0.9rem] font-light leading-relaxed text-paper/80">
+                Get an email when a new release lands.
+              </p>
+              <NewsletterForm />
+              <p className="mt-6 font-franklin text-[0.85rem] font-light text-paper/70">
+                Questions about a membership already running? Email{" "}
+                <Link
+                  href={`mailto:${site.email}`}
+                  className="ph-press underline underline-offset-4 hover:text-gold"
+                >
+                  {site.email}
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+
+          {/* A crate of rare apples — the thing the club is named for,
+              and the one note the page was missing. Deep crimson rather
+              than the brick's orange-red, so it separates from the
+              ground it sits on instead of sinking into it. */}
+          <div className="relative min-h-[300px] lg:col-span-4 lg:min-h-0">
+            <Image
+              src="/images/cider-details-images/kingston-black-1.jpg"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 34vw, 100vw"
+              className="object-cover"
+            />
+            {/* Same two fades as the Subscriptions rail, mirrored —
+                this rail takes the other side, so the edge facing the
+                type is the head on a phone and the left flank on the
+                wide layout. */}
+            <div
+              aria-hidden
+              className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-brick to-transparent lg:hidden"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-y-0 left-0 hidden w-1/2 bg-gradient-to-r from-brick to-transparent lg:block"
+            />
+            {/* And a third along the foot, at every width. The locator
+                band underneath is brick as well, so the rail's bottom
+                edge has no rule to land on — without this it reads as
+                a photograph pasted over the ground rather than as part
+                of it. */}
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-brick to-transparent lg:h-28"
+            />
+          </div>
+        </div>
+      </section>
+
+      <LocatorBand />
+    </>
   );
 }

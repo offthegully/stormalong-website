@@ -1,0 +1,508 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Libre+Franklin:wght@300;400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; background: #F0E6D2; }
+    a { color: #A8321F; } a:hover { color: #7C2314; }
+    .slab { font-family: "Alfa Slab One", Georgia, serif; }
+    .lbl { text-transform: uppercase; letter-spacing: 0.22em; font-size: 10.5px; font-weight: 700; }
+    .num { font-variant-numeric: tabular-nums; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #F0E6D2; color: #0A1A2B;">
+
+  <!-- direction tag -->
+  <div style="background: #0A1A2B; padding: 13px 56px; display: flex; align-items: baseline; justify-content: space-between;">
+    <span class="lbl" style="color: #C9A227;">Direction D</span>
+    <span class="slab" style="color: #F0E6D2; font-size: 17px;">PRESS HOUSE &mdash; front page, then the trophy case</span>
+    <span class="lbl" style="color: rgba(240,230,210,.45);">Front-page mosaic up top &middot; 26 real medals underneath</span>
+  </div>
+
+  <!-- FIRST VISIT: the age gate -->
+  <div style="background: #E5D9C0; padding: 30px 56px 32px 56px; border-bottom: 2px solid rgba(10,26,43,.18); display: flex; gap: 40px; align-items: center;">
+    <div style="width: 430px; flex-shrink: 0; background: #0A1A2B; border: 3px double #C9A227; padding: 34px 30px; text-align: center;">
+      <img src="captain.png" alt="Captain Stormalong" style="height: 86px; width: auto; margin-bottom: 14px;">
+      <div class="slab" style="color: #F0E6D2; font-size: 21px; letter-spacing: 0.03em; line-height: 1; margin-bottom: 6px;">STORMALONG</div>
+      <div class="lbl" style="color: #C9A227; font-size: 8.5px; margin-bottom: 22px;">&#9733; New England Hard Cider &#9733;</div>
+      <div class="slab" style="color: #F0E6D2; font-size: 27px; line-height: 1.08; margin-bottom: 18px;">ARE YOU 21<br>OR OLDER?</div>
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <span class="lbl" style="background: #C9A227; color: #0A1A2B; padding: 15px 30px; font-size: 10px;">Yes, I am</span>
+        <span class="lbl" style="border: 2px solid rgba(240,230,210,.5); color: #F0E6D2; padding: 13px 26px; font-size: 10px;">No</span>
+      </div>
+      <div style="font-size: 11.5px; color: rgba(240,230,210,.5); margin-top: 18px; line-height: 1.5;">By entering you confirm you are of legal drinking age.</div>
+    </div>
+    <div>
+      <div class="lbl" style="color: #A8321F; margin-bottom: 12px;">First visit &middot; before anything else</div>
+      <h3 class="slab" style="font-size: 28px; line-height: 1.06; margin: 0 0 14px 0;">The age gate is the first<br>thing anyone sees.</h3>
+      <p style="font-size: 15.5px; line-height: 1.62; color: #4A4638; margin: 0; max-width: 52ch;">Every cider brand I could reach gates on age &mdash; and every one of them does it with a generic white modal that belongs to a plugin. Yours is a chance to open with the captain and the double rule before a single product appears. Set a cookie, show it once.</p>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT TICKER -->
+  <div style="background: #C9A227; color: #0A1A2B; padding: 10px 56px; display: flex; align-items: center; justify-content: center; gap: 14px;">
+    <span class="lbl" style="font-size: 10px;">&#9733;</span>
+    <span class="lbl" style="font-size: 10px;">Kingston Black 2026 is on shelves now</span>
+    <span class="lbl" style="font-size: 10px;">&#9733;</span>
+    <span class="lbl" style="font-size: 10px;">19.2 oz tall cans have landed</span>
+    <span class="lbl" style="font-size: 10px;">&#9733;</span>
+    <span class="lbl" style="font-size: 10px;">Taproom open Thu &ndash; Sun</span>
+    <span class="lbl" style="font-size: 10px;">&#9733;</span>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div style="background: #0A1A2B; border-bottom: 4px double #C9A227; padding: 16px 56px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; gap: 24px; align-items: center; width: 400px;">
+      <span class="lbl" style="color: #F0E6D2;">Ciders</span>
+      <span class="lbl" style="color: #F0E6D2;">Releases</span>
+      <span class="lbl" style="color: #F0E6D2;">Taproom</span>
+      <span class="lbl" style="color: #F0E6D2;">The Club</span>
+    </div>
+    <div style="text-align: center;">
+      <div class="slab" style="font-size: 25px; letter-spacing: 0.04em; color: #F0E6D2; line-height: 1;">STORMALONG</div>
+      <div class="lbl" style="color: #C9A227; margin-top: 5px; font-size: 8.5px;">&#9733; Sherborn, Mass. &middot; Est. 2014 &#9733;</div>
+    </div>
+    <div style="width: 400px; display: flex; justify-content: flex-end; gap: 18px; align-items: center;">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#F0E6D2" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4.3-4.3"></path></svg>
+      <span class="lbl" style="background: #A8321F; color: #F0E6D2; padding: 13px 24px; border: 2px solid #C9A227; display: flex; align-items: center; gap: 9px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Find a can near you
+      </span>
+    </div>
+  </div>
+
+  <!-- FRONT PAGE -->
+  <div style="background: #0A1A2B; color: #F0E6D2; padding: 32px 56px 36px 56px;">
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px;">
+      <span class="lbl" style="color: #C9A227;">&#9733; This month &#9733;</span>
+      <span style="flex-grow: 1; height: 1px; background: rgba(201,162,39,.32);"></span>
+      <span class="lbl" style="color: rgba(240,230,210,.42);">Four things, all on screen, none of them moving</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 22px;">
+
+      <!-- LEAD -->
+      <div style="background: #63202C; border: 2px solid #C9A227; padding: 38px 40px; display: flex; gap: 32px; align-items: center; min-height: 430px;">
+        <div style="flex-grow: 1;">
+          <div style="display: inline-block; border: 2px solid #C9A227; padding: 6px 13px; margin-bottom: 20px;">
+            <span class="lbl" style="color: #C9A227; font-size: 9.5px;">&#9733; Limited &middot; Release No. 07 &#9733;</span>
+          </div>
+          <h1 class="slab" style="font-size: 56px; line-height: 0.95; margin: 0 0 16px 0;">KINGSTON<br>BLACK 2026</h1>
+          <div style="height: 3px; background: #C9A227; width: 170px; margin-bottom: 18px;"></div>
+          <p style="font-size: 16.5px; line-height: 1.58; color: rgba(240,230,210,.86); margin: 0 0 16px 0; font-weight: 300; max-width: 40ch;">Marzipan, sour cherry and bruised apple skin, with a long tannic finish. A single varietal, crash-cooled mid-ferment.</p>
+          <div style="display: flex; gap: 18px; align-items: center; border-top: 1px solid rgba(240,230,210,.22); border-bottom: 1px solid rgba(240,230,210,.22); padding: 11px 0; margin-bottom: 20px;">
+            <div><div class="lbl" style="color: rgba(240,230,210,.45); font-size: 8.5px; margin-bottom: 4px;">ABV</div><div class="num" style="font-size: 15px; font-weight: 600;">7.0%</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.45); font-size: 8.5px; margin-bottom: 4px;">Sweetness</div><div style="font-size: 15px; font-weight: 600;">Semi-dry</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.45); font-size: 8.5px; margin-bottom: 4px;">This year's run</div><div class="num" style="font-size: 15px; font-weight: 600;">1,400 bottles</div></div>
+          </div>
+          <span class="lbl" style="background: #C9A227; color: #0A1A2B; padding: 14px 26px; display: inline-flex; align-items: center; gap: 9px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Find it near me
+          </span>
+        </div>
+        <img src="can-kingston.png" alt="Kingston Black 2026" style="height: 320px; width: auto; flex-shrink: 0; filter: drop-shadow(0 18px 34px rgba(0,0,0,.5));">
+      </div>
+
+      <!-- THREE SECONDARIES -->
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="background: #35604A; border: 2px solid rgba(240,230,210,.3); padding: 22px 24px; display: flex; gap: 20px; align-items: center; flex-grow: 1;">
+          <img src="can-farmstand.png" alt="Farmstand Unfiltered" style="height: 104px; width: auto; flex-shrink: 0;">
+          <div>
+            <div class="lbl" style="color: #C9A227; font-size: 9px; margin-bottom: 8px;">Seasonal &middot; through November</div>
+            <div class="slab" style="font-size: 22px; line-height: 1.08; margin-bottom: 7px;">FARMSTAND IS POURING</div>
+            <div style="font-size: 13.5px; line-height: 1.5; color: rgba(240,230,210,.78);">Cloudy and tangy, pressed at harvest.</div>
+          </div>
+        </div>
+        <div style="background: #1B3A6B; border: 2px solid rgba(240,230,210,.3); padding: 22px 24px; display: flex; gap: 20px; align-items: center; flex-grow: 1;">
+          <div style="width: 68px; height: 104px; border: 2px solid #C9A227; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+            <div class="slab" style="color: #C9A227; font-size: 24px; line-height: 1;">19.2</div>
+            <div class="lbl" style="color: #C9A227; font-size: 8px; margin-top: 3px;">oz</div>
+          </div>
+          <div>
+            <div class="lbl" style="color: #C9A227; font-size: 9px; margin-bottom: 8px;">New format &middot; MA and NH first</div>
+            <div class="slab" style="font-size: 22px; line-height: 1.08; margin-bottom: 7px;">TALL CANS HAVE LANDED</div>
+            <div style="font-size: 13.5px; line-height: 1.5; color: rgba(240,230,210,.78);">Bigger pour, in stores now.</div>
+          </div>
+        </div>
+        <div style="background: #0A1A2B; border: 2px solid #C9A227; padding: 22px 24px; display: flex; gap: 20px; align-items: center; flex-grow: 1;">
+          <img src="captain.png" alt="Captain Stormalong" style="height: 92px; width: auto; flex-shrink: 0;">
+          <div>
+            <div class="lbl" style="color: #A8321F; font-size: 9px; margin-bottom: 8px;">Thursday to Sunday</div>
+            <div class="slab" style="font-size: 22px; line-height: 1.08; margin-bottom: 7px;">THE TAPROOM IS OPEN</div>
+            <div style="font-size: 13.5px; line-height: 1.5; color: rgba(240,230,210,.78);">Including what never gets canned.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- THE TROPHY CASE -->
+  <div style="background: #071523; color: #F0E6D2; padding: 40px 56px 42px 56px; border-top: 1px solid rgba(201,162,39,.3);">
+
+    <div style="display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 52px; align-items: center;">
+
+      <!-- the number -->
+      <div>
+        <div class="lbl" style="color: #A8321F; margin-bottom: 14px;">&#9733; The trophy case &#9733;</div>
+        <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+          <span class="slab num" style="font-size: 84px; line-height: 0.85; color: #C9A227;">26</span>
+          <span class="slab" style="font-size: 30px; line-height: 1; color: #F0E6D2;">MEDALS</span>
+        </div>
+        <div style="height: 3px; background: #C9A227; width: 140px; margin-bottom: 16px;"></div>
+        <p style="font-size: 15.5px; line-height: 1.6; color: rgba(240,230,210,.72); margin: 0 0 18px 0; font-weight: 300;">Across eight ciders and seven competitions, every year since 2015. Two Best of Class.</p>
+        <span class="lbl" style="border: 2px solid #C9A227; color: #C9A227; padding: 12px 22px; display: inline-block;">See every medal</span>
+      </div>
+
+      <!-- the seals -->
+      <div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-bottom: 26px;">
+
+          <div style="border: 2px solid #C9A227; padding: 18px 16px 18px 16px; text-align: center; background: rgba(201,162,39,.06);">
+            <svg viewBox="0 0 64 80" style="width: 50px; height: 62px; margin-bottom: 10px;" aria-hidden="true">
+              <g stroke="#C9A227" fill="none" stroke-width="1.6">
+                <path d="M20 46 L14 76 L32 68 L50 76 L44 46" stroke-width="1.4"></path>
+                <circle cx="32" cy="30" r="25"></circle>
+                <circle cx="32" cy="30" r="20"></circle>
+              </g>
+              <g stroke="#C9A227" stroke-width="1.1">
+                <line x1="32" y1="30" x2="32" y2="7"></line><line x1="32" y1="30" x2="48" y2="14"></line>
+                <line x1="32" y1="30" x2="55" y2="30"></line><line x1="32" y1="30" x2="48" y2="46"></line>
+                <line x1="32" y1="30" x2="32" y2="53"></line><line x1="32" y1="30" x2="16" y2="46"></line>
+                <line x1="32" y1="30" x2="9" y2="30"></line><line x1="32" y1="30" x2="16" y2="14"></line>
+              </g>
+            </svg>
+            <div class="lbl" style="color: #C9A227; font-size: 8.5px; margin-bottom: 7px;">Best of Class</div>
+            <div class="slab" style="font-size: 14px; line-height: 1.15; margin-bottom: 6px;">MASS APPEAL</div>
+            <div style="font-size: 11.5px; line-height: 1.4; color: rgba(240,230,210,.6);">LA Invitational<br>Wine &amp; Spirits, 2022</div>
+          </div>
+
+          <div style="border: 2px solid #C9A227; padding: 18px 16px 18px 16px; text-align: center; background: rgba(201,162,39,.06);">
+            <svg viewBox="0 0 64 80" style="width: 50px; height: 62px; margin-bottom: 10px;" aria-hidden="true">
+              <g stroke="#C9A227" fill="none" stroke-width="1.6">
+                <path d="M20 46 L14 76 L32 68 L50 76 L44 46" stroke-width="1.4"></path>
+                <circle cx="32" cy="30" r="25"></circle>
+                <circle cx="32" cy="30" r="20"></circle>
+              </g>
+              <g stroke="#C9A227" stroke-width="1.1">
+                <line x1="32" y1="30" x2="32" y2="7"></line><line x1="32" y1="30" x2="48" y2="14"></line>
+                <line x1="32" y1="30" x2="55" y2="30"></line><line x1="32" y1="30" x2="48" y2="46"></line>
+                <line x1="32" y1="30" x2="32" y2="53"></line><line x1="32" y1="30" x2="16" y2="46"></line>
+                <line x1="32" y1="30" x2="9" y2="30"></line><line x1="32" y1="30" x2="16" y2="14"></line>
+              </g>
+            </svg>
+            <div class="lbl" style="color: #C9A227; font-size: 8.5px; margin-bottom: 7px;">Best of Class</div>
+            <div class="slab" style="font-size: 14px; line-height: 1.15; margin-bottom: 6px;">KINGSTON BLACK</div>
+            <div style="font-size: 11.5px; line-height: 1.4; color: rgba(240,230,210,.6);">LA Invitational<br>Wine &amp; Spirits</div>
+          </div>
+
+          <div style="border: 2px solid rgba(240,230,210,.35); padding: 18px 16px 18px 16px; text-align: center;">
+            <svg viewBox="0 0 64 80" style="width: 50px; height: 62px; margin-bottom: 10px;" aria-hidden="true">
+              <g stroke="#F0E6D2" fill="none" stroke-width="1.5" opacity=".85">
+                <path d="M20 46 L14 76 L32 68 L50 76 L44 46" stroke-width="1.3"></path>
+                <circle cx="32" cy="30" r="25"></circle>
+                <circle cx="32" cy="30" r="20"></circle>
+              </g>
+              <g stroke="#F0E6D2" stroke-width="1" opacity=".7">
+                <line x1="32" y1="30" x2="32" y2="7"></line><line x1="32" y1="30" x2="48" y2="14"></line>
+                <line x1="32" y1="30" x2="55" y2="30"></line><line x1="32" y1="30" x2="48" y2="46"></line>
+                <line x1="32" y1="30" x2="32" y2="53"></line><line x1="32" y1="30" x2="16" y2="46"></line>
+                <line x1="32" y1="30" x2="9" y2="30"></line><line x1="32" y1="30" x2="16" y2="14"></line>
+              </g>
+            </svg>
+            <div class="lbl" style="color: rgba(240,230,210,.7); font-size: 8.5px; margin-bottom: 7px;">Best in Class &middot; Gold</div>
+            <div class="slab" style="font-size: 14px; line-height: 1.15; margin-bottom: 6px;">BLUE SKIES</div>
+            <div style="font-size: 11.5px; line-height: 1.4; color: rgba(240,230,210,.6);">GLINTCAP, 2021</div>
+          </div>
+
+          <div style="border: 2px solid rgba(240,230,210,.35); padding: 18px 16px 18px 16px; text-align: center;">
+            <svg viewBox="0 0 64 80" style="width: 50px; height: 62px; margin-bottom: 10px;" aria-hidden="true">
+              <g stroke="#F0E6D2" fill="none" stroke-width="1.5" opacity=".85">
+                <path d="M20 46 L14 76 L32 68 L50 76 L44 46" stroke-width="1.3"></path>
+                <circle cx="32" cy="30" r="25"></circle>
+                <circle cx="32" cy="30" r="20"></circle>
+              </g>
+              <g stroke="#F0E6D2" stroke-width="1" opacity=".7">
+                <line x1="32" y1="30" x2="32" y2="7"></line><line x1="32" y1="30" x2="48" y2="14"></line>
+                <line x1="32" y1="30" x2="55" y2="30"></line><line x1="32" y1="30" x2="48" y2="46"></line>
+                <line x1="32" y1="30" x2="32" y2="53"></line><line x1="32" y1="30" x2="16" y2="46"></line>
+                <line x1="32" y1="30" x2="9" y2="30"></line><line x1="32" y1="30" x2="16" y2="14"></line>
+              </g>
+            </svg>
+            <div class="lbl" style="color: rgba(240,230,210,.7); font-size: 8.5px; margin-bottom: 7px;">Winner</div>
+            <div class="slab" style="font-size: 14px; line-height: 1.15; margin-bottom: 6px;">RED SKIES AT NIGHT</div>
+            <div style="font-size: 11.5px; line-height: 1.4; color: rgba(240,230,210,.6);">Good Food Awards<br>2019</div>
+          </div>
+
+        </div>
+
+        <!-- tally -->
+        <div style="border-top: 1px solid rgba(240,230,210,.2); padding-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 18px;">
+          <div style="display: flex; gap: 26px; align-items: baseline;">
+            <div><span class="slab num" style="font-size: 22px; color: #C9A227;">15</span><span class="lbl" style="color: rgba(240,230,210,.62); font-size: 9px; margin-left: 7px;">GLINTCAP</span></div>
+            <div><span class="slab num" style="font-size: 22px; color: #C9A227;">4</span><span class="lbl" style="color: rgba(240,230,210,.62); font-size: 9px; margin-left: 7px;">LA Invitational</span></div>
+            <div><span class="slab num" style="font-size: 22px; color: #C9A227;">2</span><span class="lbl" style="color: rgba(240,230,210,.62); font-size: 9px; margin-left: 7px;">SF Chronicle</span></div>
+            <div><span class="slab num" style="font-size: 22px; color: #C9A227;">2</span><span class="lbl" style="color: rgba(240,230,210,.62); font-size: 9px; margin-left: 7px;">NY International</span></div>
+            <div><span class="slab num" style="font-size: 22px; color: #C9A227;">3</span><span class="lbl" style="color: rgba(240,230,210,.62); font-size: 9px; margin-left: 7px;">UK, Good Food, CiderCraft</span></div>
+          </div>
+          <span class="lbl num" style="color: rgba(240,230,210,.42); font-size: 9px;">2015 &ndash; 2024</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="font-size: 12px; color: rgba(240,230,210,.38); margin-top: 18px;">Every figure here is counted from the awards already in <span class="num">data/ciders.ts</span> &mdash; 26 across 8 ciders. Nothing invented.</div>
+  </div>
+
+  <!-- COLOUR-BLOCK FLEET -->
+  <div style="background: #F0E6D2; padding: 52px 56px 48px 56px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 26px;">
+      <div>
+        <div class="lbl" style="color: #A8321F; margin-bottom: 10px;">The core line-up</div>
+        <h2 class="slab" style="font-size: 38px; margin: 0; line-height: 1;">EVERY CAN ITS OWN COLOUR</h2>
+      </div>
+      <span class="lbl" style="color: #4A4638; border-bottom: 2px solid #C9A227; padding-bottom: 5px;">All twelve &rarr;</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
+
+      <div style="background: #1B3A6B; display: flex; flex-direction: column;">
+        <div style="height: 230px; display: flex; align-items: center; justify-content: center;">
+          <img src="can-legendary-dry.png" alt="Legendary Dry" style="height: 192px; width: auto; filter: drop-shadow(0 14px 24px rgba(0,0,0,.4));">
+        </div>
+        <div style="padding: 20px 22px 22px 22px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; border-top: 1px solid rgba(240,230,210,.22);">
+          <div class="slab" style="font-size: 20px; color: #F0E6D2; line-height: 1.1;">LEGENDARY DRY</div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.8); margin: 0; flex-grow: 1;">Green apple, lemon pith, white pepper. Fifteen bittersweet varieties, under 3 g of sugar.</p>
+          <div style="display: flex; gap: 14px; align-items: center; border-top: 1px solid rgba(240,230,210,.2); padding-top: 11px;">
+            <div><div class="lbl" style="color: rgba(240,230,210,.45); font-size: 8.5px; margin-bottom: 3px;">ABV</div><div class="num" style="font-size: 14px; color: #F0E6D2; font-weight: 600;">6.5%</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.45); font-size: 8.5px; margin-bottom: 3px;">Sweetness</div><div style="font-size: 14px; color: #F0E6D2; font-weight: 600;">Dry &middot; 1 of 5</div></div>
+          </div>
+          <span class="lbl" style="color: #C9A227; font-size: 9.5px; border-bottom: 1.5px solid #C9A227; padding-bottom: 4px; align-self: flex-start;">Where to find it &rarr;</span>
+        </div>
+      </div>
+
+      <div style="background: #9A6B24; display: flex; flex-direction: column;">
+        <div style="height: 230px; display: flex; align-items: center; justify-content: center;">
+          <img src="can-mass-appeal.png" alt="Mass Appeal" style="height: 192px; width: auto; filter: drop-shadow(0 14px 24px rgba(0,0,0,.4));">
+        </div>
+        <div style="padding: 20px 22px 22px 22px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; border-top: 1px solid rgba(240,230,210,.22);">
+          <div class="slab" style="font-size: 20px; color: #F0E6D2; line-height: 1.1;">MASS APPEAL</div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.85); margin: 0; flex-grow: 1;">Ripe McIntosh, pear drop, a tropical turn at the finish. Golden Delicious and McIntosh only.</p>
+          <div style="display: flex; gap: 14px; align-items: center; border-top: 1px solid rgba(240,230,210,.24); padding-top: 11px;">
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">ABV</div><div class="num" style="font-size: 14px; color: #F0E6D2; font-weight: 600;">5.5%</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">Sweetness</div><div style="font-size: 14px; color: #F0E6D2; font-weight: 600;">Medium &middot; 3 of 5</div></div>
+          </div>
+          <span class="lbl" style="color: #F5E6BE; font-size: 9.5px; border-bottom: 1.5px solid #F5E6BE; padding-bottom: 4px; align-self: flex-start;">Where to find it &rarr;</span>
+        </div>
+      </div>
+
+      <div style="background: #A8402C; display: flex; flex-direction: column;">
+        <div style="height: 230px; display: flex; align-items: center; justify-content: center;">
+          <img src="can-red-skies.png" alt="Red Skies at Night" style="height: 192px; width: auto; filter: drop-shadow(0 14px 24px rgba(0,0,0,.4));">
+        </div>
+        <div style="padding: 20px 22px 22px 22px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; border-top: 1px solid rgba(240,230,210,.22);">
+          <div class="slab" style="font-size: 20px; color: #F0E6D2; line-height: 1.1;">RED SKIES AT NIGHT</div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.85); margin: 0; flex-grow: 1;">Passionfruit, hibiscus, pomegranate. Deep pink, rich, faintly floral.</p>
+          <div style="display: flex; gap: 14px; align-items: center; border-top: 1px solid rgba(240,230,210,.24); padding-top: 11px;">
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">ABV</div><div class="num" style="font-size: 14px; color: #F0E6D2; font-weight: 600;">5.5%</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">Sweetness</div><div style="font-size: 14px; color: #F0E6D2; font-weight: 600;">Medium &middot; 3 of 5</div></div>
+          </div>
+          <span class="lbl" style="color: #F5E6BE; font-size: 9.5px; border-bottom: 1.5px solid #F5E6BE; padding-bottom: 4px; align-self: flex-start;">Where to find it &rarr;</span>
+        </div>
+      </div>
+
+      <div style="background: #5F7330; display: flex; flex-direction: column;">
+        <div style="height: 230px; display: flex; align-items: center; justify-content: center;">
+          <img src="can-light-of-sun.png" alt="Light of the Sun" style="height: 192px; width: auto; filter: drop-shadow(0 14px 24px rgba(0,0,0,.4));">
+        </div>
+        <div style="padding: 20px 22px 22px 22px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; border-top: 1px solid rgba(240,230,210,.22);">
+          <div class="slab" style="font-size: 20px; color: #F0E6D2; line-height: 1.1;">LIGHT OF THE SUN</div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.85); margin: 0; flex-grow: 1;">Lemon, lime, yuzu over jasmine green tea. Bright and grassy.</p>
+          <div style="display: flex; gap: 14px; align-items: center; border-top: 1px solid rgba(240,230,210,.24); padding-top: 11px;">
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">ABV</div><div class="num" style="font-size: 14px; color: #F0E6D2; font-weight: 600;">5.0%</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">Sweetness</div><div style="font-size: 14px; color: #F0E6D2; font-weight: 600;">Semi-dry &middot; 2 of 5</div></div>
+          </div>
+          <span class="lbl" style="color: #F5E6BE; font-size: 9.5px; border-bottom: 1.5px solid #F5E6BE; padding-bottom: 4px; align-self: flex-start;">Where to find it &rarr;</span>
+        </div>
+      </div>
+
+      <div style="background: #35604A; display: flex; flex-direction: column;">
+        <div style="height: 230px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <span class="lbl" style="position: absolute; top: 14px; left: 14px; background: #C9A227; color: #0A1A2B; padding: 5px 10px; font-size: 9px;">Seasonal</span>
+          <img src="can-farmstand.png" alt="Farmstand Unfiltered" style="height: 192px; width: auto; filter: drop-shadow(0 14px 24px rgba(0,0,0,.4));">
+        </div>
+        <div style="padding: 20px 22px 22px 22px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; border-top: 1px solid rgba(240,230,210,.22);">
+          <div class="slab" style="font-size: 20px; color: #F0E6D2; line-height: 1.1;">FARMSTAND</div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.85); margin: 0; flex-grow: 1;">Cloudy, tangy, freshly pressed. Cider-mill apple and a little farmyard.</p>
+          <div style="display: flex; gap: 14px; align-items: center; border-top: 1px solid rgba(240,230,210,.24); padding-top: 11px;">
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">ABV</div><div class="num" style="font-size: 14px; color: #F0E6D2; font-weight: 600;">6.2%</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.55); font-size: 8.5px; margin-bottom: 3px;">Sweetness</div><div style="font-size: 14px; color: #F0E6D2; font-weight: 600;">Semi-dry &middot; 2 of 5</div></div>
+          </div>
+          <span class="lbl" style="color: #F5E6BE; font-size: 9.5px; border-bottom: 1.5px solid #F5E6BE; padding-bottom: 4px; align-self: flex-start;">Where to find it &rarr;</span>
+        </div>
+      </div>
+
+      <div style="background: #2E4A6B; display: flex; flex-direction: column;">
+        <div style="height: 230px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <span class="lbl" style="position: absolute; top: 14px; left: 14px; background: #C9A227; color: #0A1A2B; padding: 5px 10px; font-size: 9px;">Seasonal</span>
+          <img src="can-blue-skies.png" alt="Blue Skies" style="height: 192px; width: auto; filter: drop-shadow(0 14px 24px rgba(0,0,0,.4));">
+        </div>
+        <div style="padding: 20px 22px 22px 22px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; border-top: 1px solid rgba(240,230,210,.22);">
+          <div class="slab" style="font-size: 20px; color: #F0E6D2; line-height: 1.1;">BLUE SKIES</div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: rgba(240,230,210,.82); margin: 0; flex-grow: 1;">Wild Maine blueberry, bramble, a clean tart finish.</p>
+          <div style="display: flex; gap: 14px; align-items: center; border-top: 1px solid rgba(240,230,210,.22); padding-top: 11px;">
+            <div><div class="lbl" style="color: rgba(240,230,210,.5); font-size: 8.5px; margin-bottom: 3px;">ABV</div><div class="num" style="font-size: 14px; color: #F0E6D2; font-weight: 600;">5.5%</div></div>
+            <div><div class="lbl" style="color: rgba(240,230,210,.5); font-size: 8.5px; margin-bottom: 3px;">Sweetness</div><div style="font-size: 14px; color: #F0E6D2; font-weight: 600;">Medium &middot; 3 of 5</div></div>
+          </div>
+          <span class="lbl" style="color: #C9A227; font-size: 9.5px; border-bottom: 1.5px solid #C9A227; padding-bottom: 4px; align-self: flex-start;">Where to find it &rarr;</span>
+        </div>
+      </div>
+
+    </div>
+    <div style="font-size: 12px; color: #7A7466; margin-top: 14px;">Tasting notes are drafted &mdash; [WRITE WITH THE CIDERMAKER]. Panel colours are sampled from each label.</div>
+  </div>
+
+  <!-- SWEETNESS GUIDE -->
+  <div style="background: #E5D9C0; padding: 50px 56px 48px 56px; border-top: 2px solid rgba(10,26,43,.14);">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 30px;">
+      <div>
+        <div class="lbl" style="color: #A8321F; margin-bottom: 10px;">The only question anyone asks</div>
+        <h2 class="slab" style="font-size: 38px; margin: 0; line-height: 1;">HOW DRY IS IT?</h2>
+        <p style="font-size: 15.5px; color: #4A4638; margin: 10px 0 0 0; font-weight: 300; max-width: 58ch;">Your sweetness scale is the best idea on the current site and it is buried on the detail pages. Here it is as a guide in its own right &mdash; the whole range on one line.</p>
+      </div>
+    </div>
+
+    <div style="border-top: 2px solid #0A1A2B; padding-top: 22px;">
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-bottom: 14px;">
+        <div style="border-left: 3px solid #0A1A2B; padding-left: 14px;">
+          <div class="slab" style="font-size: 17px; line-height: 1;">DRY</div>
+          <div class="lbl num" style="color: #7A7466; font-size: 9px; margin-top: 5px;">1 of 5</div>
+          <div style="font-size: 13.5px; line-height: 1.5; color: #4A4638; margin-top: 10px;">Legendary Dry<br>Bittersweet Symphonie</div>
+        </div>
+        <div style="border-left: 3px solid #35604A; padding-left: 14px;">
+          <div class="slab" style="font-size: 17px; line-height: 1;">SEMI-DRY</div>
+          <div class="lbl num" style="color: #7A7466; font-size: 9px; margin-top: 5px;">2 of 5</div>
+          <div style="font-size: 13.5px; line-height: 1.5; color: #4A4638; margin-top: 10px;">Light of the Sun<br>Farmstand Unfiltered<br>Kingston Black</div>
+        </div>
+        <div style="border-left: 3px solid #9A6B24; padding-left: 14px;">
+          <div class="slab" style="font-size: 17px; line-height: 1;">MEDIUM</div>
+          <div class="lbl num" style="color: #7A7466; font-size: 9px; margin-top: 5px;">3 of 5</div>
+          <div style="font-size: 13.5px; line-height: 1.5; color: #4A4638; margin-top: 10px;">Mass Appeal<br>Red Skies at Night<br>Blue Skies</div>
+        </div>
+        <div style="border-left: 3px solid #A8402C; padding-left: 14px;">
+          <div class="slab" style="font-size: 17px; line-height: 1;">SEMI-SWEET</div>
+          <div class="lbl num" style="color: #7A7466; font-size: 9px; margin-top: 5px;">4 of 5</div>
+          <div style="font-size: 13.5px; line-height: 1.5; color: #4A4638; margin-top: 10px;">Beachcomber Cidah&rsquo;<br>Happy Holidays</div>
+        </div>
+        <div style="border-left: 3px solid #63202C; padding-left: 14px;">
+          <div class="slab" style="font-size: 17px; line-height: 1;">SWEET</div>
+          <div class="lbl num" style="color: #7A7466; font-size: 9px; margin-top: 5px;">5 of 5</div>
+          <div style="font-size: 13.5px; line-height: 1.5; color: #7A7466; margin-top: 10px;">Nothing here yet</div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 3px; margin-top: 22px;">
+        <span style="height: 8px; flex-grow: 1; background: #0A1A2B;"></span>
+        <span style="height: 8px; flex-grow: 1; background: #35604A;"></span>
+        <span style="height: 8px; flex-grow: 1; background: #9A6B24;"></span>
+        <span style="height: 8px; flex-grow: 1; background: #A8402C;"></span>
+        <span style="height: 8px; flex-grow: 1; background: #63202C;"></span>
+      </div>
+      <div style="font-size: 12px; color: #7A7466; margin-top: 12px;">Placements come from the <span class="num">sweetness</span> values already in your cider data. Kingston Black, Beachcomber and Happy Holidays are my estimates &mdash; [CONFIRM].</div>
+    </div>
+  </div>
+
+  <!-- FIND A CAN: the payoff section -->
+  <div style="background: #F0E6D2; padding: 54px 56px 50px 56px;">
+    <div style="text-align: center; margin-bottom: 32px;">
+      <div class="lbl" style="color: #A8321F; margin-bottom: 12px;">&#9733; &#9733; &#9733;</div>
+      <h2 class="slab" style="font-size: 46px; margin: 0 0 12px 0; line-height: 1;">FIND A CAN NEAR YOU</h2>
+      <p style="font-size: 16.5px; color: #4A4638; margin: 0 auto; font-weight: 300; max-width: 56ch; line-height: 1.6;">The most valuable thing this site can do. Top-level in the navigation, repeated on every cider, and the whole bottom of the homepage.</p>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 34px;">
+      <div style="display: flex; border: 3px solid #0A1A2B; width: 620px;">
+        <span style="flex-grow: 1; padding: 18px 20px; font-size: 16px; color: #7A7466;">Town, or ZIP code</span>
+        <span class="lbl" style="background: #0A1A2B; color: #C9A227; padding: 19px 30px; display: flex; align-items: center; font-size: 11px;">Search</span>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-bottom: 30px;">
+      <div style="border: 2px solid #0A1A2B; padding: 24px 26px;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A8321F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 14px;"><path d="M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"></path><path d="M3 9 5 3h14l2 6"></path><path d="M9 13h6"></path></svg>
+        <div class="slab" style="font-size: 20px; line-height: 1.1; margin-bottom: 8px;">TAKE IT HOME</div>
+        <p style="font-size: 14px; line-height: 1.55; color: #4A4638; margin: 0 0 12px 0;">Package stores and supermarkets carrying cans and bottles.</p>
+        <div class="lbl num" style="color: #0A1A2B; font-size: 11px;">701 locations</div>
+      </div>
+      <div style="border: 2px solid #0A1A2B; padding: 24px 26px;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A8321F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 14px;"><path d="M8 21h8"></path><path d="M12 15v6"></path><path d="M5 3h14l-1.5 8a6 6 0 0 1-11 0Z"></path></svg>
+        <div class="slab" style="font-size: 20px; line-height: 1.1; margin-bottom: 8px;">DRINK IT THERE</div>
+        <p style="font-size: 14px; line-height: 1.55; color: #4A4638; margin: 0 0 12px 0;">Bars and restaurants pouring Stormalong on draft or by the can.</p>
+        <div class="lbl num" style="color: #0A1A2B; font-size: 11px;">248 locations</div>
+      </div>
+      <div style="border: 2px solid #0A1A2B; background: #0A1A2B; padding: 24px 26px;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 14px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <div class="slab" style="font-size: 20px; line-height: 1.1; margin-bottom: 8px; color: #F0E6D2;">COME TO US</div>
+        <p style="font-size: 14px; line-height: 1.55; color: rgba(240,230,210,.72); margin: 0 0 12px 0;">The taproom in Sherborn. Everything on tap, including what never gets canned.</p>
+        <div class="lbl" style="color: #C9A227; font-size: 11px;">Open Thu &ndash; Sun</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; margin-bottom: 26px;">
+      <div style="border-top: 3px solid #0A1A2B; padding-top: 12px;"><div class="slab" style="font-size: 26px; line-height: 1;">MA</div><div class="num" style="font-size: 13px; color: #4A4638; margin-top: 5px;">412 places</div></div>
+      <div style="border-top: 3px solid #0A1A2B; padding-top: 12px;"><div class="slab" style="font-size: 26px; line-height: 1;">NH</div><div class="num" style="font-size: 13px; color: #4A4638; margin-top: 5px;">88 places</div></div>
+      <div style="border-top: 3px solid #0A1A2B; padding-top: 12px;"><div class="slab" style="font-size: 26px; line-height: 1;">RI</div><div class="num" style="font-size: 13px; color: #4A4638; margin-top: 5px;">61 places</div></div>
+      <div style="border-top: 3px solid #0A1A2B; padding-top: 12px;"><div class="slab" style="font-size: 26px; line-height: 1;">CT</div><div class="num" style="font-size: 13px; color: #4A4638; margin-top: 5px;">74 places</div></div>
+      <div style="border-top: 3px solid #0A1A2B; padding-top: 12px;"><div class="slab" style="font-size: 26px; line-height: 1;">ME</div><div class="num" style="font-size: 13px; color: #4A4638; margin-top: 5px;">39 places</div></div>
+      <div style="border-top: 3px solid #0A1A2B; padding-top: 12px;"><div class="slab" style="font-size: 26px; line-height: 1;">VT</div><div class="num" style="font-size: 13px; color: #4A4638; margin-top: 5px;">27 places</div></div>
+    </div>
+
+    <div style="border: 2px dashed rgba(10,26,43,.35); padding: 20px 26px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <div>
+        <div class="slab" style="font-size: 18px; line-height: 1.1; margin-bottom: 6px;">CAN'T FIND IT WHERE YOU ARE?</div>
+        <p style="font-size: 14.5px; line-height: 1.55; color: #4A4638; margin: 0;">Tell us your town and we will point you at the nearest stockist &mdash; or ask your local store to carry it.</p>
+      </div>
+      <span class="lbl" style="background: #0A1A2B; color: #C9A227; padding: 14px 26px; flex-shrink: 0;">Ask us</span>
+    </div>
+
+    <div style="font-size: 12px; color: #7A7466; margin-top: 14px;">Location counts are placeholders &mdash; [PULL FROM DISTRIBUTOR DATA].</div>
+  </div>
+
+  <!-- TAPROOM -->
+  <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);">
+    <div style="position: relative; min-height: 330px; overflow: hidden;">
+      <img src="taproom.jpg" alt="The Stormalong taproom" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div style="background: #E5D9C0; padding: 48px 56px; display: flex; flex-direction: column; justify-content: center;">
+      <div class="lbl" style="color: #A8321F; margin-bottom: 14px;">Visit us</div>
+      <h2 class="slab" style="font-size: 36px; line-height: 1.02; margin: 0 0 16px 0;">THE TAPROOM<br>IS OPEN.</h2>
+      <p style="font-size: 15.5px; line-height: 1.62; color: #4A4638; margin: 0 0 22px 0; max-width: 46ch;">Pull up a stool in the middle of the cidery in Sherborn. Everything on tap, including the things that never get canned.</p>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; margin-bottom: 24px;">
+        <div style="border-top: 2px solid #0A1A2B; padding-top: 9px;"><div class="lbl" style="color: #7A7466; font-size: 9px; margin-bottom: 4px;">Thu &ndash; Fri</div><div class="num" style="font-size: 15px; font-weight: 600;">4 &ndash; 9 pm</div></div>
+        <div style="border-top: 2px solid #0A1A2B; padding-top: 9px;"><div class="lbl" style="color: #7A7466; font-size: 9px; margin-bottom: 4px;">Sat &ndash; Sun</div><div class="num" style="font-size: 15px; font-weight: 600;">12 &ndash; 8 pm</div></div>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span class="lbl" style="background: #0A1A2B; color: #C9A227; padding: 14px 26px;">Directions</span>
+        <span class="lbl" style="color: #4A4638; border-bottom: 2px solid #C9A227; padding-bottom: 4px;">What's on tap today &rarr;</span>
+      </div>
+      <div style="font-size: 12px; color: #7A7466; margin-top: 18px;">Hours are placeholders &mdash; [CONFIRM].</div>
+    </div>
+  </div>
+
+  <div style="background: #0A1A2B; padding: 24px 56px 30px 56px;">
+    <div style="font-size: 13.5px; color: rgba(240,230,210,.62); line-height: 1.58; max-width: 84ch;"><strong style="color:#C9A227;">Why this one:</strong> it is B &mdash; same slab face, same bone and gold, same double rules and stars &mdash; reorganised around the two jobs that actually matter for a brand sold through distribution: tell people what the cider is, then tell them where it is. No cart, no prices. The top is the front-page mosaic &mdash; one lead and three secondaries, all on screen at once &mdash; with the trophy case beneath it. Twenty-six medals across eight ciders is the strongest proof you have and it currently lives as a bullet list on detail pages; it also barely ever changes, so it earns the slot without becoming a maintenance job. Tasting notes and specs on every tile, the sweetness scale promoted to a guide of its own, the Rare Apple Series run as dated releases, and the locator given the whole bottom of the page in three flavours: take it home, drink it there, come to us. <strong style="color:#C9A227;">The trade:</strong> it lives or dies on a real stockist dataset. Everything else here you already have &mdash; the tasting notes just need writing.</div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":3500}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

@@ -1,48 +1,50 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Oswald, Bebas_Neue, Cinzel, Poppins } from "next/font/google";
+import { Alfa_Slab_One, Libre_Franklin } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
-import { ThemeProvider } from "@/components/theme-provider";
+import { AgeGate } from "@/components/press-house/age-gate";
+import { AGE_GATE_BOOTSTRAP } from "@/components/press-house/age-gate-bootstrap";
+import { Footer } from "@/components/press-house/footer";
+import { Masthead } from "@/components/press-house/masthead";
+import { site } from "@/components/press-house/site-config";
+import { trophyCase } from "@/lib/catalogue";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const oswald = Oswald({
-  subsets: ["latin"],
-  variable: "--font-oswald",
-});
-
-const bebasNeue = Bebas_Neue({
+/**
+ * Press House uses exactly two faces. Alfa Slab One has a single
+ * weight, so display hierarchy comes from size alone; Libre Franklin
+ * carries everything else, with 300 for prose and 700 for the
+ * tracked-caps labels.
+ */
+const alfaSlab = Alfa_Slab_One({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-bebas-neue",
+  display: "swap",
+  variable: "--font-alfa-slab",
 });
 
-const cinzel = Cinzel({
+const libreFranklin = Libre_Franklin({
   subsets: ["latin"],
-  variable: "--font-cinzel",
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-libre-franklin",
 });
 
 export const metadata: Metadata = {
-  title: "Stormalong Cider | Quality Craft Hard Cider",
-  description:
-    "Stormalong Hard Cider. Explore our variety of craft, orchard based ciders - Legendary Dry, Red Skies at Night, Mass Appeal, Light of the Sun, Grand Banks, Farmstand Unfiltered, Kingston Black, Boston Heirloom and more. Respect the apple.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: "Stormalong Cider | Quality Craft Hard Cider",
+    template: "%s | Stormalong Cider",
+  },
+  // The medal count is read from the catalogue, not typed in, so the
+  // one number in this sentence cannot go stale.
+  description: `Unfiltered hard cider from Massachusetts. 100% fresh pressed apples, ${trophyCase.total} medals since ${trophyCase.firstYear}. Find Legendary Dry, Mass Appeal, Kingston Black and the rest of the range near you.`,
+  // The image itself is app/opengraph-image.tsx; this asks X and the
+  // like to show it full width rather than as a thumbnail.
+  twitter: { card: "summary_large_image" },
   icons: {
     icon: "/favicon.jpg",
     apple: "/apple-icon.jpg",
   },
-  generator: "v0.dev",
 };
 
 export default function RootLayout({
@@ -51,21 +53,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        {/* Must run before first paint — see AGE_GATE_BOOTSTRAP. */}
+        <script dangerouslySetInnerHTML={{ __html: AGE_GATE_BOOTSTRAP }} />
+      </head>
       <body
-        className={`${inter.variable} ${oswald.variable} ${bebasNeue.variable} ${cinzel.variable} ${poppins.variable} font-sans font-normal`}
+        className={`${alfaSlab.variable} ${libreFranklin.variable} ph-page bg-paper font-franklin text-ink antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <div className="flex min-h-screen flex-col">
-            <Navigation />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <a
+          href="#main"
+          className="ph-label sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[200] focus:bg-gold focus:px-4 focus:py-3 focus:text-ink"
+        >
+          Skip to content
+        </a>
+        <AgeGate />
+        <div className="flex min-h-screen flex-col">
+          <Masthead />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
 }
-
-import "./globals.css";

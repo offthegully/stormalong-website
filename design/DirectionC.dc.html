@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; font-family: "Space Grotesk", "Helvetica Neue", Arial, sans-serif; background: #FBFBF9; }
+    a { color: #B4551F; } a:hover { color: #7F3A12; }
+    .num { font-variant-numeric: tabular-nums; }
+    .lbl { text-transform: uppercase; letter-spacing: 0.16em; font-size: 10.5px; font-weight: 500; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #FBFBF9; color: #10161D;">
+
+  <!-- direction tag -->
+  <div style="background: #10161D; padding: 13px 56px; display: flex; align-items: baseline; justify-content: space-between;">
+    <span class="lbl" style="color: #E0803F;">Direction C</span>
+    <span style="color: #FBFBF9; font-size: 17px; font-weight: 500; letter-spacing: -0.01em;">Shelf &mdash; stripped back, the cans do the talking</span>
+    <span class="lbl" style="color: rgba(251,251,249,.45);">Space Grotesk &middot; near-white, ink, one amber</span>
+  </div>
+
+  <!-- NAV -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 56px; border-bottom: 1px solid #E4E4DF;">
+    <div style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em;">Stormalong</div>
+    <div style="display: flex; gap: 32px; align-items: center;">
+      <span style="font-size: 14px; color: #5A6068;">Ciders</span>
+      <span style="font-size: 14px; color: #5A6068;">Sweetness guide</span>
+      <span style="font-size: 14px; color: #5A6068;">Club</span>
+      <span style="font-size: 14px; color: #5A6068;">About</span>
+      <span style="font-size: 14px; color: #FBFBF9; background: #10161D; padding: 10px 18px; border-radius: 2px;">Find a can</span>
+    </div>
+  </div>
+
+  <!-- HERO: the question, answered -->
+  <div style="padding: 74px 56px 20px 56px; border-bottom: 1px solid #E4E4DF;">
+    <div style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr); gap: 72px; align-items: start; margin-bottom: 56px;">
+      <div>
+        <h1 style="font-size: 62px; line-height: 1.02; margin: 0 0 22px 0; font-weight: 500; letter-spacing: -0.032em; text-wrap: pretty;">How dry do you<br>want it?</h1>
+        <p style="font-size: 18px; line-height: 1.6; color: #4A5058; margin: 0 0 30px 0; max-width: 44ch; font-weight: 300;">Most cider sites make you read three paragraphs to find out. Pick a point on the scale and we will show you the can.</p>
+        <div style="display: flex; gap: 12px;">
+          <span style="font-size: 14px; color: #FBFBF9; background: #10161D; padding: 13px 26px; border-radius: 2px;">Find a can near me</span>
+          <span style="font-size: 14px; color: #10161D; border: 1px solid #C9CBC6; padding: 12px 24px; border-radius: 2px;">Browse all 12</span>
+        </div>
+      </div>
+      <div style="border: 1px solid #E4E4DF; border-radius: 3px; padding: 26px 28px 24px 28px; background: #ffffff;">
+        <div class="lbl" style="color: #8A9098; margin-bottom: 20px;">Sweetness</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 14px;">
+          <span style="height: 40px; flex-grow: 1; background: #10161D; border-radius: 2px;"></span>
+          <span style="height: 40px; flex-grow: 1; background: #E0803F; border-radius: 2px;"></span>
+          <span style="height: 40px; flex-grow: 1; background: #EFEFEC; border-radius: 2px;"></span>
+          <span style="height: 40px; flex-grow: 1; background: #EFEFEC; border-radius: 2px;"></span>
+          <span style="height: 40px; flex-grow: 1; background: #EFEFEC; border-radius: 2px;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 22px;">
+          <span class="lbl" style="color: #5A6068;">Dry</span>
+          <span class="lbl" style="color: #5A6068;">Medium</span>
+          <span class="lbl" style="color: #5A6068;">Sweet</span>
+        </div>
+        <div style="border-top: 1px solid #E4E4DF; padding-top: 18px; display: flex; gap: 18px; align-items: center;">
+          <img src="can-light-of-sun.png" alt="Light of the Sun" style="height: 92px; width: auto;">
+          <div>
+            <div class="lbl" style="color: #E0803F; margin-bottom: 6px;">Semi-dry &middot; 2 of 5</div>
+            <div style="font-size: 21px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 5px;">Light of the Sun</div>
+            <div style="font-size: 14px; color: #5A6068; line-height: 1.5;">Lemon, lime, yuzu, jasmine green tea</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the shelf: cans at true relative scale on a hairline -->
+    <div style="position: relative; padding-bottom: 4px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 26px; padding: 0 20px;">
+        <img src="can-legendary-dry.png" alt="Legendary Dry" style="height: 240px; width: auto;">
+        <img src="can-light-of-sun.png" alt="Light of the Sun" style="height: 240px; width: auto;">
+        <img src="can-farmstand.png" alt="Farmstand Unfiltered" style="height: 240px; width: auto;">
+        <img src="can-mass-appeal.png" alt="Mass Appeal" style="height: 240px; width: auto;">
+        <img src="can-red-skies.png" alt="Red Skies at Night" style="height: 240px; width: auto;">
+        <img src="can-kingston.png" alt="Kingston Black" style="height: 240px; width: auto;">
+      </div>
+      <div style="height: 1px; background: #10161D;"></div>
+      <div style="display: flex; justify-content: space-between; padding: 12px 20px 0 20px;">
+        <span class="lbl num" style="color: #8A9098;">01 Dry</span>
+        <span class="lbl num" style="color: #8A9098;">02</span>
+        <span class="lbl num" style="color: #8A9098;">03</span>
+        <span class="lbl num" style="color: #8A9098;">04</span>
+        <span class="lbl num" style="color: #8A9098;">05</span>
+        <span class="lbl num" style="color: #8A9098;">06 Sweet</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEC TABLE -->
+  <div style="padding: 54px 56px 44px 56px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px;">
+      <h2 style="font-size: 26px; margin: 0; font-weight: 500; letter-spacing: -0.025em;">Every cider, every number</h2>
+      <span class="lbl" style="color: #8A9098;">Sortable by ABV, sugar, sweetness</span>
+    </div>
+
+    <div style="border: 1px solid #E4E4DF; border-radius: 3px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; background: #F5F5F2; border-bottom: 1px solid #E4E4DF; padding: 12px 20px;">
+        <span class="lbl" style="color: #5A6068;">Cider</span>
+        <span class="lbl" style="color: #5A6068;">Apples</span>
+        <span class="lbl" style="color: #5A6068;">Sweetness</span>
+        <span class="lbl" style="color: #5A6068;">ABV</span>
+        <span class="lbl" style="color: #5A6068;">Sugar</span>
+        <span class="lbl" style="color: #5A6068;">Availability</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; padding: 16px 20px; border-bottom: 1px solid #EFEFEC; align-items: center;">
+        <span style="font-size: 15px; font-weight: 500;">Legendary Dry</span>
+        <span style="font-size: 14px; color: #5A6068;">15 bittersweets</span>
+        <span style="font-size: 14px; color: #10161D;">Dry &middot; <span class="num" style="color:#8A9098;">1/5</span></span>
+        <span class="num" style="font-size: 15px;">6.5%</span>
+        <span class="num" style="font-size: 15px;">&lt;3 g</span>
+        <span style="font-size: 14px; color: #5A6068;">Year-round</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; padding: 16px 20px; border-bottom: 1px solid #EFEFEC; align-items: center;">
+        <span style="font-size: 15px; font-weight: 500;">Light of the Sun</span>
+        <span style="font-size: 14px; color: #5A6068;">Blend + citrus</span>
+        <span style="font-size: 14px; color: #10161D;">Semi-dry &middot; <span class="num" style="color:#8A9098;">2/5</span></span>
+        <span class="num" style="font-size: 15px;">5.0%</span>
+        <span class="num" style="font-size: 15px;">6 g</span>
+        <span style="font-size: 14px; color: #5A6068;">Year-round</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; padding: 16px 20px; border-bottom: 1px solid #EFEFEC; align-items: center; background: #FEF8F2;">
+        <span style="font-size: 15px; font-weight: 500;">Kingston Black</span>
+        <span style="font-size: 14px; color: #5A6068;">100% Kingston Black</span>
+        <span style="font-size: 14px; color: #10161D;">Semi-dry &middot; <span class="num" style="color:#8A9098;">2/5</span></span>
+        <span class="num" style="font-size: 15px;">7.0%</span>
+        <span class="num" style="font-size: 15px;">8 g</span>
+        <span class="lbl" style="color: #B4551F;">Rare &middot; limited</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; padding: 16px 20px; border-bottom: 1px solid #EFEFEC; align-items: center;">
+        <span style="font-size: 15px; font-weight: 500;">Mass Appeal</span>
+        <span style="font-size: 14px; color: #5A6068;">McIntosh, Golden Delicious</span>
+        <span style="font-size: 14px; color: #10161D;">Medium &middot; <span class="num" style="color:#8A9098;">3/5</span></span>
+        <span class="num" style="font-size: 15px;">5.5%</span>
+        <span class="num" style="font-size: 15px;">11 g</span>
+        <span style="font-size: 14px; color: #5A6068;">Year-round</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; padding: 16px 20px; align-items: center;">
+        <span style="font-size: 15px; font-weight: 500;">Red Skies at Night</span>
+        <span style="font-size: 14px; color: #5A6068;">Blend + passionfruit</span>
+        <span style="font-size: 14px; color: #10161D;">Medium &middot; <span class="num" style="color:#8A9098;">3/5</span></span>
+        <span class="num" style="font-size: 15px;">5.5%</span>
+        <span class="num" style="font-size: 15px;">12 g</span>
+        <span style="font-size: 14px; color: #5A6068;">Year-round</span>
+      </div>
+    </div>
+    <div style="font-size: 12px; color: #8A9098; margin-top: 10px;">Sugar figures shown are placeholders &mdash; only Legendary Dry publishes one today. [CONFIRM WITH PRODUCTION]</div>
+  </div>
+
+  <div style="padding: 0 56px 32px 56px;">
+    <div style="font-size: 13.5px; color: #6B7178; line-height: 1.55; max-width: 76ch;"><strong style="color:#10161D;">Why this one:</strong> the sweetness scale is the best idea in the current redesign, and this direction builds the whole site on it. Near-white, one accent, tabular numbers &mdash; the can art supplies all the colour, and comparing twelve ciders becomes trivial. <strong style="color:#10161D;">The trade:</strong> it is the least romantic of the three. Sherborn, Captain Stormalong and the orchard recede; you are buying on specifications.</div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":1480}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

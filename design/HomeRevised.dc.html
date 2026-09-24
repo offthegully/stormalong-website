@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: Poppins, "Helvetica Neue", Arial, sans-serif; background: #ffffff; }
+    a { color: #0F2A47; } a:hover { color: #B4631E; }
+    .h { font-family: Oswald, "Arial Narrow", Arial, sans-serif; text-transform: uppercase; }
+    .pin { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: #B4631E; color: #fff;
+           font-family: Oswald, Arial, sans-serif; font-size: 13px; display: flex; align-items: center;
+           justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.35); z-index: 20; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #ffffff; position: relative;">
+
+  <!-- NAV -->
+  <div style="background: #0F2A47; height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; position: relative;">
+    <img src="logo.png" alt="Stormalong" style="height: 26px; width: auto;">
+    <div style="display: flex; align-items: center; gap: 30px;">
+      <span class="h" style="color: #fff; font-size: 13px; letter-spacing: 0.1em;">About</span>
+      <span class="h" style="color: #fff; font-size: 13px; letter-spacing: 0.1em;">Ciders</span>
+      <span class="h" style="color: #fff; font-size: 13px; letter-spacing: 0.1em;">Cider Club</span>
+      <span class="h" style="color: #fff; font-size: 13px; letter-spacing: 0.1em;">Contact</span>
+      <span class="h" style="color: #0F2A47; background: #D4AF37; font-size: 13px; letter-spacing: 0.1em; padding: 9px 18px; border-radius: 2px; font-weight: 500;">Find a can</span>
+    </div>
+    <div class="pin" style="right: 34px; top: 52px;">1</div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position: relative; height: 560px; overflow: hidden;">
+    <img src="hero-orchard.jpg" alt="Farmstand Unfiltered on a truck bed at the orchard" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(8,22,38,.88) 0%, rgba(8,22,38,.72) 38%, rgba(8,22,38,.15) 72%, rgba(8,22,38,0) 100%);"></div>
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 56px;">
+      <div style="max-width: 520px;">
+        <div class="h" style="color: #D4AF37; font-size: 12px; letter-spacing: 0.24em; margin-bottom: 16px;">Back for the season</div>
+        <h1 class="h" style="font-size: 66px; line-height: 0.98; color: #ffffff; margin: 0 0 18px 0; font-weight: 500; letter-spacing: 0.005em;">Farmstand<br><span style="color: #D4AF37;">Unfiltered</span></h1>
+        <p style="font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.9); margin: 0 0 28px 0;">Cloudy, tangy and pressed at harvest &mdash; as close to the cider mill as a can gets. 6.2% ABV.</p>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="h" style="background: #D4AF37; color: #0F2A47; font-size: 14px; letter-spacing: 0.1em; padding: 14px 30px; border-radius: 2px; font-weight: 500;">Find it near me</span>
+          <span class="h" style="border: 1px solid rgba(255,255,255,.6); color: #fff; font-size: 14px; letter-spacing: 0.1em; padding: 13px 28px; border-radius: 2px;">Buy online</span>
+        </div>
+      </div>
+    </div>
+    <div class="pin" style="left: 300px; top: 452px;">1</div>
+  </div>
+
+  <!-- PROMO RAIL -->
+  <div style="background: #0B2038; padding: 0 56px; position: relative;">
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(212,175,55,.25);">
+      <div style="background: #0B2038; padding: 26px 28px; display: flex; align-items: center; gap: 18px;">
+        <img src="can-kingston.png" alt="Kingston Black" style="height: 78px; width: auto;">
+        <div>
+          <div class="h" style="color: #D4AF37; font-size: 10.5px; letter-spacing: 0.2em; margin-bottom: 6px;">Rare Apple Series</div>
+          <div class="h" style="color: #fff; font-size: 19px; letter-spacing: 0.04em; margin-bottom: 5px;">Kingston Black is back</div>
+          <div style="color: rgba(255,255,255,.62); font-size: 13px; line-height: 1.5;">100% single-varietal. Sells out fast.</div>
+        </div>
+      </div>
+      <div style="background: #0B2038; padding: 26px 28px; display: flex; align-items: center; gap: 18px;">
+        <div style="width: 52px; height: 78px; border: 2px solid #D4AF37; border-radius: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">
+          <div class="h" style="color: #D4AF37; font-size: 20px; line-height: 1;">19.2</div>
+          <div class="h" style="color: #D4AF37; font-size: 9px; letter-spacing: 0.1em;">oz</div>
+        </div>
+        <div>
+          <div class="h" style="color: #D4AF37; font-size: 10.5px; letter-spacing: 0.2em; margin-bottom: 6px;">New format</div>
+          <div class="h" style="color: #fff; font-size: 19px; letter-spacing: 0.04em; margin-bottom: 5px;">Tall cans have landed</div>
+          <div style="color: rgba(255,255,255,.62); font-size: 13px; line-height: 1.5;">Bigger pour, in stores now.</div>
+        </div>
+      </div>
+      <div style="background: #0B2038; padding: 26px 28px; display: flex; align-items: center; gap: 18px;">
+        <img src="respect.png" alt="Rare Apple Club" style="height: 78px; width: auto;">
+        <div>
+          <div class="h" style="color: #D4AF37; font-size: 10.5px; letter-spacing: 0.2em; margin-bottom: 6px;">Membership</div>
+          <div class="h" style="color: #fff; font-size: 19px; letter-spacing: 0.04em; margin-bottom: 5px;">Rare Apple Club</div>
+          <div style="color: rgba(255,255,255,.62); font-size: 13px; line-height: 1.5;">15% off everything, always.</div>
+        </div>
+      </div>
+    </div>
+    <div class="pin" style="right: 28px; top: 22px;">5</div>
+  </div>
+
+  <!-- RESPECT THE APPLE, RESTRUCTURED -->
+  <div style="position: relative; background: #0F2A47; padding: 84px 56px;">
+    <div style="position: absolute; inset: 0; background-image: url(./pattern.jpg); background-size: 420px; opacity: .10;"></div>
+    <div style="position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 64px; align-items: start;">
+      <div>
+        <div class="h" style="color: #D4AF37; font-size: 12px; letter-spacing: 0.24em; margin-bottom: 18px;">Since 2014 &middot; Sherborn, Massachusetts</div>
+        <h2 class="h" style="font-size: 52px; line-height: 1.0; color: #ffffff; margin: 0 0 22px 0; font-weight: 500;">We respect<br>the apple.</h2>
+        <div style="width: 64px; height: 3px; background: #D4AF37;"></div>
+      </div>
+      <div>
+        <p style="font-size: 19px; line-height: 1.6; color: #ffffff; margin: 0 0 20px 0; font-weight: 300;">Real apples, freshly pressed. No concentrate, no artificial flavours, no chemically concocted &lsquo;natural&rsquo; ones either.</p>
+        <p style="font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,.72); margin: 0 0 28px 0;">Every Stormalong cider starts as whole New England fruit &mdash; bittersweets, russets, heirlooms &mdash; pressed and fermented with care. All of it is naturally gluten-free.</p>
+        <span class="h" style="border: 1px solid #D4AF37; color: #D4AF37; font-size: 13px; letter-spacing: 0.12em; padding: 12px 26px; border-radius: 2px; display: inline-block;">Read our story</span>
+      </div>
+    </div>
+    <div class="pin" style="left: 26px; top: 76px;">7</div>
+  </div>
+
+  <!-- FEATURED CIDERS -->
+  <div style="padding: 76px 56px 84px 56px; background: #ffffff; position: relative;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px;">
+      <div>
+        <div class="h" style="color: #B4631E; font-size: 12px; letter-spacing: 0.24em; margin-bottom: 10px;">The core line-up</div>
+        <h2 class="h" style="font-size: 40px; line-height: 1; color: #0F2A47; margin: 0; font-weight: 500;">Four to start with</h2>
+      </div>
+      <span class="h" style="color: #0F2A47; font-size: 13px; letter-spacing: 0.1em; border-bottom: 2px solid #D4AF37; padding-bottom: 4px;">All 12 ciders &rarr;</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px;">
+
+      <div style="border: 1px solid #E3E6EA; border-radius: 3px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="background: #F6F7F9; height: 250px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <img src="can-legendary-dry.png" alt="Legendary Dry" style="height: 200px; width: auto;">
+          <span class="h" style="position: absolute; top: 12px; left: 12px; border: 1px solid #0F2A47; color: #0F2A47; font-size: 9.5px; letter-spacing: 0.12em; padding: 4px 8px; border-radius: 2px;">Year-round</span>
+        </div>
+        <div style="padding: 18px 18px 20px 18px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+            <h3 class="h" style="font-size: 17px; color: #0F2A47; margin: 0; letter-spacing: 0.03em;">Legendary Dry</h3>
+            <span class="h" style="background: #0F2A47; color: #D4AF37; font-size: 10px; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px;">6.5%</span>
+          </div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A626D; margin: 0; flex-grow: 1;">Crisp, dry and champagne-like. Under 3g of sugar.</p>
+          <div style="display: flex; gap: 3px; align-items: center;">
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span class="h" style="font-size: 9.5px; color: #5A626D; letter-spacing: 0.08em; margin-left: 6px;">Dry</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #E3E6EA; border-radius: 3px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="background: #F6F7F9; height: 250px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <img src="can-mass-appeal.png" alt="Mass Appeal" style="height: 200px; width: auto;">
+          <span class="h" style="position: absolute; top: 12px; left: 12px; border: 1px solid #0F2A47; color: #0F2A47; font-size: 9.5px; letter-spacing: 0.12em; padding: 4px 8px; border-radius: 2px;">Year-round</span>
+        </div>
+        <div style="padding: 18px 18px 20px 18px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+            <h3 class="h" style="font-size: 17px; color: #0F2A47; margin: 0; letter-spacing: 0.03em;">Mass Appeal</h3>
+            <span class="h" style="background: #0F2A47; color: #D4AF37; font-size: 10px; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px;">5.5%</span>
+          </div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A626D; margin: 0; flex-grow: 1;">Golden Delicious and McIntosh. Juicy, semi-sweet.</p>
+          <div style="display: flex; gap: 3px; align-items: center;">
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span class="h" style="font-size: 9.5px; color: #5A626D; letter-spacing: 0.08em; margin-left: 6px;">Medium</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #E3E6EA; border-radius: 3px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="background: #F6F7F9; height: 250px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <img src="can-red-skies.png" alt="Red Skies at Night" style="height: 200px; width: auto;">
+          <span class="h" style="position: absolute; top: 12px; left: 12px; border: 1px solid #0F2A47; color: #0F2A47; font-size: 9.5px; letter-spacing: 0.12em; padding: 4px 8px; border-radius: 2px;">Year-round</span>
+        </div>
+        <div style="padding: 18px 18px 20px 18px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+            <h3 class="h" style="font-size: 17px; color: #0F2A47; margin: 0; letter-spacing: 0.03em;">Red Skies at Night</h3>
+            <span class="h" style="background: #0F2A47; color: #D4AF37; font-size: 10px; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px;">5.5%</span>
+          </div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A626D; margin: 0; flex-grow: 1;">Passionfruit and hibiscus. Deep pink, rich finish.</p>
+          <div style="display: flex; gap: 3px; align-items: center;">
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span class="h" style="font-size: 9.5px; color: #5A626D; letter-spacing: 0.08em; margin-left: 6px;">Medium</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #E3E6EA; border-radius: 3px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="background: #F6F7F9; height: 250px; display: flex; align-items: center; justify-content: center; position: relative;">
+          <img src="can-light-of-sun.png" alt="Light of the Sun" style="height: 200px; width: auto;">
+          <span class="h" style="position: absolute; top: 12px; left: 12px; border: 1px solid #0F2A47; color: #0F2A47; font-size: 9.5px; letter-spacing: 0.12em; padding: 4px 8px; border-radius: 2px;">Year-round</span>
+        </div>
+        <div style="padding: 18px 18px 20px 18px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+            <h3 class="h" style="font-size: 17px; color: #0F2A47; margin: 0; letter-spacing: 0.03em;">Light of the Sun</h3>
+            <span class="h" style="background: #0F2A47; color: #D4AF37; font-size: 10px; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px;">5%</span>
+          </div>
+          <p style="font-size: 13.5px; line-height: 1.55; color: #5A626D; margin: 0; flex-grow: 1;">Lemon, lime, yuzu and jasmine green tea.</p>
+          <div style="display: flex; gap: 3px; align-items: center;">
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #0F2A47; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span style="height: 5px; flex-grow: 1; background: #E3E6EA; border-radius: 2px;"></span>
+            <span class="h" style="font-size: 9.5px; color: #5A626D; letter-spacing: 0.08em; margin-left: 6px;">Semi-dry</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="pin" style="left: 26px; top: 340px;">6</div>
+    <div class="pin" style="right: 26px; top: 560px;">14</div>
+  </div>
+
+  <!-- LEGEND -->
+  <div style="background: #FAF7F1; border-top: 1px solid #EDE4D3; padding: 30px 56px 34px 56px;">
+    <div class="h" style="font-size: 11.5px; letter-spacing: 0.22em; color: #B4631E; margin-bottom: 16px;">What changed on this page</div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 36px;">
+      <div style="display: flex; gap: 11px; align-items: flex-start;">
+        <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #B4631E; color: #fff; font-family: Oswald, Arial, sans-serif; font-size: 11.5px; display: flex; align-items: center; justify-content: center;">1</span>
+        <div style="font-size: 13.5px; line-height: 1.5; color: #4A4238;"><strong style="color:#2A2620;">Working commerce.</strong> &ldquo;Find a can&rdquo; promoted to a filled button in the nav; hero carries both Find&nbsp;it and Buy&nbsp;online. All of these resolve today.</div>
+      </div>
+      <div style="display: flex; gap: 11px; align-items: flex-start;">
+        <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #B4631E; color: #fff; font-family: Oswald, Arial, sans-serif; font-size: 11.5px; display: flex; align-items: center; justify-content: center;">5</span>
+        <div style="font-size: 13.5px; line-height: 1.5; color: #4A4238;"><strong style="color:#2A2620;">A promo rail instead of a carousel.</strong> Three standing slots for a seasonal release, a new format and the club. Editable without a redeploy, and nothing auto-rotates past the reader.</div>
+      </div>
+      <div style="display: flex; gap: 11px; align-items: flex-start;">
+        <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #B4631E; color: #fff; font-family: Oswald, Arial, sans-serif; font-size: 11.5px; display: flex; align-items: center; justify-content: center;">7</span>
+        <div style="font-size: 13.5px; line-height: 1.5; color: #4A4238;"><strong style="color:#2A2620;">Respect the apple, left-aligned.</strong> Two columns, headline separated from body, copy cut by half, pattern dropped to 10% so the text carries full contrast.</div>
+      </div>
+      <div style="display: flex; gap: 11px; align-items: flex-start;">
+        <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #B4631E; color: #fff; font-family: Oswald, Arial, sans-serif; font-size: 11.5px; display: flex; align-items: center; justify-content: center;">6</span>
+        <div style="font-size: 13.5px; line-height: 1.5; color: #4A4238;"><strong style="color:#2A2620;">On-brand badges.</strong> Mint and yellow pills replaced by a navy outline and gold-on-navy ABV. Same information, no new hues.</div>
+      </div>
+      <div style="display: flex; gap: 11px; align-items: flex-start;">
+        <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #B4631E; color: #fff; font-family: Oswald, Arial, sans-serif; font-size: 11.5px; display: flex; align-items: center; justify-content: center;">14</span>
+        <div style="font-size: 13.5px; line-height: 1.5; color: #4A4238;"><strong style="color:#2A2620;">Sweetness on the card.</strong> The scale moves forward from the detail page to the grid, with the active stop named. It is the question shoppers are actually asking.</div>
+      </div>
+      <div style="display: flex; gap: 11px; align-items: flex-start;">
+        <span style="flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #4A5768; color: #fff; font-family: Oswald, Arial, sans-serif; font-size: 11.5px; display: flex; align-items: center; justify-content: center;">&mdash;</span>
+        <div style="font-size: 13.5px; line-height: 1.5; color: #4A4238;"><strong style="color:#2A2620;">Everything else held.</strong> Same navy, same gold, same Oswald, same sections in the same order. This is the existing redesign with its brakes fixed, not a new one.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":2160}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>
