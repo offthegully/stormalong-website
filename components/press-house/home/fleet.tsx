@@ -42,6 +42,22 @@ export function Fleet() {
             <CiderTile key={cider.slug} cider={cider} showGroupTag />
           ))}
         </div>
+
+        {/* The full dry-to-sweet guide lives on /ciders; the home page
+            points at it rather than repeating it. */}
+        <Link
+          href={`${routes.ciders}#sweetness`}
+          className="ph-press group mt-7 inline-flex items-baseline gap-2 font-franklin text-[0.97rem] text-prose hover:text-brick"
+        >
+          <span className="ph-slab text-[1.15rem] text-ink group-hover:text-brick">
+            How dry is it?
+          </span>
+          See every cider from driest to sweetest
+          <ArrowRightIcon
+            size={12}
+            className="ph-move-fast self-center group-hover:translate-x-1"
+          />
+        </Link>
       </div>
     </section>
   );

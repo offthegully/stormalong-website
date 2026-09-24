@@ -30,9 +30,9 @@ const lead = {
 const secondaries = [
   {
     href: "/ciders/farmstand-unfiltered",
-    eyebrow: "Seasonal · at harvest",
-    title: "Farmstand is pouring",
-    copy: "Cloudy and tangy, pressed at harvest.",
+    eyebrow: "Year-round · unfiltered",
+    title: "Farmstand Unfiltered",
+    copy: "Cloudy and tangy, like cider from the farmstand at harvest.",
     image: "/images/ciders/farmstand-unfiltered.png",
     ground: "bg-moss",
   },

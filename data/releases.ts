@@ -1,66 +1,9 @@
 /* ====================================================================
-   PROVISIONAL — the release calendar needs confirming with production.
-   --------------------------------------------------------------------
-   The Rare Apple Series is described on stormalong.com as selling out
-   fast, but nothing on the live site carries a date, a vintage or a
-   sold-out state. This calendar is drafted from the ciders that are in
-   the series today; which release lands in which month, and how big
-   each run is, are the two things nobody has confirmed.
-
-   Run sizes are deliberately null rather than guessed. The UI renders
-   a visible [TBC] instead of a number.
+   The Rare Apple Series page's copy. There is no release calendar:
+   a drafted one (months, "pouring now", "sold out") was never
+   confirmed and has been removed. The series itself is read from the
+   shelf, so this file only holds the words around it.
    ==================================================================== */
-
-export type ReleaseStatus = "pouring" | "next" | "gone";
-
-export interface Release {
-  slug: string;
-  /** First of the month the release lands. ISO, so it sorts. */
-  date: string;
-  status: ReleaseStatus;
-  /** Short line under the status chip. */
-  note: string;
-  /** Bottles in the run. Null until production confirms. */
-  runSize: number | null;
-}
-
-export const releases: Release[] = [
-  {
-    slug: "kingston-black",
-    date: "2026-09-01",
-    status: "pouring",
-    note: "On shelves now",
-    runSize: null,
-  },
-  {
-    slug: "boston-heirloom",
-    date: "2026-11-01",
-    status: "next",
-    note: "Club members first",
-    runSize: null,
-  },
-  {
-    slug: "happy-holidays",
-    date: "2026-12-01",
-    status: "next",
-    note: "Seasonal",
-    runSize: null,
-  },
-  {
-    slug: "grand-banks",
-    date: "2026-03-01",
-    status: "gone",
-    note: "Sold out",
-    runSize: null,
-  },
-  {
-    slug: "white-mountain-magic",
-    date: "2025-10-01",
-    status: "gone",
-    note: "Sold out",
-    runSize: null,
-  },
-];
 
 /**
  * The series' own description, lifted word for word from the cider
