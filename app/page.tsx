@@ -4,14 +4,7 @@ import { LineupShelf } from "@/components/press-house/home/lineup-shelf";
 import { PhotoMosaic } from "@/components/press-house/home/photo-mosaic";
 import { TrophyCase } from "@/components/press-house/home/trophy-case";
 import { RareAppleBand } from "@/components/press-house/rare-apple-band";
-import { homePhotos, lineupPhoto } from "@/lib/home-photos";
-
-/**
- * The photo spread follows the season (see `lib/home-photos.ts`), and
- * this page is otherwise static — so it is rebuilt daily, or the month
- * would be frozen at whatever it was on the last deploy.
- */
-export const revalidate = 86400;
+import { lineupPhoto, spreadPhotos } from "@/lib/home-photos";
 
 /**
  * Direction D, "Press House". The order is the argument: what is new,
@@ -37,7 +30,7 @@ export default function Home() {
       <FrontPage />
       <LineupShelf photo={lineupPhoto} />
       <TrophyCase />
-      <PhotoMosaic photos={homePhotos()} />
+      <PhotoMosaic photos={spreadPhotos} />
       <FindACan />
       <RareAppleBand />
     </>

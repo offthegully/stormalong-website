@@ -6,7 +6,8 @@ import { ArrowRightIcon } from "../icons";
 import { SectionRule } from "../ui";
 
 /**
- * The photo shoot, five at a time: one lead at two-thirds width, two
+ * The photo shoot, five at a time — which five is set in
+ * `lib/home-photos.ts`. One lead at two-thirds width, two
  * stacked beside it, and a pair beneath. The same grammar as the
  * detail pages' photo spread, so the site has one way of showing
  * photographs. On a phone the lead goes full width and the rest pair

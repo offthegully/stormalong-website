@@ -1,40 +1,71 @@
 /**
- * The photo-shoot images in `public/images/landing-page/`, for the home
- * page. Unlike the per-cider sets in `cider-photos.ts`, these are wide
- * scene-setting shots — a can on a barrel in an orchard, two carved
- * figures on a harbor dock — so they are listed by hand with the cider
- * each one shows and where it should link.
+ * The photographs on the home page.
  *
- * The line-up shot is the home page's shelf (`LineupShelf`); the rest
- * fill the photo spread beneath the medals (`PhotoMosaic`).
+ * ┌──────────────────────────────────────────────────────────────────┐
+ * │ TO SWAP A PHOTO in the spread under the medals, change a name in │
+ * │ `SPREAD` below to any other name from the `photos` list. The     │
+ * │ type checker rejects a name that is not in the list, so a typo   │
+ * │ fails the build instead of leaving a hole on the page.           │
+ * │                                                                  │
+ * │ TO ADD A NEW PHOTO, put the file in public/images/landing-page/, │
+ * │ add an entry to `photos` (copy one and change it), then use its  │
+ * │ name in `SPREAD`. Width and height are the file's pixel size —   │
+ * │ Finder's Get Info shows it, or run                               │
+ * │   sips -g pixelWidth -g pixelHeight <file>                       │
+ * └──────────────────────────────────────────────────────────────────┘
  *
- * Some are seasonal, and a pumpkin on the home page in May looks like
- * nobody is minding the site. `homePhotos()` puts whatever is in season
- * first and the evergreen shots after it. The windows follow the
- * availability the brand publishes for each cider in `data/ciders.ts`:
- * Happy Holidays September to December, White Mountain Magic late
- * December to March.
+ * The spread is always five tiles: the first is the large one on the
+ * left, the next two stack beside it, and the last two share the row
+ * beneath. Any shape of photo works — each tile crops to fit, and
+ * `focus` moves the crop if the important part gets cut off.
  *
- * The rugby sponsorship shot is deliberately left out: no product in
- * frame and a crowd of identifiable people. It belongs on Our Story if
- * anywhere.
+ * The line-up shot above the medals is separate (`lineupPhoto`). The
+ * cider names under it are listed in `components/press-house/home/
+ * lineup-shelf.tsx` in the order the cans stand in the photo, so a new
+ * line-up photo means updating that list too.
+ *
+ * The rugby sponsorship shot is deliberately not here: no product in
+ * frame and a crowd of identifiable people.
  */
+
+/** The five tiles in the photo spread, in order. */
+const SPREAD: Five<PhotoName> = [
+  "orchard",
+  "captains",
+  "heirloom",
+  "canWall",
+  "rareApple",
+];
 
 export type HomePhoto = {
   src: string;
+  /** Describes the photo for screen readers and search engines. */
   alt: string;
-  /** What the photo shows, as a caption and link label. */
+  /** The caption on the tile, which is also its link text. */
   label: string;
+  /** Where the tile goes when clicked. */
   href: string;
   width: number;
   height: number;
-  /** CSS object-position, for when a pane crops the shot. */
+  /**
+   * Which part of the photo to keep when a tile crops it, as a CSS
+   * object-position: "50% 50%" is the centre, "50% 80%" keeps more of
+   * the bottom. Leave it out for the centre.
+   */
   focus?: string;
 };
 
+type Five<T> = [T, T, T, T, T];
+type PhotoName = keyof typeof photos;
+
 const DIR = "/images/landing-page";
 
+/**
+ * Every photo available to the home page, year-round and seasonal
+ * alike. Only the ones named in `SPREAD` are shown.
+ */
 const photos = {
+  // Year-round
   orchard: {
     src: `${DIR}/legendary-dry-landing.jpg`,
     alt: "Three cans of Legendary Dry and a full glass on an old barrel head, surrounded by apples, with an orchard behind",
@@ -62,14 +93,6 @@ const photos = {
     height: 1500,
     focus: "45% 50%",
   },
-  lineup: {
-    src: `${DIR}/lineup-2025.jpg`,
-    alt: "Five cans in a row on a dock by the water: Light of the Sun, Mass Appeal, Legendary Dry, Red Skies at Night and Farmstand Unfiltered",
-    label: "The line-up",
-    href: "/ciders",
-    width: 3000,
-    height: 1320,
-  },
   canWall: {
     src: `${DIR}/farm-stand-landing.jpg`,
     alt: "A wall of stacked Farmstand Unfiltered cans",
@@ -87,6 +110,17 @@ const photos = {
     height: 2250,
     focus: "50% 55%",
   },
+  lineup: {
+    src: `${DIR}/lineup-2025.jpg`,
+    alt: "Five cans in a row on a dock by the water: Light of the Sun, Mass Appeal, Legendary Dry, Red Skies at Night and Farmstand Unfiltered",
+    label: "The line-up",
+    href: "/ciders",
+    width: 3000,
+    height: 1320,
+  },
+
+  // Seasonal — pumpkins and holidays read as out of date the rest of
+  // the year, so swap these in for their season and back out after.
   farmstandFall: {
     src: `${DIR}/farmstand-fall.jpg`,
     alt: "Three cans of Farmstand Unfiltered on the tailgate of a red pickup, among pumpkins beside a farm stand chalkboard",
@@ -124,46 +158,8 @@ const photos = {
   },
 } satisfies Record<string, HomePhoto>;
 
-/** The shelf shot. Kept out of the spread so it never shows twice. */
+/** The photo spread, in the order `SPREAD` lists it. */
+export const spreadPhotos: HomePhoto[] = SPREAD.map((name) => photos[name]);
+
+/** The wide shot above the medals, under At a Glance. */
 export const lineupPhoto: HomePhoto = photos.lineup;
-
-/**
- * Five, so the spread is full in the months with nothing in season.
- * The Rare Apple shot is from the club page rather than this shoot,
- * and is last so it only shows when it is needed.
- */
-const evergreen: HomePhoto[] = [
-  photos.orchard,
-  photos.captains,
-  photos.heirloom,
-  photos.canWall,
-  photos.rareApple,
-];
-
-/** Indexed by month, January first. */
-const seasonal: HomePhoto[][] = [
-  [photos.snow], // Jan
-  [photos.snow], // Feb
-  [photos.snow], // Mar
-  [], // Apr
-  [], // May
-  [], // Jun
-  [], // Jul
-  [], // Aug
-  [photos.farmstandFall, photos.holidaysPumpkins], // Sep
-  [photos.farmstandFall, photos.holidaysPumpkins], // Oct
-  [photos.holidaysPie, photos.farmstandFall], // Nov
-  [photos.holidaysPie, photos.snow], // Dec
-];
-
-/**
- * In-season shots first, then the evergreen set. `month` is 0–11; it
- * defaults to the current month. No two seasonal shots in a month share
- * a cider, and an evergreen shot drops out when its cider is already in
- * season — so one cider never takes two panes.
- */
-export function homePhotos(month = new Date().getMonth()): HomePhoto[] {
-  const now = seasonal[month] ?? [];
-  const hrefs = new Set(now.map((p) => p.href));
-  return [...now, ...evergreen.filter((p) => !hrefs.has(p.href))];
-}
